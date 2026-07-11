@@ -23,11 +23,15 @@ idle-region `veTable` cells reverted to `VEfix` (500 rpm 40/46/50/60 kPa =
    mixture/air, not charge.
 2. **Clean closed-throttle test of the lean-out** (7.1 + reverted VE). Watch for a
    catch that pulls MAP toward idle vacuum instead of flooding at ~95 kPa.
-3. **Isolate cyl #2 — plug is RULED OUT** (2026-07-11: a swapped/clean plug fouled
-   heavily again in #2; 1/3/4 only lightly). Order: ohm injectors (#2 vs others,
-   ~12–16 Ω), swap #2 plug wire, then swap injector **#2 ↔ #1** (soot follows
-   injector = over-flow; stays at #2 = spark path or compression), then
-   compression-test #2. A dead/weak #2 alone would make idle hard.
+3. **Isolate cyl #2 — plug RULED OUT** (a swapped/clean plug re-fouled #2; 1/3/4
+   only light). Prime suspect = **injector #2**: the used RX-8 yellows are the main
+   new variable, and because injection is paired (2+3 share the driver/wiring), only
+   the *physical* injector can single out #2 vs the clean #3. Test — ohm #2 vs the
+   others, then **swap injector #2 ↔ #1**: soot follows injector = leak/over-flow
+   (clean/flow-test/replace); stays at #2 = #2's individual spark wire/boot (the
+   rewire touched it). **Compression is a low-probability last resort** — the engine
+   ran before, internals untouched, and mild variance wouldn't stop it firing.
+   A dead/weak #2 alone would make idle hard (running on ~3).
 4. ~~Raise `engineProtectMaxRPM` off 1500~~ — **done (now 3000)**; won't fuel+spark-cut at fast-idle.
 5. If it catches then immediately dies (starved, not flooded): bump
    `crankingEnrichTaper` toward ~1.0 s.
