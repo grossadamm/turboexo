@@ -58,7 +58,7 @@ lives in `EXPERIMENT_LOG.md`; current front line in `STATUS.md`.
 | crankingEnrichTaper | 0.1 s | tension: 3.0 s drowns over repeated cranks, 0.1 s may starve a clean catch |
 | CrankAng | 10° | cranking advance (MS3 reference uses 12°) |
 | iacAlgorithm / iacPWMdir | PWM Open loop / Normal | **`iacStepperInv` is a no-op** (stepper only) |
-| engineProtectMaxRPM / Type | 1500 / Both | ⚠️ hard fuel+spark cut at 1500 — **raise before any sustained-idle attempt** |
+| engineProtectMaxRPM / Type | 3000 / Both | raised from 1500 (which cut fuel+spark at the idle target); 3000 clears fast-idle, still well under the 6800 hard limit |
 | dfcoEnabled | Off | no overrun fuel cut |
 | egoAlgorithm | No correction | open loop (wideband unusable in warmup) |
 
@@ -73,7 +73,7 @@ lives in `EXPERIMENT_LOG.md`; current front line in `STATUS.md`.
 - Battery discipline — recent cranks 9.6–10.3 V; no alternator charge since 07-09.
 - IACV airflow — powered but MAP unchanged closed-throttle; verify `iacPWMdir` polarity, stuck/carboned valve.
 - Cylinder #2 — sooty on a fresh plug; hardware (swap injector #2↔#1 to isolate).
-- `engineProtectMaxRPM` 1500/Both — raise (~2800) before holding an idle.
+- `engineProtectMaxRPM` — resolved: set to **3000** (was 1500/Both, which cut at the idle target).
 - Wideband — usable only after ~15 s+ exhaust heat.
 
 ## Tune file lineage

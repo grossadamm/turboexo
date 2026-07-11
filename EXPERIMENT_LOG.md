@@ -142,7 +142,7 @@ Chronological, newest last. Entries marked ~~struck~~ or "REFUTED" are kept deli
 
 **Open items:**
 1. **Battery discipline** — sagging to 6.7–7.1 V again on 07-11 cranks; charge/jump-pack before every session, ≤5 s cranks, dry plugs.
-2. **Clean closed-throttle test of the 7.1 lean-out** — if it catches, hold 1500–2000 RPM (first raise `engineProtectMaxRPM` off 1500 — currently a fuel+spark cut right at the target), watch oil pressure not RPM.
+2. **Clean closed-throttle test of the 7.1 lean-out** — if it catches, hold 1500–2000 RPM (rev cap now 3000, won't cut at fast-idle), watch oil pressure not RPM.
 3. **IACV airflow** — powered but not proven flowing: buzz-while-cranking test, **`iacPWMdir` polarity** (`iacStepperInv` is a no-op — this is a PWM valve, not a stepper), stuck/carboned valve; AAS (not TAS) is the base-air adjuster if needed.
 4. **Wideband usable only after ~15 s+ of running exhaust heat** (Spartan warmup sequencer); optional ego_sdelay=0 for log clarity. Brown wire = heater-status (2 V = valid) — candidate spare analog input.
 5. **Cyl #2 rich (hardware, not tune)** — fouls a *fresh* plug while #3 (same injector driver + coil) stays clean; isolate by swapping injector #2 ↔ #1 (soot follows injector = leaking/over-flow; stays with cylinder = coil tower/wire or compression).
