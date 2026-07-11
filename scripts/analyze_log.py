@@ -6,18 +6,25 @@ Then:           python scripts/analyze_log.py DataLogs/<file>.csv [more.csv ...]
 
 Baked-in gotcha: logged AFR is NOT trustworthy mixture data on short catches. The
 Spartan wideband is in warmup and Speeduino echoes live O2 into AFR Target, so AFR
-mirrors AFR Target (fixed cal voltages ~13.1-13.2). This script reports that echo
-fraction so you don't tune fuel from it. Judge fueling by effective fuel
-(PW - injOpen) and by reading the plugs, not by logged AFR.
+mirrors AFR Target (fixed cal voltages ~13.1-13.3). This script reports that echo
+fraction so you don't tune fuel from it. Judge fueling by effective fuel (PW minus a
+voltage-corrected dead time) and by reading the plugs, not by logged AFR.
 """
 import csv
 import sys
 import statistics as stats
 
-INJ_OPEN_MS = 0.9        # injOpen (injector dead time) in CurrentTune.msq
-FIRING_RPM = 400         # RPM above which the engine is "firing"
-FLOOD_CLEAR_TPS = 90     # TPS >= this => flood-clear (fuel cut); excluded from fuel stats
-RAN_BATT_V = 13.0        # battery >= this while firing => alternator charging => truly ran
+INJ_OPEN_MS = 0.9        # injOpen (~12 V dead time) in CurrentTune.msq; fallback only
+FIRING_RPM = 400         # above cranking, below a real idle => a "catch"/firing row
+FLOOD_CLEAR_TPS = 90     # tpsflood: TPS >= this cuts PW *during cranking* (flood clear)
+RAN_BATT_V = 13.0        # battery >= this while firing suggests the alternator is charging
+RAN_MIN_ROWS = 3         # require this many such rows before calling it a sustained run
+
+# Measured RX-8 yellow (Denso 195500-4450) injector dead time vs voltage (ms), from
+# docs/REFERENCE.md. Dead time is strongly voltage-dependent, so a flat PW - injOpen
+# overstates delivered fuel at cranking voltage; interpolate by the row's Battery V.
+DEADTIME_V = [(6.5, 3.03), (7.75, 2.02), (9.0, 1.48), (10.25, 1.15),
+              (11.5, 0.86), (12.75, 0.70), (14.0, 0.55)]
 
 # canonical field -> accepted header spellings (matched after normalization)
 FIELDS = {
@@ -52,6 +59,21 @@ def _build_index(header):
                 idx[key] = j
                 break
     return idx
+
+
+def deadtime_ms(volts):
+    """Injector dead time (ms) interpolated from the measured curve by battery volts."""
+    if volts is None:
+        return INJ_OPEN_MS
+    pts = DEADTIME_V
+    if volts <= pts[0][0]:
+        return pts[0][1]
+    if volts >= pts[-1][0]:
+        return pts[-1][1]
+    for (v0, d0), (v1, d1) in zip(pts, pts[1:]):
+        if v0 <= volts <= v1:
+            return d0 + (d1 - d0) * (volts - v0) / (v1 - v0)
+    return INJ_OPEN_MS
 
 
 def load(path):
@@ -90,9 +112,11 @@ def _fmt(triple, unit=""):
 
 
 def _eff(rec):
-    """Effective fuel per squirt = PW - dead time (approx real fuel delivered)."""
+    """Effective fuel per squirt = PW - voltage-corrected dead time (~delivered fuel)."""
     pw = rec.get("pw")
-    return None if pw is None else max(pw - INJ_OPEN_MS, 0.0)
+    if pw is None:
+        return None
+    return max(pw - deadtime_ms(rec.get("batt_v")), 0.0)
 
 
 def analyze(path):
@@ -105,31 +129,38 @@ def analyze(path):
     if missing:
         print(f"\n=== {name}: WARNING missing expected columns {missing} ===")
 
-    dur = (data[-1]["time"] - data[0]["time"]) if idx.get("time") is not None else float("nan")
-    firing = [r for r in data if (r.get("rpm") or 0) > FIRING_RPM]
-    closed = [r for r in firing if (r.get("tps") or 0) < 5]
-    cracked = [r for r in firing if 8 <= (r.get("tps") or 0) < FLOOD_CLEAR_TPS]
+    t0, t1 = data[0].get("time"), data[-1].get("time")
+    dur = (t1 - t0) if (t0 is not None and t1 is not None) else float("nan")
+
+    firing = [r for r in data if r.get("rpm") is not None and r["rpm"] > FIRING_RPM]
+    closed = [r for r in firing if r.get("tps") is not None and r["tps"] < 5]
+    cracked = [r for r in firing if r.get("tps") is not None and 5 <= r["tps"] < FLOOD_CLEAR_TPS]
 
     batt_all = [r["batt_v"] for r in data if r.get("batt_v") is not None]
     batt_fire = [r["batt_v"] for r in firing if r.get("batt_v") is not None]
-    ran = bool(batt_fire and max(batt_fire) >= RAN_BATT_V)
+    ran_rows = sum(1 for v in batt_fire if v >= RAN_BATT_V)
+    ran = ran_rows >= RAN_MIN_ROWS
 
     print(f"\n=== {name}  rows={len(data)}  dur={dur:.1f}s ===")
     print(f"  Battery V: {_fmt(_stat(batt_all))}"
           + (f"  | firing max {max(batt_fire):.1f}" if batt_fire else ""))
-    print(f"  TRULY RAN (batt>={RAN_BATT_V:.0f}V while firing = alternator charging): "
-          f"{'YES' if ran else 'no'}")
+    print(f"  Alternator likely charged? (heuristic: >={RAN_MIN_ROWS} firing rows "
+          f">={RAN_BATT_V:.0f} V): {'likely' if ran else 'no'} ({ran_rows} rows)"
+          f"  [a jump pack ~13 V can false-positive]")
     if idx.get("sync") is not None:
-        s = f"  Sync status max={max((r.get('sync') or 0) for r in data):.0f}"
-        if idx.get("sync_loss") is not None:
-            s += f"  SyncLoss max={max((r.get('sync_loss') or 0) for r in data):.0f}"
-        print(s)
+        syncs = [r["sync"] for r in data if r.get("sync") is not None]
+        line = f"  Sync status max={max(syncs):.0f}" if syncs else "  Sync status: n/a"
+        losses = [r["sync_loss"] for r in data if r.get("sync_loss") is not None]
+        if losses:
+            line += f"  SyncLoss max={max(losses):.0f}"
+        print(line)
 
     print(f"  Firing rows (RPM>{FIRING_RPM}): {len(firing)}")
     if firing:
         print(f"    RPM      {_fmt(_stat([r['rpm'] for r in firing]))}")
         print(f"    MAP      {_fmt(_stat([r['map'] for r in firing]), ' kPa')}")
-        print(f"    eff.fuel {_fmt(_stat([_eff(r) for r in firing]), ' ms')}  (PW-{INJ_OPEN_MS})")
+        print(f"    eff.fuel {_fmt(_stat([_eff(r) for r in firing]), ' ms')}  "
+              f"(PW - V-corrected dead time)")
         if idx.get("gammae") is not None:
             print(f"    Gammae   {_fmt(_stat([r['gammae'] for r in firing]), '%')}")
         if idx.get("afr") is not None and idx.get("afr_target") is not None:
@@ -138,17 +169,19 @@ def analyze(path):
             if pairs:
                 echo = sum(1 for a, t in pairs if abs(a - t) < 0.05)
                 print(f"    AFR      {_fmt(_stat([a for a, _ in pairs]))}  "
-                      f"[echo: AFR==Target in {echo}/{len(pairs)} = {100*echo/len(pairs):.0f}% "
-                      f"-> NOT mixture]")
+                      f"[echo: AFR==Target {echo}/{len(pairs)} = {100*echo/len(pairs):.0f}% "
+                      f"-> warmup echo, NOT mixture]")
 
     if closed:
         print(f"  Closed throttle (TPS<5): {len(closed)} | "
               f"MAP {_fmt(_stat([r['map'] for r in closed]), ' kPa')} | "
               f"eff.fuel {_fmt(_stat([_eff(r) for r in closed]), ' ms')}")
     if cracked:
-        print(f"  Cracked throttle (8<=TPS<{FLOOD_CLEAR_TPS}): {len(cracked)} | "
+        print(f"  Cracked throttle (5<=TPS<{FLOOD_CLEAR_TPS}): {len(cracked)} | "
               f"MAP {_fmt(_stat([r['map'] for r in cracked]), ' kPa')} | "
               f"eff.fuel {_fmt(_stat([_eff(r) for r in cracked]), ' ms')}")
+    # TPS>=FLOOD_CLEAR_TPS firing rows are WOT enrichment / flood-clear: they appear in
+    # the top-line firing eff.fuel but are excluded from the closed/cracked split above.
 
 
 def main(argv):
