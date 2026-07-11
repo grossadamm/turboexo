@@ -126,20 +126,26 @@ Chronological, newest last. Entries marked ~~struck~~ or "REFUTED" are kept deli
 - **Result/Evidence:** `2026-07-11_07.23.06`: brief blips (~14 rows >500 RPM, one RPM spike artifact), MAP min 65, **battery sagged to 6.7 V again**, flood-clears used (TPS 100). `2026-07-11_07.37.33`: max 622 RPM, 3 rows >500, MAP min 70, battery min 7.1 V. No sustained catch.
 - **Verdict:** PENDING — battery sag is back and invalidates the test; needs charged battery + dry plugs + ≤5 s cranks before the 7.9 chain can be judged.
 
+## 2026-07-11 (midday) — Plug read confirms rich → idle-region lean-out (`TurboExo_idleleanout_2026-07-11.msq`, LOADED)
+- **Change/Action:** Pulled plugs after the morning cranks: **cyl #2 black/sooty on a *fresh* plug**, #1 barely sooty, #3/#4 fairly clean; smells rich. Two edits to `CurrentTune.msq`: (1) **reqFuel 7.9 → 7.1**; (2) reverted the six 07-10 crank-VE/crank-wall cells to `VEfix` (07-09) values — 500 RPM col loads 40/46/50/60 kPa → 41/45/47/46, 700 RPM col loads 50/60 → 50/49. Kept battVCorMode "Open Time only", taper 0.1 s, CrankAng 10°. Pre-change state saved (`restorePoints/TurboExo_2026-07-11_pre-idleleanout.msq`).
+- **Why/Hypothesis:** 7.9 used the **wrong-year injector** — 265cc is the 01–05 purple / 94–97 tan, not this car's **238cc "red" (Denso 195500-3310)**. Correct: **12.7 × 238/425 ≈ 7.1** (pressure cancels; = the empirical 7.0 that ran on 07-09). The 07-10 VE forcing also created an **"idle-vacuum trap"**: at the proven idle point (500 rpm × 53 kPa) VE=100 commands ~**2.25×** the fuel, so it floods and can't lean to idle — it stays pinned near-atmospheric (MAP 93–98) instead of pulling vacuum like the 07-09 run (which pulled to 53 kPa, idled at PW ≈ 2.5 ms).
+- **Result/Evidence:** Judged from **delivered fuel (PW), not AFR** (still == Target in 100% of firing rows — the Spartan warmup echo). Crank-VE/crank-wall cells = **~80%** of the idle over-fuel, reqFuel = the other **~20%**; the taper + battVCor edits were slightly *leaning*, not the cause. **Cyl #2 is hardware, not tune**: PW1 = PW2 to 0.000 ms every log, and #2 shares its injector driver **and** wasted-spark coil with the clean #3 → per-cylinder (isolate by swapping injector #2 ↔ #1). Verified live: `CurrentTune.msq` reqFuel 7.1, six cells = VEfix. Project is now git + LFS (`github.com/grossadamm/turboexo`) with `AGENTS.md` / `docs/REFERENCE.md` / `STATUS.md` / `scripts/analyze_log.py`.
+- **Verdict:** Applied and loaded; **supersedes 7.9 (07-11 anchor audit) and 8.5 (07-09)** — both too rich. PENDING a clean test on a charged battery. Global lean-out addresses the rich mixture; **cyl #2 is a separate hardware fault** leaning cannot fix.
+
 ---
 
 ## Current state / open items (as of 2026-07-11)
 
-**Loaded tune:** `CurrentTune.msq` = reqFuel 7.9, battVCorMode "Open Time only", crankingEnrichTaper 0.1 s, CrankAng 10°, factory-transplant VE + crank-wall cells (500 RPM col 100 at 40–100 kPa; 700 RPM 65/75 at 50/60). Snapshot: `TurboExo_crankfuel_2026-07-11.msq`.
+**Loaded tune:** `CurrentTune.msq` = reqFuel 7.1, battVCorMode "Open Time only", crankingEnrichTaper 0.1 s, CrankAng 10°, factory-transplant VE with the 07-10 crank-VE/crank-wall cells reverted to VEfix (idle region back to the 07-09 shape). Snapshot: `TurboExo_idleleanout_2026-07-11.msq`. (Living status also in `STATUS.md`.)
 
 **Verified good:** trigger/full sync, spark all cylinders, base timing (yellow ≈6° vs commanded 5°), MAP plumbing + sensor, fuel pressure, injectors pulse, grounds/ECU power (when battery charged), IgInv "Going Low", idle PWM config (matches factory).
 
 **Open items:**
 1. **Battery discipline** — sagging to 6.7–7.1 V again on 07-11 cranks; charge/jump-pack before every session, ≤5 s cranks, dry plugs.
-2. **Clean closed-throttle test of the 7.9 fuel chain** — if it catches, hold 1500–2000 RPM, watch oil pressure not RPM.
-3. **IACV airflow** — powered but not proven flowing: buzz-while-cranking test, `iacStepperInv` polarity, stuck/carboned valve; AAS (not TAS) is the base-air adjuster if needed.
+2. **Clean closed-throttle test of the 7.1 lean-out** — if it catches, hold 1500–2000 RPM (first raise `engineProtectMaxRPM` off 1500 — currently a fuel+spark cut right at the target), watch oil pressure not RPM.
+3. **IACV airflow** — powered but not proven flowing: buzz-while-cranking test, **`iacPWMdir` polarity** (`iacStepperInv` is a no-op — this is a PWM valve, not a stepper), stuck/carboned valve; AAS (not TAS) is the base-air adjuster if needed.
 4. **Wideband usable only after ~15 s+ of running exhaust heat** (Spartan warmup sequencer); optional ego_sdelay=0 for log clarity. Brown wire = heater-status (2 V = valid) — candidate spare analog input.
-5. **1&2 vs 3&4 plug imbalance** — unexplained positional rich bias; recheck plugs after next real run.
+5. **Cyl #2 rich (hardware, not tune)** — fouls a *fresh* plug while #3 (same injector driver + coil) stays clean; isolate by swapping injector #2 ↔ #1 (soot follows injector = leaking/over-flow; stays with cylinder = coil tower/wire or compression).
 6. After NA idle/road tuning: regenerate boost VE rows (current 120–200 kPa rows are placeholders), re-run `patch_commissioning_settings.py`, fit oil-pressure sender, knock conditioner before any knock features.
 
 ## Key reference values
@@ -148,7 +154,7 @@ Chronological, newest last. Entries marked ~~struck~~ or "REFUTED" are kept deli
 |---|---|---|
 | Healthy cranking MAP (closed throttle) | **80–95 kPa** | observed 62–71 = air path deficit; 77–84 (June) was normal, not a leak |
 | Warm idle MAP (healthy) | **28–37 kPa** | >~40–45 kPa warm = suspect vacuum leak |
-| reqFuel (correct derivation) | **12.7 × 265/425 ≈ 7.9 ms** | factory 12.7 on ~265cc stock; yellows 425cc bench (Denso 195500-4450). The earlier 14.7×238/424→8.5 chain used a corrupted anchor (14.7 was a user edit) |
+| reqFuel (correct derivation) | **12.7 × 238/425 ≈ 7.1 ms** | 1999 stock = 238cc "red" (Denso 195500-3310), NOT 265cc (that's 01–05 purple / 94–97 tan) — the 265→7.9 and 14.7×238/424→8.5 chains were both too rich. Pressure cancels; matches the empirical 7.0 that ran |
 | Injectors | RX-8 yellows ~424 cc/min @ 43.5 psi | "450cc" is a marketing/higher-pressure figure |
 | Spark plugs | **NGK BKR7E (#4644), gap 0.030"** | 2 steps colder for turbo; not BKR7E-11 |
 | IACV (NB 1.8) | **8.7–10.5 Ω** coil, PWM **~500 Hz**, 2-wire low-side, fails closed | early generic research said 11–13 Ω; FSM spec is 8.7–10.5 |
