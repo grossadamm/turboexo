@@ -23,8 +23,11 @@ idle-region `veTable` cells reverted to `VEfix` (500 rpm 40/46/50/60 kPa =
    mixture/air, not charge.
 2. **Clean closed-throttle test of the lean-out** (7.1 + reverted VE). Watch for a
    catch that pulls MAP toward idle vacuum instead of flooding at ~95 kPa.
-3. **Re-read plugs.** If #1/#3/#4 clean up and only **#2** still fouls → swap
-   injector **#2 ↔ #1** and see if the heavy soot follows the injector.
+3. **Isolate cyl #2 — plug is RULED OUT** (2026-07-11: a swapped/clean plug fouled
+   heavily again in #2; 1/3/4 only lightly). Order: ohm injectors (#2 vs others,
+   ~12–16 Ω), swap #2 plug wire, then swap injector **#2 ↔ #1** (soot follows
+   injector = over-flow; stays at #2 = spark path or compression), then
+   compression-test #2. A dead/weak #2 alone would make idle hard.
 4. ~~Raise `engineProtectMaxRPM` off 1500~~ — **done (now 3000)**; won't fuel+spark-cut at fast-idle.
 5. If it catches then immediately dies (starved, not flooded): bump
    `crankingEnrichTaper` toward ~1.0 s.
@@ -38,5 +41,5 @@ idle-region `veTable` cells reverted to `VEfix` (500 rpm 40/46/50/60 kPa =
 ## Known blockers
 - Battery low (rests ~11.5 V, sags on long cranks) — degrades long cranks, but not the start blocker (last run cranked ~10 V and still didn't sustain).
 - IACV airflow not proven (idle-air; MAP unchanged closed-throttle when powered).
-- Cylinder #2 hardware (sooty on a fresh plug; injector / coil tower / compression).
+- Cyl #2 hardware — **confirmed positional** (a swapped plug re-fouled #2 while 1/3/4 stayed light); injector over-flow, weak spark path, or low compression. May be why it won't hold idle (effectively running on ~3).
 - Wideband unusable until ~15 s+ exhaust heat (AFR echo — don't tune fuel from logs).
