@@ -15,8 +15,12 @@ idle-region `veTable` cells reverted to `VEfix` (500 rpm 40/46/50/60 kPa =
 (1212 RPM, ~2.5 s, alternator charged to 14.1 V).
 
 ## Next actions
-1. **Charge the battery / jump pack.** Recent cranks sag to 9.6–10.3 V; nothing is
-   valid below alternator-charging voltage. ≤5 s cranks, dry plugs.
+1. **Keep cranks ≤5 s (charge/jump helps, but voltage is NOT the blocker).**
+   Cranking sits ~10 V, which is workable; only *long* cranks sag to 6.5–7.6 V,
+   where spark weakens and injector dead-time balloons (fuel leans). The good run
+   cranked at ~10.9 V too — its 13–14 V came only after it caught (alternator).
+   The last run had ~10 V and still didn't sustain, so the catch is limited by
+   mixture/air, not charge.
 2. **Clean closed-throttle test of the lean-out** (7.1 + reverted VE). Watch for a
    catch that pulls MAP toward idle vacuum instead of flooding at ~95 kPa.
 3. **Re-read plugs.** If #1/#3/#4 clean up and only **#2** still fouls → swap
@@ -32,7 +36,7 @@ idle-region `veTable` cells reverted to `VEfix` (500 rpm 40/46/50/60 kPa =
 - `engineProtectMaxRPM` 1500 → 3000 (was a fuel+spark cut at the idle target).
 
 ## Known blockers
-- Battery weak (no true run since 07-09).
+- Battery low (rests ~11.5 V, sags on long cranks) — degrades long cranks, but not the start blocker (last run cranked ~10 V and still didn't sustain).
 - IACV airflow not proven (idle-air; MAP unchanged closed-throttle when powered).
 - Cylinder #2 hardware (sooty on a fresh plug; injector / coil tower / compression).
 - Wideband unusable until ~15 s+ exhaust heat (AFR echo — don't tune fuel from logs).
