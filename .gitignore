@@ -4,12 +4,8 @@
 # Claude session data
 .claude/
 
-# TunerStudio auto-backups (milestone tunes are tracked; git is the history now)
-restorePoints/
-
-# TunerStudio UI / session artifacts (large, non-diffable)
+# TunerStudio UI / session artifacts
 TuneView/
-dashboard/
 
 # TunerStudio session state & editor backups
 projectCfg/persistedChannelValues.properties*
