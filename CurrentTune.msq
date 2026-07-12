@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <msq xmlns="http://www.msefi.com/:msq">
-<bibliography author="TunerStudio MS 3.3.01 - EFI Analytics, Inc." tuneComment="" writeDate="Sun Jul 12 10:40:56 PDT 2026"/>
+<bibliography author="TunerStudio MS 3.3.01 - EFI Analytics, Inc." tuneComment="" writeDate="Sun Jul 12 15:31:00 PDT 2026"/>
 <versionInfo fileFormat="5.0" firmwareInfo="Speeduino+2025.01.7" nPages="15" signature="speeduino 202501"/>
 <page>
 <pcVariable name="tsCanId">"CAN ID 0"</pcVariable>
@@ -798,8 +798,8 @@
 <constant digits="1" name="dwellrun" units="ms">3.0</constant>
 <constant digits="0" name="numTeeth" units="teeth">2.0</constant>
 <constant digits="0" name="missingTeeth" units="teeth">1.0</constant>
-<constant digits="0" name="crankRPM" units="rpm">400.0</constant>
-<constant digits="1" name="tpsflood" units="%">90.0</constant>
+<constant digits="0" name="crankRPM" units="rpm">230.0</constant>
+<constant digits="1" name="tpsflood" units="%">60.0</constant>
 <constant digits="0" name="SoftRevLim" units="rpm">6500.0</constant>
 <constant digits="0" name="SoftLimRetard" units="deg">1.0</constant>
 <constant digits="1" name="SoftLimMax" units="s">2.0</constant>
@@ -931,7 +931,7 @@
          0.0 
          0.0 
       </constant>
-<constant digits="0" name="engineProtectMaxRPM" units="rpm">3000.0</constant>
+<constant digits="0" name="engineProtectMaxRPM" units="rpm">1500.0</constant>
 <constant digits="0" name="vvt2CL0DutyAng" units="deg">-1.0</constant>
 <constant name="vvt2PWMdir">"Advance"</constant>
 <constant name="inj4CylPairing">"1+4 &amp; 2+3"</constant>
@@ -1903,7 +1903,7 @@
 <constant digits="0" name="vvtCL0DutyAng" units="deg">342.0</constant>
 <constant digits="0" name="vvtCLMinAng" units="deg">86.0</constant>
 <constant digits="0" name="vvtCLMaxAng" units="deg">127.0</constant>
-<constant digits="1" name="crankingEnrichTaper" units="s">0.1</constant>
+<constant digits="1" name="crankingEnrichTaper" units="s">5.0</constant>
 <constant name="fuelPressureEnable">"Off"</constant>
 <constant name="oilPressureEnable">"Off"</constant>
 <constant name="oilPressureProtEnbl">"Off"</constant>
