@@ -7,8 +7,8 @@ _Update whenever the loaded tune or the front line changes. Full history:
 `CurrentTune.msq` = **`TurboExo_revcap3000_2026-07-11.msq`**: reqFuel **7.1**,
 idle-region `veTable` cells reverted to `VEfix` (500 rpm 40/46/50/60 kPa =
 41/45/47/46; 700 rpm 50/60 kPa = 50/49), `battVCorMode` "Open Time only",
-`crankingEnrichTaper` 0.1 s, `CrankAng` 10°, `engineProtectMaxRPM` 3000 (raised from 1500).
-> Not yet burned/tested at time of writing — confirm reqFuel 7.1 + `engineProtectMaxRPM` 3000 in TunerStudio and burn.
+`crankingEnrichTaper` 3.0 s (restored to the 07-09 value), `CrankAng` 10°, `engineProtectMaxRPM` 3000 (raised from 1500).
+> **Burned & tested 2026-07-12** (`DataLogs/2026-07-12_10.41.28`): closed-throttle it only **motored — no catch** (RPM 443→0 the instant the starter released; battery ~10 V, never charged; adversarial log review confirmed). Nothing validated yet.
 
 ## Last-known-good
 `TurboExo_VEfix_2026-07-09.msq` (reqFuel 7.0) — only tune that self-sustained
@@ -21,8 +21,10 @@ idle-region `veTable` cells reverted to `VEfix` (500 rpm 40/46/50/60 kPa =
    cranked at ~10.9 V too — its 13–14 V came only after it caught (alternator).
    The last run had ~10 V and still didn't sustain, so the catch is limited by
    mixture/air, not charge.
-2. **Clean closed-throttle test of the lean-out** (7.1 + reverted VE). Watch for a
-   catch that pulls MAP toward idle vacuum instead of flooding at ~95 kPa.
+2. **Reproduce the *proven* catch first — with throttle.** 07-09 caught (→1212 rpm)
+   with TPS 11–14; the 07-12 *closed*-throttle attempt only motored (no catch). Get a
+   with-throttle catch on the current tune before chasing closed-throttle idle (which
+   is the separate idle-air/IACV problem).
 3. **Isolate cyl #2 — plug RULED OUT** (a swapped/clean plug re-fouled #2; 1/3/4
    only light). Prime suspect = **injector #2**: the used RX-8 yellows are the main
    new variable, and because injection is paired (2+3 share the driver/wiring), only
@@ -31,10 +33,12 @@ idle-region `veTable` cells reverted to `VEfix` (500 rpm 40/46/50/60 kPa =
    (clean/flow-test/replace); stays at #2 = #2's individual spark wire/boot (the
    rewire touched it). **Compression is a low-probability last resort** — the engine
    ran before, internals untouched, and mild variance wouldn't stop it firing.
-   A dead/weak #2 alone would make idle hard (running on ~3).
+   Note #2 is a *contributor*, not proven the sole blocker — it ran to 1212 on 07-09
+   regardless of #2.
 4. ~~Raise `engineProtectMaxRPM` off 1500~~ — **done (now 3000)**; won't fuel+spark-cut at fast-idle.
-5. If it catches then immediately dies (starved, not flooded): bump
-   `crankingEnrichTaper` toward ~1.0 s.
+5. ~~Restore `crankingEnrichTaper` toward ~3 s~~ — **done: set 3.0 s (= 07-09)**; pair with clean single cranks (3.0 s re-stacks fuel if you crank on a wet engine). 07-09 (the run that worked) had
+   3.0 s; the 0.1 s we set removed the post-catch fuel that let it climb 430→1211.
+   (0.1 s was to stop drowning over *repeated* cranks — but it starves a clean catch.)
 
 ## Recently changed (2026-07-11)
 - reqFuel 7.9 → 7.1 (corrected injector anchor: 238 cc, not 265).

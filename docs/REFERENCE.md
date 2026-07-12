@@ -55,7 +55,7 @@ lives in `EXPERIMENT_LOG.md`; current front line in `STATUS.md`.
 | injOpen | 0.9 ms | dead time (see curve) |
 | multiplyMAP | Baro | speed-density MAP term |
 | battVCorMode | Open Time only | Whole PW added ~12% at cranking V — avoid |
-| crankingEnrichTaper | 0.1 s | tension: 3.0 s drowns over repeated cranks, 0.1 s may starve a clean catch |
+| crankingEnrichTaper | 3.0 s | restored to the 07-09 value (0.1 s starved a clean catch); 3.0 s can re-stack fuel over repeated cranks — do clean single cranks |
 | CrankAng | 10° | cranking advance (MS3 reference uses 12°) |
 | iacAlgorithm / iacPWMdir | PWM Open loop / Normal | **`iacStepperInv` is a no-op** (stepper only) |
 | engineProtectMaxRPM / Type | 3000 / Both | raised from 1500 (which cut fuel+spark at the idle target); 3000 clears fast-idle, still well under the 6800 hard limit |
