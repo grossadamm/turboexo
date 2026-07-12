@@ -7,7 +7,7 @@ _Update whenever the loaded tune or the front line changes. Full history:
 `CurrentTune.msq` = **`TurboExo_revcap3000_2026-07-11.msq`**: reqFuel **7.1**,
 idle-region `veTable` cells reverted to `VEfix` (500 rpm 40/46/50/60 kPa =
 41/45/47/46; 700 rpm 50/60 kPa = 50/49), `battVCorMode` "Open Time only",
-`crankingEnrichTaper` 0.1 s, `CrankAng` 10°, `engineProtectMaxRPM` 3000 (raised from 1500).
+`crankingEnrichTaper` 3.0 s (restored to the 07-09 value), `CrankAng` 10°, `engineProtectMaxRPM` 3000 (raised from 1500).
 > **Burned & tested 2026-07-12** (`DataLogs/2026-07-12_10.41.28`): closed-throttle it only **motored — no catch** (RPM 443→0 the instant the starter released; battery ~10 V, never charged; adversarial log review confirmed). Nothing validated yet.
 
 ## Last-known-good
@@ -36,7 +36,7 @@ idle-region `veTable` cells reverted to `VEfix` (500 rpm 40/46/50/60 kPa =
    Note #2 is a *contributor*, not proven the sole blocker — it ran to 1212 on 07-09
    regardless of #2.
 4. ~~Raise `engineProtectMaxRPM` off 1500~~ — **done (now 3000)**; won't fuel+spark-cut at fast-idle.
-5. **Restore `crankingEnrichTaper` toward ~3 s.** 07-09 (the run that worked) had
+5. ~~Restore `crankingEnrichTaper` toward ~3 s~~ — **done: set 3.0 s (= 07-09)**; pair with clean single cranks (3.0 s re-stacks fuel if you crank on a wet engine). 07-09 (the run that worked) had
    3.0 s; the 0.1 s we set removed the post-catch fuel that let it climb 430→1211.
    (0.1 s was to stop drowning over *repeated* cranks — but it starves a clean catch.)
 
