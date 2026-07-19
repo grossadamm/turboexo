@@ -3,51 +3,44 @@
 _Update whenever the loaded tune or the front line changes. Full history:
 `EXPERIMENT_LOG.md`. Pinned facts: `docs/REFERENCE.md`._
 
-## Loaded tune
-`CurrentTune.msq` = **`TurboExo_revcap3000_2026-07-11.msq`**: reqFuel **7.1**,
-idle-region `veTable` cells reverted to `VEfix` (500 rpm 40/46/50/60 kPa =
-41/45/47/46; 700 rpm 50/60 kPa = 50/49), `battVCorMode` "Open Time only",
-`crankingEnrichTaper` 3.0 s (restored to the 07-09 value), `CrankAng` 10°, `engineProtectMaxRPM` 3000 (raised from 1500).
-> **Burned & tested 2026-07-12** (`DataLogs/2026-07-12_10.41.28`): closed-throttle it only **motored — no catch** (RPM 443→0 the instant the starter released; battery ~10 V, never charged; adversarial log review confirmed). Nothing validated yet.
+## Loaded tune (2026-07-19)
+`CurrentTune.msq` = **OEM stock injectors** + factory fuel baseline: reqFuel **12.7**
+(correct for OEM inj), `injOpen` 1.0, `battVCorMode` "Whole PW", `crankingEnrichTaper`
+5.0 s, `primePulse` ~30 ms, `CrankAng` 10°, `engineProtectMaxRPM` 4000, `crankRPM` 230,
+`tpsflood` 60, factory-transplant VE. Snapshot: `restorePoints/TurboExo_2026-07-19_12.23.39.msq`.
+> Test `2026-07-19_12.24.20`: revved to 893 rpm on a WOT blip only — no idle, never charged.
 
-## Last-known-good
-`TurboExo_VEfix_2026-07-09.msq` (reqFuel 7.0) — only tune that self-sustained
-(1212 RPM, ~2.5 s, alternator charged to 14.1 V).
+## Reference catch (what "running" looks like)
+Only real catch so far: **07-09** (`TurboExo_VEfix_2026-07-09.msq`, reqFuel 7.0, on the old
+RX-8 yellows) — climbed to 1212 rpm and the alternator charged to 14.1 V, **with ~11–14% throttle**.
+The current OEM + factory-12.7 + factory VE is the config the engine ran on for years, so it
+should be capable — the goal is to reproduce that climb.
 
 ## Next actions
-1. **Keep cranks ≤5 s (charge/jump helps, but voltage is NOT the blocker).**
-   Cranking sits ~10 V, which is workable; only *long* cranks sag to 6.5–7.6 V,
-   where spark weakens and injector dead-time balloons (fuel leans). The good run
-   cranked at ~10.9 V too — its 13–14 V came only after it caught (alternator).
-   The last run had ~10 V and still didn't sustain, so the catch is limited by
-   mixture/air, not charge.
-2. **Reproduce the *proven* catch first — with throttle.** 07-09 caught (→1212 rpm)
-   with TPS 11–14; the 07-12 *closed*-throttle attempt only motored (no catch). Get a
-   with-throttle catch on the current tune before chasing closed-throttle idle (which
-   is the separate idle-air/IACV problem).
-3. **Isolate cyl #2 — plug RULED OUT** (a swapped/clean plug re-fouled #2; 1/3/4
-   only light). Prime suspect = **injector #2**: the used RX-8 yellows are the main
-   new variable, and because injection is paired (2+3 share the driver/wiring), only
-   the *physical* injector can single out #2 vs the clean #3. Test — ohm #2 vs the
-   others, then **swap injector #2 ↔ #1**: soot follows injector = leak/over-flow
-   (clean/flow-test/replace); stays at #2 = #2's individual spark wire/boot (the
-   rewire touched it). **Compression is a low-probability last resort** — the engine
-   ran before, internals untouched, and mild variance wouldn't stop it firing.
-   Note #2 is a *contributor*, not proven the sole blocker — it ran to 1212 on 07-09
-   regardless of #2.
-4. ~~Raise `engineProtectMaxRPM` off 1500~~ — **done (now 3000)**; won't fuel+spark-cut at fast-idle.
-5. ~~Restore `crankingEnrichTaper` toward ~3 s~~ — **done: set 3.0 s (= 07-09)**; pair with clean single cranks (3.0 s re-stacks fuel if you crank on a wet engine). 07-09 (the run that worked) had
-   3.0 s; the 0.1 s we set removed the post-catch fuel that let it climb 430→1211.
-   (0.1 s was to stop drowning over *repeated* cranks — but it starves a clean catch.)
+1. **With-throttle catch on the OEM/factory baseline.** Crank with ~10–15% throttle (like 07-09),
+   rev cap 4000 so let it climb; watch oil pressure. Grab the `.mlg` — this tells us if we're
+   back to a real catch.
+2. **Fuel is now off the table** (factory-known-good), so "won't climb/idle" is a **non-fuel**
+   question — settle it with tests the logs can't (logs have no usable mixture: AFR echo):
+   - **Give it air** (crack throttle / AAS base-air): climbs → air-limited; still stuck ~500 → not air.
+   - **Plug read after a run** — the only mixture signal, *and* the #2 re-test.
+   - **Does #2 fire** (cylinder-drop) — running on 4 vs 3.
+3. **Idle air (for closed-throttle idle):** verify `iacPWMdir` + that the valve actually flows
+   (sweep duty, watch RPM/MAP); AAS (not TAS) is the Miata base-air adjuster. Spray-test for a
+   vacuum leak on the new turbo plumbing + injector seals.
+4. **Ignition:** confirm idle-region timing is adequate (too little advance = weak/stalls).
+5. **Battery discipline:** charged/jump, ≤5 s cranks — not the blocker, but removes a variable.
 
-## Recently changed (2026-07-11)
-- reqFuel 7.9 → 7.1 (corrected injector anchor: 238 cc, not 265).
-- Reverted 6 idle-region `veTable` cells to `VEfix` (undid the 07-10 idle-vacuum
-  trap — ~80% of the over-fuel; reqFuel was the other ~20%).
-- `engineProtectMaxRPM` 1500 → 3000 (was a fuel+spark cut at the idle target).
+## Recently changed (2026-07-19)
+- **Swapped RX-8 yellows → OEM stock injectors** (removes the yellow unknowns: dead-time, flow, #2 fouling).
+- reqFuel 7.1 → **12.7** (factory value for OEM inj), `injOpen` 1.0, `battVCorMode` "Whole PW",
+  `primePulse` ~30 ms, `fpPrime` 5 s, `primingDelay` 3 s, `engineProtectMaxRPM` → 4000.
+- (07-12: `crankingEnrichTaper` → 5.0 s, `crankRPM` 230, `tpsflood` 60.)
 
 ## Known blockers
-- Battery low (rests ~11.5 V, sags on long cranks) — degrades long cranks, but not the start blocker (last run cranked ~10 V and still didn't sustain).
-- IACV airflow not proven (idle-air; MAP unchanged closed-throttle when powered).
-- Cyl #2 hardware — **confirmed positional** (a swapped plug re-fouled #2 while 1/3/4 stayed light); injector over-flow, weak spark path, or low compression. May be why it won't hold idle (effectively running on ~3).
-- Wideband unusable until ~15 s+ exhaust heat (AFR echo — don't tune fuel from logs).
+- **Idle air not proven** — IACV flow/direction (`iacPWMdir`), possible vacuum leak, base-air (AAS). Closed-throttle won't sustain.
+- **Ignition at idle** — verify timing is adequate (untested at a real idle).
+- **Cyl #2** — re-test now that all injectors are OEM: plug read after a run → clean = the yellow #2 injector was the fouler; still fouled = #2 spark/compression.
+- **Battery** — low; charge to remove the variable (not the start blocker; ~10 V cranking is workable).
+- **Wideband** unusable until ~15 s+ exhaust heat (AFR echo — read plugs, not logs).
+- **Fuel** — now at the known-good factory baseline, so largely off the table.
