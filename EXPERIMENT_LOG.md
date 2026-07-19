@@ -132,20 +132,32 @@ Chronological, newest last. Entries marked ~~struck~~ or "REFUTED" are kept deli
 - **Result/Evidence:** Judged from **delivered fuel (PW), not AFR** (still == Target in 100% of firing rows — the Spartan warmup echo). Crank-VE/crank-wall cells = **~80%** of the idle over-fuel, reqFuel = the other **~20%**; the taper + battVCor edits were slightly *leaning*, not the cause. **Cyl #2 is hardware, not tune**: PW1 = PW2 to 0.000 ms every log, and #2 shares its injector driver **and** wasted-spark coil with the clean #3 → per-cylinder (isolate by swapping injector #2 ↔ #1). Verified live: `CurrentTune.msq` reqFuel 7.1, six cells = VEfix. Project is now git + LFS (`github.com/grossadamm/turboexo`) with `AGENTS.md` / `docs/REFERENCE.md` / `STATUS.md` / `scripts/analyze_log.py`.
 - **Verdict:** Applied and loaded; **supersedes 7.9 (07-11 anchor audit) and 8.5 (07-09)** — both too rich. PENDING a clean test on a charged battery. Global lean-out addresses the rich mixture; **cyl #2 is a separate hardware fault** leaning cannot fix.
 
+## 2026-07-12 — Rev-cap raised, taper restored, battery reinterpreted → still only motoring (adversarial review)
+- **Change/Action:** `engineProtectMaxRPM` 1500 → 3000 (07-11), then `crankingEnrichTaper` restored **0.1 → 3.0 s** to match the 07-09 catch. On the car the operator pushed further: taper → **5.0 s**, `crankRPM` 400 → **230** (running mode sooner), `tpsflood` 90 → **60**.
+- **Why/Hypothesis:** Battery reinterpreted — cranking ~10 V is workable, **not** the start blocker (07-09 cranked at ~10.9 V too; its 13–14 V appeared only *after* it caught = alternator). Restoring the taper (07-09 ran on 3.0 s; 0.1 s had starved the post-catch climb) should reproduce the 07-09 climb.
+- **Result/Evidence:** Logs `2026-07-12_10.41.28` and `15.25–15.30`: weak catches to ~**500 rpm, dead-steady, 0.3–0.9 s, then die**; never charged. **Adversarial log review** proved the closed-throttle "catch" is **starter motoring, not combustion**: RPM 443 → 0 in one sample the instant the starter released, MAP 64 explained by piston pumping (not idle vacuum), the PW taper is speed-density math. The 1010/893 peaks were a battery-crash spike / WOT flood-clear blip. More taper fuel bought hold time but **no climb**.
+- **Verdict:** Retractions kept for the record — "lean-out validated" and "it held" were **false**; "more fuel didn't help → it's air" was an **unsupported jump** (logs can't measure mixture [AFR echo] or separate weak firing from cranking). Cause of "won't climb" is **undetermined from logs**; needs discriminating tests (throttle-air → does it climb; plug read; does #2 fire).
+
+## 2026-07-19 — Swapped to OEM injectors → back to the known-good factory fuel baseline
+- **Change/Action:** **Removed the RX-8 yellows, installed OEM stock injectors.** Tune set to the factory fuel baseline: **reqFuel 7.1 → 12.7** (factory value *for these injectors*), `injOpen` 0.9 → 1.0, `primePulse` ~4 → ~30 ms, `battVCorMode` → "Whole PW", `fpPrime` 2 → 5 s, `primingDelay` 1 → 3 s, `engineProtectMaxRPM` → 4000. VE unchanged (factory-transplant).
+- **Why/Hypothesis:** Eliminate the yellow-injector unknowns in one move — uncertain dead-time, flow, and the #2 fouling — by returning to the injector + fuel config the engine ran on for years. **reqFuel 12.7 is correct for OEM injectors** and supersedes the 7.1 derivation (which was for the yellows); the larger PW in ms is expected for smaller injectors (same fuel mass, longer pulse), not "rich."
+- **Result/Evidence:** `2026-07-19_12.24.20` (113 s): revs to **893 rpm on a WOT (TPS 100) blip** (real combustion, held ~0.5 s, bogged to 327/PW 16 first), mean 526, MAP mostly 94–99, **no idle, never charged**. eff.fuel in ms looks large but is mass-appropriate for the smaller injectors.
+- **Verdict:** Fuel is now at the **known-good factory baseline** (OEM injectors + reqFuel 12.7 + factory-transplant VE) → **fuel is largely off the table.** Persistent no-idle now points to the **non-fuel** side: idle **air** (IACV / base-air / vacuum leak) and **ignition**. **#2 is now a clean re-test** — new injectors in, so re-read plugs: clean = the yellow #2 injector was the fouler; still fouled = #2 spark/compression.
+
 ---
 
-## Current state / open items (as of 2026-07-11)
+## Current state / open items (as of 2026-07-19)
 
-**Loaded tune:** `CurrentTune.msq` = reqFuel 7.1, battVCorMode "Open Time only", crankingEnrichTaper 0.1 s, CrankAng 10°, factory-transplant VE with the 07-10 crank-VE/crank-wall cells reverted to VEfix (idle region back to the 07-09 shape). Snapshot: `TurboExo_idleleanout_2026-07-11.msq`. (Living status also in `STATUS.md`.)
+**Loaded tune:** `CurrentTune.msq` (07-19) = **OEM injectors**, reqFuel **12.7** (factory value for OEM inj), injOpen 1.0, battVCorMode "Whole PW", crankingEnrichTaper 5.0 s, primePulse ~30 ms, CrankAng 10°, `engineProtectMaxRPM` 4000, crankRPM 230, tpsflood 60, factory-transplant VE. Snapshot: `restorePoints/TurboExo_2026-07-19_12.23.39.msq`. (Living status in `STATUS.md`.)
 
 **Verified good:** trigger/full sync, spark all cylinders, base timing (yellow ≈6° vs commanded 5°), MAP plumbing + sensor, fuel pressure, injectors pulse, grounds/ECU power (when battery charged), IgInv "Going Low", idle PWM config (matches factory).
 
 **Open items:**
 1. **Battery discipline** — sagging to 6.7–7.1 V again on 07-11 cranks; charge/jump-pack before every session, ≤5 s cranks, dry plugs.
-2. **Clean closed-throttle test of the 7.1 lean-out** — if it catches, hold 1500–2000 RPM (rev cap now 3000, won't cut at fast-idle), watch oil pressure not RPM.
+2. **Get a with-throttle catch on the OEM/factory fuel baseline** (reqFuel 12.7) — 07-19 revved to 893 only on a WOT blip. Reproduce the 07-09-style catch at ~10–15% throttle (rev cap is 4000, so let it climb); closed-throttle idle is the separate air problem.
 3. **IACV airflow** — powered but not proven flowing: buzz-while-cranking test, **`iacPWMdir` polarity** (`iacStepperInv` is a no-op — this is a PWM valve, not a stepper), stuck/carboned valve; AAS (not TAS) is the base-air adjuster if needed.
 4. **Wideband usable only after ~15 s+ of running exhaust heat** (Spartan warmup sequencer); optional ego_sdelay=0 for log clarity. Brown wire = heater-status (2 V = valid) — candidate spare analog input.
-5. **Cyl #2 rich (hardware, not tune)** — fouls a *fresh* plug while #3 (same injector driver + coil) stays clean; isolate by swapping injector #2 ↔ #1 (soot follows injector = leaking/over-flow; stays with cylinder = coil tower/wire or compression).
+5. **Cyl #2 — now a clean re-test.** All injectors swapped to OEM (07-19), so re-read plugs after a run: #2 clean = the yellow #2 injector was the fouler; #2 still fouled = its spark path / compression (not fuel).
 6. After NA idle/road tuning: regenerate boost VE rows (current 120–200 kPa rows are placeholders), re-run `patch_commissioning_settings.py`, fit oil-pressure sender, knock conditioner before any knock features.
 
 ## Key reference values
@@ -154,12 +166,12 @@ Chronological, newest last. Entries marked ~~struck~~ or "REFUTED" are kept deli
 |---|---|---|
 | Healthy cranking MAP (closed throttle) | **80–95 kPa** | observed 62–71 = air path deficit; 77–84 (June) was normal, not a leak |
 | Warm idle MAP (healthy) | **28–37 kPa** | >~40–45 kPa warm = suspect vacuum leak |
-| reqFuel (correct derivation) | **12.7 × 238/425 ≈ 7.1 ms** | 1999 stock = 238cc "red" (Denso 195500-3310), NOT 265cc (that's 01–05 purple / 94–97 tan) — the 265→7.9 and 14.7×238/424→8.5 chains were both too rich. Pressure cancels; matches the empirical 7.0 that ran |
-| Injectors | RX-8 yellows ~424 cc/min @ 43.5 psi | "450cc" is a marketing/higher-pressure figure |
+| reqFuel | **12.7 ms (OEM injectors, 07-19)** | Now on OEM stock injectors → factory 12.7 is correct. The **7.1** derivation (12.7 × 238/425) was for the RX-8 yellows, now removed; 265→7.9 and →8.5 chains were both too rich for the yellows |
+| Injectors | **OEM stock (238 cc red), as of 07-19** | swapped back from RX-8 yellows (~424 cc) to eliminate the yellow unknowns for commissioning; yellows go back for boost later |
 | Spark plugs | **NGK BKR7E (#4644), gap 0.030"** | 2 steps colder for turbo; not BKR7E-11 |
 | IACV (NB 1.8) | **8.7–10.5 Ω** coil, PWM **~500 Hz**, 2-wire low-side, fails closed | early generic research said 11–13 Ω; FSM spec is 8.7–10.5 |
 | Ignition polarity | IgInv = **"Going Low"** | never "Going High" (holds coils energized) |
-| Flood clear | TPS > 90% while cranking → PW 0 | tpsflood=90 |
+| Flood clear | TPS > 60% while cranking → PW 0 | tpsflood=60 (was 90) |
 | AFR cal | 0 V = 10.0, 5 V = 20.0 AFR | Spartan warmup artifacts: 13.2 (1.66 V) and ~16.5 plateaus |
 | Wasted spark / injector pairing | 1+4 & 2+3 (both) | a banked electrical fault cannot produce a 1&2-only pattern |
 | ECU link | /dev/cu.usbmodem101 @115200 | data cable required (charge-only cables fail silently) |
