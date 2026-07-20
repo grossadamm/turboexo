@@ -3,6 +3,8 @@
 _Update whenever the loaded tune or the front line changes. Full history:
 `EXPERIMENT_LOG.md`. Pinned facts: `docs/REFERENCE.md`._
 
+> **2026-07-19 PM — IT RAN.** Datalog cut off by an ECU↔laptop USB drop (engine kept running); the partial `.mlg` isn't pushed yet — **analyze once it's pushed.** Red-team also corrected the no-start synthesis: cranking power is *visibly* worse than the 07-09 catch (9.5 V / 231 rpm, never charged vs 10.9 V / 260 rpm, charged to 13.6) → **"fouled plugs" retracted**; likely = cranking power + the untested injector R&R.
+
 ## Loaded tune (2026-07-19)
 `CurrentTune.msq` = **OEM stock injectors** + factory fuel baseline: reqFuel **12.7**
 (correct for OEM inj), `injOpen` 1.0, `battVCorMode` "Whole PW", `crankingEnrichTaper`
