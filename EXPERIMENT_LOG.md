@@ -150,9 +150,17 @@ Chronological, newest last. Entries marked ~~struck~~ or "REFUTED" are kept deli
 - **Result/Evidence:** IT RAN (specifics pending the truncated log). The red-team's isolation test (hold ≥12.5 V under crank on the **same** plugs + ~12% throttle) may be exactly what got there — TBD from the log + the operator's account of what changed.
 - **Verdict:** **Breakthrough — it ran.** PENDING the pushed partial log to characterize it: did it pull vacuum / charge / sustain, and what changed (battery / plugs / throttle)? That confirms or refutes the cranking-power hypothesis.
 
+## 2026-07-25 — JUMPED FROM AN IDLING CAR → sustained running, real (lean) AFR, closed-throttle idle
+- **Change/Action:** Ran a series of attempts with the car **jump-connected to a second, idling car** (steady ~13.6 V system). Logs `2026-07-25_09.01`–`09.33` (OEM injectors + reqFuel 12.7 baseline, unchanged).
+- **Why/Hypothesis:** Hold the electrical system up during crank+run — strong spark/pump, and keep the Spartan wideband powered so it stops rebooting into its sequencer artifact.
+- **Result/Evidence — breakthrough on two fronts:**
+  - **It RAN long and idled.** `09.17.01` ran **379 s**, revved to **2230**, and held **closed-throttle idle** (TPS<5) for 4182 rows at ~600–1700 RPM (mean **934**), MAP down to **38 kPa** (real vacuum). `09.28.44` revved to **3153**, `09.33.18` to 2651. Voltage held **13.6 V while firing** (vs 10–11 unjumped) — confirms the jump, and that the car's own **alternator still isn't the source** (charge came from the donor).
+  - **The wideband echo BROKE — AFR is now real data.** With stable power the Spartan stayed alive: AFR==Target dropped from 100% to **4–15%** in the long runs. And it reads **very lean: ~17.6–19.7 at idle** (near free-air). So the running mixture is now measurable, and it's **LEAN at idle**, not rich. eff.fuel collapsed to ~2 ms mean.
+- **Verdict:** **Biggest step yet — sustained run + closed-throttle idle + usable AFR, all unlocked by holding voltage.** Reframes the campaign: no longer "won't run," now "runs lean at idle." Two follow-ups: (1) confirm the ~19 AFR is genuine lean vs sensor-not-fully-lit before adding fuel — but echo-break + movement says real; (2) the car's own alternator not charging is a real, separate defect (belt/exciter/wiring) to fix so it doesn't need a jump. Idle-air blocker appears **resolved** (it held closed-throttle idle) — was likely voltage-starved spark/valve, not a dead IACV.
+
 ---
 
-## Current state / open items (as of 2026-07-19)
+## Current state / open items (as of 2026-07-25)
 
 **Loaded tune:** `CurrentTune.msq` (07-19) = **OEM injectors**, reqFuel **12.7** (factory value for OEM inj), injOpen 1.0, battVCorMode "Whole PW", crankingEnrichTaper 5.0 s, primePulse ~30 ms, CrankAng 10°, `engineProtectMaxRPM` 4000, crankRPM 230, tpsflood 60, factory-transplant VE. Snapshot: `restorePoints/TurboExo_2026-07-19_12.23.39.msq`. (Living status in `STATUS.md`.)
 
