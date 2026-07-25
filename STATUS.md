@@ -1,48 +1,49 @@
 # TurboExo — Status (living)
 
 _Update whenever the loaded tune or the front line changes. Full history:
-`EXPERIMENT_LOG.md`. Pinned facts: `docs/REFERENCE.md`._
+`EXPERIMENT_LOG.md`. Pinned facts: `docs/REFERENCE.md` (every line provenance-tagged)._
 
-> **2026-07-19 PM — IT RAN.** Datalog cut off by an ECU↔laptop USB drop (engine kept running); the partial `.mlg` isn't pushed yet — **analyze once it's pushed.** Red-team also corrected the no-start synthesis: cranking power is *visibly* worse than the 07-09 catch (9.5 V / 231 rpm, never charged vs 10.9 V / 260 rpm, charged to 13.6) → **"fouled plugs" retracted**; likely = cranking power + the untested injector R&R.
+> **2026-07-25 — it idles cold and stalls hot, and the cause is measured.** Nine logs this
+> morning. The engine held a closed-throttle idle for **250 s** at 800–1000 rpm in
+> `2026-07-25_09.17.01` while coolant was 82–127 °F, then stalled at closed throttle in every
+> later log once coolant passed ~155 °F. `iacAlgorithm` is **PWM Open loop** — coolant lookup
+> only, zero RPM feedback — and `iacOLPWMVal` drops **89 % → 75 % between the 114.8 °F and
+> 154.4 °F bins**. Sorted by coolant at death: 127 °F/89-85 % → idled 250 s; 131/84 → 0.6 s;
+> 156/75 → none; 165/75 → 1.5 s; 171/75 → 0.7 s. Within 09.17.01 the duty stepping 89→85
+> tracked idle down 940→800 rpm, ~30 rpm per duty point — so **the valve flows and responds;
+> the commanded hot duty is just too low.** ("IACV not flowing air" is retracted.)
 
-## Loaded tune (2026-07-19)
-`CurrentTune.msq` = **OEM stock injectors** + factory fuel baseline: reqFuel **12.7**
-(correct for OEM inj), `injOpen` 1.0, `battVCorMode` "Whole PW", `crankingEnrichTaper`
-5.0 s, `primePulse` ~30 ms, `CrankAng` 10°, `engineProtectMaxRPM` 4000, `crankRPM` 230,
-`tpsflood` 60, factory-transplant VE. Snapshot: `restorePoints/TurboExo_2026-07-19_12.23.39.msq`.
-> Test `2026-07-19_12.24.20`: revved to 893 rpm on a WOT blip only — no idle, never charged.
-
-## Reference catch (what "running" looks like)
-Only real catch so far: **07-09** (`TurboExo_VEfix_2026-07-09.msq`, reqFuel 7.0, on the old
-RX-8 yellows) — climbed to 1212 rpm and the alternator charged to 14.1 V, **with ~11–14% throttle**.
-The current OEM + factory-12.7 + factory VE is the config the engine ran on for years, so it
-should be capable — the goal is to reproduce that climb.
+## Loaded tune (2026-07-19, verified live 2026-07-25)
+`CurrentTune.msq` = **OEM stock injectors** + factory fuel baseline: reqFuel **12.7**,
+`injOpen` **1.0**, `battVCorMode` **Whole PW**, `crankingEnrichTaper` **5.0 s**,
+`primePulse` 30/30/25/25 ms, `CrankAng` 10°, `engineProtectMaxRPM` **4000**, `crankRPM` 230,
+`tpsflood` **60**, factory-transplant VE.
+Back-solving PW from `2026-07-25_09.33.18` gives reqFuel 12.73 — **the file matches what's
+burned.** Snapshot: `restorePoints/TurboExo_2026-07-19_12.23.39.msq`.
 
 ## Next actions
-1. **With-throttle catch on the OEM/factory baseline.** Crank with ~10–15% throttle (like 07-09),
-   rev cap 4000 so let it climb; watch oil pressure. Grab the `.mlg` — this tells us if we're
-   back to a real catch.
-2. **Fuel is now off the table** (factory-known-good), so "won't climb/idle" is a **non-fuel**
-   question — settle it with tests the logs can't (logs have no usable mixture: AFR echo):
-   - **Give it air** (crack throttle / AAS base-air): climbs → air-limited; still stuck ~500 → not air.
-   - **Plug read after a run** — the only mixture signal, *and* the #2 re-test.
-   - **Does #2 fire** (cylinder-drop) — running on 4 vs 3.
-3. **Idle air (for closed-throttle idle):** verify `iacPWMdir` + that the valve actually flows
-   (sweep duty, watch RPM/MAP); AAS (not TAS) is the Miata base-air adjuster. Spray-test for a
-   vacuum leak on the new turbo plumbing + injector seals.
-4. **Ignition:** confirm idle-region timing is adequate (too little advance = weak/stalls).
-5. **Battery discipline:** charged/jump, ≤5 s cranks — not the blocker, but removes a variable.
+1. **Raise hot idle air.** `iacOLPWMVal` rows at 154.4 / 188.6 / 217.4 °F from 75 → ~88–90,
+   and add a bin between 114.8 and 154.4 so it ramps instead of cliffing. Burn, warm it up
+   past 170 °F, close the throttle. This is the one change — don't stack others with it.
+2. **Then close the loop.** If it holds hot, switch `iacAlgorithm` to Closed Loop PWM
+   (target ~850) so it stops depending on a hand-fitted temp curve.
+3. **Idle ignition stabilization.** `idleAdvEnabled` is Off, so advance *retards* 19→16° as
+   RPM sags — the opposite of what catches a stall. Enable with ±5° once idle air is sorted.
+4. **Alternator, settled properly.** Every recent run was jumped from an idling donor, so
+   13.3–13.5 V proves nothing. Disconnect the jumper while running: holds ~13.5 = charging,
+   decays toward 12 = not.
+5. **Plug read after a sustained run** — still the only mixture signal, and the #2 re-test.
+6. **Warm-idle vacuum check** once it idles: MAP should sit 28–37 kPa; > ~40–45 warm means
+   a leak in the new turbo plumbing.
 
-## Recently changed (2026-07-19)
-- **Swapped RX-8 yellows → OEM stock injectors** (removes the yellow unknowns: dead-time, flow, #2 fouling).
-- reqFuel 7.1 → **12.7** (factory value for OEM inj), `injOpen` 1.0, `battVCorMode` "Whole PW",
-  `primePulse` ~30 ms, `fpPrime` 5 s, `primingDelay` 3 s, `engineProtectMaxRPM` → 4000.
-- (07-12: `crankingEnrichTaper` → 5.0 s, `crankRPM` 230, `tpsflood` 60.)
+## Open questions (do not guess — see `docs/REFERENCE.md`)
+- **AFR is unusable.** Pegged at exactly 19.700 from t = 24.8 s onward in 09.33.18, through
+  large MAP and throttle swings. Not a mixture reading. No usable AFR from any run yet.
+- **Spartan 2 or Spartan 3?** Notes contradict each other; nobody has looked at the box.
+- **Does #2 fire?** Only #1 was ever strobed. No swap test was run.
+- **What was the 2026-06-20 trigger wiring fault?** Never recorded.
 
-## Known blockers
-- **Idle air not proven** — IACV flow/direction (`iacPWMdir`), possible vacuum leak, base-air (AAS). Closed-throttle won't sustain.
-- **Ignition at idle** — verify timing is adequate (untested at a real idle).
-- **Cyl #2** — re-test now that all injectors are OEM: plug read after a run → clean = the yellow #2 injector was the fouler; still fouled = #2 spark/compression.
-- **Battery** — low; charge to remove the variable (not the start blocker; ~10 V cranking is workable).
-- **Wideband** unusable until ~15 s+ exhaust heat (AFR echo — read plugs, not logs).
-- **Fuel** — now at the known-good factory baseline, so largely off the table.
+## Known good — stop re-testing these
+Trigger / full sync (status 2, 0 sync loss all morning). Base timing (timing light, within 1°).
+MAP plumbing and sensor (moves 39–100 kPa). Fuel config (factory 12.7 baseline, verified live).
+`IgInv` "Going Low". The IACV itself.
