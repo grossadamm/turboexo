@@ -21,6 +21,13 @@ _Update whenever the loaded tune or the front line changes. Full history:
 Back-solving PW from `2026-07-25_09.33.18` gives reqFuel 12.73 — **the file matches what's
 burned.** Snapshot: `restorePoints/TurboExo_2026-07-19_12.23.39.msq`.
 
+## Pi logging / USB backup (2026-08-29)
+TSDash starts a log at `rpm > 0` and closes it after RPM stays below 1 for 15 s;
+there is no pre-trigger buffer. The 30 s copier then hash-verifies closed `.mlg`
+files to `/mnt/turbologs/TurboExo/DataLogs/` on the `TURBOLOGS` USB drive. Reboot
+testing copied the previously stuck log successfully. The drive is exFAT but its
+partition is mislabeled `0xDA`, so Linux mounts it while macOS does not.
+
 ## Next actions
 1. **Raise hot idle air.** `iacOLPWMVal` rows at 154.4 / 188.6 / 217.4 °F from 75 → ~88–90,
    and add a bin between 114.8 and 154.4 so it ramps instead of cliffing. Burn, warm it up
