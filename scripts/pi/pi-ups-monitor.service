@@ -1,0 +1,15 @@
+[Unit]
+Description=Raspberry Pi UPS discharge shutdown monitor (simulation only)
+Requires=turboexo-key-input.service
+After=local-fs.target turboexo-key-input.service
+
+[Service]
+Type=simple
+User=dietpi
+EnvironmentFile=/run/turboexo-key-input/environment
+ExecStart=/usr/bin/python3 /usr/local/libexec/pi-ups-monitor.py --threshold-amps=-0.20 --delay-seconds=240 --key-state-path=${TURBOEXO_KEY_STATE_PATH}
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target

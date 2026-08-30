@@ -1,0 +1,163 @@
+diff --git a/pi4j-native/src/main/native/com_pi4j_wiringpi_GpioPin.h b/pi4j-native/src/main/native/com_pi4j_wiringpi_GpioPin.h
+index a27934a..90d1ce1 100644
+--- a/pi4j-native/src/main/native/com_pi4j_wiringpi_GpioPin.h
++++ b/pi4j-native/src/main/native/com_pi4j_wiringpi_GpioPin.h
+@@ -50,6 +50,11 @@ extern int wiringpi_init_mode;
+  */
+ int getEdgePin(int);
+ 
++/**
++ * True when this logical pin is the environment-configured virtual input.
++ */
++int isVirtualPin(int);
++
+ /**
+  * --------------------------------------------------------
+  * DETERMINE IF GPIO PIN IS VALID
+diff --git a/pi4j-native/src/main/native/com_pi4j_wiringpi_GpioPin.c b/pi4j-native/src/main/native/com_pi4j_wiringpi_GpioPin.c
+index 950f2b2..2eefcec 100644
+--- a/pi4j-native/src/main/native/com_pi4j_wiringpi_GpioPin.c
++++ b/pi4j-native/src/main/native/com_pi4j_wiringpi_GpioPin.c
+@@ -42,6 +42,36 @@ int wiringpi_detected_maker;
+  */
+ int wiringpi_init_mode = WPI_MODE_UNINITIALISED;
+ 
++static int getEnvironmentPin(const char *name)
++{
++    const char *text = getenv(name);
++    char *end = NULL;
++    long value;
++
++    if(text == NULL || text[0] == '\0')
++        return -1;
++
++    value = strtol(text, &end, 10);
++    if(end == text || end[0] != '\0' || value < 0 || value > 2147483647L)
++        return -1;
++    return (int)value;
++}
++
++static int getVirtualSysfsPinForBcm(int bcmPin)
++{
++    int virtualBcm = getEnvironmentPin("PI4J_VIRTUAL_BCM");
++    int virtualSysfs = getEnvironmentPin("PI4J_VIRTUAL_SYSFS_GPIO");
++    if(virtualBcm >= 0 && virtualSysfs >= 0 && bcmPin == virtualBcm)
++        return virtualSysfs;
++    return -1;
++}
++
++int isVirtualPin(int pin)
++{
++    int bcmPin = wiringpi_init_mode == WPI_MODE_GPIO ? pin : wpiPinToGpio(pin);
++    return getVirtualSysfsPinForBcm(bcmPin) >= 0;
++}
++
+ /**
+  * --------------------------------------------------------
+  * INITIALIZE THE GPIO PIN CLASS
+@@ -72,6 +102,10 @@ int getEdgePin(int pin)
+     // number. On Pi 5, add the RP1 gpiochip's runtime sysfs base supplied by
+     // the launcher so Pi4J can retain BCM numbering at its Java API boundary.
+     if(wiringpi_init_mode == WPI_MODE_GPIO){
++      int virtualPin = getVirtualSysfsPinForBcm(pin);
++      if(virtualPin >= 0)
++        return virtualPin;
++
+       const char *base_text = getenv("PI4J_GPIO_SYSFS_BASE");
+       if(base_text != NULL && base_text[0] != '\0'){
+         return atoi(base_text) + pin;
+@@ -109,4 +143,8 @@ int getEdgePin(int pin)
+     int edge_pin = wpiPinToGpio(pin);
++    int virtualPin = getVirtualSysfsPinForBcm(edge_pin);
++    if(virtualPin >= 0)
++      return virtualPin;
++
+     const char *base_text = getenv("PI4J_GPIO_SYSFS_BASE");
+     if(edge_pin >= 0 && base_text != NULL && base_text[0] != '\0'){
+       return atoi(base_text) + edge_pin;
+diff --git a/pi4j-native/src/main/native/com_pi4j_wiringpi_Gpio.c b/pi4j-native/src/main/native/com_pi4j_wiringpi_Gpio.c
+index 42660a9..9188403 100644
+--- a/pi4j-native/src/main/native/com_pi4j_wiringpi_Gpio.c
++++ b/pi4j-native/src/main/native/com_pi4j_wiringpi_Gpio.c
+@@ -22,6 +22,7 @@
+  */
+ 
+ #include <jni.h>
++#include <stdio.h>
+ #include <wiringPi.h>
+ #include "com_pi4j_wiringpi_GpioPin.h"
+ #include "com_pi4j_wiringpi_Gpio.h"
+@@ -78,6 +79,9 @@ JNIEXPORT jint JNICALL Java_com_pi4j_wiringpi_Gpio_wiringPiSetupPhys
+ JNIEXPORT void JNICALL Java_com_pi4j_wiringpi_Gpio_pinMode
+ (JNIEnv *env, jclass obj, jint pin, jint mode)
+ {
++    if(isVirtualPin(pin)) {
++        return;
++    }
+ 	pinMode(pin, mode);
+ }
+ 
+@@ -89,6 +93,9 @@ JNIEXPORT void JNICALL Java_com_pi4j_wiringpi_Gpio_pinMode
+ JNIEXPORT void JNICALL Java_com_pi4j_wiringpi_Gpio_pinModeAlt
+ (JNIEnv *env, jclass obj, jint pin, jint mode)
+ {
++    if(isVirtualPin(pin)) {
++        return;
++    }
+ 	pinModeAlt(pin, mode);
+ }
+ 
+@@ -100,6 +107,9 @@ JNIEXPORT void JNICALL Java_com_pi4j_wiringpi_Gpio_pinModeAlt
+ JNIEXPORT void JNICALL Java_com_pi4j_wiringpi_Gpio_pullUpDnControl
+ (JNIEnv *env, jclass obj, jint pin, jint pud)
+ {
++    if(isVirtualPin(pin)) {
++        return;
++    }
+ 	pullUpDnControl(pin, pud);
+ }
+ 
+@@ -111,6 +121,9 @@ JNIEXPORT void JNICALL Java_com_pi4j_wiringpi_Gpio_pullUpDnControl
+ JNIEXPORT void JNICALL Java_com_pi4j_wiringpi_Gpio_digitalWrite
+ (JNIEnv *env, jclass obj, jint pin, jint value)
+ {
++    if(isVirtualPin(pin)) {
++        return;
++    }
+ 	digitalWrite(pin, value);
+ }
+ 
+@@ -122,6 +135,9 @@ JNIEXPORT void JNICALL Java_com_pi4j_wiringpi_Gpio_digitalWrite
+ JNIEXPORT void JNICALL Java_com_pi4j_wiringpi_Gpio_pwmWrite
+ (JNIEnv *env, jclass obj, jint pin, jint value)
+ {
++    if(isVirtualPin(pin)) {
++        return;
++    }
+ 	pwmWrite(pin, value);
+ }
+ 
+@@ -133,6 +149,24 @@ JNIEXPORT void JNICALL Java_com_pi4j_wiringpi_Gpio_pwmWrite
+ JNIEXPORT jint JNICALL Java_com_pi4j_wiringpi_Gpio_digitalRead
+ (JNIEnv *env, jclass obj, jint pin)
+ {
++    if(isVirtualPin(pin))
++    {
++        char fileName[GPIO_FN_MAXLEN];
++        FILE *file;
++        int value;
++
++        getGpioPinValueFile(fileName, getEdgePin(pin));
++        file = fopen(fileName, "r");
++        if(file == NULL)
++            return -1;
++        value = fgetc(file);
++        fclose(file);
++        if(value == '0')
++            return LOW;
++        if(value == '1')
++            return HIGH;
++        return -1;
++    }
+ 	return digitalRead(pin);
+ }

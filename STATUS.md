@@ -21,18 +21,25 @@ _Update whenever the loaded tune or the front line changes. Full history:
 Back-solving PW from `2026-07-25_09.33.18` gives reqFuel 12.73 — **the file matches what's
 burned.** Snapshot: `restorePoints/TurboExo_2026-07-19_12.23.39.msq`.
 
-## Pi logging / USB backup (2026-08-29)
-TSDash starts a log at `rpm > 0`, but the temporary timer/RPM stop expression has
-not reliably finalized it; the three automatic test logs were header-only. There
-is no pre-trigger buffer. The 30 s copier correctly hash-verifies files once they
-are genuinely closed. The `TURBOLOGS` drive is exFAT but its partition is
-mislabeled `0xDA`, so Linux mounts it while macOS does not.
+## Pi logging / USB backup (2026-08-30)
+The Python UPS monitor now publishes valid connected/discharging transitions to
+a one-line software GPIO. TSDash's saved configuration maps logical GPIO17 to the
+active-high `AppEvent.ignitionOn` input; the bridge redirects only that pin, and live
+LOW/HIGH reads plus callbacks passed while physical RP1 GPIO17 stayed untouched.
+Invalid I2C samples retain the last published value. UPS/J2 wiring is unchanged.
 
-Pi 5 GPIO compatibility is installed and verified: TSDash loads the patched
-aarch64 Pi4J-v1 bridge, and both low- and high-level GPIO17 bench probes passed.
-GPIO17 was test-only; no TSDash input or output remains configured. The bridge's
-purpose is to expose the existing key-on voltage signal as a TSDash input channel;
-it does not alter the UPS/J2 power circuit.
+The first physical crank proved the RPM start, but exposed a startup race: the
+virtual line's former low default pre-qualified stop before logging began, causing
+an immediate stop/restart and leaving a header-only file open. The line now defaults
+high; start requires RPM plus ignition high, and stop requires a log older than five
+seconds plus two seconds of ignition low. A clean-session regression log remained
+open after start and closed on virtual key-off without restarting TSDash.
+
+The next physical power-loss test passed: Python drove the software GPIO low and
+the Pi completed its existing four-minute shutdown. No `.mlg` was expected because
+that test had no RPM event. The one remaining acceptance test is a solid crank
+followed by key-off in the same session, proving start, native close, conversion,
+and USB hash together.
 
 ## Next actions
 1. **Raise hot idle air.** `iacOLPWMVal` rows at 154.4 / 188.6 / 217.4 °F from 75 → ~88–90,

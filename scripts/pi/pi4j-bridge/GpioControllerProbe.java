@@ -29,7 +29,7 @@ public final class GpioControllerProbe {
         GpioPinDigitalInput input = controller.provisionDigitalInputPin(
             pin,
             "TurboExoKeyOnProbe",
-            PinPullResistance.PULL_UP
+            PinPullResistance.OFF
         );
 
         Thread.sleep(150);

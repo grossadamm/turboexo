@@ -33,6 +33,7 @@ printf '%s  %s\n' "$SOURCE_SHA256" "$archive" | sha256sum --check --status
 mkdir "$source_dir"
 tar -xzf "$archive" -C "$source_dir" --strip-components=1
 patch -d "$source_dir" -p1 < "$SCRIPT_DIR/pi4j-1.4-pi5-sysfs-base.patch"
+patch -d "$source_dir" -p1 < "$SCRIPT_DIR/pi4j-1.4-virtual-input.patch"
 
 java_home=$(dirname "$(dirname "$(readlink -f "$(command -v javac)")")")
 native_dir="$source_dir/pi4j-native/src/main/native"

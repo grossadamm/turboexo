@@ -12,47 +12,57 @@ RP1 gpiochip's runtime base. The launcher publishes that base as
 numbers depend on gpiochip enumeration.
 
 The bridge is intentionally narrow: it restores TSDash's existing Pi4J-v1 GPIO
-API on the Pi 5 without modifying TSDash's JARs or migrating its Java code.
-The intended application is to publish the car's existing key-on voltage signal
-as a TSDash input channel. The bridge does not switch power, drive the UPS/J2
-power-button circuit, or configure any GPIO output.
+API on the Pi 5 without modifying TSDash's JARs or migrating its Java code. One
+environment-configured logical input can be redirected to a simulated sysfs GPIO;
+every other pin retains the RP1 mapping. The bridge never switches power or
+touches the UPS/J2 power-button circuit.
 
 ## Install and test
 
+From `scripts/pi`, install the bridge, virtual input, monitor integration, and
+systemd ordering together:
+
 ```bash
-sudo ./install.sh
-
-javac -cp /home/dietpi/TSDash/lib/pi4j-core.jar GpioInputProbe.java
-java -Dpi4j.library.path=/usr/local/lib/turboexo-pi4j \
-  -cp .:/home/dietpi/TSDash/lib/pi4j-core.jar GpioInputProbe 17
+sudo ./install-key-input.sh --restart-dashboard
+python3 -m unittest test_pi_ups_monitor.py
 ```
-
-The probe expects an unclaimed, unwired GPIO17 and verifies that it follows its
-internal pull-up and pull-down. It restores the pull setting to off before exit.
 
 TSDash is pointed at the bridge by exporting these before its Java process starts:
 
 ```bash
 JAVA_TOOL_OPTIONS=-Dpi4j.library.path=/usr/local/lib/turboexo-pi4j
 PI4J_GPIO_SYSFS_BASE=<RP1 gpiochip sysfs base>
+PI4J_VIRTUAL_BCM=17
+PI4J_VIRTUAL_SYSFS_GPIO=<gpio-mockup runtime sysfs base>
 ```
 
-GPIO17 is used only as an unclaimed bench-test pin by the included probes. It is
-not a production assignment, and no TSDash pin function is installed by this
-bridge.
+The current Raspberry Pi kernel has `CONFIG_GPIO_SIM` disabled and
+`CONFIG_GPIO_MOCKUP=m`. `turboexo-key-input.service` therefore creates a one-line
+`gpio-mockup` chip, discovers both dynamic identifiers, and bind-mounts its pull
+control at `/run/turboexo-key-input/pull`. The Python UPS monitor publishes `1`
+for connected and `0` for discharging. Invalid I2C samples leave the last value
+unchanged.
+
+TSDash uses logical `GPIO 17`, active-high, pull resistance `OFF`, and publishes
+the unique channel `AppEvent.ignitionOn`. The simulated line defaults high so
+TSDash cannot pre-qualify a false key-off before the monitor's first sample. The
+physical RP1 GPIO17 is never exported or configured.
 
 ## Verified result
 
 - `dietpi` can load the patched aarch64 JNI library as a non-root `gpio` member.
 - `GpioInputProbe` reads internal pull-up `1` and pull-down `0` on GPIO17.
-- `GpioControllerProbe` provisions GPIO17 through Pi4J's high-level provider and
-  reads `HIGH`.
+- `GpioControllerProbe` provisions virtual GPIO17 through Pi4J's high-level
+  provider and reads both `LOW` and `HIGH`.
+- `GpioControllerEventProbe` receives live `LOW` and `HIGH` callbacks in one JVM.
 - TSDash Pin Management starts without `ELFCLASS32`, native-method, or legacy
   sysfs-numbering errors.
-- The temporary `KeyOnInput` used to validate TSDash was deleted afterward.
+- Physical RP1 GPIO17 remains untouched.
+- TSDash exposes `AppEvent.ignitionOn`; driving it low closes the active log
+  through TSDash's native stop action without restarting the dashboard.
 
 ## Rollback
 
-Remove the `JAVA_TOOL_OPTIONS` and `PI4J_GPIO_SYSFS_BASE` exports from the
-launcher and restart TSDash. The isolated library can remain installed while
-unused.
+Disable `turboexo-key-input.service`, remove the `KeyOnInput` function in TSDash,
+remove the virtual environment loading from the launcher, and restart tty1. The
+isolated library may remain installed while unused.

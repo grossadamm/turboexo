@@ -1,0 +1,12 @@
+[Unit]
+Description=TurboExo virtual key-on GPIO input
+After=local-fs.target systemd-modules-load.service
+Before=pi-ups-monitor.service getty@tty1.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/libexec/turboexo-key-input-setup.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
