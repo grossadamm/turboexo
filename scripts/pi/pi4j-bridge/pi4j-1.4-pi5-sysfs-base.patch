@@ -1,0 +1,24 @@
+diff --git a/pi4j-native/src/main/native/com_pi4j_wiringpi_GpioPin.c b/pi4j-native/src/main/native/com_pi4j_wiringpi_GpioPin.c
+index 703af5a..950f2b2 100644
+--- a/pi4j-native/src/main/native/com_pi4j_wiringpi_GpioPin.c
++++ b/pi4j-native/src/main/native/com_pi4j_wiringpi_GpioPin.c
+@@ -26,0 +27 @@
++#include <stdlib.h>
+@@ -71 +72,3 @@ int getEdgePin(int pin)
+-    // in GPIO mode, the edge pin is the same as the GPIO pin number
++    // Older Raspberry Pis use the BCM number as the legacy sysfs global GPIO
++    // number. On Pi 5, add the RP1 gpiochip's runtime sysfs base supplied by
++    // the launcher so Pi4J can retain BCM numbering at its Java API boundary.
+@@ -72,0 +76,4 @@ int getEdgePin(int pin)
++      const char *base_text = getenv("PI4J_GPIO_SYSFS_BASE");
++      if(base_text != NULL && base_text[0] != '\0'){
++        return atoi(base_text) + pin;
++      }
+@@ -102 +109,6 @@ int getEdgePin(int pin)
+-    return wpiPinToGpio(pin);
++    int edge_pin = wpiPinToGpio(pin);
++    const char *base_text = getenv("PI4J_GPIO_SYSFS_BASE");
++    if(edge_pin >= 0 && base_text != NULL && base_text[0] != '\0'){
++      return atoi(base_text) + edge_pin;
++    }
++    return edge_pin;

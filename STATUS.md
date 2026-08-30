@@ -22,11 +22,17 @@ Back-solving PW from `2026-07-25_09.33.18` gives reqFuel 12.73 — **the file ma
 burned.** Snapshot: `restorePoints/TurboExo_2026-07-19_12.23.39.msq`.
 
 ## Pi logging / USB backup (2026-08-29)
-TSDash starts a log at `rpm > 0` and closes it after RPM stays below 1 for 15 s;
-there is no pre-trigger buffer. The 30 s copier then hash-verifies closed `.mlg`
-files to `/mnt/turbologs/TurboExo/DataLogs/` on the `TURBOLOGS` USB drive. Reboot
-testing copied the previously stuck log successfully. The drive is exFAT but its
-partition is mislabeled `0xDA`, so Linux mounts it while macOS does not.
+TSDash starts a log at `rpm > 0`, but the temporary timer/RPM stop expression has
+not reliably finalized it; the three automatic test logs were header-only. There
+is no pre-trigger buffer. The 30 s copier correctly hash-verifies files once they
+are genuinely closed. The `TURBOLOGS` drive is exFAT but its partition is
+mislabeled `0xDA`, so Linux mounts it while macOS does not.
+
+Pi 5 GPIO compatibility is installed and verified: TSDash loads the patched
+aarch64 Pi4J-v1 bridge, and both low- and high-level GPIO17 bench probes passed.
+GPIO17 was test-only; no TSDash input or output remains configured. The bridge's
+purpose is to expose the existing key-on voltage signal as a TSDash input channel;
+it does not alter the UPS/J2 power circuit.
 
 ## Next actions
 1. **Raise hot idle air.** `iacOLPWMVal` rows at 154.4 / 188.6 / 217.4 °F from 75 → ~88–90,

@@ -15,6 +15,26 @@
 PROJECT="/home/dietpi/TSDashProjects/TurboExo_2026-06-01_21.16.20"
 USER_PROPS="/home/dietpi/.efiAnalytics/tsdUser.properties"
 TSDASH_SH="/home/dietpi/TSDash/TSDash.sh"
+PI4J_BRIDGE="/usr/local/lib/turboexo-pi4j"
+
+# TSDash bundles Pi4J 1.3 with a 32-bit native library. Prefer the isolated
+# aarch64 compatibility library on the Pi 5 without modifying TSDash's JARs.
+if [[ -r "$PI4J_BRIDGE/libpi4j.so" ]]; then
+    export JAVA_TOOL_OPTIONS="-Dpi4j.library.path=$PI4J_BRIDGE ${JAVA_TOOL_OPTIONS:-}"
+    for base_file in /sys/class/gpio/gpiochip*/base; do
+        label_file="${base_file%/base}/label"
+        if [[ -r "$label_file" ]] && [[ $(<"$label_file") == "pinctrl-rp1" ]]; then
+            export PI4J_GPIO_SYSFS_BASE
+            PI4J_GPIO_SYSFS_BASE=$(<"$base_file")
+            break
+        fi
+    done
+    if [[ -z ${PI4J_GPIO_SYSFS_BASE:-} ]]; then
+        logger -t turboexo-dash "Pi4J bridge could not resolve RP1 sysfs GPIO base"
+    fi
+else
+    logger -t turboexo-dash "Pi4J bridge missing: $PI4J_BRIDGE/libpi4j.so"
+fi
 
 python3 - "$PROJECT" "$USER_PROPS" <<'PY'
 import os, sys
