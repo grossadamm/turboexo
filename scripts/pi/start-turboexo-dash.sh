@@ -108,26 +108,20 @@ for name in ("project.properties", "project.properties.bkup"):
         sys.stderr.write("start-turboexo-dash: repaired %s\n" % name)
 PY
 
-# --- arm triggered data logging once TSDash is up ---
+# --- keep automatic triggered data logging disabled once TSDash is up ---
 # TSDash 0.9.09.10 does NOT persist the Data Logging trigger config: every launch
-# resets it to the factory default (disabled, tps > 80, log for 600 s). So we
-# re-apply it through the same local config server the web UI posts to.
-#
-# Start when cranking first produces nonzero RPM while ignition is valid. Stop
-# only after the log has run for five seconds and the Python-derived key state
-# has remained off for two seconds. The guards prevent TSDash from carrying a
-# startup key-off value into a new log or immediately restarting after key-off.
+# resets it to its factory defaults. Explicitly save it disabled so logging is
+# manual-only until the trigger race is resolved.
 (
     for _ in $(seq 1 60); do
         if curl -sf --max-time 3 "http://127.0.0.1:16680/index.html?pageId=DataLogging" \
              | grep -q 'name="loggingEnabled"'; then
-            # Signal only that TSDash's HTTP/config layer is available. The
-            # session wrapper separately waits for visual loading windows.
+            # The same readiness event lets the X-started animation fade straight
+            # into the live dashboard. Failure here must never delay TSDash.
             : > "$BOOT_READY_FILE"
             curl -sf --max-time 10 -X POST "http://127.0.0.1:16680/index.html" \
                 --data-urlencode "pageId=DataLogging" \
                 --data-urlencode "action=save" \
-                --data-urlencode "loggingEnabled=loggingEnabled" \
                 --data-urlencode "startMode=Expression" \
                 --data-urlencode "startExpression=rpm > 0 && AppEvent.ignitionOn != 0" \
                 --data-urlencode "selStartSingleChannel=rpm" \
@@ -136,12 +130,12 @@ PY
                 --data-urlencode "stopMode=Expression" \
                 --data-urlencode "stopExpression=AppEvent.dataLogTime > 5 && isTrueFor(AppEvent.ignitionOn == 0, 2)" \
                 --data-urlencode "stopLogFor=600" \
-                -o /dev/null && logger -t turboexo-dash "triggered logging armed"
+                -o /dev/null && logger -t turboexo-dash "automatic triggered logging disabled"
             exit 0
         fi
         sleep 2
     done
-    logger -t turboexo-dash "TSDash config server never came up; logging NOT armed"
+    logger -t turboexo-dash "TSDash config server never came up; automatic logging state not confirmed"
 ) &
 
 exec "$TSDASH_SH"
