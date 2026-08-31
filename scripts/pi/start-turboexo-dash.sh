@@ -15,6 +15,7 @@
 PROJECT="/home/dietpi/TSDashProjects/TurboExo_2026-06-01_21.16.20"
 USER_PROPS="/home/dietpi/.efiAnalytics/tsdUser.properties"
 TSDASH_SH="/home/dietpi/TSDash/TSDash.sh"
+BOOT_READY_FILE="/tmp/turboexo-dash-ready"
 PI4J_BRIDGE="/usr/local/lib/turboexo-pi4j"
 KEY_INPUT_ENVIRONMENT="/run/turboexo-key-input/environment"
 
@@ -120,6 +121,9 @@ PY
     for _ in $(seq 1 60); do
         if curl -sf --max-time 3 "http://127.0.0.1:16680/index.html?pageId=DataLogging" \
              | grep -q 'name="loggingEnabled"'; then
+            # Signal only that TSDash's HTTP/config layer is available. The
+            # session wrapper separately waits for visual loading windows.
+            : > "$BOOT_READY_FILE"
             curl -sf --max-time 10 -X POST "http://127.0.0.1:16680/index.html" \
                 --data-urlencode "pageId=DataLogging" \
                 --data-urlencode "action=save" \

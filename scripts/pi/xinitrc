@@ -1,0 +1,28 @@
+#!/bin/bash
+# Native-resolution black handoff. Openbox owns the session and starts the
+# dashboard session only after the window manager is ready, so the animation's
+# always-on-top hint is honored before TSDash creates a window.
+
+xsetroot -solid black
+if command -v feh >/dev/null 2>&1 \
+        && [ -r /home/dietpi/TSDash/boot/exocet-boot-v10-root.png ]; then
+    # Match MPV's 1.0 s start position so the root-to-video handoff does not
+    # jump backward to the animation's literal black first frame.
+    feh --no-fehbg --bg-fill \
+        /home/dietpi/TSDash/boot/exocet-boot-v10-root.png >/dev/null 2>&1 || true
+fi
+xset -dpms
+xset s off
+xset s noblank
+
+# Keep every window redirected to an off-screen buffer while the boot video
+# covers TSDash. The initial config also makes every TSDash window transparent,
+# so Java focus/stacking changes cannot leak its loading UI above MPV.
+: > /tmp/turboexo-picom.log
+cp /home/dietpi/TSDash/picom-hidden.conf /tmp/turboexo-picom.conf
+picom \
+    --config /tmp/turboexo-picom.conf \
+    --no-fading-openclose \
+    >>/tmp/turboexo-picom.log 2>&1 &
+
+exec openbox --startup /home/dietpi/TSDash/start-turboexo-session.sh

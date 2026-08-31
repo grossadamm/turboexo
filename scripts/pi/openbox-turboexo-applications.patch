@@ -1,0 +1,22 @@
+--- rc.xml.orig
++++ rc.xml
+@@ -750,2 +750,19 @@
+ -->
++
++  <!-- Keep TSDash focused and unobscured in X11 so Java paints normally.
++       Picom makes these windows transparent until the dashboard is ready,
++       allowing the MPV window in the layer below to remain visible. -->
++  <application class="ecuhubdash-EcuHubDash">
++    <focus>yes</focus>
++    <layer>above</layer>
++  </application>
++
++  <!-- Match the stable instance name supplied by start-turboexo-session.sh.
++       MPV is deliberately below the transparent TSDash window. -->
++  <application name="TurboExoBoot" class="mpv">
++    <decor>no</decor>
++    <focus>no</focus>
++    <layer>below</layer>
++    <fullscreen>yes</fullscreen>
++  </application>
+ </applications>
