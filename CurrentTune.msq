@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <msq xmlns="http://www.msefi.com/:msq">
-<bibliography author="TunerStudio MS 3.3.01 - EFI Analytics, Inc." tuneComment="" writeDate="Sun Jul 19 17:23:14 PDT 2026"/>
+<bibliography author="TunerStudio MS 3.3.01 - EFI Analytics, Inc." tuneComment="" writeDate="Sun Aug 30 17:02:02 PDT 2026"/>
 <versionInfo fileFormat="5.0" firmwareInfo="Speeduino+2025.01.7" nPages="15" signature="speeduino 202501"/>
 <page>
 <pcVariable name="tsCanId">"CAN ID 0"</pcVariable>
@@ -798,7 +798,7 @@
 <constant digits="1" name="dwellrun" units="ms">3.0</constant>
 <constant digits="0" name="numTeeth" units="teeth">2.0</constant>
 <constant digits="0" name="missingTeeth" units="teeth">1.0</constant>
-<constant digits="0" name="crankRPM" units="rpm">230.0</constant>
+<constant digits="0" name="crankRPM" units="rpm">250.0</constant>
 <constant digits="1" name="tpsflood" units="%">60.0</constant>
 <constant digits="0" name="SoftRevLim" units="rpm">6500.0</constant>
 <constant digits="0" name="SoftLimRetard" units="deg">1.0</constant>
@@ -1488,7 +1488,7 @@
 <constant name="intcan_available">"Disable"</constant>
 <constant name="enable_intcan">"Enable"</constant>
 <constant name="secondarySerialProtocol">"Generic (Fixed List)".</constant>
-<constant name="caninput_sel0a">"Off"</constant>
+<constant name="caninput_sel0a">"Analog_local"</constant>
 <constant name="caninput_sel0b">"Digital_local"</constant>
 <constant name="caninput_sel0extsourcea">"Via Secondary Serial"</constant>
 <constant name="caninput_sel0extsourceb">"Via Internal CAN"</constant>
@@ -1653,7 +1653,7 @@
 <constant name="true_address">"0x100"</constant>
 <constant name="realtime_base_address">"0x100"</constant>
 <constant name="obd_address">"0x100"</constant>
-<constant name="Auxin0pina">"A0"</constant>
+<constant name="Auxin0pina">"A8"</constant>
 <constant name="Auxin1pina">"A0"</constant>
 <constant name="Auxin2pina">"A0"</constant>
 <constant name="Auxin3pina">"A0"</constant>
