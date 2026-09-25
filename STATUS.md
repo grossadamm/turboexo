@@ -1,5 +1,92 @@
 # TurboExo — Status (living)
 
+## 2026-09-25: COP complete; diagnose crank/no-start
+
+**This section supersedes the older state below, including its logging and spark
+claims.** The engine previously sustained a cold idle; today's issue is no-start
+after the completed Toyota/Denso 673-1300 / 90919-02239 COP conversion.
+
+- Sequential ignition: **IGN1 → cylinder 1, IGN2 → 3, IGN3 → 4, IGN4 → 2**.
+  Cylinder 1 is at the timing-belt end. The user confirmed strong spark on all
+  four coils in hardware output testing. Actual spark and timing during cranking
+  remain unverified after conversion.
+- Stock 238 cc red injectors remain **paired**; the user reports bench testing
+  and cleaning completed. A new battery was installed between today's first and
+  second logs.
+- Saved `CurrentTune.msq`: reqFuel **12.7 ms**, injector opening **1.0 ms**,
+  restored VE baseline, prime pulses 30/30/25/25 ms, protection maximum 4000 rpm,
+  crank threshold **250 rpm**, flood clear 60% TPS. Ignition: **Sequential**,
+  **Going Low**, crank timing lock **On**, dwell **4.0/2.5 ms** crank/run, dwell
+  map No, overdwell protection On/10 ms, dwell error correction Off. Miata 99–05
+  trigger, trigger angle 0°, rising edges, cranking advance setting 10°.
+  Saved settings do not independently prove every burned ECU setting.
+- Keep **Fix cranking timing with trigger On**, per the
+  [official Miata decoder guide](https://wiki.speeduino.com/en/decoders/Miata_99).
+  Earlier advice to turn it Off was retracted. Extended scheduled dwell does not
+  prove equivalent physical coil charging time. The 4.0/2.5 ms values are
+  provisional starting recommendations, not published Denso specifications.
+- An older controller tune briefly overwrote the file with reqFuel 6.9 and other
+  stale settings. The baseline was restored before COP changes were applied.
+  Recovery baseline: `restorePoints/TurboExo_2026-08-29_19.22.11.msq` (pre-COP).
+  The September 25 **10:28:35** restore point contains the stale tune.
+
+### Latest evidence
+
+Local `DataLogs/` contains `.mlg` originals and semicolon `.csv` conversions.
+
+| Log, 2026-09-25 | Recorder | Cranking result | Commanded dwell / Gbaro |
+|---|---|---|---|
+| `10.44.47` | Pi, old battery | ~9.5 s captured, peak 223 rpm; mostly 8.9–9.3 V | ~4.2 ms / 100% |
+| `13.16.22` | Pi, new battery | Two cranks ~6.5/7.6 s, peak 251 rpm; mostly 10.3–10.6 V | Both logged zero; inconsistent with other data |
+| `14.33.35` | Desktop, new battery | Two cranks ~5.3/3.5 s, peak 253 rpm; mostly 10.5–10.6 V | Mostly 4.12 ms / 100% |
+
+All crank sections have full sync and zero recorded sync losses; none shows a
+clear catch. Barometric **pressure is 99 kPa**, including the log whose **Gbaro
+fuel correction** is zero. That zero conflicts with the saved all-100% table and
+substantial fuel commands. Desktop logging did not reproduce the zeros. A data
+path problem is suspected; the precise cause remains unproven.
+
+The desktop log commands matching PW1/PW2, generally 15–16 ms, with no flood-clear
+cuts. Cranking MAP is 90–98 kPa, IAT 59°F and coolant 84–86°F. Its measured-dwell
+field reaches ~16.5 ms; firmware measures scheduler elapsed time, which need not
+equal pin on-time with crank lock. Do not diagnose overcharging from that alone.
+Timestamps reset near the end and the first two are out of order; analyze coherent
+crank sections at 74.678–79.937 and 93.561–97.076 seconds. The analyzer's negative
+total duration is invalid.
+
+### Immediate next actions
+
+1. With injectors disabled, verify physical spark during a brief actual crank,
+   then timing near 10° BTDC. All four hardware output tests already passed.
+2. Confirm live settings against the saved baseline. Do not retune fuel from the
+   Pi's inconsistent channels or the short-crank AFR readings.
+3. Confirm recording before each attempt; prefer a desktop log for comparison.
+   Keep cranks short and record plug condition when needed.
+4. Revisit hot-idle air only after it starts. The July hot-stall finding does not
+   establish the cause of today's no-start.
+
+### Logging and wideband status
+
+Pi: `dietpi@192.168.1.134`; TSDash API at `http://192.168.1.134:16680`.
+Project: `/home/dietpi/TSDashProjects/TurboExo_2026-06-01_21.16.20`.
+**Automatic logging was disabled when checked live today.** Both Pi logs were
+started/stopped manually and downloaded with matching SHA-256 checksums. No Pi
+log was open at the last check. The newest attempt was logged locally. Older
+August automation notes below do not describe today's logging state.
+
+Aux0 is Analog_local on A8 / UA4C INP1 for wideband status. The user renamed it
+WideBandStatus, but some files/logs still use Aux0. Levels near 93/402/604 counts
+need controller-model/output verification before assigning readiness meanings.
+Spartan model remains unresolved. AFR/target equality is ECU echo behavior;
+echo presence or absence alone does not establish sensor validity. Today's
+short attempts provide no reliable AFR mixture diagnosis.
+
+Use `/opt/homebrew/bin/python3.12` for analysis while system Python is blocked by
+the Xcode license prompt. `analyze_log.py` contains yellow-injector dead-time
+assumptions; do not apply those estimates to the currently installed stock reds.
+
+## Historical context (through August 30)
+
 _Update whenever the loaded tune or the front line changes. Full history:
 `EXPERIMENT_LOG.md`. Pinned facts: `docs/REFERENCE.md` (every line provenance-tagged)._
 
@@ -13,7 +100,7 @@ _Update whenever the loaded tune or the front line changes. Full history:
 > tracked idle down 940→800 rpm, ~30 rpm per duty point — so **the valve flows and responds;
 > the commanded hot duty is just too low.** ("IACV not flowing air" is retracted.)
 
-## Loaded tune (2026-07-19, verified live 2026-07-25)
+## Historical loaded tune (2026-07-19, verified live 2026-07-25)
 `CurrentTune.msq` = **OEM stock injectors** + factory fuel baseline: reqFuel **12.7**,
 `injOpen` **1.0**, `battVCorMode` **Whole PW**, `crankingEnrichTaper` **5.0 s**,
 `primePulse` 30/30/25/25 ms, `CrankAng` 10°, `engineProtectMaxRPM` **4000**, `crankRPM` 230,
@@ -41,7 +128,7 @@ that test had no RPM event. The one remaining acceptance test is a solid crank
 followed by key-off in the same session, proving start, native close, conversion,
 and USB hash together.
 
-## Next actions
+## Historical hot-idle follow-up (resume after the current no-start is resolved)
 1. **Raise hot idle air.** `iacOLPWMVal` rows at 154.4 / 188.6 / 217.4 °F from 75 → ~88–90,
    and add a bin between 114.8 and 154.4 so it ramps instead of cliffing. Burn, warm it up
    past 170 °F, close the throttle. This is the one change — don't stack others with it.
@@ -63,7 +150,7 @@ and USB hash together.
 - **Does #2 fire?** Only #1 was ever strobed. No swap test was run.
 - **What was the 2026-06-20 trigger wiring fault?** Never recorded.
 
-## Known good — stop re-testing these
+## Historical checks with the old ignition
 Trigger / full sync (status 2, 0 sync loss all morning). Base timing (timing light, within 1°).
 MAP plumbing and sensor (moves 39–100 kPa). Fuel config (factory 12.7 baseline, verified live).
 `IgInv` "Going Low". The IACV itself.

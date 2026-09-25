@@ -1,6 +1,6 @@
 # TurboExo Experiment Log — no-start → first-idle campaign
 
-1999 Miata NB1 1.8 (BP-4W), TD04L-13T external turbo, Speeduino UA4C (fw 202501), 420cc "RX-8 yellow" injectors (Denso 195500-4450), speed-density, wasted spark + paired injection (1+4 / 2+3), TunerStudio dash on a Pi. Engine ran fine before the build; the build was **rewire + external turbo only** (internals known-good).
+1999 Miata NB1 1.8 (BP-4W), TD04L-13T external turbo, Speeduino UA4C (fw 202501), speed-density, TunerStudio dash on a Pi. As of 2026-09-25: **stock 238 cc red injectors, paired injection, sequential Toyota COP ignition**. Earlier entries describe the previous yellow injectors and wasted-spark coils. Engine ran fine before the build; the build was **rewire + external turbo only** (internals known-good).
 
 Chronological, newest last. Entries marked ~~struck~~ or "REFUTED" are kept deliberately — several conclusions were later overturned and the corrections matter.
 
@@ -160,7 +160,9 @@ Chronological, newest last. Entries marked ~~struck~~ or "REFUTED" are kept deli
 
 ---
 
-## Current state / open items (as of 2026-07-25)
+## Historical state / open items (2026-07-25; superseded)
+
+This section preserves the July working assumptions, including conclusions subsequently questioned. Use `STATUS.md` and the September 25 entry below for current hardware, evidence, and next tests. In particular, the old spark/timing checks do not verify the new COP installation, and breaking the AFR/Target echo alone does not establish a warmed, valid wideband reading.
 
 **Loaded tune:** `CurrentTune.msq` (07-19) = **OEM injectors**, reqFuel **12.7** (factory value for OEM inj), injOpen 1.0, battVCorMode "Whole PW", crankingEnrichTaper 5.0 s, primePulse ~30 ms, CrankAng 10°, `engineProtectMaxRPM` 4000, crankRPM 230, tpsflood 60, factory-transplant VE. Snapshot: `restorePoints/TurboExo_2026-07-19_12.23.39.msq`. (Living status in `STATUS.md`.)
 
@@ -174,7 +176,7 @@ Chronological, newest last. Entries marked ~~struck~~ or "REFUTED" are kept deli
 5. **Cyl #2 — now a clean re-test.** All injectors swapped to OEM (07-19), so re-read plugs after a run: #2 clean = the yellow #2 injector was the fouler; #2 still fouled = its spark path / compression (not fuel).
 6. After NA idle/road tuning: regenerate boost VE rows (current 120–200 kPa rows are placeholders), re-run `patch_commissioning_settings.py`, fit oil-pressure sender, knock conditioner before any knock features.
 
-## Key reference values
+## Historical July reference values
 
 | Item | Value | Note |
 |---|---|---|
@@ -187,6 +189,30 @@ Chronological, newest last. Entries marked ~~struck~~ or "REFUTED" are kept deli
 | Ignition polarity | IgInv = **"Going Low"** | never "Going High" (holds coils energized) |
 | Flood clear | TPS > 60% while cranking → PW 0 | tpsflood=60 (was 90) |
 | AFR cal | 0 V = 10.0, 5 V = 20.0 AFR | Spartan warmup artifacts: 13.2 (1.66 V) and ~16.5 plateaus |
-| Wasted spark / injector pairing | 1+4 & 2+3 (both) | a banked electrical fault cannot produce a 1&2-only pattern |
+| Historical wasted spark / injector pairing | 1+4 & 2+3 (both) | Applicable before COP conversion; ignition is now sequential, while injection remains paired |
 | ECU link | /dev/cu.usbmodem101 @115200 | data cable required (charge-only cables fail silently) |
 | Log tooling | `npx mlg-converter --format=csv <file>.mlg` | semicolon CSV in DataLogs/ |
+
+## 2026-09-25 — COP conversion complete; new battery; crank/no-start remains unresolved
+
+- **Change/Action:** Completed four-coil Toyota/Denso **673-1300 / 90919-02239** conversion. Sequential ignition wiring follows firing order: **IGN1 → cylinder 1, IGN2 → 3, IGN3 → 4, IGN4 → 2**. User reports **strong spark from all four coils in hardware output testing**. Stock **238 cc red injectors remain paired**; user reports the injectors were cleaned and bench-tested good. A new battery was installed between the first and second logs below.
+- **Tune recovery:** The TunerStudio/controller difference report exposed an old **6.9 ms reqFuel** configuration while stock injectors were installed. The session found that state in the saved tune and restored the stock-injector baseline using `restorePoints/TurboExo_2026-08-29_19.22.11.msq`. Subsequent saved-file verification showed **reqFuel 12.7 ms, injOpen 1.0 ms**, restored VE/priming/IAC baseline, and engine protection maximum **4000 rpm**. File verification is not proof of the ECU's burned contents; burn, power-cycle, and readback remain distinct operations.
+- **Ignition settings verified in the saved file:** Sequential, Going Low, cranking/running dwell **4.0/2.5 ms**, dwell map No, overdwell protection On/10 ms, dwell error correction Off, Miata 99–05 trigger, rising edges, trigger angle 0°, cranking advance 10°, cranking threshold 250 rpm, and **Fix cranking timing with trigger On**. Injection stays Paired; flood-clear threshold is 60% TPS. The dwell values are provisional starting recommendations, not a verified Denso dwell specification.
+- **Correction/retraction:** Earlier advice in this session to turn crank timing lock Off was withdrawn. The [official Speeduino Miata 99–05 decoder guide](https://wiki.speeduino.com/en/decoders/Miata_99) recommends enabling it. Review of firmware 202501.7 showed extended scheduled cranking dwell, but a trigger tooth can terminate charge earlier; the extended schedule does **not** establish four times the physical dwell. The earlier simple output-number-to-cylinder-number sequential mapping was also wrong; use the firing-order mapping above.
+
+### Recorded attempts
+
+Raw `.mlg` files and converted `.csv` files are in `DataLogs/`.
+
+| Log | Measured result | Interpretation / limits |
+|---|---|---|
+| `2026-09-25_10.44.47` — Pi, old battery | About 9.5 s cranking captured, starting mid-attempt; max 223 rpm; mostly 8.9–9.3 V; full sync, zero losses; commanded dwell ~4.2 ms; Gbaro 100% | No sustained catch. TPS above 60% cut injection for the first ~2.5 s; fuel then resumed around 17–18 ms. Low cranking voltage was measured, but was not established as the sole no-start cause. |
+| `2026-09-25_13.16.22` — Pi, new battery | Two cranks ~6.5 and 7.6 s; max 251 rpm; mostly 10.3–10.6 V; full sync, zero losses; paired PW around 16 ms; **commanded dwell and Gbaro logged as zero** | New battery improved voltage and speed without a clear catch. Barometric **pressure** remained 99 kPa. Zero Gbaro conflicts with the saved 100% correction table and substantial fuel commands; actual zero coil charge is not proven. |
+| `2026-09-25_14.33.35` — desktop/local | Coherent crank sections at 74.678–79.937 s and 93.561–97.076 s; max 253 rpm; mostly 10.5–10.6 V; full sync, zero losses; **dwell mostly 4.12 ms, Gbaro 100%**; matching injector channels generally 15–16 ms; no flood-clear cuts | No clear catch. The prior Pi zero readings were not reproduced. A telemetry/data-path issue is plausible, but its exact source is unresolved. |
+
+- **Sensor review:** The newest local cranking data showed MAP 90–98 kPa, baro 99 kPa, IAT 59°F, and coolant 84–86°F. No reviewed sensor value explained the earlier zero dwell/Gbaro combination. Nonzero commanded dwell and PW still do not prove delivered spark or fuel.
+- **Measured-dwell caveat:** The local log's `Dwell _Measured` reaches roughly 16.5 ms. In the reviewed firmware, scheduler completion supplies that elapsed-time measurement, while crank-lock tooth-triggered shutdown can end physical charge earlier without updating it. Do not interpret this log value as a direct electrical measurement of coil charge time. Source review: [main ignition scheduling](https://github.com/speeduino/speeduino/blob/202501.7/speeduino/speeduino.ino) and [timer/watchdog logic](https://github.com/speeduino/speeduino/blob/202501.7/speeduino/timers.cpp).
+- **Log tooling caveat:** The newest local log resets its timestamp near the end and has out-of-order initial timestamps. The analyzer's negative overall duration is invalid; the two crank sections above are internally coherent. Existing analyzer effective-fuel estimates use the old 0.9 ms injector-opening assumption; current stock-injector saved baseline is 1.0 ms.
+- **Wideband/status:** AFR is not a trustworthy mixture basis for these attempts. Calibration-like plateaus and AFR/Target echoing remain present; echoing alone does not establish heater state, and breaking the echo does not establish valid mixture. Aux0 is configured Analog_local on **A8 / UA4C INP1** and was renamed `WideBandStatus`; some logs retain the Aux0 label. Observed ~93/402/604 counts correspond to ~0.45/1.96/2.95 V at a nominal 5 V reference. Exact controller model/status-output interpretation remains unresolved; earlier blanket "2 V means ready" advice must not be applied without verification.
+- **Logging operations:** Live Pi inspection found automatic logging disabled. Both Pi logs were manually started, stopped, and downloaded; the latest attempt was logged locally. Historical claims that Pi logging is automatically armed are superseded by that inspection.
+- **Verdict / next discriminating test:** **COP installation and output-test spark are complete; crank/no-start cause remains undetermined.** Verify spark during an actual brief fuel-disabled crank, then verify timing near 10° BTDC with a timing light. Output testing does not prove cranking spark or correct timing. The pre-conversion timing check cannot certify the new ignition installation. Keep the previous sustained July running and hot-idle issue as history, not as proof of today's cause. No fuel change is justified solely by these logs.
