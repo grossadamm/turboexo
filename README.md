@@ -3,11 +3,12 @@
 Tune, datalogs and commissioning notes for a 1999 Mazda Miata NB1 1.8 BP-4W with
 an external TD04L-13T turbo and Speeduino UA4C (firmware 2025.01.7).
 
-**September 25, 2026: the Toyota/Denso COP conversion is complete; the current
-task is diagnosing crank/no-start.** All four coils spark strongly in hardware
-output testing. Spark and timing during actual cranking remain unverified.
-Ignition is sequential (IGN1–4 → cylinders 1–3–4–2); stock red injectors remain
-paired. The engine previously sustained a cold idle in July.
+**September 28, 2026: sustained cold and warm idle established; current work is
+idle control, throttle response and oil-pressure monitoring.** Four Toyota/Denso
+COPs are installed (IGN1–4 → cylinders 1–3–4–2), with saved Wasted COP mode.
+Stock red injectors are individually wired INJ1–4 → cylinders 1–4 and use
+Semi-Sequential mode. Current wiring/I/O assignments are in
+[docs/WIRING.md](docs/WIRING.md).
 
 Start with [STATUS.md](STATUS.md) for current evidence, tune values and next
 checks. [EXPERIMENT_LOG.md](EXPERIMENT_LOG.md) retains dated reasoning and
@@ -34,10 +35,10 @@ npx --yes mlg-converter --format=csv DataLogs/<file>.mlg
 /opt/homebrew/bin/python3.12 scripts/analyze_log.py DataLogs/<file>.csv
 ```
 
-Latest desktop log: `2026-09-25_14.33.35`. It shows commanded dwell ~4.12 ms and
-Gbaro 100% during cranking, contradicting the preceding Pi log's zero channels.
-It includes a timestamp reset, so its negative analyzer duration is invalid.
-The discrepancy is unresolved; the Pi zeros do not prove spark failure.
+Latest analyzed logs: `2026-09-28_13.09.03` (sustained run and throttle bog) and
+`2026-09-28_13.29.24` (fully warm, closed-throttle idle only). Oil monitoring on
+INP2/A9 and closed-loop IAC are staged on disk; consult STATUS.md for the newest
+load file and whether ECU burn/readback has been confirmed.
 
 Pi TSDash automatic logging was **disabled** at the September 25 live check.
 Confirm recording before starting; do not rely on older automation notes.

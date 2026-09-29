@@ -1,5 +1,12 @@
 # TurboExo — First-Start Commissioning Checklist
 
+> **Historical commissioning document — superseded for current configuration.**
+> As of 2026-09-28 the engine idles, uses four Toyota/Denso COPs (saved Wasted COP)
+> and stock red injectors (Semi-Sequential). INP1/A8 is Spartan status; INP2/A9 is
+> assigned to oil pressure. Use [STATUS.md](STATUS.md) for the latest staged tune
+> and [docs/WIRING.md](docs/WIRING.md) for current assignments. Do not load the old
+> first-start tune or apply stock-coil/yellow-injector settings from this history.
+
 **Situation:** Complete rewire + NA→turbo conversion + UA4C Speeduino swap. Engine has
 **never run** in this configuration. Nothing is trusted yet — not sensors, not the trigger,
 not fuel pressure, not the turbo oil supply.
@@ -33,7 +40,7 @@ Work through the phases **in order**. Each phase proves the things the next phas
   - MAP ≈ Baro ≈ ~100 kPa (or local pressure). The Baro-mode fueling *depends* on a sane baro reading — verify it specifically.
   - Battery voltage gauge reads ~12.4–12.8 V engine off (matches a multimeter on the battery).
 - [ ] **TPS calibration:** Tools → Calibrate TPS. Closed = 0%, floored = 100%, sweep is smooth with no dropouts (dropouts = wiring/connector problem).
-- [ ] **Wideband (14Point7 Spartan 3 OEM, LSU 4.9):** no free-air calibration needed or supported — the LSU 4.9's connector carries its factory calibration. Verify instead: sensor in open air, key on, ~30–60 s heater warm-up → TunerStudio AFR gauge pegs at **~20.0** (ECU cal is linear 0–5 V = 10–20 AFR, burned 2026-06-06). Exhale on the tip: momentary rich dip. If it pegs at 10.0 or wanders, check the analog wire and the Spartan-to-ECU sensor ground (ground offset = AFR error; 0.1 V ≈ 0.2 AFR). The whole tuning plan rests on this signal.
+- [ ] **Wideband (non-OEM Spartan replacement, LSU 4.9; user confirmed 2026-09-28):** See `docs/manuals/Spartan_3_v2_User_Manual_2026-01-21.pdf` for the replacement controller and its brown heater-status wire. The original OEM-module identification is historical. No free-air calibration needed or supported by the current v2 manual — the LSU 4.9's connector carries its factory calibration. Verify instead: sensor in open air, key on, ~30–60 s heater warm-up → TunerStudio AFR gauge pegs at **~20.0** (ECU cal is linear 0–5 V = 10–20 AFR, burned 2026-06-06). Exhale on the tip: momentary rich dip. If it pegs at 10.0 or wanders, check the analog wire and the Spartan-to-ECU sensor ground (ground offset = AFR error; 0.1 V ≈ 0.2 AFR). The whole tuning plan rests on this signal.
 - [ ] **Fuel pump prime:** key on — pump should run a few seconds and stop. Listen for it; check the pump relay wiring survived the rewire.
 - [ ] **Throttle/return spring, all fluid levels, battery charged or on a maintainer** (lots of cranking ahead).
 
@@ -51,14 +58,14 @@ This is a **new fuel system under future boost** — leak-check it like it matte
 
 - [ ] With injectors still disabled, reinstall the pump fuse, key on, and verify **fuel pressure ≈ 43.5 psi (3 bar)** on a gauge. All the injector math assumes exactly this (notes §4).
 - [ ] Pressurize and **inspect every fitting** — pump, filter, rail, FPR, return — for weeping. Wipe, wait, re-check.
-- [ ] Optional but worthwhile: pull a plug, crank briefly with injectors connected, confirm plugs are wetting (injectors actually firing and wired to the right driver banks).
+- [ ] Optional but worthwhile: pull a plug, crank briefly with injectors connected, confirm plugs are wetting (injectors actually firing; current harness INJ1→1, INJ2→2, INJ3→3, INJ4→4, with Semi-Sequential scheduling).
 
 ## Phase 3 — Spark & base timing
 
-- [ ] Coils reconnected, fuel disabled again. Crank and verify **spark on all cylinders** (spark tester or grounded plug). Wasted spark pairs: 1–4 and 2–3 — confirm the coil wiring matches.
+- [ ] Coils reconnected, fuel disabled again. Crank and verify **spark on all cylinders** (spark tester or grounded plug). Current COP wiring: IGN1→1, IGN2→3, IGN3→4, IGN4→2; saved mode Wasted COP. The original shared Miata coils have been replaced.
 - [ ] **Base timing check:** in TunerStudio set *Fixed timing* (Spark Settings → fixed advance) to 10°. Stock NB sensors usually land close, but **verify with a timing light**, don't assume.
   - You can do this while cranking, or (better) right after first start at idle.
-  - A few degrees off → trim `TrigAng` until the light shows 10° at the crank pulley mark. Way off → suspect CKP/CMP wiring or swapped coil pairing (1–4 vs 2–3); do **not** flip trigger edges (notes §7.4 / §8).
+  - A few degrees off → trim `TrigAng` until the light shows 10° at the crank pulley mark. Way off → suspect CKP/CMP wiring or an incorrect COP output-to-cylinder assignment; do **not** flip trigger edges (notes §7.4 / §8).
   - The tune turns on "Use new ignition mode" (required for this decoder) — it takes effect on burn, no ECU power-cycle needed, but the timing-light check is the proof.
   - **This must be right before any load tuning** — every number in the spark table is meaningless otherwise.
   - Set fixed timing back to *Off* when done.
@@ -99,7 +106,7 @@ Because Phase 6 will have changed the VE table, the extrapolated boost rows are 
 
 1. **Regenerate the boost rows from the freshly tuned NA tune:** run the notes §9 pipeline (generator, then **always** the patch script) with the generator's `FIRST_START_SHAPING` flag set `False` — the road tune has replaced those first-start floors.
 2. **Knock hardware:** the sensor is wired raw to the analog input — Speeduino can't read it, so knock mode is OFF. Install a conditioner module (part options and band-pass spec: notes §7.1), feed its 0–5 V output to the knock pin, set knock mode to Analog, calibrate the threshold at clean WOT, then set the generator's `KNOCK_BLIND` flag `False` and regenerate (restores the extra spark it was holding back). Until then, knock protection = conservative timing + rich AFR + your ears.
-3. **Oil-pressure protection gate — do this BEFORE ramping boost:** fit an analog oil-pressure sender on a spare UA4C analog input (verify no pin collision with the raw knock-sensor wire), enable the oil-pressure input + protection, and populate the protection minimums (suggested values: notes §10).
+3. **Oil-pressure protection gate — do this BEFORE ramping boost:** INP2/A9 is assigned to the user's 0.5–4.5 V / 0–100 psi transducer. Monitoring is enabled in the staged tune, but installation completion and ECU readback are unconfirmed. Verify pressure readings before configuring/enabling protection; it currently remains Off. Do not treat historical minimums in the notes as validated settings.
 4. **Confirm the boost solenoid hardware first** (part number + 3-port plumbing; solenoid-dead must equal spring-only — notes §7.3b), then run **spring-only pulls** with the solenoid at 0%/unplugged and confirm ~148–150 kPa before closing the loop. Then re-enable boost control (`boostEnabled` → On). The closed-loop constants were already cleaned (uninitialized gain, slow PID interval, reversed TPS axis, 30 Hz valve frequency — notes §7.3b; `boostFreq` needs an **ECU power-cycle** to take effect); keep `boostDCWhenDisabled` at 0% so below the enable threshold the valve stays unpowered (pure spring).
 5. **Ramp boost incrementally toward the target** (target and cut values: notes §2 and header), watching AFR at every step. The armed AFR lean protection (window values: notes §7.2) is a backstop, not a substitute for watching the wideband. **Never enable closed-loop EGO in boost.**
 

@@ -1,6 +1,6 @@
 # TurboExo Experiment Log — no-start → first-idle campaign
 
-1999 Miata NB1 1.8 (BP-4W), TD04L-13T external turbo, Speeduino UA4C (fw 202501), speed-density, TunerStudio dash on a Pi. As of 2026-09-25: **stock 238 cc red injectors, paired injection, sequential Toyota COP ignition**. Earlier entries describe the previous yellow injectors and wasted-spark coils. Engine ran fine before the build; the build was **rewire + external turbo only** (internals known-good).
+1999 Miata NB1 1.8 (BP-4W), TD04L-13T external turbo, Speeduino UA4C (fw 202501), speed-density, TunerStudio dash on a Pi. As of 2026-09-28: **stock 238 cc red injectors, Semi-Sequential injection, four Toyota/Denso 673-1300 / 90919-02239 COPs; saved ignition mode Wasted COP**. Earlier entries describe the previous yellow injectors and wasted-spark coils. Engine ran fine before the build; the build was **rewire + external turbo only** (internals known-good).
 
 Chronological, newest last. Entries marked ~~struck~~ or "REFUTED" are kept deliberately — several conclusions were later overturned and the corrections matter.
 
@@ -216,3 +216,132 @@ Raw `.mlg` files and converted `.csv` files are in `DataLogs/`.
 - **Wideband/status:** AFR is not a trustworthy mixture basis for these attempts. Calibration-like plateaus and AFR/Target echoing remain present; echoing alone does not establish heater state, and breaking the echo does not establish valid mixture. Aux0 is configured Analog_local on **A8 / UA4C INP1** and was renamed `WideBandStatus`; some logs retain the Aux0 label. Observed ~93/402/604 counts correspond to ~0.45/1.96/2.95 V at a nominal 5 V reference. Exact controller model/status-output interpretation remains unresolved; earlier blanket "2 V means ready" advice must not be applied without verification.
 - **Logging operations:** Live Pi inspection found automatic logging disabled. Both Pi logs were manually started, stopped, and downloaded; the latest attempt was logged locally. Historical claims that Pi logging is automatically armed are superseded by that inspection.
 - **Verdict / next discriminating test:** **COP installation and output-test spark are complete; crank/no-start cause remains undetermined.** Verify spark during an actual brief fuel-disabled crank, then verify timing near 10° BTDC with a timing light. Output testing does not prove cranking spark or correct timing. The pre-conversion timing check cannot certify the new ignition installation. Keep the previous sustained July running and hot-idle issue as history, not as proof of today's cause. No fuel change is justified solely by these logs.
+
+## 2026-09-25 (PM) — Paired injection was feeding only cylinders 1 and 2; Semi-Sequential fixes fuel; July idle was a two-cylinder run
+
+- **Change/Action:** `injLayout` **Paired → Semi-Sequential** (pairing 1+4 & 2+3), saved and burned 18:04. Earlier in the afternoon `crankRPM` 250 → 300 (16:34). No other tune change; VE and advance tables verified identical to `TurboExo_VEfix_2026-07-09.msq` in the idle region and to the 07-19 baseline everywhere.
+- **Why/Hypothesis:** The injector harness has **four individually wired injectors** (INJ1→cyl 1, INJ2→cyl 2, INJ3→cyl 3, INJ4→cyl 4). In firmware 202501.7, 4-cylinder **Paired drives pins INJ1 and INJ2 only** (`init.cpp` INJ_PAIRED case: schedule 1 → `openInjector1`, schedule 2 → `openInjector2`, `maxInjOutputs = 2`). Cylinders 3 and 4 therefore never received fuel. Plug read before the change: **1 and 2 wet, 3 and 4 dry** — the wet pair crosses the injector pairing and matches the pin assignment. Semi-Sequential drives INJ1+INJ4 from schedule 1 and INJ2+INJ3 from schedule 2 with the same pulse-width math as Paired (`init.cpp` INJ_SEMISEQUENTIAL case), so reqFuel 12.7 and all July PW references still apply. Logged `PW3`/`PW4` stay 0.0 in Semi-Sequential by design (`speeduino.ino`: PW3/PW4 zeroed when `maxInjOutputs < 3`); they say nothing about whether INJ3/INJ4 fire.
+- **Result/Evidence:**
+  - After the burn, **all four plugs wet** (first time ever observed). Injector output tests on all four channels pass. Fuel now reaches every cylinder.
+  - **Retroactive finding:** every July log (including `2026-07-25_09.17.01`, the 379 s idle) shows `PW3 = PW4 = 0` under Paired. If the harness was already individually wired then, **the July idle ran on cylinders 1 and 2 only**, which also explains the 17.6–19.7 "lean" wideband reading (two unfueled cylinders pumping air). `[inference: depends on when the harness was rewired]`
+  - Catch behaviour after the change is unchanged in shape: 18.16.42 / 18.21.27 / 18.23.46 catch 4 / 21 / 11 times, peak 647–710 rpm, longest run-mode stint 1.4 s at 33% throttle (430 → 710 rpm, battery rising 11.1 → 12.5 V = starter unloading = real torque), dying the row the throttle moved and accel enrichment put PW at 20.2 ms. 16.15.10 (before the change, plugs freshly cleaned, cylinders 1+2 only) ran 3.5 s at 80% throttle crawling 341 → 630 rpm, MAP pinned at 98.
+  - Afternoon logs 15.00–16.38 were taken with the **intake off and hoses disconnected** (spark/fuel isolation work), so their cranking MAP of 90–98 kPa is not comparable to July's 73–83.
+- **Firmware facts established from source (202501.7, Miata 99-05 decoder):** with `ignCranklock` On and RPM < crankRPM+30, the decoder ends coil charge on teeth 1/5 (coils 1+3) and 3/7 (coils 2+4) at a fixed 10° BTDC; in Sequential mode each coil is still charged on its own 720° schedule, so the tooth only ends a charge already in progress. **Crank-lock catches therefore prove cam phase and the IGN→cylinder mapping are correct.** In run mode RPM is computed once per 720° (cam speed), so a logged RPM value held constant is one or more cycles at that speed and the value freezes until stall timeout; "catch dies in one cycle" cannot be resolved from the log.
+- **Verdict:** **Fuel side is now correct for the first time.** Wet plugs on all four with catches that crawl at 500–700 rpm under 30–80% throttle means fuel arrives and does not burn well in any cylinder; a single-cylinder fault is excluded. The only system changed for the worse since the July two-cylinder idle is ignition (two wasted-spark coils at 6.0/3.0 ms → four Denso 90919-02239 COPs at 4.0/2.5 ms, Sequential). **Next single-lever test:** `crankRPM` 300 → 800 to hold crank-lock spark through the catch, one crank ≤5 s, throttle held under 60% (flood clear applies across the whole crank regime; overdwell protection is off below crankRPM). Climbs through 800 → run-mode ignition path is the fault; restore crankRPM and raise `dwellrun` to 4.0 to split dwell from timing. Still crawls → handover exonerated; raise `dwellcrank`/`dwellrun` together, since the coils are the one unverified component in both regimes. Two independent agent reviews of this log set agreed on the fuel finding and on excluding sequential phase; they split on dwell-first vs crankRPM-first.
+
+## 2026-09-28 — Warm idle established; crank threshold and closed-loop IAC staged
+
+- **Evidence:** `2026-09-28_13.09.03.csv`: continuous running ~328 s, closed TPS ~233 s,
+  no sync loss; tip-in bog present, transient AFR not conclusive. `13.29.24.csv`:
+  ~16.9 s warm closed-throttle idle, 187–190°F, WUE 100%, median 1601 rpm / 32 kPa /
+  AFR 12.1 versus 14.3 target / PW 1.893 ms, IAC settles 75%. Initial timestamp is
+  discontinuous; excluded from duration. No throttle opening is captured in warm log.
+- **User direction:** Move from no-start diagnosis to idle/run tuning. Lower crankRPM
+  800→300 and add closed-loop IAC. This explicitly authorizes both settings together;
+  keep fuel/ignition unchanged. User identifies release flutter after the bog, with
+  bypass installed. No recorded positive manifold boost, no pre-throttle sensor.
+- **Change:** Snapshot `TurboExo_pre_closedloop_2026-09-28_142246.msq`. Updated `CurrentTune.msq` and staged `TurboExo_closedloop_2026-09-28_142246.msq`:
+  PWM Closed+Open loop; 65–90% limits; P/I/D 0.0625/0.03125/0; TPS reset 2%; RPM reset
+  hysteresis 1000; targets [1200,1200,1200,1150,1100,1050,1000,1000,1000,1000] on existing
+  coolant bins. Existing OL curve retained as feedforward. crankRPM=300.
+- **Why:** Pure PWM CL lacks the combined-mode TPS/RPM integral-reset behavior. Existing
+  zero limits and P=2/I=0 were unsuitable to simply enable. At 500 Hz and raw gains2/1,
+  a 600-rpm error initially gives ~7.5 duty points P and ~3.75 points/s I correction.
+  65% floor and 90% ceiling are deliberately bounded, unverified commissioning limits.
+- **Source review:** Speeduino 202501.7 `idle.cpp` PWM_OLCL and integerPID in
+  `src/PID_v1/PID_v1.cpp`; local INI scaling and restart requirements. Combined startup
+  initializes integral from crank duty and can briefly hit ceiling when feedforward
+  is added; the old PWM taper does not apply. Independent reviewer checked semantics.
+- **Spartan correction:** Model is explicitly recorded as Spartan 3 OEM in checklist
+  line36 and June12 entry, but later reference claims Spartan2. Prior analog 0/1/2 V
+  readiness claims remain unverified. Current Spartan3 OEM pinout has no named analog
+  heater-status output. Warm Aux0 high is supporting behavior, not verified readiness
+  or accuracy. No wideband calibration changed.
+- **Validation/result:** XML parsed; compared all constants against exact pre-edit
+  snapshot: only the nine intended crank/IAC constants changed. Gains encode raw2/1,
+  target table has ten values, staged file matches CurrentTune. No ECU connection,
+  burn/readback or physical response validation performed. Open named staged file,
+  burn, power-cycle, verify readback and log warm idle/return. **Outcome pending.**
+
+## 2026-09-28 — COP hardware documentation made explicit
+
+- **User confirmation:** The engine uses COPs, not the original Miata coils.
+- **Documentation:** Updated AGENTS.md, STATUS.md, the reference rig/ignition sections,
+  and this log's current-configuration header to name the four Toyota/Denso COPs,
+  documented wiring, and saved Wasted COP mode. Distinguished hardware from ECU mode;
+  retained prior Sequential/stock-coil observations as history. Replaced the obsolete
+  shared-coil-tower diagnostic instruction. Current objective is idle/run calibration.
+- **Validation:** Checked documentation against the September 25 conversion entry and
+  saved sparkMode. Documentation only; no tune or ECU settings changed.
+
+## 2026-09-28 — Non-OEM Spartan replacement confirmed; correct manual downloaded
+
+- **User correction:** Original OEM module was replaced by a purchased non-OEM
+  Spartan, including the separate status wire. Prior reliance on the OEM manual
+  was wrong; the old model references do not identify the currently installed unit.
+- **Sources:** Downloaded official Spartan 3 v2 (Jan21 2026) and legacy Spartan 3
+  (Nov24 2023) manuals to `docs/manuals/`, with source URLs/hashes in README.
+  V2 wiring table explicitly specifies brown heater status:0V waiting,1V heating,
+  2V heat-up complete/heater closed loop. `GETNBMODE`:2 heater status,0 narrowband.
+- **Remaining measurement question:** Warm Aux0 565–604 counts nominally corresponds
+  to2.76–2.95V for a direct10-bit5VADC, not nominal2V. Verify input transfer or brown
+  output voltage/configuration; do not translate ADC600 into ready solely by naming
+  the channel. Analog status and CAN codes1/2/3 are different encodings.
+- **Changes:** Updated current STATUS/reference and checklist model label. No tune,
+  controller output configuration or calibration changed. Exact replacement
+  hardware/firmware revision has not been read back.
+
+## 2026-09-28 — Oil pressure input configured on INP2/A9 (saved, not burned)
+
+- **User hardware:** 0–100 psi transducer, linear 0.5V=0psi / 2.5V=50psi /
+  4.5V=100psi; user handles wiring and selected the other spare input, INP2/A9.
+- **Change:** Snapshot `TurboExo_pre_oilpressure_2026-09-28_180624.msq`; enable native oil-pressure monitoring on A9 in
+  CurrentTune.msq and `TurboExo_closedloop_oilpressure_2026-09-28_180624.msq`. Oil-pressure protection remains Off; no cut
+  thresholds enabled. Existing staged crank/IAC edits preserved.
+- **Calibration:** Firmware202501.7 `sensors.cpp:getOilPressure` maps ADC fullscale
+  using oilPressureMin/Max; INI labels are Pressure at0V/5V. Exact sensor endpoints
+  extrapolate to -12.5/112.5psi, but storage is integer psi. Saved -13/113psi gives
+  nominal0.5V→-0.4(clamped0),2.5V→50,4.5V→100.4psi before ADC/integer/filter effects.
+  Built-in0–100PSI preset(-3/103) is NOT correct for this supplied transfer curve.
+- **Validation:** XML parsed; only oilPressureEnable/Pin/Min/Max changed; protection
+  verifiedOff; staged file byte-identical to CurrentTune. No ECU burn/readback or
+  sensor voltage/pressure verification. Enable and pin require power cycle per INI.
+
+## 2026-09-28 — Current wiring notes consolidated
+
+- **Change:** Added docs/WIRING.md for COP/injector output-to-cylinder assignments,
+  Spartan replacement/status input INP1/A8, oil transducer INP2/A9 and its calibration.
+  Explicitly distinguish hardware reported wired from newly assigned/staged oil input.
+- Updated README/AGENTS/reference/checklist links and current assignments. Marked
+  June boost/first-start settings historical to prevent reuse of stock-coil or yellow
+  injector guidance. Documented charging confirmed without an external power source.
+- **Validation:** Cross-checked A8/A9 against local UA4C schematic and four oil constants
+  in CurrentTune; preserved unknown sensor supply/connector pinout, IAC harness cavity,
+  and oil installation/readback status. Documentation only, no tune changes.
+
+## 2026-09-28 18:11:45 — User fan-temperature save supersedes named staged tune
+
+- **Change:** User saved fan-on temperature in TunerStudio. `CurrentTune.msq` now
+  contains `fanSP=120.186°F` (UI displays 120°F), replacing 201.186°F. Hysteresis
+  remains 7.2°F (UI displays 7°F).
+- **Evidence:** CurrentTune bibliography and file timestamp show 18:11:45 PDT;
+  `restorePoints/TurboExo_2026-09-28_18.11.45.msq` records “User Requested Save of
+  Settings” and the same fan setting. Compared all constants with
+  `TurboExo_closedloop_oilpressure_2026-09-28_180624.msq`: fanSP is the only change.
+  CrankRPM 300, closed-loop IAC and A9 oil monitoring are preserved.
+- **Verdict:** **CurrentTune.msq is the newest combined file.** The named 18:06
+  copy retains the old 201.186°F fan threshold; loading it would revert this save.
+  Earlier checks saw the prior save; the newly verified 18:11 save resolves the
+  discrepancy. Saved file evidence does not confirm ECU burn or actual fan response.
+- **Documentation:** Updated STATUS.md latest-file guidance and added a short
+  file-routing section to AGENTS.md. No tune settings changed by this documentation edit.
+
+## 2026-09-28 — Commit/handoff checkpoint
+
+- Rechecked CurrentTune after TunerStudio's 18:16:50 save: all constants match the
+  18:11:45 restore point, including 120.186°F fan-on and crank/IAC/oil setup.
+- New `DataLogs/2026-09-28_18.17.07.mlg` exists but has not been converted or analyzed.
+  Do not assume the staged closed-loop settings have been validated by this run.
+- Commit scope: current tune, session documentation/manuals, four named tune
+  snapshots, September 28 restore points and the two reviewed September 28 logs.
+  Unrelated working changes and the new unreviewed log remain outside this checkpoint.

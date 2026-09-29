@@ -1,5 +1,12 @@
 # TurboExo — Tune Notes (NA→Boost Extension + Commissioning Settings)
 
+> **Historical commissioning document — superseded for current configuration.**
+> As of 2026-09-28 the engine idles, uses four Toyota/Denso COPs (saved Wasted COP)
+> and stock red injectors (Semi-Sequential). INP1/A8 is Spartan status; INP2/A9 is
+> assigned to oil pressure. Use [STATUS.md](STATUS.md) for the latest staged tune
+> and [docs/WIRING.md](docs/WIRING.md) for current assignments. Do not load the old
+> first-start tune or apply stock-coil/yellow-injector settings from this history.
+
 **Car:** 1999 Mazda Miata, 1.8L BP, turbocharged (Exocet-style build), TD03L-13T @ ~7 psi spring
 **ECU:** UA4C Speeduino, firmware `Speeduino 2025.01.7`
 **Fuel system:** RX-8 "yellow top" injectors (~425 cc/min @ 43.5 psi), **fixed 3-bar** regulator (NOT boost-referenced), pump 91 AKI
@@ -7,7 +14,7 @@
 **Built:** 2026-06-08/09 · **Last updated:** 2026-06-12 (first-start fixes, §7.3)
 **Tune to load for first start:** `TurboExo_FirstStart.msq` (see §9)
 
-This file is the **single source of truth for every setting value**. The garage
+This file preserves the **historical June 2026 setting rationale**. The garage
 procedure lives in `FIRST_START_CHECKLIST.md` and points back here for values.
 The two scripts' docstrings are canonical for their own behavior (§9).
 
