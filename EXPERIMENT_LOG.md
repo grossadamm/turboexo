@@ -345,3 +345,98 @@ Raw `.mlg` files and converted `.csv` files are in `DataLogs/`.
 - Commit scope: current tune, session documentation/manuals, four named tune
   snapshots, September 28 restore points and the two reviewed September 28 logs.
   Unrelated working changes and the new unreviewed log remain outside this checkpoint.
+
+
+## 2026-09-28 evening — 18.17.07 analyzed; IAC at minimum, fan works, oil signal unverified
+
+- **Action:** Confirmed checkpoint HEAD `13e15d9`; preserved existing uncommitted
+  work. Converted newest local `DataLogs/2026-09-28_18.17.07.mlg` to semicolon CSV.
+  Ran the existing analyzer and independently examined individual channels and
+  coherent time segments. No tune changes or ECU operations.
+- **Data quality:** Initial time-zero placeholder jumps to 40.297 s; occasional
+  duplicate timestamps, no backward reset. Continuous RPM>400 from 45.030 to
+  215.036 s (~170 s). Zero recorded sync losses. TPS exactly zero throughout;
+  AE never exceeds 100%, so this log does not reproduce the throttle bog.
+  Battery is normally 13.8–14.6 V after startup. At 214.840 s voltage falls to
+  9.6 V while RPM still reads 1611, followed by RPM=0 at 215.107 s and about
+  4 V afterward. Consistent with shutdown/supply loss, not proof of an idle stall.
+- **Idle result:** IAC starts near its ceiling (89 logged), falls to 64 at
+  66.306 s and stays there through the run. Firmware 202501.7 `idle.cpp` sets
+  PID limits in timer ticks*4, shifts the result down, then truncates the logged
+  percent. At AVR 500 Hz, 65% produces 81/125 ticks (64.8%), logged as 64;
+  90% similarly logs 89. Thus floor/ceiling values match the saved limits.
+  At 150–214.7 s: target1000, RPM median1555/range1373–1635, MAP median32,
+  IAC64, battery median14.5 V. Requesting less duty has not achieved target;
+  physical valve response/other air paths remain unverified. More PID gain
+  cannot overcome an already saturated output. No automatic limit widening.
+- **Temperature/fueling limits:** CLT84–136°F; WUE116% initially and106% at end.
+  This is not fully warm idle. At150–214.7 s, indicated AFR median12.6 versus
+  target14.3; PW median1.972 ms. No fuel edit justified from these readings.
+  Existing analyzer effective-fuel output uses historical RX-8 yellow injector
+  dead-time data and is not a validated effective-fuel estimate for current reds;
+  its echo percentage also does not independently determine heater readiness.
+- **Fans:** User explicitly confirms fans work. Logged fan command turns on at
+  162.035 s with CLT120°F, matching the latest saved threshold. Median RPM in
+  the10 s before/after is1580.5/1537; median voltage14.5 V in both windows.
+  No stall on engagement. Fan stays commanded on until engine stop at136°F;
+  no temperature-driven off cycle, so hysteresis/cooling capacity not established.
+- **Oil anomaly:** Pressure14 psi before cranking, falling to0 by47.430 s and
+  remaining0 throughout sustained running; returns to14 after shutdown.
+  Actual oil pressure cannot be inferred reliably. Asked whether the sensor was
+  fully connected during this run and whether an independent reading exists.
+  Verify actual pressure before further sustained running, then wiring/supply/
+  ground/input and ECU calibration/readback. Leave oil protection Off while its
+  input is unverified. Firmware `sensors.cpp:getOilPressure` maps the analog
+  input, filters and clamps it; the logged zero is not a raw voltage measurement.
+- **Spartan:** Stable Aux0 approximately598 counts (nominal2.92 V for direct
+  5 V/10-bit ADC) still does not reconcile with the manual's nominal2 V heater-
+  ready output. Verify actual brown-wire voltage/input transfer and controller
+  mode/revision. Heater readiness would still not certify AFR analog accuracy.
+- **Saved tune validation:** All CurrentTune constants still match
+  `restorePoints/TurboExo_2026-09-28_18.11.45.msq`. CurrentTune remains the combined
+  baseline; older named staged copies would revert fan temperature. Observed
+  controller behavior supports applied settings but is not complete burn/readback.
+- **Verdict:** Sustained idle and fan operation confirmed; idle target not achieved,
+  throttle bog not tested, oil measurement unresolved. Discuss findings and verify
+  pressure/idle-air response before choosing another tune change.
+
+
+## 2026-09-28 evening — Expected analog inputs documented; 18.21.44 analyzed
+
+- **User request:** Document expected Spartan/UA4C input behavior, then inspect
+  newest log. Added expected brown-wire0/1/2 V and nominal Aux0 0/205/409 table,
+  electronics/heater grounding distinction, mode2 readback expectation, and
+  UA4C vC5 JP7/JP8 circuit details to docs/WIRING.md. Added official hardware
+  source links to docs/manuals/README.md. For driven voltage signals, recommend
+  unbiased inputs (JP7/JP8 unbridged), explicitly a circuit-based recommendation,
+  not a verified factory default or claim about the installed board. Actual
+  revision/jumper positions remain unknown. No hardware or tune settings changed.
+- **Newest log:** Converted18.21.44.mlg; coherent316.771–432.513 s=115.742 s.
+  Initial isolated219.104 s row precedes97.667 s gap; seven duplicate timestamps.
+  Existing analyzer was run, but its duration and historical injector-deadtime
+  estimate were not adopted. Independent raw-channel analysis used for findings.
+- **Idle:** IAC reaches64 at327.241 s. Stable350–398.581: target1000, RPM median
+  1581/range1484–1649, MAP median32/range30–33, IAC64. Final427–432.513: RPM
+  median1433.5/range1384–1522, MAP35, IAC64. Coolant136→162°F; WUE106→102%.
+  No fully warm equilibrium. Floor quantization remains consistent with saved65%.
+- **Throttle windows (log seconds):**
+  -398.690–399.842: TPS max8%, RPM~1563→3069 at399.911; AE138% for two rows.
+  -401.852–413.644: TPS max8%, RPM1641→1467 at402.246 then3490 at404.456;
+   AE100% throughout. RPM already falling after previous release. During the
+   brief dip MAP28→53 kPa, PW1.758→2.874 ms, indicated AFR13.4→19.2. At minimum,
+   battery14.6 V, advance18°, dwell2.45 ms, no recorded sync loss. Transient
+   hesitation present; lean mixture versus misfire remains unresolved.
+  -415.246–417.847: TPS max16%, RPM1701→1660 briefly then4303 at417.646; AE100%.
+  -421.115–423.380: TPS max16%, RPM1517→3815; AE100%.
+  Releases show rich-indicating AFR dips (minimum10.5); no stall. Maximum MAP58 kPa,
+  no positive manifold boost. Hard limiter/launch/boost-cut logged flags all0.
+- **Fan/oil/status:** Fan1 throughout coherent recording; no new off-hysteresis
+  evidence. Oil0–2 psi/median0 while running; initial isolated14psi row is not a
+  valid stopped baseline. Sensor installation and independent actual pressure
+  remain unverified. Aux0 early~380, settled~598: JP7 position and actual voltage
+  need checking, not a revised readiness threshold. Late stable indicated AFR
+  about12.6 versus target14.3 remains insufficient basis for a fuel change.
+- **End/validation:** Ends running1387 rpm,14.5 V; zero sync losses. No shutdown
+  captured. Compared all CurrentTune constants against18:11:45 restore point:
+  no differences. Preserved unrelated work. Updated STATUS, wiring/manual notes
+  and this history only, plus generated CSV. Discuss results before tune changes.

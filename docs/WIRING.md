@@ -64,6 +64,57 @@ is documented as INP1/A8. Warm Aux0 about 565–604 counts does not numerically 
 before assigning readiness thresholds. Readiness does not verify AFR calibration.
 The primary AFR signal's exact ECU connector cavity is not established in this note.
 
+### Expected Spartan status connection and readings
+
+- Brown status output → UA4C INP1 → MCU A8 → Aux0, configured Analog_local.
+  The Spartan v2 default output mode is heater status (`GETNBMODE` should report
+  mode 2); actual installed revision and mode have not been read back.
+- Spartan black electronics ground should share the interfacing ECU's ground
+  reference, per the Spartan manual. White heater ground goes to chassis/engine
+  ground. Existing physical grounding has not been verified here.
+- With a nominal 5 V ADC reference, the expected raw 10-bit readings are:
+
+| Heater state | Brown-wire voltage | Nominal Aux0 raw value |
+|---|---|---|
+| Waiting for trigger | 0 V | 0 |
+| Heating started | 1 V | about 205 |
+| Heat-up complete; heater closed loop | 2 V | about 409 |
+
+Raw ADC counts are dimensionless readings, not volts. Nominal conversion is
+`V = counts * 5 / 1023`; reference voltage, grounding and input loading affect
+comparison with the actual wire voltage. These are expected values, not newly
+validated thresholds. Readiness does not establish AFR calibration accuracy.
+
+### UA4C input conditioning and expected jumper configuration
+
+The UA4C **vC5 White Fang schematic**, page 5, shows:
+
+| Input | Bias selection | Bias resistor | Series filter resistor |
+|---|---|---|---|
+| INP1/A8 (Spartan status) | JP7: +5 V or ground | R6, 2.49 kΩ | R9, 470 Ω |
+| INP2/A9 (oil pressure) | JP8: +5 V or ground | R7, 2.49 kΩ | R8, 470 Ω |
+
+Both also have filter capacitors and protection diodes. There is no amplifier
+or intentional 2 V→3 V conversion. **For these externally driven voltage outputs,
+the expected commissioning configuration is no external bias: leave JP7/JP8
+unbridged so neither pull-up nor pull-down loads the signal.** This is a circuit-
+based recommendation, not a documented factory-default claim. Confirm the actual
+board revision and physical jumper state before changing hardware; neither has
+been established from these logs. No jumper change has been performed.
+
+An enabled pull-up could raise the measured signal depending on source drive;
+it has not been proven to explain Aux0 around 598 (nominal 2.92 V). Compare the
+brown-wire voltage relative to Spartan electronics ground and ECU ground with
+simultaneous Aux0, and inspect JP7. Similarly, verify JP8 when investigating oil
+pressure. Do not compensate by inventing a new status threshold or oil scale.
+
+Sources: [UA4C connection sheet](https://github.com/turboedge/SpeedyBoards/blob/master/UA4C/DOC/Connections.pdf),
+[vC5 schematic](https://github.com/turboedge/SpeedyBoards/blob/master/UA4C/vC5-WHITE%20FANG/SCHEM/UA4C-vC5.pdf),
+local `tmp/pdfs/UA4C-vC5.pdf`, and Spartan v2 manual pages 1 and 3 in
+[manuals](manuals/README.md). The general Speeduino **v0.4 board is different**:
+its A8 primary-O2 mapping and jumper guidance must not replace the UA4C map.
+On the UA4C, primary O2 is MCU A1; its physical harness connection remains unverified.
+
 ## IACV and charging
 
 IACV electrical connection is unchanged. Current saved settings are one PWM channel,

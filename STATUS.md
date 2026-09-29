@@ -2,19 +2,89 @@
 
 Current wiring assignments: [docs/WIRING.md](docs/WIRING.md).
 
+## 2026-09-28 evening — Newest 18.21.44 log: throttle events captured
+
+Newest local log `DataLogs/2026-09-28_18.21.44.mlg` converted and analyzed.
+Coherent recording is 316.771–432.513 s (115.742 s); exclude initial isolated
+219.104 s row and 97.667 s gap. Engine runs throughout and ends at1387 rpm/14.5 V;
+no stall/shutdown captured and zero recorded sync losses.
+
+- **Idle remains high at minimum command:** stable350–398.581 s median1581 rpm
+  (1484–1649) against1000 target, IAC64, MAP32 kPa. Final427–432.513 s median
+ 1433.5 rpm, still above target at IAC64. CLT reaches162°F, WUE remains102%;
+  fully warm equilibrium not established.
+- **Four throttle openings:** first to8% TPS gives peak3069 rpm with brief138% AE.
+  Second to8% produces a brief1641→1467 rpm dip, then recovers to3490; third and
+  fourth reach16% TPS with peaks4303/3815. Second through fourth have AE100%.
+  At second tip-in, indicated AFR rises13.4→19.2, MAP28→53 kPa, PW1.758→2.874 ms.
+  RPM was already falling after the first release. This captures a hesitation,
+  but does not prove lean fueling versus misfire or quantify its cause. No stall.
+  Maximum MAP58 kPa: no positive manifold boost recorded.
+- **Fan:** commanded on throughout coherent recording, matching physical fan
+  confirmation from user. No new switching threshold/hysteresis test.
+- **Oil:** coherent data reads0–2 psi (median0), including sustained running.
+  The isolated first row's14 psi is not a valid engine-off baseline. Actual
+  pressure remains unverified; prior sensor-connection/reference-reading question
+  is unanswered. Verify pressure before more sustained commissioning runs.
+- **Spartan:** Aux0 again transitions from roughly380 to598; discrepancy with
+  nominal0/1/2 V mapping remains. Expected readings, grounding and UA4C JP7/JP8
+  configuration are now documented in docs/WIRING.md. No hardware change assumed.
+
+CurrentTune constants still match the18:11:45 restore point; no tune edits or ECU
+operations. Idle-air response and oil/status signal verification remain next;
+this brief hesitation does not justify an automatic VE/AE change.
+
+## 2026-09-28 evening — 18.17.07 log reviewed; fans physically confirmed
+
+`DataLogs/2026-09-28_18.17.07.mlg` was the newest log at that review; converted to CSV.
+About 170 s continuous running, TPS=0 throughout, zero recorded sync losses.
+This is a warm-up run (CLT 84–136°F, WUE still 106% at the end), not a fully
+warm idle or throttle-bog test. Ignore the initial placeholder row/time gap when
+estimating duration. Shutdown follows a sharp logged supply-voltage fall while
+RPM is still high; the log does not establish an ordinary idle stall.
+
+- **Idle:** IAC command falls from 89 to 64 by log time 66.306 s, then stays at
+  the floor. Firmware integer quantization makes logged 64 consistent with the
+  saved 65% minimum at 500 Hz. From 150–214.7 s, target=1000 rpm, median actual
+  1555 rpm (1373–1635), MAP median 32 kPa. Controller behavior is consistent with
+  the staged closed-loop settings, but physical valve response and complete ECU
+  burn/readback remain unverified. Do not increase gains or widen limits from
+  this evidence alone; verify IAC response and other idle-air paths first.
+- **Fan:** User confirms fans physically work. Fan command turns on at log time
+  162.035 s / CLT 120°F, consistent with the user's latest saved threshold.
+  Voltage stays around 14.5 V; no stall at fan engagement. Off hysteresis was not
+  exercised: fan turns off when the engine stops at 136°F.
+- **Oil:** Logged pressure is 14 psi before crank, falls to 0 by 47.430 s, remains
+  0 throughout sustained running, and returns to 14 after shutdown. This does
+  not validate actual oil pressure. Sensor connection, supply/ground, input and
+  calibration/readback need verification and comparison with an independent
+  pressure measurement before further sustained running. Oil protection remains
+  Off; do not enable it against this unverified signal. Asked user whether sensor
+  was connected during this run and whether an independent reading is available.
+- **AFR/status:** Late indicated AFR median 12.6 versus target 14.3, with WUE
+  still active; no fuel correction derived. Aux0 settles around 598 counts,
+  nominally 2.92 V at 5 V/10-bit, still inconsistent with the documented 2 V
+  ready output under that direct-input assumption. Readiness and AFR accuracy
+  remain separate unresolved checks. No throttle opening/AE event is captured.
+
+**CurrentTune.msq remains the newest combined tune**, all constants rechecked
+against the 18:11:45 restore point with no differences. No tune settings changed.
+The older named staged files still contain the old fan threshold; do not load them
+as the current baseline. Next work is measurement/diagnosis, then discussion of
+one controlled idle-air test once actual oil pressure is established.
+
 ## 2026-09-28 18:11:45 — Latest combined file is CurrentTune.msq
 
 **Use `CurrentTune.msq` for the latest saved settings.** TunerStudio subsequently
 saved it at 18:16:50; all constants still match the 18:11:45 restore point.
-A new `DataLogs/2026-09-28_18.17.07.mlg` is present and has not been analyzed.
- The user saved fan-on
+The latest log is now analyzed above. The user saved fan-on
 120.186°F (displayed 120°F); hysteresis remains 7.2°F. All prior crankRPM 300,
 closed-loop IAC and A9 oil-pressure changes are preserved. Compared all constants
 with the named 18:06 staged file: only fanSP differs. Restore point:
 `restorePoints/TurboExo_2026-09-28_18.11.45.msq` (“User Requested Save of Settings”).
 The named `TurboExo_closedloop_oilpressure_2026-09-28_180624.msq` still has 201.186°F
-fan-on and is now superseded. ECU burn/readback and actual fan response remain
-unconfirmed. Do not reload the older named copy over the user's newer fan setting.
+fan-on and is now superseded. Complete ECU burn/readback remains unconfirmed; fan operation is now confirmed
+by the user and the latest log, as detailed above. Do not reload the older named copy over the user's newer fan setting.
 
 ## 2026-09-28 18:06 — Oil-pressure monitoring staged (superseded by 18:11 save)
 
@@ -52,7 +122,8 @@ the feedforward baseline; PWM frequency 500 Hz, Normal direction, crank duty 83%
 fuel and ignition settings are unchanged (stock reds, reqFuel 12.7, Semi-Sequential,
 Wasted COP, running dwell 2.5 ms). Baseline: `TurboExo_pre_closedloop_2026-09-28_142246.msq`.
 
-**Next test:** Open the named staged tune in TunerStudio, burn, power-cycle the ECU
+**Earlier proposed test (superseded by the evening findings above):** Use the latest
+CurrentTune.msq, never the superseded named staged files, and power-cycle the ECU
 (the INI marks duty limits as requiring it), then verify readback. Log a warm idle
 and gentle throttle return. These are provisional controller settings, not a proven
 valve calibration: if duty reaches 65% while idle remains high, do not assume target

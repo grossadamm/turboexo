@@ -26,3 +26,17 @@ At an assumed direct 10-bit/5 V conversion those counts represent 2.76–2.95 V,
 which does not match the manual's nominal 2 V. This mismatch does not itself
 prove the sensor is unready; measurement or firmware behavior needs checking.
 Readiness also does not verify AFR analog calibration.
+
+
+## UA4C hardware documents
+
+- [Official UA4C connection sheet](https://github.com/turboedge/SpeedyBoards/blob/master/UA4C/DOC/Connections.pdf)
+  — local copy `../../tmp/pdfs/UA4C-Connections.pdf`.
+- [Official vC5 White Fang schematic](https://github.com/turboedge/SpeedyBoards/blob/master/UA4C/vC5-WHITE%20FANG/SCHEM/UA4C-vC5.pdf)
+  — local copy `../../tmp/pdfs/UA4C-vC5.pdf`; input conditioning on page 5.
+- [Assembly instructions](https://github.com/turboedge/SpeedyBoards/blob/master/UA4C/DOC/Assembly%20Instructions.pdf)
+  — physical assembly; does not establish JP7/JP8 factory configuration.
+
+See [expected voltage/status readings and jumper configuration](../WIRING.md#expected-spartan-status-connection-and-readings).
+Actual installed board revision/jumper positions remain unverified. Do not apply
+Speeduino v0.4 pinouts to the UA4C.
