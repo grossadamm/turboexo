@@ -1,0 +1,29 @@
+# Keep the screen black behind the artwork and render no status, logo, prompt,
+# spinner, or progress indicator. The car has no encrypted root or interactive
+# early-boot prompt.
+Window.SetBackgroundTopColor(0, 0, 0);
+Window.SetBackgroundBottomColor(0, 0, 0);
+
+# Match `feh --bg-fill`: scale uniformly until the screen is covered, then
+# centre-crop any excess. At the native 1920x1280 mode this is a 1:1 copy.
+source_image = Image("exocet-boot-v10-root.png");
+source_width = source_image.GetWidth();
+source_height = source_image.GetHeight();
+screen_width = Window.GetWidth();
+screen_height = Window.GetHeight();
+splash_image = source_image;
+
+if (screen_width != source_width || screen_height != source_height)
+  {
+    scale = screen_width / source_width;
+    if (source_height * scale < screen_height)
+      scale = screen_height / source_height;
+
+    splash_image = source_image.Scale(source_width * scale, source_height * scale);
+  }
+splash_sprite = Sprite(splash_image);
+splash_sprite.SetPosition(
+  Window.GetX() + (screen_width - splash_image.GetWidth()) / 2,
+  Window.GetY() + (screen_height - splash_image.GetHeight()) / 2,
+  0
+);

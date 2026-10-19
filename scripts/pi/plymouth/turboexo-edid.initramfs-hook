@@ -1,0 +1,23 @@
+#!/bin/sh
+set -e
+
+PREREQ=""
+
+prereqs() {
+    echo "$PREREQ"
+}
+
+case "${1:-}" in
+    prereqs)
+        prereqs
+        exit 0
+        ;;
+esac
+
+. /usr/share/initramfs-tools/hook-functions
+
+source_edid=/lib/firmware/edid/turboexo-1920x1280.bin
+target_dir="${DESTDIR}/lib/firmware/edid"
+
+mkdir -p "$target_dir"
+cp -p "$source_edid" "$target_dir/"

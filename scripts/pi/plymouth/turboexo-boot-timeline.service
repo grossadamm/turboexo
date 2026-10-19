@@ -1,0 +1,11 @@
+[Unit]
+Description=Record TurboExo graphical boot milestones
+After=local-fs.target
+Before=getty@tty1.service
+
+[Service]
+Type=simple
+ExecStart=/usr/local/libexec/turboexo-boot-timeline.sh
+
+[Install]
+WantedBy=multi-user.target

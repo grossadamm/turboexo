@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=TurboExo
+Description=Static EXOCET early-boot splash for the TurboExo dash
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/turboexo
+ScriptFile=/usr/share/plymouth/themes/turboexo/turboexo.script
