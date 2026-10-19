@@ -5,4 +5,8 @@ b8328213423dc50e2d8147a42ec8e7a828d51f4e54366e080e223a3bb7a585db  01 CAD origina
 b9830f5b1f4279aefed2b90e84e7fd8a7503020076f4bcf1ddcd04bb0546d2a2  02 Source archives/td04l-13t flanges.zip
 aabc04feb67aa342814add78820108794b328ee1d269ff4ecec7afd7df47c12d  03 Previews/Miata head flange - source geometry.png
 b32c20392285dfae11d93bcf4612b09ec368cde48cd63fa0b765bd3843ec4251  03 Previews/WRX turbo - three source profiles.png
-84d498a41b8ab09b7bff2c8a64150f4c37a22f282e9eeb20aa4153b57f6e37cc  START HERE.txt
+f007512eaf8422887b9cdbaf38ef517c84a2a0c1eb296d99d99e596c23a4ff83  04 Pipe fittings - STEP/Elbow 90 LR - NPS 1.5 SCH40 - 43425K151.step
+3663b0611867b66e8b1f61a2ab06b63af3cbe43c671a268753f471c99fcd9bf8  04 Pipe fittings - STEP/Elbow 90 SR - NPS 1.5 SCH40 - 43425K157.step
+bad3d8633f1457db679caa75025f50836256e493d7b906a889917db243775ceb  04 Pipe fittings - STEP/Equal tee - NPS 1.5 SCH40 - 43425K154.step
+96d720ab60e0ba03a4d8d36910def11121008ce74ee8e0ee3fffb81c646c9b23  04 Pipe fittings - STEP/READ ME - fitting models.txt
+27af7eb0dcc3e893a2a0835305dcf3cd9611e9928c2850822df2fab972369cf6  START HERE.txt

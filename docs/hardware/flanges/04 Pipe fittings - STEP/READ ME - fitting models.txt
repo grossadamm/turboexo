@@ -1,0 +1,44 @@
+McMaster-Carr original STEP models — downloaded 2026-10-19
+
+Import these STEP files into Onshape to lay out and trim your log manifold.
+All three are 1-1/2 nominal Schedule 40 steel butt-weld fittings.
+These are supplier models, unchanged except for descriptive filenames.
+No model was generated or resized by Codex.
+
+PARTS
+43425K151: long-radius 90-degree elbow, 2.25 in / 57.15 mm center-to-end.
+https://www.mcmaster.com/43425K151/
+
+43425K157: short-radius 90-degree elbow, 1.50 in / 38.10 mm center-to-end.
+https://www.mcmaster.com/43425K157/
+
+43425K154: equal tee, nominal 2.25 in / 57.15 mm center-to-end on run
+and branch; nominal 4.50 in / 114.30 mm overall run length.
+https://www.mcmaster.com/43425K154/
+Tee nominal dimensions reference:
+https://texasflange.com/butt-weld-fittings/tee-straight/
+
+All use nominal OD 1.900 in / 48.26 mm, ID 1.610 in / 40.894 mm,
+and wall 0.145 in / 3.683 mm. McMaster displays a rounded fractional OD
+of 1-29/32 in; the tee STEP cylindrical surfaces explicitly use 0.950 in
+outer radius and 0.805 in inner radius, confirming the decimal diameters.
+
+ONSHAPE MOCKUP
+Import the STEP models as solid parts. STEP files explicitly encode inches;
+let the importer honor file units. Check an end diameter is about 48.26 mm.
+Duplicate the tee and your selected elbow to build elbow-tee-tee-elbow.
+Long and short elbows are alternatives, allowing comparison of packaging.
+Use copies of the originals for cutting/splitting in your working model.
+The tee branches and elbow head ends still require the oval shaping or
+transition discussed for the Miata head flange. These files are unmodified
+round fittings, not a completed manifold or a head-port-fit solution.
+
+Before transferring cut marks to metal, match the actual purchased fitting's
+radius, center-to-end length and end diameter to the model. Different vendor
+blend shapes, tolerances and end bevels may differ. Models are for layout;
+Onshape import has not been independently tested in this session.
+
+VALIDATION
+Each downloaded file has a complete STEP header/footer, an explicit INCH
+length unit, and one MANIFOLD_SOLID_BREP definition. Copies match downloaded
+file SHA-256 values. No CAD-kernel solid-validity test was run.

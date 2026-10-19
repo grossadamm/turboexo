@@ -39,3 +39,8 @@ Turbo: user-provided td04l-13t flanges.zip; author sturovo, post #119:
 https://www.miataturbo.net/diy-turbo-discussion-14/td04-td05-fitted-place-t25-t28-63926/page6/
 Original archives and extracted CAD files have not been edited.
 Onshape import and SendCutSend acceptance have not been tested.
+
+PIPE FITTING MODELS ADDED 2026-10-19
+04 Pipe fittings - STEP contains McMaster original 1-1/2 nominal SCH40
+long-radius elbow, short-radius elbow and equal tee solid models. Start
+with these STEP files for fitting layout; see their READ ME for dimensions.
