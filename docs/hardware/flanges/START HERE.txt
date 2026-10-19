@@ -1,0 +1,41 @@
+TurboExo flange drawings — Onshape source package
+Packaged 2026-10-19
+
+01 CAD originals: Start with the two DWG files for your Onshape workflow.
+The SketchUp file is an additional original source for the turbo profiles.
+02 Source archives: Both downloaded ZIP files, preserved unchanged.
+03 Previews: Rendered views of the original geometry, including mesh lines.
+
+CONTENTS
+01 Miata BP 1.8 head flange.dwg: One head-flange design.
+02 WRX TD04L-13T inlet and outlet flanges.dwg: Three profiles together:
+- Three-bolt turbine inlet (right in preview).
+- Five-bolt outlet, combined turbine/wastegate opening (upper left).
+- Five-bolt outlet, separate round and narrow openings (lower left).
+The two outlet profiles are alternatives, not two required parts.
+
+BEFORE SENDCUTSEND
+These are source drawings, not validated production cut files.
+Separate the chosen profiles and remove mesh/internal lines, center marks,
+dimensions, and duplicate geometry. Export each finished part separately.
+Confirm units, physical dimensions, and fit against the actual head/gaskets
+and turbo housings before ordering. Check wastegate-flapper clearance on the
+chosen outlet design. Select plate thickness separately for the cutting order.
+
+SCALE FINDINGS
+Head DWG: original metadata says inches, but numeric geometry appears to be
+millimeters. Interpreted as mm: approx 347.6 x 83.3 overall, four 48.9 x 30.1
+oblong ports, nine 12.7 diameter holes, and 10 modeled thickness.
+These are drawing measurements, not independently verified fit dimensions.
+Turbo DWG: inspection conversion yielded sub-unit coordinates (inlet opening
+approx 0.0452 coordinate units). Meter-scale geometry is plausible, but original
+unit interpretation has not been verified. Do not import assuming mm without
+checking scale. The inspection conversion omitted metadata; its units are not
+proof of the original DWG unit setting. No converted inspection DXFs included.
+
+PROVENANCE
+Head: user-provided miata1.8 exhaust flange.dwg.zip in iCloud Downloads.
+Turbo: user-provided td04l-13t flanges.zip; author sturovo, post #119:
+https://www.miataturbo.net/diy-turbo-discussion-14/td04-td05-fitted-place-t25-t28-63926/page6/
+Original archives and extracted CAD files have not been edited.
+Onshape import and SendCutSend acceptance have not been tested.

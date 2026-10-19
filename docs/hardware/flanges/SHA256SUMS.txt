@@ -1,0 +1,8 @@
+c32e802b3c0731d0b01cf1a7202e4fbeee4d9d1162d628ab5aab88684a25cd34  01 CAD originals/01 Miata BP 1.8 head flange.dwg
+b8328213423dc50e2d8147a42ec8e7a828d51f4e54366e080e223a3bb7a585db  01 CAD originals/02 WRX TD04L-13T inlet and outlet flanges.dwg
+30c612a95ff8ee16fb80e96c3b8cadc84cff43c56137b141ad7b5211959525cb  01 CAD originals/02 WRX TD04L-13T inlet and outlet flanges.skp
+0337927f1f0514388ae7ba68a4bd2d6a72b35abb5a6896398197f8667d339c9e  02 Source archives/miata1.8 exhaust flange.dwg.zip
+b9830f5b1f4279aefed2b90e84e7fd8a7503020076f4bcf1ddcd04bb0546d2a2  02 Source archives/td04l-13t flanges.zip
+aabc04feb67aa342814add78820108794b328ee1d269ff4ecec7afd7df47c12d  03 Previews/Miata head flange - source geometry.png
+b32c20392285dfae11d93bcf4612b09ec368cde48cd63fa0b765bd3843ec4251  03 Previews/WRX turbo - three source profiles.png
+84d498a41b8ab09b7bff2c8a64150f4c37a22f282e9eeb20aa4153b57f6e37cc  START HERE.txt
