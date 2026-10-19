@@ -1,5 +1,5 @@
 [Unit]
-Description=Raspberry Pi UPS discharge shutdown monitor (simulation only)
+Description=Raspberry Pi UPS discharge shutdown monitor
 Requires=turboexo-key-input.service
 After=local-fs.target turboexo-key-input.service
 

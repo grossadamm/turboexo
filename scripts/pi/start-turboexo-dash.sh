@@ -84,8 +84,8 @@ with open(user_props, "w") as fh:
     fh.write("\n".join(out) + "\n")
 
 # --- re-assert Pi-correct paths inside the project ---
-# macOS leftovers: /dev/cu.usbmodem* or /dev/tty.usbmodem* (Pi is always ttyACM0),
-# and a logFileDir pointing at the Mac's filesystem (logging silently misbehaves).
+# The Pi uses its bonded Bluetooth module, including after a Mac project import.
+# Repair serial/TCP driver selection as well as the Mac's log directory.
 import re
 
 proj_cfg = os.path.join(project, "projectCfg")
@@ -98,7 +98,30 @@ for name in ("project.properties", "project.properties.bkup"):
         continue
     with open(path) as fh:
         text = fh.read()
-    fixed = re.sub(r"/dev/(?:cu|tty)\.usbmodem[0-9]*", "/dev/ttyACM0", text)
+    settings = {
+        "commPort": "/dev/rfcomm0",
+        "baudRate": "115200",
+        "CommSettingMSCommDriver.controllerInterfaceId": "RS232 Serial Interface",
+        r"CommSettingMSCommDriver.RS232\ Serial\ InterfaceCom\ Port": "/dev/rfcomm0",
+        r"CommSettingMSCommDriver.RS232\ Serial\ InterfaceBluetooth\ Port": "true",
+    }
+    for line in text.splitlines():
+        key = line.split("=", 1)[0]
+        if key.endswith(r"RS232\ Serial\ InterfaceCom\ Port"):
+            settings[key] = "/dev/rfcomm0"
+        elif key.endswith(r"RS232\ Serial\ InterfaceBluetooth\ Port"):
+            settings[key] = "true"
+        elif key.endswith("CommDriver.controllerInterfaceId") and "MasterCommDriver" not in key:
+            settings[key] = "RS232 Serial Interface"
+    repaired, seen_settings = [], set()
+    for line in text.splitlines():
+        key = line.split("=", 1)[0]
+        if key in settings:
+            line = key + "=" + settings[key]
+            seen_settings.add(key)
+        repaired.append(line)
+    repaired.extend(key + "=" + value for key, value in settings.items() if key not in seen_settings)
+    fixed = "\n".join(repaired) + "\n"
     fixed = re.sub(r"(?m)^logFileDir=.*$", "logFileDir=" + log_dir, fixed)
     if "logFileDir=" not in fixed:
         fixed = fixed.rstrip("\n") + "\nlogFileDir=" + log_dir + "\n"
@@ -108,10 +131,10 @@ for name in ("project.properties", "project.properties.bkup"):
         sys.stderr.write("start-turboexo-dash: repaired %s\n" % name)
 PY
 
-# --- keep automatic triggered data logging disabled once TSDash is up ---
+# --- restore automatic triggered data logging once TSDash is up ---
 # TSDash 0.9.09.10 does NOT persist the Data Logging trigger config: every launch
-# resets it to its factory defaults. Explicitly save it disabled so logging is
-# manual-only until the trigger race is resolved.
+# resets it to its factory defaults. Restore the guarded RPM/key-on start and
+# delayed key-off stop on every launch.
 (
     for _ in $(seq 1 60); do
         if curl -sf --max-time 3 "http://127.0.0.1:16680/index.html?pageId=DataLogging" \
@@ -122,6 +145,7 @@ PY
             curl -sf --max-time 10 -X POST "http://127.0.0.1:16680/index.html" \
                 --data-urlencode "pageId=DataLogging" \
                 --data-urlencode "action=save" \
+                --data-urlencode "loggingEnabled=loggingEnabled" \
                 --data-urlencode "startMode=Expression" \
                 --data-urlencode "startExpression=rpm > 0 && AppEvent.ignitionOn != 0" \
                 --data-urlencode "selStartSingleChannel=rpm" \
@@ -130,7 +154,7 @@ PY
                 --data-urlencode "stopMode=Expression" \
                 --data-urlencode "stopExpression=AppEvent.dataLogTime > 5 && isTrueFor(AppEvent.ignitionOn == 0, 2)" \
                 --data-urlencode "stopLogFor=600" \
-                -o /dev/null && logger -t turboexo-dash "automatic triggered logging disabled"
+                -o /dev/null && logger -t turboexo-dash "automatic triggered logging enabled"
             exit 0
         fi
         sleep 2

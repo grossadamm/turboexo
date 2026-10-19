@@ -1,0 +1,18 @@
+[Unit]
+Description=TurboExo Bluetooth serial port for TSDash
+Requires=bluetooth.service
+After=bluetooth.service
+Before=getty@tty1.service
+StartLimitIntervalSec=0
+
+[Service]
+Type=oneshot
+ExecStartPre=/usr/sbin/modprobe rfcomm
+ExecStart=/usr/bin/rfcomm bind 0 00:0C:BF:0A:35:72 1
+ExecStop=/usr/bin/rfcomm release 0
+RemainAfterExit=yes
+Restart=on-failure
+RestartSec=3s
+
+[Install]
+WantedBy=multi-user.target
