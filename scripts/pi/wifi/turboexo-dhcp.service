@@ -1,0 +1,15 @@
+[Unit]
+Description=TurboExo AP-only DHCP
+Requires=turboexo-ap0.service
+After=turboexo-ap0.service
+BindsTo=turboexo-ap0.service
+PartOf=turboexo-ap0.service
+
+[Service]
+Type=simple
+ExecStart=/usr/sbin/dnsmasq --keep-in-foreground --conf-file=/etc/turboexo/wifi/dnsmasq.conf
+Restart=on-failure
+RestartSec=2s
+
+[Install]
+WantedBy=multi-user.target

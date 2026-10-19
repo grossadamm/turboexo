@@ -1,0 +1,15 @@
+[Unit]
+Description=TurboExo Wi-Fi access point
+Requires=turboexo-ap0.service
+After=turboexo-ap0.service
+BindsTo=turboexo-ap0.service
+PartOf=turboexo-ap0.service
+
+[Service]
+Type=simple
+ExecStart=/usr/sbin/hostapd /etc/turboexo/wifi/hostapd.conf
+Restart=on-failure
+RestartSec=2s
+
+[Install]
+WantedBy=multi-user.target

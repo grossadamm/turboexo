@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+# Create only the virtual AP interface. wlan0 stays under ifupdown/wpa_supplicant.
+set -euo pipefail
+
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+sta=wlan0
+ap=ap0
+address=192.168.50.1/24
+marker=/run/turboexo-ap0.created
+
+case "${1:-}" in
+    up)
+        if [[ -e "$marker" && -d "/sys/class/net/$ap" ]]; then
+            exit 0
+        fi
+        if [[ -d "/sys/class/net/$ap" ]]; then
+            echo "$ap exists but was not created by this service" >&2
+            exit 1
+        fi
+        [[ -r "/sys/class/net/$sta/address" ]] || {
+            echo "$sta is unavailable" >&2
+            exit 1
+        }
+
+        read -r station_mac < "/sys/class/net/$sta/address"
+        [[ "$station_mac" =~ ^([[:xdigit:]]{2}:){5}[[:xdigit:]]{2}$ ]] || {
+            echo "Invalid $sta MAC address" >&2
+            exit 1
+        }
+        IFS=: read -r -a octets <<< "$station_mac"
+        # Locally administered unicast MAC, distinct from wlan0 and its P2P address.
+        printf -v ap_mac '%02x:%s:%s:%s:%s:%02x' \
+            "$(((16#${octets[0]} | 2) & 254))" \
+            "${octets[1]}" "${octets[2]}" "${octets[3]}" "${octets[4]}" \
+            "$(((16#${octets[5]} + 1) & 255))"
+        for existing in /sys/class/net/*/address; do
+            read -r existing_mac < "$existing"
+            if [[ "$existing_mac" == "$ap_mac" ]]; then
+                echo "Derived $ap MAC $ap_mac is already in use" >&2
+                exit 1
+            fi
+        done
+
+        # Remove a partially created interface if any subsequent step fails.
+        trap 'iw dev "$ap" del 2>/dev/null || true' ERR
+        iw dev "$sta" interface add "$ap" type __ap
+        ip link set dev "$ap" address "$ap_mac"
+        ip address add "$address" dev "$ap"
+        ip link set dev "$ap" up
+        : > "$marker"
+        trap - ERR
+        ;;
+    down)
+        if [[ -e "$marker" ]]; then
+            if [[ -d "/sys/class/net/$ap" ]]; then
+                ip link set dev "$ap" down || true
+                iw dev "$ap" del
+            fi
+            rm -f "$marker"
+        fi
+        ;;
+    *)
+        echo "Usage: $0 {up|down}" >&2
+        exit 2
+        ;;
+esac

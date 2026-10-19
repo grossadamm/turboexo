@@ -1,0 +1,37 @@
+[
+  {
+    "trial": "corrected-trial",
+    "automatic_recovery": true,
+    "restore_readback": "FAIL",
+    "station_after": {
+      "wpa_state": "COMPLETED",
+      "freq": "5200",
+      "ssid": "exterminate",
+      "ip_address": "192.168.1.134"
+    },
+    "samples": 76,
+    "failed_samples": 0,
+    "fresh_ap_start_station_state": null,
+    "recovery_elapsed_s": null
+  },
+  {
+    "trial": "ap-start-trial",
+    "automatic_recovery": true,
+    "restore_readback": "FAIL",
+    "station_after": {
+      "wpa_state": "COMPLETED",
+      "freq": "5200",
+      "ssid": "exterminate",
+      "ip_address": "192.168.1.134"
+    },
+    "samples": 72,
+    "failed_samples": 0,
+    "fresh_ap_start_station_state": {
+      "wpa_state": "SCANNING",
+      "freq": null,
+      "ssid": null,
+      "ip_address": "192.168.1.134"
+    },
+    "recovery_elapsed_s": 26.06
+  }
+]

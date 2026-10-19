@@ -1,0 +1,17 @@
+# Render @COUNTRY_CODE@ from the Pi's actual regulatory domain and
+# @WPA_PASSPHRASE@ from a newly generated secret. Never commit the result.
+interface=ap0
+driver=nl80211
+ssid=TurboExo
+country_code=@COUNTRY_CODE@
+ieee80211d=1
+hw_mode=a
+channel=40
+ieee80211n=1
+wmm_enabled=1
+# No HT40 capability: 20 MHz AP on the station's channel 40.
+auth_algs=1
+wpa=2
+wpa_key_mgmt=WPA-PSK
+rsn_pairwise=CCMP
+wpa_passphrase=@WPA_PASSPHRASE@

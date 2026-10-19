@@ -1,0 +1,16 @@
+[Unit]
+Description=TurboExo virtual Wi-Fi AP interface
+Documentation=man:iw(8)
+Requires=sys-subsystem-net-devices-wlan0.device
+After=sys-subsystem-net-devices-wlan0.device
+Before=turboexo-hostapd.service turboexo-dhcp.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/local/libexec/turboexo-ap0 up
+ExecStop=/usr/local/libexec/turboexo-ap0 down
+TimeoutStartSec=15s
+
+[Install]
+WantedBy=multi-user.target
