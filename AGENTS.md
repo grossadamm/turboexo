@@ -7,6 +7,14 @@ external **TD04L-13T** turbo, running a **Speeduino UA4C (firmware 202501)** on
 **Semi-Sequential injection**. The engine ran fine before the
 build; the build was **rewire + external turbo only** (internals known-good).
 
+**Latest confirmed result (2026-10-10):** user corrected physical ignition wiring
+to **IGN1→1, IGN2→3, IGN3→4, IGN4→2** and confirmed the car now runs.
+Previous physical order is unknown; old notes did not prove the harness matched
+its documented map. Preserve `TurboExo_running_after_ignition_wiring_fix_2026-10-10_131234.msq`
+as the disk-tune milestone captured at this confirmation (checksum/provenance
+alongside; ECU readback not independently verified). Historical July “only run”
+and “last-known-good” statements below are superseded; see STATUS.md.
+
 **Current objective:** idle and running calibration; sustained cold and warm idle
 were logged on 2026-09-28. Start at `STATUS.md` for the live front line; `EXPERIMENT_LOG.md`
 is the full dated decision history (with deliberately-kept refuted hypotheses).
@@ -81,6 +89,17 @@ These traps have repeatedly cost past sessions. Violating them wastes days.
    was resolved — don't guess at ECU internals.
 
 ---
+
+## Bluetooth power/backfeed lesson (2026-10-11)
+
+A light backfed voltage; user disconnected it and confirmed Bluetooth was fixed.
+The module had been dark and the Pi disconnected despite successful USB ECU
+reads. Check supply/backfeed paths before assuming a failed module or tune reset.
+USB response does not prove Bluetooth power. Direct USB readback confirmed
+12.7 ms / Semi-Sequential / Wasted COP; the difference dialog's 6.9 / Paired values
+were not explained, and no full-tune reset/persistence test was performed.
+Exact light/circuit remains unknown. See STATUS.md, docs/WIRING.md and the
+October 11 EXPERIMENT_LOG.md entry for evidence and limits.
 
 ## Analyze a datalog
 

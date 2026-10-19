@@ -1,0 +1,120 @@
+{
+  "veTable": {
+    "load_bins": [
+      16,
+      26,
+      30,
+      36,
+      40,
+      46,
+      50,
+      66,
+      70,
+      90,
+      100,
+      120,
+      140,
+      160,
+      180,
+      200
+    ],
+    "retained_rows_exact": true,
+    "max_sub100_interpolation_delta": 7.625,
+    "worst_at_load": 56.0,
+    "worst_column_index": 15,
+    "old_value": 68.0,
+    "new_interpolated_value": 60.375
+  },
+  "advTable1": {
+    "load_bins": [
+      10,
+      16,
+      20,
+      26,
+      30,
+      36,
+      40,
+      46,
+      74,
+      80,
+      100,
+      120,
+      140,
+      160,
+      180,
+      200
+    ],
+    "retained_rows_exact": true,
+    "max_sub100_interpolation_delta": 1.2857142857142847,
+    "worst_at_load": 50.0,
+    "worst_column_index": 15,
+    "old_value": 35.0,
+    "new_interpolated_value": 36.285714285714285
+  },
+  "afrTable": {
+    "load_bins": [
+      16,
+      26,
+      30,
+      36,
+      40,
+      46,
+      50,
+      60,
+      70,
+      86,
+      100,
+      120,
+      140,
+      160,
+      180,
+      200
+    ],
+    "retained_rows_exact": true,
+    "max_sub100_interpolation_delta": 0.08000000000000007,
+    "worst_at_load": 66.0,
+    "worst_column_index": 6,
+    "old_value": 13.7,
+    "new_interpolated_value": 13.78
+  },
+  "backup": "TurboExo_SUCCESS_hot_idle_autotune_pre_boost_extension_2026-10-18_202332.msq",
+  "output": "TurboExo_boost_table_preparation_PROVISIONAL_2026-10-18_202332.msq",
+  "source_sha256": "609ffa24ccccc9870e394b0bc5ce3758104459dc4ae66b71934c83d492c6a328",
+  "output_sha256": "834eee89e721b26e92e38d3c901ebbf62f305623464ddc3580fe85b5cc89503a",
+  "changed_constants": [
+    "advTable1",
+    "afrTable",
+    "boostEnabled",
+    "boostTableDutyLookup",
+    "boostType",
+    "engineProtectMaxRPM",
+    "fuelLoadBins",
+    "lambdaTable",
+    "loadBinsAFR",
+    "mapBins1",
+    "rpmBinsBoost",
+    "tpsBinsBoost",
+    "veTable"
+  ],
+  "boost_ve_method": "Current100kPa VE times current100kPa AFR target/new target, rounded nearest integer; constant-VE assumption, MAP multiplication unchanged",
+  "boost_afr_targets": {
+    "120": 12.5,
+    "140": 12.0,
+    "160": 11.8,
+    "180": 11.6,
+    "200": 11.5
+  },
+  "not_validated": [
+    "boost VE and ignition",
+    "wideband calibration",
+    "boost solenoid pin/plumbing",
+    "120kPa cut hardware/readback behavior after gate correction"
+  ],
+  "preserved_duplicate_rpm_axes": true,
+  "protection_gate": {
+    "before_rpm": 7000,
+    "after_rpm": 1500,
+    "boost_cut_kpa_absolute": 120,
+    "note": "Protection checks apply above1500RPM;120kPa retained commissioning ceiling, not future boost target. Legacy Boost cut log flag unreliable in inspected firmware."
+  }
+}

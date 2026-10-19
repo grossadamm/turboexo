@@ -1,0 +1,28 @@
+{
+  "captured_at": "2026-10-10T13:12:34.223252-07:00",
+  "source": "CurrentTune.msq",
+  "source_bibliography": {
+    "author": "TunerStudio MS 3.3.01 - EFI Analytics, Inc.",
+    "tuneComment": "",
+    "writeDate": "Sat Oct 10 13:08:16 PDT 2026"
+  },
+  "sha256": "cd9608bb6cd541082a8c18aab91d74b8705e44d41c5f79fe25914224780ad3f4",
+  "bytes": 92577,
+  "user_confirmed_result": "Corrected ignition wiring to IGN1→cylinder 1, IGN2→3, IGN3→4, IGN4→2; car now runs.",
+  "prior_physical_mapping": "Not established",
+  "ecu_readback": "Not independently verified; snapshot preserves current disk tune at time of user-confirmed running.",
+  "constants": {
+    "sparkMode": "\"Wasted COP\"",
+    "TrigPattern": "\"Miata 99-05\"",
+    "TrigAng": "0.0",
+    "CrankAng": "10.0",
+    "IgInv": "\"Going Low\"",
+    "TrigEdge": "\"RISING\"",
+    "TrigEdgeSec": "\"RISING\"",
+    "dwellcrank": "4.0",
+    "dwellrun": "2.5",
+    "crankRPM": "300.0",
+    "injLayout": "\"Semi-Sequential\"",
+    "reqFuel": "12.7"
+  }
+}

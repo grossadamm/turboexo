@@ -1,6 +1,6 @@
 # Current wiring and I/O assignments
 
-Updated 2026-09-28. This is the current signal-assignment reference; old commissioning
+Updated 2026-10-17. This is the current signal-assignment reference; old commissioning
 notes describe earlier hardware. It is not a complete connector-cavity or wire-color
 pinout. Assignments below distinguish documented wiring from staged ECU settings.
 
@@ -8,22 +8,35 @@ pinout. Assignments below distinguish documented wiring from staged ECU settings
 
 | UA4C output | Connection | Evidence |
 |---|---|---|
-| IGN1 | Cylinder 1 COP | User wiring recorded 2026-09-25 |
+| IGN1 | Cylinder 1 COP | Physical wiring corrected; user confirmed running 2026-10-10 |
 | IGN2 | Cylinder 3 COP | Same |
 | IGN3 | Cylinder 4 COP | Same |
 | IGN4 | Cylinder 2 COP | Same |
-| INJ1 | Cylinder 1 injector | Individual harness wiring recorded 2026-09-25 |
-| INJ2 | Cylinder 2 injector | Same |
-| INJ3 | Cylinder 3 injector | Same |
-| INJ4 | Cylinder 4 injector | Same |
+| INJ1 | Cylinder 1 injector | Rewired and individually hardware-tested; user confirmed 2026-10-17 |
+| INJ2 | Cylinder 3 injector | Same |
+| INJ3 | Cylinder 4 injector | Same |
+| INJ4 | Cylinder 2 injector | Same |
 
 Cylinder 1 is at the timing-belt end; firing order is 1-3-4-2.
+**2026-10-10 confirmation:** correcting the COP connections to the map above
+restored running. The prior physical order is unknown; the earlier recorded map
+was not proof of actual harness connections. In Wasted COP, IGN1+IGN3 fire
+cylinders 1+4, and IGN2+IGN4 fire cylinders 3+2.
+
+**2026-10-17 confirmation:** user individually tested both injector and coil
+outputs and confirmed the same 1 -> 1, 2 -> 3, 3 -> 4, 4 -> 2 map for both.
+This supersedes the September injector map. The Semi-Sequential pairing selector
+names ECU outputs: select **1+3 & 2+4**, giving physical cylinders 1+4 / 3+2.
+Wasted COP uses those same output pairs automatically. Output testing verifies
+connections/operation, not actual crank-relative spark timing.
+
 Four Toyota/Denso 673-1300 / 90919-02239 COPs replace the original Miata coil packs
 and plug leads. Current saved ignition mode is **Wasted COP**; earlier Sequential
 mode is historical. Do not substitute stock-coil dwell specifications.
 
 Current injectors are stock 238 cc red Denso units. Saved injection mode is
-**Semi-Sequential**, pairing 1+4 / 2+3. The individual injector wiring is important:
+**Semi-Sequential**, output pairing 1+3 / 2+4 (physical cylinders 1+4 / 3+2).
+The individual injector wiring is important:
 the earlier Paired setting drove only INJ1/INJ2 in this firmware. Logged PW3/PW4=0
 in Semi-Sequential does not mean physical INJ3/INJ4 are inactive. See September 25
 experiment entry and its firmware evidence.
@@ -49,6 +62,13 @@ whole psi. Oil-pressure protection stays **Off** pending verified pressure readi
 The user is handling supply, ground and connector wiring; those details have not
 been documented here. Do not infer pin order or supply voltage from the output range.
 See STATUS.md for the latest staged tune and burn/readback status.
+
+After the October 17 reset, the disk tune briefly assigned native oil pressure to
+A8 and Aux0 to A9. The 13:41 repair restores native oil monitoring to A9 with
+-13/113 psi endpoints, and Aux0 analog status to A8. The explicit load file is
+`TurboExo_oilpressure_fixed_2026-10-17_134104.msq`; burn, full power-cycle and
+readback remain pending. The repair does not independently verify sensor wiring
+or actual pressure.
 
 ## Wideband replacement
 
@@ -126,3 +146,29 @@ Alternator charging is confirmed by the September 28 logs rising from 12.1 V bef
 cranking to 13.8–14.7 V while running, with the user confirming no charger or donor
 vehicle attached. This confirms charging operation, not individual alternator-wire
 routing or maximum-current capability.
+
+## Power/backfeed incident — 2026-10-11
+
+User identified a light backfeeding voltage, disconnected it, and confirmed the
+Bluetooth problem was fixed. Before disconnection, the Bluetooth LED was dark
+and the Pi could not connect, even though USB ECU communication worked and ECU
+battery telemetry reached 12.0 V with the key on. The light's identity, wiring,
+backfeed path and voltage were not supplied; no permanent circuit modification
+has been specified or verified. Preserve this as a known diagnostic lead.
+
+A responding USB interface and normal ECU battery telemetry do not verify the
+Bluetooth module's supply. Check actual power and backfeed paths before blaming
+pairing, firmware or tune loss. Disconnect USB as well as vehicle power when
+checking complete shutdown; account for accessory feeds. Full evidence and its
+limits are in EXPERIMENT_LOG.md, October 11.
+
+
+## Boost hardware identified by seller listings — 2026-10-18
+
+BOV: generic25mm atmospheric VW/Audi1.8T/Bosch-replacement style, advertised25psi.
+Solenoid listing:35A-AAA-DDBA-1BA,12V5.4W3-port. See REFERENCE.md and saved
+screenshots in docs/hardware. These are seller specifications, not authenticated
+part testing. Actual port routing and connection to saved boostPin12 remain
+unverified. BOV small reference hose should sense post-throttle manifold pressure;
+physical hose routing has not been independently inspected. Prepared tune disables
+boost output pending pressure/flow tests;0% command does not prove wastegate position.

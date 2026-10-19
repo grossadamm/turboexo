@@ -440,3 +440,657 @@ Raw `.mlg` files and converted `.csv` files are in `DataLogs/`.
   captured. Compared all CurrentTune constants against18:11:45 restore point:
   no differences. Preserved unrelated work. Updated STATUS, wiring/manual notes
   and this history only, plus generated CSV. Discuss results before tune changes.
+
+## 2026-09-28 evening — IAC unplugged finding; connected stall; fixed-duty test
+
+- **User findings/authorization:** The IAC had been unplugged during the earlier
+  high-idle testing. Reconnection lowered RPM and produced difficulty idling.
+  User confirms19.09.47 ended in a stall and explicitly requests adjusting the
+  connected valve rather than unplugging it. Intake manifold reported not fully
+  seated; throttle-body idle screw tampered. Repair and exact screw identification
+  remain unconfirmed. Earlier high-idle command-floor observations cannot be used
+  as physical IAC response or proof of a valid duty range.
+- **Run evidence:**19.09.47 coherent409.202–446.352 s, TPS0, CLT144–147°F,
+  zero recorded sync losses. Initial439–648rpm at83–85% command; recovery to
+  1151–1339rpm at73–76%; final stall1264→822→428→0 while command rises74→80→84.
+  The65% floor was not reached. Voltage falls after RPM falls in the recorded
+  sequence. About75% AFR/target echo among firing samples, no fuel inference.
+  Oil signal now10–12psi running/0 stopped but independently unverified.
+ 19.09.10 contains only engine-off data; its first out-of-order row is excluded.
+- **Baseline:** CurrentTune19:13:34 save includes the user's newer idleKI=0;
+  only that constant differs from18:11:45 restore. Snapshot saved as
+  `TurboExo_pre_IAC_fixed80_2026-09-28.msq`.
+- **Change:** Created `TurboExo_IAC_fixed80_TEST_2026-09-28.msq` with only
+  iacAlgorithm="PWM Open loop" and all ten iacOLPWMVal entries80%. CurrentTune
+  left untouched. Crank duty83%, taper5s, frequency500Hz, Normal direction,
+  one output, all other constants including I=0 preserved. Open loop uses83%
+  during crank/pre-start and tapers to80% over5s; thereafter commands80%. Closed-
+  loop limits/targets/PID do not operate in this mode. Idle-up/A/C adders off/zero.
+- **Hypothesis:** A constant running command removes closed-loop duty changes
+  from the next observation.80% is above the73–76% pre-stall command, within the
+  recently observed range, and is a test point rather than an established cure.
+  Known manifold sealing and bypass adjustment confound final calibration.
+- **Validation/result/verdict:** Independent read-only firmware review checked
+  `speeduino/idle.cpp`2025.01.7 open-loop branch and local INI. Parsed generated
+  XML and compared every constant: exactly the two intended fields changed.
+  Snapshot is byte-identical to baseline; CurrentTune bytes unchanged. Saved only;
+  burn, power-cycle/readback and connected-valve result remain pending. Hold the
+  mechanical screw setting steady during this comparison. Do not adopt flat80%
+  as the permanent cold/warm idle curve.
+
+## 2026-09-28 19:16 — Apply authorized IAC test to CurrentTune
+
+- **User instruction:** Use CurrentTune.msq and snapshot accordingly.
+- **Snapshot:** `TurboExo_pre_CurrentTune_IAC80_2026-09-28_191637.msq`, verified
+  byte-identical to the latest19:13:34 TunerStudio save before editing. Its only
+  constant difference from18:11:45 restore was the newer idleKI=0, preserved.
+- **Change:** Applied PWM Open loop and all ten iacOLPWMVal entries80% directly
+  to CurrentTune. Exactly those two constants changed; all others preserved.
+- **Validation/result:** Parsed XML, compared every constant, verified snapshot
+  bytes and CurrentTune byte equality with the named diagnostic. Saved only;
+  ECU burn/readback and fixed-duty test result pending. Earlier separate-file
+  loading recommendation superseded by CurrentTune as requested.
+
+## 2026-09-28 19:19 — Fixed80 idle test still stalls
+
+- **Result:** User reports engine died.19.17.57.mlg converted to CSV. CurrentTune
+  now saved by TunerStudio19:17:56, every constant matches the staged80% test.
+  Log commands83→80 during startup and holds80 from45.316–97.673 s while firing.
+  This supports application of idle settings but is not full ECU readback.
+- **Evidence:** TPS0 throughout. During50–95 s RPM median1244/range1014–1402,
+  MAP median34kPa, battery median14.5V. End1364rpm at96.300 s,966 at96.791,
+  699 at96.878,54 at97.743,0 at98.187. IAC stays80 through collapse, returns83
+  only on cranking state. Voltage still14.5/14.4V as RPM initially collapses.
+  No logged sync losses, errors, DFCO, hard-limiter, launch or boost-cut flags.
+  Fan engaged41.051 s, well before stall. Coolant136–149°F, not fully warm.
+- **Limits:** Initial placeholder/out-of-order row and nine duplicate timestamps;
+  repeated699rpm/MAP36 samples restrict exact collapse timing. AFR rises from
+  roughly12 to19.7 after RPM starts dropping; cannot distinguish fuel delivery
+  loss versus misfire from this. PW commands persist, not proof of delivered
+  fuel. Oil12–13psi running/0 stopped remains independently unverified.
+- **Verdict/next discriminator:** Fixed duty did not cure the stall; commanded
+  valve closing or PID action cannot explain this event. Physical valve behavior,
+  fuel/spark delivery, known manifold sealing and tampered screw remain possible
+  contributors. Asked whether screw/connector manipulation preceded the stall.
+  No additional tune changes; CurrentTune remains fixed80 diagnostic.
+
+## 2026-09-28 19:22 — Unplugged IAC comparison,19.20.07
+
+- **User configuration:** IACV unplugged for latest log. Saved tune remains80%
+  PWM Open loop; logged duty is only ECU command with connector removed.
+- **Evidence:** Converted19.20.07.mlg. Excluded two time0 placeholder rows;
+  coherent164.556–298.509 s. RPM>400 for128.676s and engine still running at end:
+  1434rpm, MAP33kPa,14.5V, coolant178°F. TPS0 throughout. Late250–298.509s
+  median1423rpm/range1286–1522, MAP median33kPa, battery14.5V; WUE100–101%.
+  No recorded sync losses, hard-limiter or DFCO activation. No stall captured.
+- **Comparison/verdict:** Connected80 test stopped after roughly58s; unplugged
+  test continues for at least129s. Connected IAC valve/drive/airflow behavior is
+  therefore more suspect, but duty direction, rest position and fault mechanism
+  remain unproven. Different starting temperatures and known manifold/screw
+  issues prevent treating these as perfectly controlled tests. Fixed80 analysis
+  excluded commanded closure, not a physical IAC or driver fault. No tune edits.
+
+## 2026-09-28 21:26 — Raise connected-IAC test duty80→85%
+
+- **User direction/hypothesis:** Proceed with higher duty to test additional
+  idle air. Previous80% steady command did not prevent a stall; stable RPM before
+  that stall does not prove adequate airflow in every condition.
+- **Snapshot:** `TurboExo_pre_IAC85_2026-09-28_212632.msq`, byte-identical to
+  CurrentTune before editing. Latest saved source still19:17:56 TunerStudio save;
+  compared against latest18:11:45 restore and preserved newer settings.
+- **Change:** CurrentTune all ten iacOLPWMVal entries80→85%, single constant
+  changed. PWM Open loop,500Hz,Normal,one output,crank83%,taper5s preserved.
+  Crank-to-run now tapers83→85; fuel/ignition and all other constants preserved.
+- **Validation/result:** XML parsed, every constant compared, backup verified.
+  Saved on disk; burn/readback and connected85% test result pending.
+
+## 2026-09-28 21:29 — Restore exact reference IAC running curve as requested
+
+- **User instruction:** Use the researched reference89/75 curve first. The prior
+  flat85% proposal did not match that request and is superseded.
+- **Source:** Fresh raw GitHub fetch of Speeduino/Tunes main,
+  Mazda/Miata_PNP99-00_SpeedyEFI.msq (UA4C99–00 base tune).
+- **Snapshot/change:** Saved `TurboExo_pre_reference_IAC_2026-09-28_212925.msq`;
+  changed CurrentTune iacOLPWMVal only to90,90,89,89,89,89,89,75,75,75.
+  Temperature bins already matched reference exactly. Open-loop500Hz,Normal,
+  one output,83% crank already matched. Retained current5s taper (reference6.2s)
+  and every other constant; only the requested running curve transplanted.
+- **Validation/result:** XML parse, exact reference curve/bin comparison, full
+  constant diff, backup byte equality and final write verification passed.
+  Saved only, ECU burn/readback and connected-valve outcome pending.
+
+## 2026-10-04 — Pi logging and automatic shutdown reenabled
+
+User requested logging now and restoration of both automations. Live TSDash at
+192.168.1.134:16680 now confirms Automatic Triggered Logging enabled, with start
+`rpm > 0 && AppEvent.ignitionOn != 0` and stop
+`AppEvent.dataLogTime > 5 && isTrueFor(AppEvent.ignitionOn == 0, 2)`.
+Updated both repository and deployed start-turboexo-dash.sh to restore enabled
+logging after each launch; shell syntax validated. Remote original backed up as
+start-turboexo-dash.sh.before-reenable-20261004. No dash restart performed.
+
+Started logging using a temporary always-true start expression, then restored the
+above normal trigger. Pi file `2026-10-04_08.29.14.mlg` is open by TSDash, but size
+remained 6943 bytes across checks: live telemetry capture is not yet verified.
+Key input currently reads 0. Do not treat the open file alone as captured run data.
+
+Restored `--poweroff` on pi-ups-monitor.service locally and on Pi, preserving
+-0.20 A threshold and 240 s delay. Service enabled/active and journal confirms
+poweroff=True; prior unit backed up as pi-ups-monitor.service.before-reenable-20261004.
+At 08:27:31 PDT monitor reported discharge (-0.558 A, 12.364 V), so shutdown is
+due around 08:31:31 if external power does not return. No poweroff test performed.
+No tune edits or ECU burn performed in this operation.
+
+
+## 2026-10-04 — Restore VE map to today's 10:31 AM snapshot
+
+User requested undoing the identified map changes. Snapshotted latest CurrentTune
+as `TurboExo_pre_VE_rollback_2026-10-04_171421.msq`, then restored only `veTable` from
+`restorePoints/TurboExo_2026-10-04_10.31.19.msq`: 18 increased cells reverted.
+All other 806 constants preserved, including flood-clear TPS 80% and fan setpoint
+190.386°F. XML parsing, complete constant comparison, exact reference VE match,
+and snapshot/write byte verification passed. No running result yet.
+Saved on disk only; reload CurrentTune in TunerStudio before burn/readback.
+ECU application is unverified; this rollback does not establish a stall cause.
+
+
+## 2026-10-04 — VE rollback restored after TunerStudio overwrite
+
+At 17:16:30 TunerStudio saved the increased VE table back into CurrentTune.
+The 17:15:20 reload logged zero bytes updated; subsequent burn was skipped because
+no writes had occurred. Rollback was not applied by that sequence.
+Restored the same 18 VE cells again, preserving every other constant, and created
+`TurboExo_VE_rollback_2026-10-04_171644.msq` for explicit loading without relying on CurrentTune surviving autosave.
+Backup: `TurboExo_pre_VE_rollback_retry_2026-10-04_171644.msq`. XML and full constant diff passed; only veTable changed.
+Verified CurrentTune and named rollback are identical and match the 10:31 VE table.
+ECU burn/readback remains pending. Load the named rollback file in TunerStudio.
+
+## 2026-10-10 — Reapply requested 18-cell VE rollback
+
+User requested reverting the increased VE cells found during the base-map review.
+Fresh CurrentTune matched the October 4 17:28:10 restore, with all 18 increases
+present again. Restored only veTable from
+`TurboExo_VE_rollback_2026-10-04_171644.msq`; RPM/load axes already matched.
+All other 806 constants preserved, including Whole PW battery compensation.
+Backup: `TurboExo_pre_VE_rollback_2026-10-10_112328.msq`.
+Explicit load file: `TurboExo_VE_rollback_2026-10-10_112328.msq` (identical to CurrentTune at verification).
+XML parsing, full constant comparison, exact reference VE match, and byte
+verification passed. Saved on disk only; load the named file in TunerStudio,
+burn and verify readback. ECU application and running result remain unverified.
+The reverted cells are at 900–2100 RPM; they do not explain the latest log's
+failure to exceed 410 RPM. No battery-compensation change was requested or made.
+
+## 2026-10-10 11:40 — Sustained run; cylinder 4 temperature deficit reported
+
+Reviewed newest local `DataLogs/2026-10-10_11.40.53.mlg` and generated its CSV.
+Pi SSH connection timed out; no new remote file was retrieved. Discard first
+time-zero placeholder (battery0, CLT-40); coherent log27.743–57.210s (29.467s).
+Engine runs throughout and ends1453rpm, TPS7%, MAP63kPa, battery14.4V, CLT109°F.
+Initial27.743–34s median1080rpm, MAP65kPa, TPS4%, battery14.5V. Later throttle
+events reach2958rpm and112kPa against98kPa baro. No captured shutdown.
+Logged PW1=PW2 in all441 coherent rows; PW3/PW4 zero does not establish dead
+physical injectors in Semi-Sequential mode. AFR differs from target but cannot
+resolve fueling versus misfire; no global fueling change derived.
+
+User reports cylinder4 approximately200 degrees cooler and cylinder2 somewhat
+cooler but harder to assess. Units, measurement location and matched readings
+remain unconfirmed. This is evidence to investigate cylinder contribution, not
+proof either cylinder never fires. Documented cyl4 usesIGN3/INJ4; cyl2 usesIGN4/INJ2.
+Firmware202501.7 init.cpp confirms Wasted COP schedules physical IGN1+3 and2+4,
+and Semi-Sequential schedules INJ1+4 and2+3. All four physical outputs are included
+by these modes; suspect cylinders are in different pairs. Check cylinder4 coil,
+plug and actual ignition output first, then injector delivery/compression as needed.
+
+Latest CurrentTune matches the requested restored VE table. Compared with the
+11:23 rollback, only battVCorMode now Open Time only and boostType now Open Loop
+differ. These are observed TunerStudio saves, not changes made in this analysis;
+ECU readback remains unverified. No tune edits performed.
+
+
+## 2026-10-10 — Pi tuning hotspot enabled alongside home Wi-Fi
+
+Implemented `TurboExo` AP (`ap0`, 192.168.50.1/24) beside home `wlan0`.
+Both share channel40; station scanning/selection is restricted to5200MHz with
+30s automatic retries. Dash Echo already worked and remains on21848; web16680.
+Three dedicated hotspot services are active/enabled. Generated credential stays
+in root-readable /etc/turboexo/wifi/hostapd.conf, not Git. No NAT/default gateway.
+Mac was returned to home Wi-Fi for Internet; join TurboExo to use192.168.50.1:21848.
+
+First trial's apparent reconnect failure was a test bug: SET_NETWORK bssid with
+all-zero MAC pins that address. Corrected restore uses any and verifies GET returns
+its original unset state. Corrected loss/return:76/76 hotspot checks passed, home
+reconnected automatically in about26s. Fresh AP start while home unavailable:
+72/72 checks passed, home reconnected automatically in26.06s. TunerStudio connected
+through the hotspot; the later offline event followed deliberate AP shutdown for
+Mac return. Full cold boot away and sustained driving/sleep remain untested.
+
+Sources/config, validation and rollback are in scripts/pi/wifi/ and
+ docs/PI_WIFI_HOTSPOT_PLAN.md. Live rollback:
+/var/backups/turboexo-wifi/20261010T190927Z/rollback.sh. No rollback/test timers remain.
+No ECU tune, TSDash, logging, or UPS configuration changes were made by this work.
+
+## 2026-10-10 — Ignition wiring corrected; car runs (user confirmed)
+
+User confirmed that correcting the physical COP connections to **IGN1 → cylinder 1,
+IGN2 → cylinder 3, IGN3 → cylinder 4, IGN4 → cylinder 2** restored running.
+Cylinder 1 is at the timing-belt end. In saved Wasted COP mode, IGN1+IGN3 fire
+cylinders 1+4 together; IGN2+IGN4 fire cylinders 3+2 together.
+The previous physical connection order was not established. Earlier documentation
+of the intended map did not prove that the harness actually matched it.
+This supersedes the unresolved wiring/phase discussion and any claim that earlier
+catches proved the physical output map. Voltage was a diagnostic lead, not an
+established cause of this failure. User-reported running does not itself establish
+measured base timing or a new road test.
+
+**Preserved tune:** [TurboExo_running_after_ignition_wiring_fix_2026-10-10_131234.msq](TurboExo_running_after_ignition_wiring_fix_2026-10-10_131234.msq), copied byte-for-byte
+from CurrentTune.msq at 13:12:34 PDT (TunerStudio save: 13:08:16 PDT).
+SHA-256 and provenance are in the adjacent `.sha256` and `.json` files.
+Snapshot XML and exact bytes were verified. Saved values: Wasted COP; Miata 99–05;
+trigger angle 0°; cranking advance 10°; Going Low; rising primary/secondary edges;
+crank/run dwell 4.0/2.5 ms; crankRPM 300; Semi-Sequential; reqFuel 12.7 ms.
+Compared with today's 11:36:32 restore point, only veTable differs among constants;
+the newer table was preserved, not replaced. No tune settings were changed here.
+This is the current disk tune preserved at the time of confirmed running, not an
+independently verified ECU readback. Keep this milestone separate from historical
+July “last-known-good” files; do not overwrite it with an older tune.
+
+
+
+## 2026-10-10 13:54 — Bluetooth ECU link through Pi and Dash Echo
+
+- User authorized testing Pi Bluetooth, then using it as TSDash's ECU connection.
+- Pi paired with Speeduino08203; native RFCOMM channel 1 returned F=`002` and
+  Q=`speeduino 202501`. ECU USB was unplugged. This verifies a working module/UART
+  path in this test, unlike earlier Mac direct-Bluetooth zero-byte results.
+- Saved Pi project.properties.before-bluetooth-20261010 before changing TSDash
+  to /dev/rfcomm0, 115200, Bluetooth Port=true. Enabled the repository-mirrored
+  turboexo-bluetooth-serial.service; service startup and dashboard reconnection
+  passed. No ECU calibration writes performed.
+- Continuous Bluetooth telemetry observed. Mac on home Wi-Fi connected through
+  192.168.1.134:21848 at 13:53:25 (Connected with Controller); page reads and
+  matching checksums at 13:53:36. Pi TCP socket corroborates the client connection.
+  Automatic logging remains enabled after restart. Raw ad hoc TCP F/Q probes
+  timed out; actual TunerStudio Dash Echo connection subsequently succeeded.
+- Keep Mac on home Wi-Fi during agent work; TurboExo hotspot lacks Internet.
+  Hotspot endpoint remains 192.168.50.1:21848. Cold boot, sustained driving,
+  connection recovery after ECU power cycling and actual tuning writes are not
+  tested. Rollback details are in STATUS.md. USB and Mac Bluetooth root causes
+  remain open; the new route bypasses them.
+
+## 2026-10-10 — Cranking fuel reduction for throttle-assisted starting
+
+User confirms IACV is unplugged and a little throttle is needed to catch, but
+can release it immediately and engine idles. Excess cranking fuel is a hypothesis,
+not a confirmed diagnosis. User requests the discussed 10% cranking-enrichment
+reduction. Firmware INI stores this curve in 5-percentage-point steps; nearest
+representable values (ties rounded up): 225/195/175/125 → 205/175/160/115%,
+at unchanged −38.214/33.786/89.586/181.386°F bins. Actual reductions are
+8.9/10.3/8.6/8.0%; exact 10% is not representable.
+
+Changed only crankingEnrichValues in CurrentTune.msq. Preserved newer current
+constants after comparison with newest restore point. Backup: `TurboExo_pre_crankfuel_reduction_2026-10-10_135514.msq`.
+Explicit load file: `TurboExo_crankfuel_reduction_2026-10-10_135514.msq`. Running ignition-fix milestone preserved.
+XML parsing, full constant comparison, backup and output byte checks passed.
+Saved on disk only; load in TunerStudio, burn, and verify readback. No ECU write
+or start test performed. Compare starts at similar coolant temperature; result pending.
+
+
+## 2026-10-10 13:58 — Boot fix and recovery tested; Mac TunerStudio errors
+
+First controlled Pi reboot: hotspot/AP/DHCP started, but Bluetooth bind failed
+with "Protocol not supported" because rfcomm had only been loaded manually.
+Fixed deployed turboexo-bluetooth-serial.service with ExecStartPre modprobe rfcomm,
+3-second failure retries, and no start-rate limit. Pi launch wrapper now restores
+/dev/rfcomm0, 115200 and Bluetooth Port=true even after Mac project imports.
+Fixture import/idempotence and shell syntax checks passed; independent review
+found no substantive blocker. Both deployed files mirror scripts/pi sources.
+
+Second controlled reboot (boot dcbbc00a-36f0-47ae-a9ae-f8652223086b): all four
+hotspot/Bluetooth units active; AP-ENABLED and DHCP on ap0; Bluetooth connected
+and TSDash resumed telemetry automatically. User confirmed SSID visible after
+first reboot. Deliberate Bluetooth disconnect recovered connected/tty-attached
+in about 14 seconds monotonic elapsed; fresh ECU telemetry then confirmed.
+Automatic logging remains enabled. No calibration changes by this work.
+
+Mac TunerStudio reconnected through home Wi-Fi/Dash Echo, but its log then showed
+StackOverflowError in AWT, clock and XCP threads at about 13:57:44 onward.
+Pi continued transmitting telemetry. Mac application restart and live-gauge
+verification needed before calling the complete AutoTune session ready.
+Full power-off boot away from home, long driving stability and tuning writes
+remain untested. Keep ECU USB disconnected for this Bluetooth configuration.
+Rollback now also requires restoring the Pi launcher from
+/home/dietpi/TSDash/start-turboexo-dash.sh.before-bt-boot-20261010 before restoring
+USB project settings; otherwise the launcher will reassert Bluetooth.
+
+
+## 2026-10-10 — Revert cranking fuel reduction
+
+User requested reverting the preceding cranking-enrichment reduction. Restored
+crankingEnrichValues to 225/195/175/125% from the pre-reduction backup, preserving
+all other current constants. Prior values: 225.0 195.0 175.0 125.0.
+Backup: `TurboExo_pre_crankfuel_revert_2026-10-10_140616.msq`. Explicit load file: `TurboExo_crankfuel_reverted_2026-10-10_140616.msq`;
+CurrentTune.msq matches. XML, full constant comparison and byte verification
+passed. Saved on disk only; ECU burn/readback and start result unverified.
+This supersedes the preceding reduction; no reason or test result was supplied.
+
+## 2026-10-10 — Warm-start cranking-fuel test; cold curve preserved
+
+User confirms earlier successful start was cold; latest 14.16.04 log at136°F
+shows catches/rotation but no sustained run. IAC remains unplugged. User authorizes
+a targeted warm cranking-fuel reduction. Rich warm starting remains a hypothesis.
+Changed only final crankingEnrichValues entry125→95%; first three remain
+225/195/175%, with all bins unchanged (−38.214/33.786/89.586/181.386°F).
+Four-point interpolation gives approximately150→135% at136°F (~10% less);
+the curve at/below89.586°F is unchanged. Reduction grows toward the hot endpoint:
+181.386°F and above now95% versus125% (24% lower), an unvalidated hot-start
+setting. This scope was disclosed before editing. Priming, WUE, ASE, taper,
+running VE and ignition unchanged.
+
+Backup: `TurboExo_pre_warm_crankfuel_2026-10-10_142252.msq`. CurrentTune.msq and explicit test load file
+`TurboExo_warm_crankfuel_TEST_2026-10-10_142252.msq` match. Compared current constants with newest restore and preserved
+all unrelated settings. XML parsing, complete constant comparison and byte checks
+passed. Saved on disk only; open test tune in TunerStudio, burn and verify readback.
+No ECU write or start test performed; compare near136°F. Running milestone preserved.
+
+## 2026-10-10 — Undo warm-start cranking-fuel test
+
+User requested undoing our changes after the14.23.31 warm-start log did not
+show a sustained start. Restored crankingEnrichValues from
+TurboExo_pre_warm_crankfuel_2026-10-10_142252.msq: 225.0 195.0 175.0 95.0
+→225/195/175/125%. Earlier whole-curve reduction was already reverted.
+Preserved all other current constants, including temperature bins.
+Backup: `TurboExo_pre_undo_warm_crankfuel_2026-10-10_142735.msq`. Explicit load file: `TurboExo_warm_crankfuel_reverted_2026-10-10_142735.msq`;
+CurrentTune.msq matches. XML, complete constant comparison and exact byte checks
+passed. Saved on disk only; load in TunerStudio, burn and verify readback.
+No ECU write or new start test performed. Supersedes warm-start reduction.
+
+## 2026-10-11 — Dark Bluetooth module; light backfeed found and disconnected
+
+- **Trigger:** User asked whether settings reset after a TunerStudio difference
+  dialog showed local 12.7 ms / Semi-Sequential versus controller-side 6.9 ms /
+  Paired. Bluetooth had worked the previous day, including a recovery test.
+- **Read-only evidence:** Pi saved tune retained 12.7 ms, Semi-Sequential and
+  Wasted COP. Pi Bluetooth adapter was powered and pairing persisted, but the
+  ECU link was disconnected; TSDash repeatedly timed out on F/Q identification.
+  User observed a dark Bluetooth module LED. USB initially did not enumerate,
+  then appeared as /dev/cu.usbmodem101. Direct queries returned F=002,
+  Q=speeduino 202501 and S=Speeduino 2025.01.7. Reads using the project INI's
+  page/telemetry definitions confirmed ECU reqFuel 12.7, injLayout 1
+  (Semi-Sequential), sparkMode 2 (Wasted COP), RPM 0 and zero reported error
+  flag/error byte. Battery reading was 3.4 V before key-on and 12.0 V after
+  user-confirmed key-on; Bluetooth remained disconnected at that check.
+- **Action/result:** User identified voltage backfeeding from a light and
+  disconnected the light. Bluetooth improved; user then confirmed “all fixed.”
+  No tune, firmware, or Pi configuration changes were made by this investigation.
+- **Verdict and limits:** User-confirmed backfeed contributor and recovery.
+  No independent post-fix telemetry verification, module supply measurement or
+  documented exact light/circuit. Do not invent a diode fix or conclude module
+  failure. USB response and ECU battery reading do not prove Bluetooth supply
+  health. Zero telemetry errors do not constitute a complete hardware self-test.
+  The three directly read settings showed no reset; the full tune and persistence
+  across power cycles were not tested. The dialog's older values remain unexplained;
+  stale/proxy data was a hypothesis, not a verified cause.
+- **Learning:** Check actual ECU connectivity and power state before diagnosing
+  tune loss. For a dark module, investigate supply/backfeeding and physical
+  connections before replacing it or changing software. USB can be used for
+  read-only diagnosis while Bluetooth remains the intended connection. For a
+  complete power-off check, account for USB and accessory backfeed paths.
+
+## 2026-10-17 — Verified output map, reset review and oil-pressure repair
+
+- **User evidence:** individually hardware-tested injector AND ignition outputs
+  1 -> cylinder 1, 2 -> 3, 3 -> 4, 4 -> 2. IAC remains physically unplugged.
+  Starting fluid produced stumbling and an intake pop; this prioritizes measured
+  cranking timing but does not establish the cause. No timing-light result supplied.
+- **Reset review:** the 13:37:57 saved tune has 114 constant differences, including
+  six added constants, versus the October 10 confirmed-running disk milestone.
+  Core ignition and pairing match the verified wiring; cranking advance is 10.
+  Fuel/startup tables changed substantially, including a flat 125% cranking curve.
+  TPS endpoints are 27/185 and all seven ADC filters are zero. Fuel, ignition and
+  AFR load axes now stop at 100 kPa. Closed-loop boost has zero targets and
+  degenerate bins; it is not a calibrated boost setup. Firmware disables boost
+  control for zero targets, so this does not establish an 85% solenoid command.
+  The latest local 12.04.50 log predates the broad reset saves. Disk reset settings
+  are not independently verified ECU readback or evidence of the reset's behavior.
+- **Oil change requested and performed on disk:** oilPressurePin A8 -> A9;
+  oilPressureMin -8 -> -13 psi; oilPressureMax 117 -> 113 psi; Auxin0pina A9 -> A8;
+  PC alias AUXin00Alias OilPressure -> Aux0. This restores INP2/A9 native oil
+  monitoring and INP1/A8 Spartan status. Monitoring stays On, protection Off.
+  The user-specified 0.5/2.5/4.5 V transfer gives nominal 0/50/100.4 psi after
+  clamping with the rounded endpoints, before ADC/filter/integer effects.
+- **Preservation:** exact pre-edit backup
+  `TurboExo_pre_oilpressure_fix_2026-10-17_134104.msq`; explicit corrected file
+  `TurboExo_oilpressure_fixed_2026-10-17_134104.msq`. CurrentTune.msq matches.
+  Source SHA-256: `7f0a32fafd32862130e4e69eb92d796b396c5040f8c34a8f9b7d24f367a99903`.
+  Corrected SHA-256: `df06b0504af606b83f5b97ef9c1c85b15e7805037ec85a49b67c510f4f22b951`.
+- **Validation/result:** XML parses; exact comparison confirms only the four ECU
+  constants and one PC alias changed, with all other values and attributes
+  preserved. Backup and corrected-file byte checks passed. No ECU write or new
+  physical pressure check. Load the explicit corrected file, burn, fully remove
+  ECU power including USB, then verify readback; oil pin changes require a power
+  cycle per the firmware definition. Other reset findings remain unmodified.
+
+## 2026-10-17 — Recover filters, TPS endpoints and crank-to-run fuel taper
+
+User identified these reset differences for recovery and confirmed TPS27/185
+came with the reset, not a new measurement. Restored from October10 reverted
+baseline: TPS28/127; crankingEnrichTaper0.1→5.0s; filters TPS50,CLT180,IAT180,
+O2 128,battery128,MAP20,baro64 (all previously zero). TPS physical closed/full
+travel still needs checking; recovered values are historical calibration.
+Preserved verified new injector/ignition wiring settings, oil/status inputs,
+all maps, enrichment curves and PW Adder. Two independent map reviews pending.
+This is recovery of selected baseline settings, not proof of a no-start cause.
+
+Backup: `TurboExo_pre_filters_TPS_taper_recovery_2026-10-17_140406.msq`. Explicit load: `TurboExo_filters_TPS_taper_recovered_2026-10-17_140406.msq`; CurrentTune matches.
+XML parsing, complete constants comparison (only10 expected changes), and
+backup/output byte verification passed. Disk only: load/burn/readback pending;
+no ECU write or new start test performed.
+
+Map-review follow-up: independent fuel/AFR and ignition comparisons used matching
+physical RPM/kPa coordinates. Atmospheric cranking region (250–600rpm,80–100kPa)
+is nearly unchanged (VE delta0..+1.09 points; spark delta−1.375..0deg).
+A specific low-speed VE difference exists at500rpm/66kPa:78.4→47 (−40%);
+at600/66:64.6→48.5 (−25%). This is a possible catch-transition issue, not a
+confirmed cause. Current VE/AFR/axes exactly match April3 legacy restore.
+Both current load domains stop at100kPa; baseline extended to200kPa. Ignition
+above100kPa uses the endpoint row, losing prior boost retard. No maps changed.
+Firmware inspection also found current decelAmount0 versus prior100 causes
+fuel cut during qualifying TPS deceleration events; left unchanged. PW Adder
+uses a percentage of internal required fuel; prior Multiplier scaled calculated
+fuel. User has not selected a change to those remaining settings.
+
+## 2026-10-17 — Restore deceleration fuel amount to100%
+
+User explicitly requested decelAmount100%. Previous saved value:0.0%.
+Changed only decelAmount to100%, retaining normal fuel during qualifying TPS
+deceleration events instead of a zero-percent fuel cut. No maps, wiring,
+acceleration-enrichment method or other settings changed.
+Backup: `TurboExo_pre_decel100_2026-10-17_140649.msq`. Explicit load file: `TurboExo_decel100_2026-10-17_140649.msq`;
+CurrentTune.msq matches. XML, complete constants comparison and exact backup/output
+byte verification passed. Disk only; load/burn/readback pending. No ECU write
+or new start test performed; effect on the starting problem remains untested.
+
+## 2026-10-17 — Scheduled 5° cranking timing test
+
+User requested only CrankAng 10→5° and ignCranklock On→Off to test later
+cranking spark after reported kickback. Preserved all other latest saved constants,
+including newer changes relative to the 13:45 restore point.
+Backup: `TurboExo_pre_crank_timing5_unlocked_2026-10-17_142233.msq`. Explicit load file: `TurboExo_crank_timing5_unlocked_2026-10-17_142233.msq`.
+XML and full constant comparison passed; only those two constants changed.
+Disk-only edit; ECU burn/readback and start result remain unverified.
+
+## 2026-10-17 — Revert scheduled cranking timing test
+
+User requested reverting the timing test after the 14:26 log showed no start.
+Restored only CrankAng to 10° and ignCranklock to On from the pre-test backup.
+All other current constants preserved. Backup: `TurboExo_pre_revert_crank_timing_2026-10-17_142902.msq`.
+Explicit load file: `TurboExo_crank_timing_reverted_2026-10-17_142902.msq`. XML, full constant comparison and byte
+verification passed. Disk only; ECU burn/readback pending. Supersedes the 5°
+unlocked test.
+
+## 2026-10-17 — Sequential ignition comparison requested
+
+User explicitly wants to try sequential ignition and suspects its cam-phase
+assignment may land on the wrong stroke. Saved current Wasted COP baseline,
+then changed only sparkMode Wasted COP→Sequential in CurrentTune.msq and
+explicit test file. Injection remains Semi-Sequential, output pairs1+3/2+4.
+Preserved current individually tested coil order IGN1→cyl1,2→3,3→4,4→2;
+trigger angle0, crank lockOn, cranking advance10deg, dwell4.0/2.5ms and all fuel.
+Experiment compares ignition scheduling modes; no-start alone would not prove
+360-degree phase error. No phase offset or physical wiring change performed.
+
+Rollback: `TurboExo_pre_sequential_ignition_TEST_2026-10-17_144208.msq`. Test load: `TurboExo_sequential_ignition_TEST_2026-10-17_144208.msq`.
+XML parsing, complete constants comparison (only sparkMode), backup and output
+byte checks passed. Disk only. INI requires power cycle for sparkMode: load and
+burn, fully remove ECU power including USB/backfeed, then reconnect and verify
+Sequential before one short logged crank. No ECU write or test result yet.
+
+## 2026-10-17 — Full sequential ignition AND injection test
+
+User clarified that intended test includes both injector and ignition wiring,
+then explicitly directed completing it. Supersedes ignition-only staged test.
+Current sparkMode already Sequential; changed only injLayout Semi-Sequential
+→Sequential. Both modes now Sequential. Preserved reqFuel12.6ms, divider2,
+injAng355deg, all fuel/ignition tables, trigger settings and all other constants.
+Confirmed physical output order for BOTH systems remains1→cyl1,2→3,3→4,4→2.
+No phase offset changes.
+Backup of immediate ignition-only state: `TurboExo_pre_full_sequential_TEST_2026-10-17_144437.msq`.
+Full test load: `TurboExo_full_sequential_TEST_2026-10-17_144437.msq`; CurrentTune matches. Original pre-test
+Wasted COP/Semi-Sequential rollback remains
+`TurboExo_pre_sequential_ignition_TEST_2026-10-17_144208.msq`.
+XML parsing, full constants comparison and byte verification passed. Saved only;
+load/burn/full ECU power cycle (including USB/backfeed) required for both modes.
+No ECU write or starting result verified.
+
+## 2026-10-17 — Full sequential opposite-phase diagnostic (+360°)
+
+User requested online research and starting from the hypothesis that full
+sequential phase is360° out. Researched official Speeduino202501.7 Miata99-05
+decoder and independently reviewed scheduler/crank-lock behavior. Changed only
+TrigAng0→+360 degrees; ignition and injection remain Sequential. Fuel quantities,
+injection angle355, crank lockOn, cranking advance10, dwell and wiring unchanged.
+
+Source inference: getCrankAngle adds offset and wraps at720; both sequential
+schedulers consume that angle. Locked cranking ends coil pairs1+3/2+4 on fixed
+teeth, but charging starts are individually scheduled and therefore shift the
+energized member by360. A positive360 offset flips both stroke assignments while
+retaining nominal fixed-tooth10° firing. Negative360 is NOT equivalent in this
+decoder because its negative normalization only adds360.
+Important test limitation disclosed: Miata per-tooth correction requires
+triggerAngle==0; +360 bypasses it and uses scheduled ending after crank lock.
+This is a short diagnostic, not validated permanent or driving calibration.
+No-start alone does not confirm phase error. Research sources:
+https://github.com/speeduino/speeduino/blob/202501.7/speeduino/decoders.cpp
+https://github.com/speeduino/speeduino/blob/202501.7/speeduino/speeduino.ino
+https://github.com/speeduino/speeduino/blob/202501.7/speeduino/scheduler.cpp
+
+Rollback (full sequential0°): `TurboExo_pre_sequential_phase360_TEST_2026-10-17_144758.msq`.
+Test load: `TurboExo_sequential_phase360_TEST_2026-10-17_144758.msq`; CurrentTune matches. XML parsing, full constant
+comparison (only TrigAng) and exact byte checks passed. Disk only; load/burn and
+fully power-cycle ECU to establish sequential modes, then one short logged crank.
+No ECU write or phase-test result verified.
+
+## 2026-10-18 — Full sequential 0° with proposed coil phase swap
+
+User confirms the +360° full-sequential tune was loaded and burned, but engine
+would not run. This is a user-reported result; ECU readback was not independently
+verified. User selected 0° with both ignition and injection Sequential, superseding
+the intermediate request for Semi-Sequential injection.
+
+Changed only TrigAng +360→0 in the latest CurrentTune and named test file.
+Preserved newer TunerStudio settings, including reqFuel25.2ms and divider4;
+compared constants against the two latest October18 restore points before editing.
+Both sparkMode and injLayout remain Sequential. XML parsing and full constant
+comparison verified TrigAng is the sole change.
+
+Proposed physical ignition map for this test: IGN1→cylinder4, IGN2→2,
+IGN3→1, IGN4→3 (swap cylinder1/4 and2/3 coil signal assignments with power off).
+Physical swap is not confirmed performed. Injector wiring remains INJ1→1,
+INJ2→3, INJ3→4, INJ4→2. Thus this changes ignition phase relative to the original
+0° mapping, while injection stays at its original 0° phase.
+
+Test load: `TurboExo_sequential_zero_coilswap_TEST_2026-10-18_121049.msq`.
+Immediate disk backup: `TurboExo_pre_sequential_zero_coilswap_TEST_2026-10-18_121049.msq` (the unsuccessful +360° configuration,
+not a known-running rollback). CurrentTune matches the test file.
+Disk preparation only: load/burn, power-cycle, verify settings, then one short
+logged crank ≤5 seconds. No ECU write or result for this new test verified.
+
+
+
+## 2026-10-18 — Temporarily disable Pi automatic shutdown
+
+- **Request:** Pi keeps turning off; disable automatic shutoff for now.
+- **Change:** Removed `--poweroff` from repository and live UPS monitor unit, reloaded systemd and restarted monitor. Preserved key-state publishing and existing logging configuration. Backup: `/etc/systemd/system/pi-ups-monitor.service.before-disable-20261018`.
+- **Validation:** Live service active and enabled; running command lacks `--poweroff`. Before modification it reported discharge at -0.423 A / 11.324 V.
+- **Result:** Software shutdown disabled persistently until reenabled; hardware power loss remains possible. No tune changes.
+
+
+## 2026-10-18 — Fuel restored; sequential fuel-scaling experiment prepared
+
+- **Fuel supply:** User found cylinders 1 and 2 dry, measured sender at 110 ohms (consistent with bottom of travel/empty), added fuel, and reported the engine now tries to start. Subsequently reported wet plugs. Pump priming had not established fuel delivery. Fuel pressure remains unmeasured.
+- **Baseline log:** `DataLogs/2026-10-18_13.46.14.mlg` (converted CSV alongside): peak 727 RPM, no settled idle, zero recorded sync losses; initial closed-throttle cranking PW approximately 49–54 ms at CLT 82°F, VE 100%, MAP 90–98 kPa, baro 99 kPa and logged Gammae 212%. User confirms deliberately holding full throttle during later attempts; zero-PW cranking rows all occur at TPS 100%. AFR echoes target throughout catches and is not a mixture measurement.
+- **Scaling finding:** October18 11:33 restore point has reqFuel12.6/divider2; 12:07 has reqFuel25.2/divider4. User screenshot establishes the upper required-fuel entry remained12.6: TunerStudio calculated25.2 with one squirt and Alternating staging. Earlier explanation implying the user manually doubled the upper entry was incomplete. Firmware already compensates pulse size for sequential scheduling, so the saved25.2 doubles base fuel per cycle relative to12.6. Approximate logged calculation:25.2 ×1.00 VE ×0.94 MAP/baro ×2.12 correction +1ms opening ≈51ms. This uses the logged correction; it does not establish that current disk enrichment tables match the ECU during that log.
+- **Test change/user confirmation:** User changed staging to Simultaneous, retained one squirt and upper required fuel12.6, cleaned all plugs, and restarted ECU. CurrentTune independently confirms reqFuel12.6, divider4, alternate Simultaneous, injLayout Sequential. No independent ECU readback. Current disk cranking IAC remains83% throughout; user confirms IAC is physically plugged in. No IAC increase is confirmed.
+- **Hypothesis/expected result:** Correcting scaling should approximately halve the fuel portion of each pulse, giving roughly25–27ms under the same logged cranking conditions. Compare the next log for PW, catches and sustained idle. Cleaned plugs are an additional changed condition, so this is not an isolated fuel-only causal test.
+- **Verdict:** Setup confirmed by user and disk; post-change start result pending. No tune edits made by assistant for this experiment.
+- **Sources:** Speeduino202501.7 `init.cpp` sequential scaling https://github.com/speeduino/speeduino/blob/202501.7/speeduino/init.cpp#L572-L599 ; PW calculation https://github.com/speeduino/speeduino/blob/202501.7/speeduino/speeduino.ino#L1222-L1275 ; local `projectCfg/mainController.ini` alternate tooltip states staging is ignored for sequential firing but still affects reqFuel.
+
+
+## 2026-10-18 — Sequential scaling test result (14:03:45 log)
+
+- **Evidence:** Converted `DataLogs/2026-10-18_14.03.45.mlg` to CSV (1190 rows). Refreshed the13:46:14 CSV because its MLG had grown since initial analysis (now2967 rows). Both logs contain timestamp resets; do not use whole-file elapsed duration or analyzer's negative duration.
+- **Result:** Closed-throttle, nonzero-PW cranking at100–399RPM: median PW20.546ms (18.347–25.913), versus49.460ms in the completed baseline. New logged Gammae mostly170% (baseline212%); CLT82–84°F. The reduction is larger than halving because total correction also fell. Approximate12.6ms ×0.91 MAP/baro ×1.70 +1ms ≈20.5ms, consistent with corrected effective scaling, not a full ECU readback.
+- **Starting behavior:** Peak622RPM, no settled idle. Catches now occur with closed/slightly open throttle (33 of59 rows above400RPM atTPS<5), rather than predominantly full throttle. Catch MAP minimum79kPa versus88kPa baseline, but different throttle positions prevent attributing that difference solely to fuel correction. Zero recorded sync losses. IAC command remains83%. AFR equals target in all59 catch rows; no valid mixture diagnosis.
+- **Verdict:** Intended pulse-width reduction observed; starting problem not resolved. Other changed factors include plug cleaning and logged total enrichment, so outcome does not isolate fuel scaling alone. No additional tune changes made.
+
+
+## 2026-10-18 — Sustained running and closed-throttle idle confirmed (14:10:18)
+
+- **User result:** Runs, but requires throttle to start; requested preserving this result.
+- **Log evidence:** `DataLogs/2026-10-18_14.10.18.mlg` and converted CSV,1620 rows, no backwards timestamps. Continuous RPM>700 from252.893 to384.787s (131.894s), still running at log end. Battery13.0–14.4V during run, zero recorded sync losses. User's throttle-to-start report is consistent with logged starting throttle use.
+- **Closed-throttle result:** Final30s TPS range0–0%, RPM995–1144 (median1071), MAP43–47kPa, PW4.446–5.060ms. CLT reaches151°F; this is not yet a fully hot idle validation.
+- **IAC:** Logged cranking98–99%, not the previous83%. CurrentTune cranking table99% throughout; open-loop running table99/96/94/93/92/89/84/81/78/75%. End-of-log command82%. Thus this result also follows air-table changes and plug cleaning, not only fuel scaling correction.
+- **Other observations:** Overall logged peak6835RPM and135kPa MAP; no boost/AFR calibration validation implied by this successful run. AFR was not validated in this analysis.
+- **Milestone:** `TurboExo_running_sequential_fuel_scaling_fixed_2026-10-18_141358.msq`, byte-identical to CurrentTune at capture; `.sha256` covers snapshot, original log and CSV, `.provenance.txt` records limits. Saved reqFuel12.6, divider4, Simultaneous staging, injectionSequential, ignitionSequential, TrigAng0. Full ECU readback and physical ignition phase-swap confirmation remain absent.
+- **Verdict:** Sustained running and closed-throttle idle established. Remaining issue: throttle needed to start. Preserve this snapshot before further changes.
+
+
+## 2026-10-18 — AutoTune hot-running assessment (14:21:46)
+
+- Latest log `DataLogs/2026-10-18_14.21.46.mlg` converted to CSV (4711 rows). First row has implausible CLT-40 and multiple zero channels; discard it. Remaining log spans5.812–455.702s (~450s) with engine already running throughout; no starting test here.
+- Fully warm running: CLT194–207°F in valid samples; zero recorded sync losses, battery13.3–14.7V. Final30s TPS0%, RPM1380–1467 (median1440), MAP31–33kPa, PW2.730–2.949ms, CLT199–201°F, IAC77%. Holds hot idle, but speed remains high relative to historical850RPM target.
+- AFR now varies independently of target: final30s13.3–14.0 (median13.8), target14.1–14.3 (median14.2). Consistent with slightly rich idle IF wideband calibration is correct. Sustained exhaust heat and no dominant echo improve interpretability; they do not independently validate analog calibration or controller status. No blanket approval of AutoTune mixture corrections.
+- Disk diff: original running milestone and14:20:31 restorepoint have identical tune constants. CurrentTune changes103 VE cells:63 decreases/40 increases, -9 to+4 VE points. Some30–36kPa cells decreased, but all four cells surrounding the final hot idle (30/36kPa ×900/1500RPM) are unchanged. No other ECU constants changed; TS-only wueRecommended changed. This is consistent with user-reported AutoTune but does not establish burn/readback. Preserved `TurboExo_autotune_hot_run_2026-10-18_142146_DISK.msq` with SHA256 as post-AutoTune disk capture, not a validated full ECU readback or boost tune.
+- Loaded engine excursions: logged peak6820RPM and136kPa MAP (~5.4psi above99kPa baro). Current fuel load axis still ends100kPa; AFR target at>100kPa is13.0. This run does not validate boost calibration; above100kPa the table uses its highest load row (MAP multiplication still applies). Additional boost-load bins/calibration needed before calling it boost-tuned.
+- Verdict: Sustained fully warm closed-throttle idle confirmed; high idle and remaining wideband/boost calibration questions persist. No tuning changes made by assistant.
+
+
+## 2026-10-18 — Successful hot-run tune preserved before boost preparation
+
+User explicitly requested backup and successful-experiment record before updating tables/configuration. Saved `TurboExo_SUCCESS_hot_idle_autotune_pre_boost_extension_2026-10-18_202332.msq` byte-for-byte from CurrentTune, SHA256 `609ffa24ccccc9870e394b0bc5ce3758104459dc4ae66b71934c83d492c6a328`, with checksum and provenance sidecars. This preserves the current103-cell AutoTune VE revision following the successful14:21:46 hot-running log (final30s closed throttle1380–1467RPM,199–201°F). Successful sustained hot idle; high idle, starting behavior, AFR calibration and boost mapping remain separate open items. Disk snapshot, not independent ECU readback. No tune changes yet in this preparation step.
+
+
+## 2026-10-18 — Boost table preparation after preserved successful hot run
+
+- **Authorization:** User requested saving current successful tune, then updating tables/configuration, checking recorded valve identity, and researching a concrete bench-test rig. Intended operating boost target not yet supplied; no active boost target selected.
+- **Backup:** `TurboExo_SUCCESS_hot_idle_autotune_pre_boost_extension_2026-10-18_202332.msq` plus SHA256/provenance. Associated successful14:21:46 run retained. CurrentTune matched backup before edits; guarded against concurrent TunerStudio changes.
+- **Prepared tune:** `TurboExo_boost_table_preparation_PROVISIONAL_2026-10-18_202332.msq`; CurrentTune byte-identical at completion. Disk-only: load/burn/full ECU power cycle/readback remain required. No ECU write performed. All changes listed in `.changes.json`; checksum sidecar provided.
+- **Tables:** Added120/140/160/180/200kPa to VE, AFR and ignition. Per-table retained NA bins preserve learned idle cells exactly. VE bins16/26/30/36/40/46/50/66/70/90/100; spark10/16/20/26/30/36/40/46/74/80/100; AFR16/26/30/36/40/46/50/60/70/86/100. Removing some old rows necessarily changes interpolation: maxima7.625VE points,1.286deg spark,0.08AFR at discarded original bin points. This is not a claim of all sub100 behavior unchanged. Existing duplicated RPM endpoint bins preserved for separate investigation.
+- **Provisional boost seed:** AFR targets12.5/12.0/11.8/11.6/11.5 at120/140/160/180/200kPa copied from October10 historical preparation; not validated for current engine/fuel. Boost-only spark rows from same milestone, whose100kPa row exactly matches current; high-RPM values22/18/16/12/10deg. New VE uses current100kPa VE × current100kPa AFR target / new target, rounded nearest integer; assumes unchanged VE, encodes extra fuel directly because includeAFR/incorporateAFR remainNo. No extra MAP multiplier was added. These are starting assumptions, not demonstrated boost calibration. Lambda alias updated consistently with AFR.
+- **Boost output:** ExplicitlyOff, OpenLoop with existingzero duty table; repaired RPM axis1500/2000/2500/3000/3500/4500/5500/6500 and TPS0/20/40/60/70/80/90/100; inactive base-duty lookup cleared from50% to0%. Pin/frequency/PID/min/max otherwise preserved and unvalidated; no pressure target enabled.
+- **Protection correction:** engineProtectMaxRPM7000→1500. The existing120kPa absolute boost limit and SparkOnly cut remain. Firmware checkEngineProtect gates boost/oil/AFR protection above this RPM; previously7000 prevented cut below7000 despite excess MAP. This is a conditional protection RPM gate, not the ordinary rev limit. The relevant gate/boost-check code is identical in202501.6 and202501.7. Legacy Boost cut flag is cleared without being set in the inspected code, so earlier claim that its zero value proves no protection activation was too strong. Prepared tune should now cut above120kPa and the1500RPM gate (~3psi gauge near99kPa baro); do not interpret200kPa table coverage as a permitted boost target. Hardware/readback validation remains pending.
+- **Hardware:** User images identify generic25mm atmospheric BOV advertised25psi and35A-AAA-DDBA-1BA3-port solenoid. Saved source screenshots and evidence limits in docs/REFERENCE.md and docs/WIRING.md. Earlier project notes had only 'bypass installed,' no exact model.
+- **Validation:** XML parsing, expected13-constant diff, all retained rows exact,16×16 dimensions, strictly increasing load/boost axes, AFR/lambda byte equivalence, preserved fuel scaling/idle/modes/trigger, and CurrentTune/named-file byte equality checked. Independent review of12-constant table/output edit passed; gate correction separately reviewed. No functional ECU test yet.
+- **Sources:** [Speeduino protection](https://github.com/speeduino/speeduino/blob/202501.7/speeduino/engineProtection.cpp), local mainController.ini menu labels, October10 historical milestone. Previous successful run does not validate these new settings.
+
+
+## 2026-10-19 — Boost-table import units warning corrected (disk only)
+
+The October 18 change from Closed Loop to Open Loop retained the old `boostTable`
+units attribute. The local mainController.ini selects Duty Cycle % for Open Loop.
+Corrected only `units="kPa"` to `units="Duty Cycle %"` in CurrentTune and
+`TurboExo_boost_table_preparation_PROVISIONAL_2026-10-18_202332.msq`.
+Preserved timestamped pre_units_fix copies and refreshed the prepared file checksum.
+Verified XML parsing and byte equivalence apart from that label; all 64 cells remain
+zero, boost output remains Off, and the two corrected files match exactly.
+TunerStudio re-import and ECU readback remain unverified; no ECU write performed.
