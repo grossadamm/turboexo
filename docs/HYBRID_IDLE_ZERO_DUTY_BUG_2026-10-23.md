@@ -80,7 +80,7 @@ may continue to grow.
 
 - `2026-10-23_17.33.57.csv` — SHA256 `d8e09d3669bb1582d67213a7e952ee5a91fec85a95b0be38db24407a20b3822f`
 
-- `2026-10-23_17.35.10.csv` — SHA256 `4f66f4a9916450f0f392be46ade0800e1d1ec118d993f9dfb25eb0aaca852774`
+- `2026-10-23_17.35.10.csv` — SHA256 `4d2047ac4aacc63eb644a90e32e513c3cf5a3278a8d627e292388f5950555c27`
 
 ## Later session context
 
@@ -91,3 +91,12 @@ neutral revs (TPS up to100%), not evidence of another unexplained spike.
 After the documented manual idle-screw adjustment,750–768s shows881–913RPM at
 IAC4%; the earlier~1450RPM floor observation predates that adjustment. See the
 latest experiment entry for injector saturation and subsequent idle recovery.
+
+### Later saved continuation
+
+The log continued after the running-milestone commit. The current CSV/hash now
+identify5237 rows ending1275.359s (last sample902RPM). Earlier4929-row/804.156s
+statements describe the preceding captured snapshot; do not interpret timestamp
+span as continuous coverage. Original milestone provenance hashes remain attached
+to that earlier committed snapshot. No new calibration conclusion is drawn from
+this continuation.

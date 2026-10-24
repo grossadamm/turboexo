@@ -1264,3 +1264,10 @@ electrical mechanism are recorded in docs/HYBRID_IDLE_ZERO_DUTY_BUG_2026-10-23.m
 causation remains unproven. Prior PID-only validation missed the endpoint bug.
 Final converted log now extends to804.156s; provenance hashes identify committed
 snapshots. No firmware change or upstream issue submission performed.
+
+## 2026-10-23 — Preserve later datalog continuation
+
+After the running milestone commit,17:35:10.mlg received additional data. Refreshed
+CSV now contains5237 rows through1275.359s; last sample902RPM. Bug-report hash
+updated. Milestone provenance retains the earlier snapshot hashes intentionally.
+This archival update changes no tune settings.
