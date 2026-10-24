@@ -40,3 +40,14 @@ Readiness also does not verify AFR analog calibration.
 See [expected voltage/status readings and jumper configuration](../WIRING.md#expected-spartan-status-connection-and-readings).
 Actual installed board revision/jumper positions remain unverified. Do not apply
 Speeduino v0.4 pinouts to the UA4C.
+
+### Retained UA4C inspection renders
+
+The following local reference artifacts are retained alongside the already cited
+connection sheet and vC5 schematic. These are inspection aids, not tune settings.
+
+- [Connection-sheet render](../../tmp/pdfs/UA4C-Connections.png)
+- [vC5 page3 render](../../tmp/pdfs/UA4C-vC5-page-3.png)
+- [Oil/Spartan input inspection, vC5 page5](../../tmp/pdfs/oil-spartan-check-UA4C-page5.png)
+
+The vC5 source PDF is linked above; filenames preserve existing wiring-note paths.
