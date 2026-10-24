@@ -1,0 +1,59 @@
+{
+  "captured_local": "2026-10-23_174855",
+  "source": "CurrentTune.msq disk capture",
+  "sha256": "a5957e5549166b552295864a076d7abb53c949cb6aa9fe5641556388e55973e8",
+  "ecu_readback_independently_verified": false,
+  "user_confirmation": "User verified and burned5% idle minimum; car running and idle screw adjusted; neutral revs logged.",
+  "hardware": "Stock238cc injectors per current project record;425cc yellows planned, not installed in this experiment.",
+  "mechanical_change": "About16 wrist turns during idle screw adjustment, reached stop then backed out slightly. Not16 full revolutions; final physical position unmeasured.",
+  "log_evidence": {
+    "DataLogs/2026-10-23_17.09.55.mlg": {
+      "bytes": 114206,
+      "sha256": "6f4db2c6748ea280a9a70f3d5fa6b43dfcdd4d45b6e1f7f2ac8271e503c2fd58"
+    },
+    "DataLogs/2026-10-23_17.09.55.csv": {
+      "bytes": 24482,
+      "sha256": "71a5844c8fa987a5ac68a644ade29337ef4cbfc5f79621c4d89a9a8cfa21e01e"
+    },
+    "DataLogs/2026-10-23_17.10.48.mlg": {
+      "bytes": 107148,
+      "sha256": "44520234b769425763e4b09930e710491c8cfb12190267b1ca305aabc4179194"
+    },
+    "DataLogs/2026-10-23_17.10.48.csv": {
+      "bytes": 12670,
+      "sha256": "c16dbf16ca7df1a0df4e2aad88dfacb14973272d42ca167a0ab91b775f77e621"
+    },
+    "DataLogs/2026-10-23_17.15.42.mlg": {
+      "bytes": 150270,
+      "sha256": "f420bbe36362d17371d78e635a39aa0a0cdfcc235927bdafe8134975039f9654"
+    },
+    "DataLogs/2026-10-23_17.15.42.csv": {
+      "bytes": 85980,
+      "sha256": "6aceea12c6639e468e46c9cb6db9c02be1ce682e0407fd44d274db67e1e605bc"
+    },
+    "DataLogs/2026-10-23_17.25.31.mlg": {
+      "bytes": 160122,
+      "sha256": "b964e05f897d4487c5c75f024520148016183a6737371e95f5f6b8270cbd91b9"
+    },
+    "DataLogs/2026-10-23_17.25.31.csv": {
+      "bytes": 102624,
+      "sha256": "b30da138833de2fbc1c4665f5c5ca4cb6526b06768008e1d902d4fc21ff65772"
+    },
+    "DataLogs/2026-10-23_17.33.57.mlg": {
+      "bytes": 113397,
+      "sha256": "39e66814ed07302a41b23357dfe2c6104c19b8f719d5e9b390a56c824e231eb0"
+    },
+    "DataLogs/2026-10-23_17.33.57.csv": {
+      "bytes": 22860,
+      "sha256": "d8e09d3669bb1582d67213a7e952ee5a91fec85a95b0be38db24407a20b3822f"
+    },
+    "DataLogs/2026-10-23_17.35.10.mlg": {
+      "bytes": 953336,
+      "sha256": "c3cbc9c3d69cb990edae6862d77a4025a24a9683c29f1440a6181e6593a8233b"
+    },
+    "DataLogs/2026-10-23_17.35.10.csv": {
+      "bytes": 1457583,
+      "sha256": "4f66f4a9916450f0f392be46ade0800e1d1ec118d993f9dfb25eb0aaca852774"
+    }
+  }
+}

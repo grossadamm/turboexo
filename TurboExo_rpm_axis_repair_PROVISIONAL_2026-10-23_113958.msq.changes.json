@@ -1,0 +1,129 @@
+{
+  "source": "TurboExo_pre_rpm_axis_repair_latest_2026-10-23_114000.msq",
+  "changed_constants": [
+    "veTable",
+    "rpmBins",
+    "rpmBinsAFR"
+  ],
+  "VE_endpoint_changes": [
+    {
+      "load_kPa": 26.0,
+      "last_column_before": 44.0,
+      "last_column_after": 46.0
+    },
+    {
+      "load_kPa": 30.0,
+      "last_column_before": 50.0,
+      "last_column_after": 51.0
+    },
+    {
+      "load_kPa": 36.0,
+      "last_column_before": 49.0,
+      "last_column_after": 55.0
+    },
+    {
+      "load_kPa": 40.0,
+      "last_column_before": 54.0,
+      "last_column_after": 57.0
+    },
+    {
+      "load_kPa": 46.0,
+      "last_column_before": 56.0,
+      "last_column_after": 59.0
+    },
+    {
+      "load_kPa": 50.0,
+      "last_column_before": 60.0,
+      "last_column_after": 61.0
+    },
+    {
+      "load_kPa": 66.0,
+      "last_column_before": 61.0,
+      "last_column_after": 62.0
+    },
+    {
+      "load_kPa": 70.0,
+      "last_column_before": 71.0,
+      "last_column_after": 77.0
+    },
+    {
+      "load_kPa": 90.0,
+      "last_column_before": 78.0,
+      "last_column_after": 96.0
+    }
+  ],
+  "rpmBins_before": [
+    500.0,
+    700.0,
+    900.0,
+    1500.0,
+    2100.0,
+    2900.0,
+    3800.0,
+    4700.0,
+    5500.0,
+    5700.0,
+    5900.0,
+    6100.0,
+    6300.0,
+    6500.0,
+    6600.0,
+    6600.0
+  ],
+  "rpmBins_after": [
+    500.0,
+    700.0,
+    900.0,
+    1500.0,
+    2100.0,
+    2900.0,
+    3800.0,
+    4700.0,
+    5500.0,
+    5700.0,
+    5900.0,
+    6100.0,
+    6300.0,
+    6500.0,
+    6600.0,
+    7200
+  ],
+  "rpmBinsAFR_before": [
+    500.0,
+    700.0,
+    900.0,
+    1500.0,
+    2100.0,
+    2900.0,
+    3800.0,
+    4700.0,
+    5500.0,
+    5700.0,
+    5900.0,
+    6100.0,
+    6300.0,
+    6500.0,
+    6500.0,
+    6500.0
+  ],
+  "rpmBinsAFR_after": [
+    500.0,
+    700.0,
+    900.0,
+    1500.0,
+    2100.0,
+    2900.0,
+    3800.0,
+    4700.0,
+    5500.0,
+    5700.0,
+    5900.0,
+    6100.0,
+    6300.0,
+    6500.0,
+    6600,
+    7200
+  ],
+  "method": "Keep all unique existing VE RPM points; replace inaccessible duplicate-end values with earlier6600 endpoint and hold flat to7200. AFR repeated end columns already identical.",
+  "disk_only": true
+}

@@ -1,0 +1,53 @@
+{
+  "backup": "TurboExo_pre_closed_loop_10psi_2026-10-23_165230.msq",
+  "prepared": "TurboExo_closed_loop_10psi_PROVISIONAL_2026-10-23_165230.msq",
+  "changed_constants": [
+    "boostMaxDuty",
+    "boostMinDuty",
+    "boostLimit",
+    "boostTable",
+    "boostIntv",
+    "boostSens",
+    "boostTableDutyLookup"
+  ],
+  "settings": {
+    "boostMaxDuty": {
+      "before": "85.0",
+      "after": "50.0"
+    },
+    "boostMinDuty": {
+      "before": "12.0",
+      "after": "0.0"
+    },
+    "boostLimit": {
+      "before": "120.0",
+      "after": "178.0"
+    },
+    "boostTable": {
+      "before_unique": [
+        "0.0"
+      ],
+      "after_unique": [
+        "168.0"
+      ]
+    },
+    "boostIntv": {
+      "before": "255.0",
+      "after": "30.0"
+    },
+    "boostSens": {
+      "before": "65535.0",
+      "after": "2000.0"
+    },
+    "boostTableDutyLookup": {
+      "before_unique": [
+        "0.0"
+      ],
+      "after_unique": [
+        "20.0"
+      ]
+    }
+  },
+  "basis": "168kPa absolute at99kPa baro =10psi gauge approximately; target is flat across RPM/TPS, not baro-relative.20% feedforward and0-50% authority provisional engineering seeds, not measured duty-pressure mapping. Sens2000/intv30 INI defaults.178kPa cut is10kPa above target, provisional margin.",
+  "ecu_written": false
+}

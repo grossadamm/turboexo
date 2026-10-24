@@ -2,6 +2,161 @@
 
 Current wiring assignments: [docs/WIRING.md](docs/WIRING.md).
 
+## 2026-10-23 — Running milestone, manual idle adjustment and neutral-rev findings
+
+**Next action: larger injectors, then recalibration.** Current stock238cc setup
+reached its90% software injector-duty cap. Preserve this running baseline before
+installing the previously recorded425cc Denso yellows. At unchanged pressure basis,
+12.6 ×238/425≈7.06ms is a preliminary required-fuel scaling estimate, not an applied
+setting; verify injector identity/pressure/dead time before implementation.
+
+Milestone: `TurboExo_RUNNING_idle_screw_min5_pre_injector_upgrade_2026-10-23_174855.msq`; byte-for-byte CurrentTune disk capture with SHA256 and
+provenance/log hashes. User reports verifying/burning5% idle floor; full ECU tune
+readback not independently verified. Current settings: reqFuel12.6ms,Sequential
+fuel/spark,PWM Closed+Open loop idle,min5/max99,target800RPM warm,P0.0625/I0.03125/D0.
+Boost On/Closed Loop/Simple,168kPa target,20% base,0–50% limits,2000 sensitivity,
+30ms interval,178kPa cut. Boost calibration remains provisional.
+
+Mechanical adjustment: about16 wrist turns of the idle screw, to its stop then
+backed out slightly (user estimate, not16 measured revolutions). In the final
+17:35:10 log,750–768s shows881–913RPM atTPS0/IAC4%, confirming near900RPM after
+adjustment. After the neutral revs,788–794s shows978–1007RPM atIAC64–69%; final
+sample804.156s is978RPM/IAC53%. Closed-loop response is not yet fully settled or
+calibrated; do not equate this running milestone with achieved800RPM regulation.
+
+Neutral revs: peaks2791/5517/6823/6890RPM. PeakMAP145kPa (~6.7psi at99baro),
+boost duty20–23%; these were intentional throttle inputs, unlike earlierTPS0
+spikes. Injector duty90% at6355RPM/129kPa and above is the configured pulse-width
+cap (e.g15.674ms×6890/1200≈90%). No sync losses. Logged advance0 near6800 matches
+fixed soft-limit1deg followed by logged1deg knock correction; the latter does
+not demonstrate real knock. Hard rev limit7200,boost cut178kPa; maxMAP145 belowcut.
+
+AFR transient examples: throttle opening reaches10.0 with acceleration enrichment;
+5436RPM/122kPa shows13.7 vs12.4 target;6355RPM/129kPa12.7 vs12.2. Sensor/exhaust delay
+and rapidly changing load prevent treating these as steady VE-cell errors.
+Throttle-closed decel reaches19.7. Logged oil pressure~16–18psi idle,rising to55psi;
+physical calibration unverified. Charging voltage maintained. No further full-load
+high-RPM work planned on current injector capacity; larger injectors are next.
+
+Hybrid zero-duty defect: initial corrected segment338.356–377.353s holds4% with
+no unexplained spike. User reports no recurrence after5% floor. Earlier zero-floor
+logs showTPS0 spikes3859/3813/3635RPM. Confirmed source omission and suspected
+electrical mechanism are recorded in docs/HYBRID_IDLE_ZERO_DUTY_BUG_2026-10-23.md;
+causation remains unproven. Prior PID-only validation missed the endpoint bug.
+Final converted log now extends to804.156s; provenance hashes identify committed
+snapshots. No firmware change or upstream issue submission performed.
+
+## 2026-10-23 — Manual idle-screw adjustment (user reported)
+
+User manually adjusted the idle screw, estimating **about16 wrist turns** during
+the adjustment. This is the user's hand-motion estimate, not16 measured full
+360-degree screw revolutions. Exact rotation count, screw identity and original
+position were not measured. User reports the screw reached its stop, then was
+backed out slightly; the final back-out amount is unspecified.
+
+During the adjustment, user reported idle around900RPM. Final RPM after backing
+out was not separately confirmed by a log in this exchange. Saved warm idle target
+remains800RPM; no ECU/tune settings changed for this mechanical adjustment.
+User suspects the previous owner had misadjusted the screw; that history is not
+verified. Original screw position is not reproducible from this estimate alone.
+
+## 2026-10-23 — Potential hybrid idle firmware defect documented
+
+User confirms corrected minimum verified/burned and reports no recurring spike.
+Latest inspected17:35:10 segment338.356–377.353s holds logged duty4%,RPM1427–1507,
+TPS0,target800 with no spike; preceding17:33:57 old-tune run spikes3635 at0%.
+Positive-floor result supports the suspected zero-duty firmware defect but does
+not establish electrical causation or long-term resolution. High idle remains.
+Full code-path analysis, event chronology, evidence hashes and confirmation plan:
+[local bug report](docs/HYBRID_IDLE_ZERO_DUTY_BUG_2026-10-23.md).
+Report saved locally; no upstream submission or tune changes in this step.
+
+## 2026-10-23 — Reapply minimum idle duty to CurrentTune (disk only)
+
+User explicitly requested CurrentTune correction after TunerStudio's17:25:09 save
+restored0%. Changed only iacCLminValue0→5 and immediately read back from disk.
+Backup `TurboExo_pre_reapply_idle_min5_2026-10-23_172813.msq` with checksum. No ECU write.
+Named17:20:37 correction remains available. Latest17:25:31 log reached0% and
+repeated spike3813RPM; it did not demonstrate operation with the5% floor.
+
+## 2026-10-23 — Hybrid idle zero-duty workaround (disk only)
+
+User authorized testing minimum duty5%. CurrentTune matches `TurboExo_closed_loop_idle_min5_PROVISIONAL_2026-10-23_172037.msq`;
+backup `TurboExo_pre_idle_min5_2026-10-23_172037.msq` and checksums/change report alongside.
+Only iacCLminValue changed0→5%; all other constants/attributes preserved.
+Log17:15:42 shows duty falling to0, then MAP30→65kPa before RPM rises to3859,
+TPS0; duty53 appears after RPM has risen. User confirms no throttle,connector,
+or TunerStudio action at the spike. Firmware202501.6 idle.cpp zero-duty handler
+calls disableIdle(), whose PWM branch omits hybrid mode; timer/output shutdown
+is therefore not guaranteed. This verified defect is a candidate cause, not an
+electrically confirmed cause. Prior static validation missed this endpoint.
+Minimum5% avoids zero/near-zero quantization; may log~4% at500Hz AVR.
+Requires load/burn/full ECU power-cycle, then warm stationary log. No ECU write.
+If RPM remains high at duty floor, further airflow/output investigation required.
+Source: https://github.com/speeduino/speeduino/blob/202501.6/speeduino/idle.cpp#L760
+
+## 2026-10-23 — Closed-loop idle draft for current warm idle (disk only)
+
+User requested closed-loop idle now. Prepared `TurboExo_closed_loop_idle_PROVISIONAL_2026-10-23_171341.msq` and matching CurrentTune;
+backup `TurboExo_pre_closed_loop_idle_2026-10-23_171341.msq`, checksums/exact changes alongside.
+Latest logs show1554–1601RPM,181–187F,TPS0,IAC79%,MAP31–32kPa; startup flare not
+captured. Hybrid PWM Closed+Open loop retains existing temperature-duty feedforward
+and corrects toward existing target curve (800RPM warm). Range0–99%; P0.0625,
+I0.03125,D0 (firmware raw2/1/0); TPS integral reset5%; RPM reset hysteresis1000.
+Existing0/0 limits and displayP2/I0 were unsuitable. Firmware supports negative
+integral relative to feedforward; hysteresis allows present~780RPM excess to be
+corrected. Cold/cranking99%,frequency500Hz,Normal direction,target curve and all
+boost/fuel/spark settings unchanged. Hybrid does not use previous6.2s open-loop
+taper, so this does not independently resolve startup flare. Gains provisional.
+Validated XML,exact6constants,raw gain resolution,and no unrelated changes.
+Requires load/burn and full ECU power-cycle for idle limits, then log response;
+no ECU write or running validation performed by assistant.
+Sources: Speeduino202501.6 idle.cpp and src/PID_v1/PID_v1.cpp; local ini710–712,
+1592–1593,1717. Two independent reviewers agreed hybrid supports negative trim.
+
+## 2026-10-23 — Closed-loop 10 psi draft prepared (disk only)
+
+User explicitly requested preparing the closed-loop configuration. CurrentTune
+matches `TurboExo_closed_loop_10psi_PROVISIONAL_2026-10-23_165230.msq`; backup `TurboExo_pre_closed_loop_10psi_2026-10-23_165230.msq` plus checksum/change report alongside.
+On/Closed Loop/Simple retained. Targets now168kPa absolute across all RPM/TPS
+cells (~10psi at99kPa baro); this is a fixed absolute target, not baro-relative.
+Controller may seek this target at any TPS when the Baro enable condition is met.
+Base duty20% throughout; authority0–50%; sensitivity2000 and interval30ms use INI
+defaults. Duty values are provisional seeds, not measured valve calibration and
+50% is not a proven safe boost cap. Boost cut178kPa (~11.46psi at99kPa baro),10kPa
+above target; provisional margin. Baro enable/below-threshold0, pin12/34Hz,
+Spark Only protection and1500RPM gate retained. Fuel/injector/spark/IAT settings
+and repaired axes unchanged; this draft does not complete larger-injector or
+boost-fueling commissioning. No ECU write/readback. Validated XML,64-cell tables,
+exact seven-constant diff and all other constants/attributes preserved.
+Supersedes earlier mandatory open-loop proposal in docs/BOOST_CONTROL_10PSI_PLAN.md.
+
+## 2026-10-23 — Restore boost enable/mode at user request (disk only)
+
+User requested preserving ECU screenshot's On/Closed Loop after reviewing the
+October18 assistant change. Restored boostEnabled On and boostType Closed Loop
+in CurrentTune and `TurboExo_closed_loop_boost_preserved_2026-10-23_164813.msq`. Changed boostTable units label back to kPa for
+Closed Loop; all table values and axes, including today's repairs, unchanged.
+Backup: `TurboExo_pre_restore_closed_loop_boost_2026-10-23_164813.msq`; SHA256 sidecars provided.
+Exact diff validated: two setting values plus one units attribute only. No ECU
+write or independent full boost-configuration readback. This restores the two
+shown switches, not a claim that unseen ECU boost targets/duty tables match disk.
+Supersedes earlier Off/Open Loop plan; docs/BOOST_CONTROL_10PSI_PLAN.md remains a
+historical proposal and does not authorize changing mode back to Open Loop.
+
+## 2026-10-23 — RPM-axis repair ready (disk only)
+
+Prepared tune: `TurboExo_rpm_axis_repair_PROVISIONAL_2026-10-23_113958.msq`;
+CurrentTune matches. Backup and exact change/checksum sidecars alongside.
+VE endpoint6600/6600→6600/7200; AFR6500/6500/6500→6500/6600/7200.
+Nine conflicting final VE cells copied from preceding6600 column, including90kPa78→96.
+Firmware duplicate-bin handling already selected that earlier column: nominal surface
+preserved, rather than adding23% fuel. Integer-rounding differences can reach1VE
+point/0.1AFR in extended endpoint regions; see EXPERIMENT_LOG for sweep and history.
+No changes to injectors, spark, IAT retard, boost control, protection or rev limits.
+User now targets10psi gauge/~200whp. Boost output stillOff and120kPa cut unchanged.
+Provisional calibration; load/burn/readback pending. No ECU write performed.
+
 ## 2026-10-19 — Boost-table import units warning corrected (disk only)
 
 The October 18 change from Closed Loop to Open Loop retained the old `boostTable`

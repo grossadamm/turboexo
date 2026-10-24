@@ -1,0 +1,4 @@
+{
+  "source": "CurrentTune.msq",
+  "note": "Latest disk re-snapshot after concurrent save guard; lambda formatting-only difference from initial backup. Disk not ECU readback."
+}

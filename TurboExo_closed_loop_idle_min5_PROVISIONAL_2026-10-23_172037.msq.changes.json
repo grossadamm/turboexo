@@ -1,0 +1,8 @@
+{
+  "backup": "TurboExo_pre_idle_min5_2026-10-23_172037.msq",
+  "changed_constant": "iacCLminValue",
+  "before": 0,
+  "after": 5,
+  "reason": "Avoid confirmed hybrid zero-duty shutdown omission in firmware202501.6; causal link to observed flare remains hypothesis.5% may log about4% due timer quantization.",
+  "ecu_written": false
+}
