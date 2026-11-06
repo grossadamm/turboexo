@@ -1,0 +1,37 @@
+[
+  {
+    "file": "opto_module_front_back_user_2026-10-30.png",
+    "sha256": "1d40de13f9d33ac617d2282117216fc51e82f39ea7bf35f80021b4eb0b1c92b6",
+    "source": "user attachment in ADS1115 sensor-board conversation",
+    "saved_on": "2026-10-30",
+    "evidence_scope": "User identifies this as their optocoupler module; front/back reference image, not proof of installed wiring."
+  },
+  {
+    "file": "ads1115_module_user_reference_2026-10-30.png",
+    "sha256": "cbd475cf600a2a8cfc842190abbbe8b9e5bbf0fad822757c312cb6330ff2609c",
+    "source": "user attachment in ADS1115 sensor-board conversation",
+    "saved_on": "2026-10-30",
+    "evidence_scope": "User identifies this as their ADS1115 breakout; labels visible, exact vendor/IC authenticity and component values unverified."
+  },
+  {
+    "file": "dweekiy_oil_temperature_listing_user_2026-10-30.png",
+    "sha256": "098c691ce5545962b653dfea093a6d3c3975828e2a52b23ef96595aacef8172f",
+    "source": "user attachment in ADS1115 sensor-board conversation",
+    "saved_on": "2026-10-30",
+    "evidence_scope": "User screenshot identifying the purchased oil-temperature sender listing."
+  },
+  {
+    "file": "opto_matching_vendor_R1_closeup_2026-10-30.jpg",
+    "sha256": "1dcb5734a748bab2a20ac4e1936529bc716361f83bb5ef71b8ba8fcc6029baa2",
+    "source": "https://diyables.io/images/products/pc817-1-channel-optocoupler-isolation-module-2.jpg",
+    "saved_on": "2026-10-30",
+    "evidence_scope": "Primary seller photo of matching board layout, not a measurement/photo of installed unit. R1 closeup independently read brown-black-red-gold =1kohm +/-5%; component variants remain possible."
+  },
+  {
+    "file": "opto_matching_vendor_front_back_2026-10-30.jpg",
+    "sha256": "cbe9bac68482270dd61d5d0cfea4738dcb4ff0a32997aae33569d8b025e143fd",
+    "source": "https://diyables.io/images/products/pc817-1-channel-optocoupler-isolation-module-3.jpg",
+    "saved_on": "2026-10-30",
+    "evidence_scope": "Primary seller photo of matching board layout, not a measurement/photo of installed unit. R1 closeup independently read brown-black-red-gold =1kohm +/-5%; component variants remain possible."
+  }
+]

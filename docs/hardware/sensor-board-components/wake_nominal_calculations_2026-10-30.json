@@ -1,0 +1,19 @@
+{
+  "status": "nominal calculations, not measured wake behavior",
+  "R1_basis": "matching seller photo 1kohm +/-5%, installed value unmeasured",
+  "source_voltage_V": 12.6,
+  "assumed_total_LED_forward_drop_V": 3.2,
+  "onboard_R1_ohm": 1000,
+  "proposed_external_series_ohm": 470,
+  "capacitor_uF": 220,
+  "proposed_source_bleed_ohm": 10000,
+  "initial_LED_current_mA": 6.394557823129251,
+  "input_current_decay_tau_s": 0.3234,
+  "input_current_above_5mA_s_ideal": 0.07955943221496221,
+  "bleed_current_mA": 1.26,
+  "bleed_power_mW": 15.875999999999998,
+  "external_series_initial_power_mW": 19.218473784071445,
+  "reverse_reset_current_bound_mA_ignoring_diode": 26.80851063829787,
+  "reverse_reset_power_bound_W_ignoring_diode": 0.3377872340425532,
+  "note": "Time constant is NOT guaranteed J2 button-low duration. That depends on source rise/fall, capacitor tolerance/leakage/reset, LEDs, optocoupler CTR, and J2 load/threshold. The 5mA interval is a calculation reference, not a J2 switching threshold."
+}

@@ -1,0 +1,15 @@
+{
+  "component_leads": 44,
+  "wires": 31,
+  "electrical_nets": 13,
+  "distinct_pads": true,
+  "shorts_or_missing_links": false,
+  "fuel_110ohm_expected_V": 0.327027027027027,
+  "brake_closed_expected_V": 0.0,
+  "brake_open_expected_V": 3.3,
+  "physical_test_performed": false,
+  "oil_bias_installed": false,
+  "max_jumper_ends_per_component_pad": 2,
+  "body_clearance_physical_check_performed": false,
+  "native_roundtrip_and_endpoint_check": true
+}

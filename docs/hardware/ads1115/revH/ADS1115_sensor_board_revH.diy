@@ -1,0 +1,2114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <fileVersion>
+    <major>6</major>
+    <minor>9</minor>
+    <build>0</build>
+  </fileVersion>
+  <title>TurboExo ADS1115 compact carrier Rev H</title>
+  <author>TurboExo</author>
+  <description>REV H: external optocoupler and Pi J2 require separate pigtails. Charger trigger isolated from Pi rails. 24x18 individual pad board. TOP coordinate view. Colored wires are insulated underneath; bends/crossings are not soldered. P_BUS and G_BUS segments form bare continuous buses joined only at listed taps. Fuel/oil connect directly to A0/A1. R3 oil bias empty. J5/J6 passive isolated Pi J2 extension, separate two-wire lead. No formal HAT compliance. Physical fit and electrical tests not performed. See guide.</description>
+  <width value="180.0" unit="mm"/>
+  <height value="115.0" unit="mm"/>
+  <gridSpacing value="0.1" unit="in"/>
+  <components>
+    <diylc.boards.PerfBoard>
+      <id>757ca5b1-1756-4445-8651-9c2f98060a8a</id>
+      <name>B1</name>
+      <alphaPercent>
+        <value>100</value>
+      </alphaPercent>
+      <value></value>
+      <controlPoints>
+        <point x="0.45" y="0.7"/>
+        <point x="2.95" y="2.6"/>
+      </controlPoints>
+      <firstPoint x="0.45" y="0.7"/>
+      <secondPoint x="2.95" y="2.6"/>
+      <boardColor hex="f8ebb3"/>
+      <borderColor hex="ada47d"/>
+      <coordinateColor hex="b6b6b6"/>
+      <xType>Numbers</xType>
+      <coordinateOrigin>Top_Left</coordinateOrigin>
+      <coordinateDisplay>None</coordinateDisplay>
+      <yType>Letters</yType>
+      <mode>TwoPoints</mode>
+      <boardUndersideDisplay>NONE</boardUndersideDisplay>
+      <undersideOffset value="0.1" unit="in"/>
+      <undersideTransparency>true</undersideTransparency>
+      <spacing value="0.1" unit="in"/>
+      <padColor hex="da8a67"/>
+    </diylc.boards.PerfBoard>
+    <diylc.shapes.Rectangle>
+      <id>f20fad89-1e1a-4abd-9cdf-c1580b656162</id>
+      <name>Wake-area-outline</name>
+      <alphaPercent>
+        <value>100</value>
+      </alphaPercent>
+      <value></value>
+      <controlPoints>
+        <point x="1.81" y="1.07"/>
+        <point x="2.88" y="1.67"/>
+      </controlPoints>
+      <firstPoint x="1.81" y="1.07"/>
+      <secondPoint x="2.88" y="1.67"/>
+      <color hex="fff2df"/>
+      <borderColor hex="d7b37c"/>
+      <borderThickness value="0.2" unit="mm"/>
+      <mode>TwoPoints</mode>
+      <edgeRadius value="0.0" unit="mm"/>
+    </diylc.shapes.Rectangle>
+    <diylc.connectivity.HookupWire>
+      <id>71df2f2e-5c36-4040-b8be-d1535aacf8ab</id>
+      <name>P_BUS_1</name>
+      <alphaPercent>
+        <value>70</value>
+      </alphaPercent>
+      <controlPoints2>
+        <point x="0.75" y="1.8"/>
+        <point x="1.05" y="1.8"/>
+      </controlPoints2>
+      <color hex="c33d3d"/>
+      <pointCount>TWO</pointCount>
+      <style>SOLID</style>
+      <smooth>false</smooth>
+      <lastUpdatePointIndex>1</lastUpdatePointIndex>
+      <gauge>_26</gauge>
+      <striped>false</striped>
+      <stripeColor hex="ffff00"/>
+    </diylc.connectivity.HookupWire>
+    <diylc.connectivity.HookupWire>
+      <id>9c12fbdc-a94e-4411-8837-1ab68856e609</id>
+      <name>P_BUS_2</name>
+      <alphaPercent>
+        <value>70</value>
+      </alphaPercent>
+      <controlPoints2>
+        <point x="1.05" y="1.8"/>
+        <point x="1.85" y="1.8"/>
+      </controlPoints2>
+      <color hex="c33d3d"/>
+      <pointCount>TWO</pointCount>
+      <style>SOLID</style>
+      <smooth>false</smooth>
+      <lastUpdatePointIndex>1</lastUpdatePointIndex>
+      <gauge>_26</gauge>
+      <striped>false</striped>
+      <stripeColor hex="ffff00"/>
+    </diylc.connectivity.HookupWire>
+    <diylc.connectivity.HookupWire>
+      <id>4f3ba12d-80c4-4830-8e4e-9b69feb27669</id>
+      <name>P_BUS_3</name>
+      <alphaPercent>
+        <value>70</value>
+      </alphaPercent>
+      <controlPoints2>
+        <point x="1.85" y="1.8"/>
+        <point x="2.65" y="1.8"/>
+      </controlPoints2>
+      <color hex="c33d3d"/>
+      <pointCount>TWO</pointCount>
+      <style>SOLID</style>
+      <smooth>false</smooth>
+      <lastUpdatePointIndex>1</lastUpdatePointIndex>
+      <gauge>_26</gauge>
+      <striped>false</striped>
+      <stripeColor hex="ffff00"/>
+    </diylc.connectivity.HookupWire>
+    <diylc.connectivity.HookupWire>
+      <id>543c8b2c-d2b8-4369-94f9-1a16c6c5b59a</id>
+      <name>G_BUS_1</name>
+      <alphaPercent>
+        <value>70</value>
+      </alphaPercent>
+      <controlPoints2>
+        <point x="0.85" y="2.3"/>
+        <point x="1.15" y="2.3"/>
+      </controlPoints2>
+      <color hex="354454"/>
+      <pointCount>TWO</pointCount>
+      <style>SOLID</style>
+      <smooth>false</smooth>
+      <lastUpdatePointIndex>1</lastUpdatePointIndex>
+      <gauge>_26</gauge>
+      <striped>false</striped>
+      <stripeColor hex="ffff00"/>
+    </diylc.connectivity.HookupWire>
+    <diylc.connectivity.HookupWire>
+      <id>92f85553-ea56-4b21-85a8-60f5ce9c232e</id>
+      <name>G_BUS_2</name>
+      <alphaPercent>
+        <value>70</value>
+      </alphaPercent>
+      <controlPoints2>
+        <point x="1.15" y="2.3"/>
+        <point x="1.95" y="2.3"/>
+      </controlPoints2>
+      <color hex="354454"/>
+      <pointCount>TWO</pointCount>
+      <style>SOLID</style>
+      <smooth>false</smooth>
+      <lastUpdatePointIndex>1</lastUpdatePointIndex>
+      <gauge>_26</gauge>
+      <striped>false</striped>
+      <stripeColor hex="ffff00"/>
+    </diylc.connectivity.HookupWire>
+    <diylc.connectivity.HookupWire>
+      <id>5739d2fc-917c-48f2-9488-73224a1aa408</id>
+      <name>G_BUS_3</name>
+      <alphaPercent>
+        <value>70</value>
+      </alphaPercent>
+      <controlPoints2>
+        <point x="1.95" y="2.3"/>
+        <point x="2.75" y="2.3"/>
+      </controlPoints2>
+      <color hex="354454"/>
+      <pointCount>TWO</pointCount>
+      <style>SOLID</style>
+      <smooth>false</smooth>
+      <lastUpdatePointIndex>1</lastUpdatePointIndex>
+      <gauge>_26</gauge>
+      <striped>false</striped>
+      <stripeColor hex="ffff00"/>
+    </diylc.connectivity.HookupWire>
+    <diylc.connectivity.HookupWire>
+      <id>08e2f55b-eeb9-4db4-8118-b48f7d1be0a5</id>
+      <name>W01</name>
+      <alphaPercent>
+        <value>70</value>
+      </alphaPercent>
+      <controlPoints2>
+        <point x="0.65" y="1.0"/>
+        <point x="0.65" y="1.8"/>
+        <point x="0.75" y="1.8"/>
+      </controlPoints2>
+      <color hex="c33d3d"/>
+      <pointCount>THREE</pointCount>
+      <style>SOLID</style>
+      <smooth>false</smooth>
+      <lastUpdatePointIndex>2</lastUpdatePointIndex>
+      <gauge>_26</gauge>
+      <striped>false</striped>
+      <stripeColor hex="ffff00"/>
+    </diylc.connectivity.HookupWire>
+    <diylc.connectivity.HookupWire>
+      <id>fddcb20d-3d22-4725-8bba-8d47f612a136</id>
+      <name>W02</name>
+      <alphaPercent>
+        <value>70</value>
+      </alphaPercent>
+      <controlPoints2>
+        <point x="0.75" y="1.7"/>
+        <point x="0.75" y="1.8"/>
+      </controlPoints2>
+      <color hex="c33d3d"/>
+      <pointCount>TWO</pointCount>
+      <style>SOLID</style>
+      <smooth>false</smooth>
+      <lastUpdatePointIndex>1</lastUpdatePointIndex>
+      <gauge>_26</gauge>
+      <striped>false</striped>
+      <stripeColor hex="ffff00"/>
+    </diylc.connectivity.HookupWire>
+    <diylc.connectivity.HookupWire>
+      <id>f13e8f5b-27d8-49c9-b4c7-62294b931be5</id>
+      <name>W03</name>
+      <alphaPercent>
+        <value>70</value>
+      </alphaPercent>
+      <controlPoints2>
+        <point x="1.05" y="1.0"/>
+        <point x="1.05" y="1.1"/>
+        <point x="0.85" y="1.1"/>
+        <point x="0.85" y="1.7"/>
+      </controlPoints2>
+      <color hex="354454"/>
+      <pointCount>FOUR</pointCount>
+      <style>SOLID</style>
+      <smooth>false</smooth>
+      <lastUpdatePointIndex>3</lastUpdatePointIndex>
+      <gauge>_26</gauge>
+      <striped>false</striped>
+      <stripeColor hex="ffff00"/>
+    </diylc.connectivity.HookupWire>
+    <diylc.connectivity.HookupWire>
+      <id>5111a84a-f93b-41a0-9352-e1799ae1b883</id>
+      <name>W04</name>
+      <alphaPercent>
+        <value>70</value>
+      </alphaPercent>
+      <controlPoints2>
+        <point x="0.85" y="1.7"/>
+        <point x="0.85" y="2.3"/>
+      </controlPoints2>
+      <color hex="354454"/>
+      <pointCount>TWO</pointCount>
+      <style>SOLID</style>
+      <smooth>false</smooth>
+      <lastUpdatePointIndex>1</lastUpdatePointIndex>
+      <gauge>_26</gauge>
+      <striped>false</striped>
+      <stripeColor hex="ffff00"/>
+    </diylc.connectivity.HookupWire>
+    <diylc.connectivity.HookupWire>
+      <id>ff53b1ec-755e-4c2a-be31-32d2d9bd9652</id>
+      <name>W05</name>
+      <alphaPercent>
+        <value>70</value>
+      </alphaPercent>
+      <controlPoints2>
+        <point x="1.15" y="1.7"/>
+        <point x="1.15" y="1.9"/>
+        <point x="1.25" y="1.9"/>
+        <point x="1.25" y="2.3"/>
+        <point x="1.15" y="2.3"/>
+      </controlPoints2>
+      <color hex="354454"/>
+      <pointCount>FIVE</pointCount>
+      <style>SOLID</style>
+      <smooth>false</smooth>
+      <lastUpdatePointIndex>4</lastUpdatePointIndex>
+      <gauge>_26</gauge>
+      <striped>false</striped>
+      <stripeColor hex="ffff00"/>
+    </diylc.connectivity.HookupWire>
+    <diylc.connectivity.HookupWire>
+      <id>99209d25-d2d8-468b-82a2-4effa321dfcb</id>
+      <name>W06</name>
+      <alphaPercent>
+        <value>70</value>
+      </alphaPercent>
+      <controlPoints2>
+        <point x="0.85" y="1.0"/>
+        <point x="0.95" y="1.1"/>
+        <point x="0.95" y="1.7"/>
+      </controlPoints2>
+      <color hex="b48119"/>
+      <pointCount>THREE</pointCount>
+      <style>SOLID</style>
+      <smooth>false</smooth>
+      <lastUpdatePointIndex>2</lastUpdatePointIndex>
+      <gauge>_26</gauge>
+      <striped>false</striped>
+      <stripeColor hex="ffff00"/>
+    </diylc.connectivity.HookupWire>
+    <diylc.connectivity.HookupWire>
+      <id>f3a4c8d3-3d50-4d0e-8797-8a49f5a8e837</id>
+      <name>W07</name>
+      <alphaPercent>
+        <value>70</value>
+      </alphaPercent>
+      <controlPoints2>
+        <point x="0.75" y="1.0"/>
+        <point x="0.75" y="1.2"/>
+        <point x="1.05" y="1.2"/>
+        <point x="1.05" y="1.7"/>
+      </controlPoints2>
+      <color hex="278858"/>
+      <pointCount>FOUR</pointCount>
+      <style>SOLID</style>
+      <smooth>false</smooth>
+      <lastUpdatePointIndex>3</lastUpdatePointIndex>
+      <gauge>_26</gauge>
+      <striped>false</striped>
+      <stripeColor hex="ffff00"/>
+    </diylc.connectivity.HookupWire>
+    <diylc.connectivity.HookupWire>
+      <id>90c66bd9-af48-4f90-86e2-2933a35cc4c4</id>
+      <name>W08</name>
+      <alphaPercent>
+        <value>70</value>
+      </alphaPercent>
+      <controlPoints2>
+        <point x="1.05" y="2.4"/>
+        <point x="1.05" y="2.2"/>
+      </controlPoints2>
+      <color hex="3378c5"/>
+      <pointCount>TWO</pointCount>
+      <style>SOLID</style>
+      <smooth>false</smooth>
+      <lastUpdatePointIndex>1</lastUpdatePointIndex>
+      <gauge>_26</gauge>
+      <striped>false</striped>
+      <stripeColor hex="ffff00"/>
+    </diylc.connectivity.HookupWire>
+    <diylc.connectivity.HookupWire>
+      <id>92a4a91b-bc97-4286-974d-7212bf988dd0</id>
+      <name>W12</name>
+      <alphaPercent>
+        <value>70</value>
+      </alphaPercent>
+      <controlPoints2>
+        <point x="1.05" y="2.2"/>
+        <point x="1.35" y="2.2"/>
+        <point x="1.35" y="1.7"/>
+      </controlPoints2>
+      <color hex="3378c5"/>
+      <pointCount>THREE</pointCount>
+      <style>SOLID</style>
+      <smooth>false</smooth>
+      <lastUpdatePointIndex>2</lastUpdatePointIndex>
+      <gauge>_26</gauge>
+      <striped>false</striped>
+      <stripeColor hex="ffff00"/>
+    </diylc.connectivity.HookupWire>
+    <diylc.connectivity.HookupWire>
+      <id>ea804170-9dff-44f0-bf16-2dcbd1f062f6</id>
+      <name>W13</name>
+      <alphaPercent>
+        <value>70</value>
+      </alphaPercent>
+      <controlPoints2>
+        <point x="1.15" y="2.4"/>
+        <point x="1.15" y="2.3"/>
+      </controlPoints2>
+      <color hex="354454"/>
+      <pointCount>TWO</pointCount>
+      <style>SOLID</style>
+      <smooth>false</smooth>
+      <lastUpdatePointIndex>1</lastUpdatePointIndex>
+      <gauge>_26</gauge>
+      <striped>false</striped>
+      <stripeColor hex="ffff00"/>
+    </diylc.connectivity.HookupWire>
+    <diylc.connectivity.HookupWire>
+      <id>eb0ba085-aeb4-4b39-8a3b-47e88f4010c0</id>
+      <name>W14</name>
+      <alphaPercent>
+        <value>70</value>
+      </alphaPercent>
+      <controlPoints2>
+        <point x="1.85" y="2.4"/>
+        <point x="1.85" y="2.2"/>
+      </controlPoints2>
+      <color hex="9862b9"/>
+      <pointCount>TWO</pointCount>
+      <style>SOLID</style>
+      <smooth>false</smooth>
+      <lastUpdatePointIndex>1</lastUpdatePointIndex>
+      <gauge>_26</gauge>
+      <striped>false</striped>
+      <stripeColor hex="ffff00"/>
+    </diylc.connectivity.HookupWire>
+    <diylc.connectivity.HookupWire>
+      <id>51790139-04f1-4316-95e9-eafc225d89c6</id>
+      <name>W18</name>
+      <alphaPercent>
+        <value>70</value>
+      </alphaPercent>
+      <controlPoints2>
+        <point x="1.85" y="2.2"/>
+        <point x="2.25" y="2.2"/>
+        <point x="2.25" y="1.9"/>
+        <point x="1.45" y="1.9"/>
+        <point x="1.45" y="1.7"/>
+      </controlPoints2>
+      <color hex="9862b9"/>
+      <pointCount>FIVE</pointCount>
+      <style>SOLID</style>
+      <smooth>false</smooth>
+      <lastUpdatePointIndex>4</lastUpdatePointIndex>
+      <gauge>_26</gauge>
+      <striped>false</striped>
+      <stripeColor hex="ffff00"/>
+    </diylc.connectivity.HookupWire>
+    <diylc.connectivity.HookupWire>
+      <id>5604d7b5-d444-4b92-8fc9-ee1121bc6c2d</id>
+      <name>W19</name>
+      <alphaPercent>
+        <value>70</value>
+      </alphaPercent>
+      <controlPoints2>
+        <point x="1.95" y="2.4"/>
+        <point x="1.95" y="2.3"/>
+      </controlPoints2>
+      <color hex="354454"/>
+      <pointCount>TWO</pointCount>
+      <style>SOLID</style>
+      <smooth>false</smooth>
+      <lastUpdatePointIndex>1</lastUpdatePointIndex>
+      <gauge>_26</gauge>
+      <striped>false</striped>
+      <stripeColor hex="ffff00"/>
+    </diylc.connectivity.HookupWire>
+    <diylc.connectivity.HookupWire>
+      <id>e202c845-e790-45b9-983e-3d64f0eb98ac</id>
+      <name>W20</name>
+      <alphaPercent>
+        <value>70</value>
+      </alphaPercent>
+      <controlPoints2>
+        <point x="2.65" y="2.4"/>
+        <point x="2.65" y="2.2"/>
+      </controlPoints2>
+      <color hex="cb6b28"/>
+      <pointCount>TWO</pointCount>
+      <style>SOLID</style>
+      <smooth>false</smooth>
+      <lastUpdatePointIndex>1</lastUpdatePointIndex>
+      <gauge>_26</gauge>
+      <striped>false</striped>
+      <stripeColor hex="ffff00"/>
+    </diylc.connectivity.HookupWire>
+    <diylc.connectivity.HookupWire>
+      <id>977f6b68-df8c-4b54-83ee-28b4648a91da</id>
+      <name>W21</name>
+      <alphaPercent>
+        <value>70</value>
+      </alphaPercent>
+      <controlPoints2>
+        <point x="2.65" y="2.2"/>
+        <point x="2.85" y="2.2"/>
+        <point x="2.85" y="1.7"/>
+        <point x="1.75" y="1.7"/>
+        <point x="1.75" y="1.1"/>
+        <point x="1.25" y="1.1"/>
+        <point x="1.25" y="1.0"/>
+      </controlPoints2>
+      <color hex="cb6b28"/>
+      <pointCount>SEVEN</pointCount>
+      <style>SOLID</style>
+      <smooth>false</smooth>
+      <lastUpdatePointIndex>6</lastUpdatePointIndex>
+      <gauge>_26</gauge>
+      <striped>false</striped>
+      <stripeColor hex="ffff00"/>
+    </diylc.connectivity.HookupWire>
+    <diylc.connectivity.HookupWire>
+      <id>f8262708-d3fd-4983-aee4-b488b4b2dde4</id>
+      <name>W22</name>
+      <alphaPercent>
+        <value>70</value>
+      </alphaPercent>
+      <controlPoints2>
+        <point x="2.75" y="2.4"/>
+        <point x="2.75" y="2.3"/>
+      </controlPoints2>
+      <color hex="354454"/>
+      <pointCount>TWO</pointCount>
+      <style>SOLID</style>
+      <smooth>false</smooth>
+      <lastUpdatePointIndex>1</lastUpdatePointIndex>
+      <gauge>_26</gauge>
+      <striped>false</striped>
+      <stripeColor hex="ffff00"/>
+    </diylc.connectivity.HookupWire>
+    <diylc.connectivity.HookupWire>
+      <id>6e2adb70-5e02-4297-83d4-3880c7cd6623</id>
+      <name>W23</name>
+      <alphaPercent>
+        <value>70</value>
+      </alphaPercent>
+      <controlPoints2>
+        <point x="1.85" y="1.1"/>
+        <point x="1.85" y="1.6"/>
+      </controlPoints2>
+      <color hex="ca4582"/>
+      <pointCount>TWO</pointCount>
+      <style>SOLID</style>
+      <smooth>false</smooth>
+      <lastUpdatePointIndex>1</lastUpdatePointIndex>
+      <gauge>_26</gauge>
+      <striped>false</striped>
+      <stripeColor hex="ffff00"/>
+    </diylc.connectivity.HookupWire>
+    <diylc.connectivity.HookupWire>
+      <id>a9825e0d-fe21-4e25-ae0e-66e97d76c276</id>
+      <name>W24</name>
+      <alphaPercent>
+        <value>70</value>
+      </alphaPercent>
+      <controlPoints2>
+        <point x="1.95" y="1.1"/>
+        <point x="2.05" y="1.1"/>
+        <point x="2.05" y="1.5"/>
+        <point x="1.95" y="1.6"/>
+      </controlPoints2>
+      <color hex="a35275"/>
+      <pointCount>FOUR</pointCount>
+      <style>SOLID</style>
+      <smooth>false</smooth>
+      <lastUpdatePointIndex>3</lastUpdatePointIndex>
+      <gauge>_26</gauge>
+      <striped>false</striped>
+      <stripeColor hex="ffff00"/>
+    </diylc.connectivity.HookupWire>
+    <diylc.connectivity.HookupWire>
+      <id>b091bb9e-3eb7-437d-a772-9c44c7ba08a2</id>
+      <name>W25</name>
+      <alphaPercent>
+        <value>70</value>
+      </alphaPercent>
+      <controlPoints2>
+        <point x="2.65" y="1.1"/>
+        <point x="2.15" y="1.1"/>
+        <point x="2.15" y="1.3"/>
+      </controlPoints2>
+      <color hex="b55024"/>
+      <pointCount>THREE</pointCount>
+      <style>SOLID</style>
+      <smooth>false</smooth>
+      <lastUpdatePointIndex>2</lastUpdatePointIndex>
+      <gauge>_26</gauge>
+      <striped>false</striped>
+      <stripeColor hex="ffff00"/>
+    </diylc.connectivity.HookupWire>
+    <diylc.connectivity.HookupWire>
+      <id>6313de05-8c76-49bb-af94-3513d1a2d3a2</id>
+      <name>W26</name>
+      <alphaPercent>
+        <value>70</value>
+      </alphaPercent>
+      <controlPoints2>
+        <point x="2.65" y="1.1"/>
+        <point x="2.75" y="1.2"/>
+      </controlPoints2>
+      <color hex="b55024"/>
+      <pointCount>TWO</pointCount>
+      <style>SOLID</style>
+      <smooth>false</smooth>
+      <lastUpdatePointIndex>1</lastUpdatePointIndex>
+      <gauge>_26</gauge>
+      <striped>false</striped>
+      <stripeColor hex="ffff00"/>
+    </diylc.connectivity.HookupWire>
+    <diylc.connectivity.HookupWire>
+      <id>59a4db2a-ca0f-4cac-a627-170ccf9f55fd</id>
+      <name>W27</name>
+      <alphaPercent>
+        <value>70</value>
+      </alphaPercent>
+      <controlPoints2>
+        <point x="2.75" y="1.1"/>
+        <point x="2.85" y="1.1"/>
+        <point x="2.85" y="1.6"/>
+        <point x="2.75" y="1.6"/>
+      </controlPoints2>
+      <color hex="75472c"/>
+      <pointCount>FOUR</pointCount>
+      <style>SOLID</style>
+      <smooth>false</smooth>
+      <lastUpdatePointIndex>3</lastUpdatePointIndex>
+      <gauge>_26</gauge>
+      <striped>false</striped>
+      <stripeColor hex="ffff00"/>
+    </diylc.connectivity.HookupWire>
+    <diylc.connectivity.HookupWire>
+      <id>476d1b1a-e05a-4bcb-93e4-d905ff7b767f</id>
+      <name>W28</name>
+      <alphaPercent>
+        <value>70</value>
+      </alphaPercent>
+      <controlPoints2>
+        <point x="2.75" y="1.6"/>
+        <point x="2.75" y="1.5"/>
+        <point x="2.55" y="1.5"/>
+      </controlPoints2>
+      <color hex="75472c"/>
+      <pointCount>THREE</pointCount>
+      <style>SOLID</style>
+      <smooth>false</smooth>
+      <lastUpdatePointIndex>2</lastUpdatePointIndex>
+      <gauge>_26</gauge>
+      <striped>false</striped>
+      <stripeColor hex="ffff00"/>
+    </diylc.connectivity.HookupWire>
+    <diylc.connectivity.HookupWire>
+      <id>56d36edf-8058-4696-9e99-3dabd89c6ed5</id>
+      <name>W29</name>
+      <alphaPercent>
+        <value>70</value>
+      </alphaPercent>
+      <controlPoints2>
+        <point x="2.35" y="1.3"/>
+        <point x="2.05" y="1.6"/>
+      </controlPoints2>
+      <color hex="d18429"/>
+      <pointCount>TWO</pointCount>
+      <style>SOLID</style>
+      <smooth>false</smooth>
+      <lastUpdatePointIndex>1</lastUpdatePointIndex>
+      <gauge>_26</gauge>
+      <striped>false</striped>
+      <stripeColor hex="ffff00"/>
+    </diylc.connectivity.HookupWire>
+    <diylc.connectivity.HookupWire>
+      <id>76cc504f-0750-4944-a18f-3efb4268c562</id>
+      <name>W30</name>
+      <alphaPercent>
+        <value>70</value>
+      </alphaPercent>
+      <controlPoints2>
+        <point x="2.55" y="1.6"/>
+        <point x="2.65" y="1.6"/>
+        <point x="2.65" y="1.2"/>
+        <point x="2.55" y="1.2"/>
+      </controlPoints2>
+      <color hex="9a4b15"/>
+      <pointCount>FOUR</pointCount>
+      <style>SOLID</style>
+      <smooth>false</smooth>
+      <lastUpdatePointIndex>3</lastUpdatePointIndex>
+      <gauge>_26</gauge>
+      <striped>false</striped>
+      <stripeColor hex="ffff00"/>
+    </diylc.connectivity.HookupWire>
+    <diylc.connectivity.HookupWire>
+      <id>44887e0c-6fb6-4573-b02f-c842ed5dad0b</id>
+      <name>W31</name>
+      <alphaPercent>
+        <value>70</value>
+      </alphaPercent>
+      <controlPoints2>
+        <point x="2.55" y="1.2"/>
+        <point x="1.95" y="1.2"/>
+      </controlPoints2>
+      <color hex="9a4b15"/>
+      <pointCount>TWO</pointCount>
+      <style>SOLID</style>
+      <smooth>false</smooth>
+      <lastUpdatePointIndex>1</lastUpdatePointIndex>
+      <gauge>_26</gauge>
+      <striped>false</striped>
+      <stripeColor hex="ffff00"/>
+    </diylc.connectivity.HookupWire>
+    <diylc.connectivity.HookupWire>
+      <id>97ab3379-eb05-4436-86f0-bb967455bdaf</id>
+      <name>W32</name>
+      <alphaPercent>
+        <value>70</value>
+      </alphaPercent>
+      <controlPoints2>
+        <point x="2.55" y="1.5"/>
+        <point x="1.95" y="1.5"/>
+      </controlPoints2>
+      <color hex="75472c"/>
+      <pointCount>TWO</pointCount>
+      <style>SOLID</style>
+      <smooth>false</smooth>
+      <lastUpdatePointIndex>1</lastUpdatePointIndex>
+      <gauge>_26</gauge>
+      <striped>false</striped>
+      <stripeColor hex="ffff00"/>
+    </diylc.connectivity.HookupWire>
+    <diylc.connectivity.HookupWire>
+      <id>2beed02c-105d-4a61-948e-f69356f1a0a2</id>
+      <name>W33</name>
+      <alphaPercent>
+        <value>70</value>
+      </alphaPercent>
+      <controlPoints2>
+        <point x="2.55" y="1.2"/>
+        <point x="2.35" y="2.0"/>
+      </controlPoints2>
+      <color hex="9a4b15"/>
+      <pointCount>TWO</pointCount>
+      <style>SOLID</style>
+      <smooth>false</smooth>
+      <lastUpdatePointIndex>1</lastUpdatePointIndex>
+      <gauge>_26</gauge>
+      <striped>false</striped>
+      <stripeColor hex="ffff00"/>
+    </diylc.connectivity.HookupWire>
+    <diylc.connectivity.HookupWire>
+      <id>9363f300-10cf-412b-8261-777bb53cccab</id>
+      <name>W34</name>
+      <alphaPercent>
+        <value>70</value>
+      </alphaPercent>
+      <controlPoints2>
+        <point x="2.75" y="1.6"/>
+        <point x="2.75" y="2.0"/>
+        <point x="2.45" y="2.0"/>
+      </controlPoints2>
+      <color hex="75472c"/>
+      <pointCount>THREE</pointCount>
+      <style>SOLID</style>
+      <smooth>false</smooth>
+      <lastUpdatePointIndex>2</lastUpdatePointIndex>
+      <gauge>_26</gauge>
+      <striped>false</striped>
+      <stripeColor hex="ffff00"/>
+    </diylc.connectivity.HookupWire>
+    <diylc.shapes.Rectangle>
+      <id>7428babe-4bcd-470e-ad03-04743d08cadb</id>
+      <name>U1-envelope-approx</name>
+      <alphaPercent>
+        <value>100</value>
+      </alphaPercent>
+      <value></value>
+      <controlPoints>
+        <point x="0.6" y="1.15"/>
+        <point x="1.8" y="1.65"/>
+      </controlPoints>
+      <firstPoint x="0.6" y="1.15"/>
+      <secondPoint x="1.8" y="1.65"/>
+      <color hex="e3eff8"/>
+      <borderColor hex="245c8d"/>
+      <borderThickness value="0.2" unit="mm"/>
+      <mode>TwoPoints</mode>
+      <edgeRadius value="0.0" unit="mm"/>
+    </diylc.shapes.Rectangle>
+    <diylc.electromechanical.PinHeader>
+      <id>63dddf05-ca48-4192-8d6c-ee00b9ddf6a8</id>
+      <name>H1</name>
+      <alphaPercent>
+        <value>100</value>
+      </alphaPercent>
+      <orientation>_270</orientation>
+      <controlPoints>
+        <point x="0.65" y="1.0"/>
+        <point x="0.65" y="0.9"/>
+        <point x="0.75" y="1.0"/>
+        <point x="0.75" y="0.9"/>
+        <point x="0.85" y="1.0"/>
+        <point x="0.85" y="0.9"/>
+        <point x="0.95" y="1.0"/>
+        <point x="0.95" y="0.9"/>
+        <point x="1.05" y="1.0"/>
+        <point x="1.05" y="0.9"/>
+        <point x="1.15" y="1.0"/>
+        <point x="1.15" y="0.9"/>
+        <point x="1.25" y="1.0"/>
+        <point x="1.25" y="0.9"/>
+        <point x="1.35" y="1.0"/>
+        <point x="1.35" y="0.9"/>
+        <point x="1.45" y="1.0"/>
+        <point x="1.45" y="0.9"/>
+        <point x="1.55" y="1.0"/>
+        <point x="1.55" y="0.9"/>
+        <point x="1.65" y="1.0"/>
+        <point x="1.65" y="0.9"/>
+        <point x="1.75" y="1.0"/>
+        <point x="1.75" y="0.9"/>
+        <point x="1.85" y="1.0"/>
+        <point x="1.85" y="0.9"/>
+        <point x="1.95" y="1.0"/>
+        <point x="1.95" y="0.9"/>
+        <point x="2.05" y="1.0"/>
+        <point x="2.05" y="0.9"/>
+        <point x="2.15" y="1.0"/>
+        <point x="2.15" y="0.9"/>
+        <point x="2.25" y="1.0"/>
+        <point x="2.25" y="0.9"/>
+        <point x="2.35" y="1.0"/>
+        <point x="2.35" y="0.9"/>
+        <point x="2.45" y="1.0"/>
+        <point x="2.45" y="0.9"/>
+        <point x="2.55" y="1.0"/>
+        <point x="2.55" y="0.9"/>
+      </controlPoints>
+      <rowCount>2</rowCount>
+      <columnCount>20</columnCount>
+      <spacing value="0.1" unit="in"/>
+      <shrouded>false</shrouded>
+      <nodeNames>1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40</nodeNames>
+      <bodyColor hex="808080"/>
+      <shroudColor hex="595959"/>
+    </diylc.electromechanical.PinHeader>
+    <diylc.electromechanical.PinHeader>
+      <id>d41ce2a4-15d5-462f-b16f-4dce8ec24270</id>
+      <name>U1</name>
+      <alphaPercent>
+        <value>100</value>
+      </alphaPercent>
+      <orientation>_270</orientation>
+      <controlPoints>
+        <point x="0.75" y="1.7"/>
+        <point x="0.85" y="1.7"/>
+        <point x="0.95" y="1.7"/>
+        <point x="1.05" y="1.7"/>
+        <point x="1.15" y="1.7"/>
+        <point x="1.25" y="1.7"/>
+        <point x="1.35" y="1.7"/>
+        <point x="1.45" y="1.7"/>
+        <point x="1.55" y="1.7"/>
+        <point x="1.65" y="1.7"/>
+      </controlPoints>
+      <rowCount>1</rowCount>
+      <columnCount>10</columnCount>
+      <spacing value="0.1" unit="in"/>
+      <shrouded>false</shrouded>
+      <nodeNames>VDD,GND,SCL,SDA,ADDR,ALRT,A0,A1,A2,A3</nodeNames>
+      <bodyColor hex="808080"/>
+      <shroudColor hex="595959"/>
+    </diylc.electromechanical.PinHeader>
+    <diylc.electromechanical.PinHeader>
+      <id>b39e525b-90b3-43e5-ba2e-fc2834af3c25</id>
+      <name>J2</name>
+      <alphaPercent>
+        <value>100</value>
+      </alphaPercent>
+      <orientation>_270</orientation>
+      <controlPoints>
+        <point x="1.05" y="2.4"/>
+        <point x="1.15" y="2.4"/>
+      </controlPoints>
+      <rowCount>1</rowCount>
+      <columnCount>2</columnCount>
+      <spacing value="0.1" unit="in"/>
+      <shrouded>false</shrouded>
+      <nodeNames>SIG,GND</nodeNames>
+      <bodyColor hex="808080"/>
+      <shroudColor hex="595959"/>
+    </diylc.electromechanical.PinHeader>
+    <diylc.electromechanical.PinHeader>
+      <id>daa9a746-3adb-4b8f-8061-e7cdb67d1595</id>
+      <name>J3</name>
+      <alphaPercent>
+        <value>100</value>
+      </alphaPercent>
+      <orientation>_270</orientation>
+      <controlPoints>
+        <point x="1.85" y="2.4"/>
+        <point x="1.95" y="2.4"/>
+      </controlPoints>
+      <rowCount>1</rowCount>
+      <columnCount>2</columnCount>
+      <spacing value="0.1" unit="in"/>
+      <shrouded>false</shrouded>
+      <nodeNames>SIG,GND</nodeNames>
+      <bodyColor hex="808080"/>
+      <shroudColor hex="595959"/>
+    </diylc.electromechanical.PinHeader>
+    <diylc.electromechanical.PinHeader>
+      <id>e3f06cb2-b312-48a0-ada0-6bc86aa70d65</id>
+      <name>J4</name>
+      <alphaPercent>
+        <value>100</value>
+      </alphaPercent>
+      <orientation>_270</orientation>
+      <controlPoints>
+        <point x="2.65" y="2.4"/>
+        <point x="2.75" y="2.4"/>
+      </controlPoints>
+      <rowCount>1</rowCount>
+      <columnCount>2</columnCount>
+      <spacing value="0.1" unit="in"/>
+      <shrouded>false</shrouded>
+      <nodeNames>SW,GND</nodeNames>
+      <bodyColor hex="808080"/>
+      <shroudColor hex="595959"/>
+    </diylc.electromechanical.PinHeader>
+    <diylc.passive.Resistor>
+      <id>69ea8e38-de87-4b39-b5c8-6838023edceb</id>
+      <name>R1</name>
+      <alphaPercent>
+        <value>100</value>
+      </alphaPercent>
+      <length value="0.5" unit="in"/>
+      <width value="0.125" unit="in"/>
+      <points>
+        <point x="1.05" y="1.8"/>
+        <point x="1.05" y="2.2"/>
+        <point x="0.0" y="0.0"/>
+      </points>
+      <bodyColor hex="82cffd"/>
+      <borderColor hex="5b90b1"/>
+      <labelColor hex="000000"/>
+      <leadColor hex="cccccc"/>
+      <display>BOTH</display>
+      <flipStanding>false</flipStanding>
+      <labelOrientation>Directional</labelOrientation>
+      <moveLabel>false</moveLabel>
+      <hideShortLeads>false</hideShortLeads>
+      <value value="1.0" unit="K"/>
+      <power>HALF</power>
+      <colorCode>_5_BAND</colorCode>
+      <shape>Standard</shape>
+    </diylc.passive.Resistor>
+    <diylc.connectivity.SolderPad>
+      <id>42f8fa0c-84bb-4af8-aa26-3e6ce72d4086</id>
+      <name>R3.0</name>
+      <alphaPercent>
+        <value>100</value>
+      </alphaPercent>
+      <size value="0.09" unit="in"/>
+      <color hex="000000"/>
+      <point x="1.85" y="1.8"/>
+      <type>ROUND</type>
+      <holeSize value="0.8" unit="mm"/>
+      <layer>_1</layer>
+      <holeType>NTPH</holeType>
+      <nodeName></nodeName>
+    </diylc.connectivity.SolderPad>
+    <diylc.connectivity.SolderPad>
+      <id>825f0b6c-e930-4220-94fe-80c6c0cb9adf</id>
+      <name>R3.1</name>
+      <alphaPercent>
+        <value>100</value>
+      </alphaPercent>
+      <size value="0.09" unit="in"/>
+      <color hex="000000"/>
+      <point x="1.85" y="2.2"/>
+      <type>ROUND</type>
+      <holeSize value="0.8" unit="mm"/>
+      <layer>_1</layer>
+      <holeType>NTPH</holeType>
+      <nodeName></nodeName>
+    </diylc.connectivity.SolderPad>
+    <diylc.passive.Resistor>
+      <id>3972d124-4beb-4e7c-bfed-5783a6e710c3</id>
+      <name>R5</name>
+      <alphaPercent>
+        <value>100</value>
+      </alphaPercent>
+      <length value="0.5" unit="in"/>
+      <width value="0.125" unit="in"/>
+      <points>
+        <point x="2.65" y="1.8"/>
+        <point x="2.65" y="2.2"/>
+        <point x="0.0" y="0.0"/>
+      </points>
+      <bodyColor hex="82cffd"/>
+      <borderColor hex="5b90b1"/>
+      <labelColor hex="000000"/>
+      <leadColor hex="cccccc"/>
+      <display>BOTH</display>
+      <flipStanding>false</flipStanding>
+      <labelOrientation>Directional</labelOrientation>
+      <moveLabel>false</moveLabel>
+      <hideShortLeads>false</hideShortLeads>
+      <value value="10.0" unit="K"/>
+      <power>HALF</power>
+      <colorCode>_5_BAND</colorCode>
+      <shape>Standard</shape>
+    </diylc.passive.Resistor>
+    <diylc.electromechanical.PinHeader>
+      <id>1a055a07-a6ae-4d26-9936-d7dc01040a03</id>
+      <name>J5</name>
+      <alphaPercent>
+        <value>100</value>
+      </alphaPercent>
+      <orientation>_270</orientation>
+      <controlPoints>
+        <point x="1.85" y="1.1"/>
+        <point x="1.95" y="1.1"/>
+      </controlPoints>
+      <rowCount>1</rowCount>
+      <columnCount>2</columnCount>
+      <spacing value="0.1" unit="in"/>
+      <shrouded>false</shrouded>
+      <nodeNames>BTN,RETURN</nodeNames>
+      <bodyColor hex="808080"/>
+      <shroudColor hex="595959"/>
+    </diylc.electromechanical.PinHeader>
+    <diylc.electromechanical.PinHeader>
+      <id>2521381f-2756-485b-aa22-109a0dc620d8</id>
+      <name>J6</name>
+      <alphaPercent>
+        <value>100</value>
+      </alphaPercent>
+      <orientation>_270</orientation>
+      <controlPoints>
+        <point x="1.85" y="1.6"/>
+        <point x="1.95" y="1.6"/>
+      </controlPoints>
+      <rowCount>1</rowCount>
+      <columnCount>2</columnCount>
+      <spacing value="0.1" unit="in"/>
+      <shrouded>false</shrouded>
+      <nodeNames>BTN,RETURN</nodeNames>
+      <bodyColor hex="808080"/>
+      <shroudColor hex="595959"/>
+    </diylc.electromechanical.PinHeader>
+    <diylc.electromechanical.PinHeader>
+      <id>b02a676e-5d56-4c72-8ccc-0ff6aa74d628</id>
+      <name>J7</name>
+      <alphaPercent>
+        <value>100</value>
+      </alphaPercent>
+      <orientation>_270</orientation>
+      <controlPoints>
+        <point x="2.65" y="1.1"/>
+        <point x="2.75" y="1.1"/>
+      </controlPoints>
+      <rowCount>1</rowCount>
+      <columnCount>2</columnCount>
+      <spacing value="0.1" unit="in"/>
+      <shrouded>false</shrouded>
+      <nodeNames>TRIG+,TRIG-</nodeNames>
+      <bodyColor hex="808080"/>
+      <shroudColor hex="595959"/>
+    </diylc.electromechanical.PinHeader>
+    <diylc.passive.RadialElectrolytic>
+      <id>410d30b7-9b95-4dbd-aefb-05b6d8833ccc</id>
+      <name>C6</name>
+      <alphaPercent>
+        <value>100</value>
+      </alphaPercent>
+      <length value="8.0" unit="mm"/>
+      <width value="8.0" unit="mm"/>
+      <points>
+        <point x="2.15" y="1.3"/>
+        <point x="2.35" y="1.3"/>
+        <point x="0.0" y="0.0"/>
+      </points>
+      <bodyColor hex="6b6dce"/>
+      <borderColor hex="4a4c90"/>
+      <labelColor hex="ffffff"/>
+      <leadColor hex="cccccc"/>
+      <display>NAME</display>
+      <flipStanding>false</flipStanding>
+      <labelOrientation>Directional</labelOrientation>
+      <moveLabel>false</moveLabel>
+      <hideShortLeads>false</hideShortLeads>
+      <pinSpacing value="0.1" unit="in"/>
+      <value value="220.0" unit="uF"/>
+      <voltage>_63V</voltage>
+      <voltageNew value="25.0" unit="V"/>
+      <markerColor hex="8cacea"/>
+      <tickColor hex="ffffff"/>
+      <polarized>true</polarized>
+      <folded>false</folded>
+      <height value="0.4" unit="in"/>
+      <invert>false</invert>
+    </diylc.passive.RadialElectrolytic>
+    <diylc.passive.Resistor>
+      <id>b4fdcb19-13b2-4e86-8fca-1f0fddeb8b35</id>
+      <name>R7</name>
+      <alphaPercent>
+        <value>100</value>
+      </alphaPercent>
+      <length value="0.5" unit="in"/>
+      <width value="0.125" unit="in"/>
+      <points>
+        <point x="2.75" y="1.2"/>
+        <point x="2.75" y="1.6"/>
+        <point x="0.0" y="0.0"/>
+      </points>
+      <bodyColor hex="82cffd"/>
+      <borderColor hex="5b90b1"/>
+      <labelColor hex="000000"/>
+      <leadColor hex="cccccc"/>
+      <display>NAME</display>
+      <flipStanding>false</flipStanding>
+      <labelOrientation>Directional</labelOrientation>
+      <moveLabel>false</moveLabel>
+      <hideShortLeads>false</hideShortLeads>
+      <value value="10.0" unit="K"/>
+      <power>HALF</power>
+      <colorCode>_5_BAND</colorCode>
+      <shape>Standard</shape>
+    </diylc.passive.Resistor>
+    <diylc.passive.Resistor>
+      <id>90c7e458-8dbf-442d-81c0-d3d89b2e19e5</id>
+      <name>R8</name>
+      <alphaPercent>
+        <value>100</value>
+      </alphaPercent>
+      <length value="9.0" unit="mm"/>
+      <width value="0.125" unit="in"/>
+      <points>
+        <point x="2.05" y="1.6"/>
+        <point x="2.55" y="1.6"/>
+        <point x="0.0" y="0.0"/>
+      </points>
+      <bodyColor hex="82cffd"/>
+      <borderColor hex="5b90b1"/>
+      <labelColor hex="000000"/>
+      <leadColor hex="cccccc"/>
+      <display>NAME</display>
+      <flipStanding>false</flipStanding>
+      <labelOrientation>Directional</labelOrientation>
+      <moveLabel>false</moveLabel>
+      <hideShortLeads>false</hideShortLeads>
+      <value value="0.47" unit="K"/>
+      <power>HALF</power>
+      <colorCode>_5_BAND</colorCode>
+      <shape>Standard</shape>
+    </diylc.passive.Resistor>
+    <diylc.semiconductors.DiodeGlass>
+      <id>9806fec7-3eb0-4d34-b6ad-2c0898794115</id>
+      <name>D1</name>
+      <alphaPercent>
+        <value>100</value>
+      </alphaPercent>
+      <length value="0.2" unit="in"/>
+      <width value="0.09" unit="in"/>
+      <points>
+        <point x="2.55" y="1.5"/>
+        <point x="2.55" y="1.2"/>
+        <point x="0.0" y="0.0"/>
+      </points>
+      <bodyColor hex="e1f0ff"/>
+      <borderColor hex="808080"/>
+      <labelColor hex="ffffff"/>
+      <leadColor hex="cccccc"/>
+      <display>NAME</display>
+      <flipStanding>false</flipStanding>
+      <labelOrientation>Directional</labelOrientation>
+      <moveLabel>false</moveLabel>
+      <hideShortLeads>false</hideShortLeads>
+      <value>1N4148</value>
+      <markerColor hex="808080"/>
+      <insideColor hex="e66e31"/>
+    </diylc.semiconductors.DiodeGlass>
+    <diylc.passive.Resistor>
+      <id>b05dfd58-cb4a-4c2f-8b67-b60bb42b99c0</id>
+      <name>R9</name>
+      <alphaPercent>
+        <value>100</value>
+      </alphaPercent>
+      <length value="6.3" unit="mm"/>
+      <width value="2.5" unit="mm"/>
+      <points>
+        <point x="1.95" y="1.2"/>
+        <point x="1.95" y="1.5"/>
+        <point x="0.0" y="0.0"/>
+      </points>
+      <bodyColor hex="82cffd"/>
+      <borderColor hex="5b90b1"/>
+      <labelColor hex="000000"/>
+      <leadColor hex="cccccc"/>
+      <display>NAME</display>
+      <flipStanding>false</flipStanding>
+      <labelOrientation>Directional</labelOrientation>
+      <moveLabel>false</moveLabel>
+      <hideShortLeads>false</hideShortLeads>
+      <value value="4.7" unit="K"/>
+      <power>QUARTER</power>
+      <colorCode>_5_BAND</colorCode>
+      <shape>Standard</shape>
+    </diylc.passive.Resistor>
+    <diylc.electromechanical.PinHeader>
+      <id>6671d6b9-4c04-4ceb-9347-f7c14f3ec32c</id>
+      <name>J8</name>
+      <alphaPercent>
+        <value>100</value>
+      </alphaPercent>
+      <orientation>_270</orientation>
+      <controlPoints>
+        <point x="2.35" y="2.0"/>
+        <point x="2.45" y="2.0"/>
+      </controlPoints>
+      <rowCount>1</rowCount>
+      <columnCount>2</columnCount>
+      <spacing value="0.1" unit="in"/>
+      <shrouded>false</shrouded>
+      <nodeNames>INPUT+,INPUT-</nodeNames>
+      <bodyColor hex="808080"/>
+      <shroudColor hex="595959"/>
+    </diylc.electromechanical.PinHeader>
+    <diylc.misc.Label>
+      <id>7c005c83-7166-4953-ade1-9335e6bdd50f</id>
+      <name></name>
+      <point x="0.53" y="0.65"/>
+      <text>1</text>
+      <font name="Dialog" size="9" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>ae0ccfb5-cdd8-4aa6-9cc7-4206de2450c0</id>
+      <name></name>
+      <point x="0.63" y="0.65"/>
+      <text>2</text>
+      <font name="Dialog" size="9" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>3247efbc-c876-4235-a724-23de2504c2ff</id>
+      <name></name>
+      <point x="0.73" y="0.65"/>
+      <text>3</text>
+      <font name="Dialog" size="9" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>12fd086e-df05-41eb-a633-b1b12d9b6657</id>
+      <name></name>
+      <point x="0.83" y="0.65"/>
+      <text>4</text>
+      <font name="Dialog" size="9" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>a2a3333f-8e4d-4486-b2f8-569489102752</id>
+      <name></name>
+      <point x="0.93" y="0.65"/>
+      <text>5</text>
+      <font name="Dialog" size="9" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>d6852d71-8a55-4f75-89be-9b2ec046c3ef</id>
+      <name></name>
+      <point x="1.03" y="0.65"/>
+      <text>6</text>
+      <font name="Dialog" size="9" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>2503e7e4-0755-42ff-9dc1-351784002a2e</id>
+      <name></name>
+      <point x="1.13" y="0.65"/>
+      <text>7</text>
+      <font name="Dialog" size="9" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>ad5ad13d-dd53-442a-9250-0203d4243641</id>
+      <name></name>
+      <point x="1.23" y="0.65"/>
+      <text>8</text>
+      <font name="Dialog" size="9" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>b601a31d-6563-4226-9643-543bfcde984b</id>
+      <name></name>
+      <point x="1.33" y="0.65"/>
+      <text>9</text>
+      <font name="Dialog" size="9" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>6693aaeb-b41e-41c4-8098-cb9a77a8890e</id>
+      <name></name>
+      <point x="1.43" y="0.65"/>
+      <text>10</text>
+      <font name="Dialog" size="9" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>5c653c31-909b-4b77-b272-163cfd148a7e</id>
+      <name></name>
+      <point x="1.53" y="0.65"/>
+      <text>11</text>
+      <font name="Dialog" size="9" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>f156071a-b59b-44a7-992a-db33ba79330c</id>
+      <name></name>
+      <point x="1.63" y="0.65"/>
+      <text>12</text>
+      <font name="Dialog" size="9" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>824e53bd-d85b-4610-a6be-047d4c2a3a4d</id>
+      <name></name>
+      <point x="1.73" y="0.65"/>
+      <text>13</text>
+      <font name="Dialog" size="9" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>07d9e3f2-3b38-4aa4-8ce7-5e225cb9802f</id>
+      <name></name>
+      <point x="1.83" y="0.65"/>
+      <text>14</text>
+      <font name="Dialog" size="9" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>25e73cb9-1944-49c4-8ae7-a8cae51cc084</id>
+      <name></name>
+      <point x="1.93" y="0.65"/>
+      <text>15</text>
+      <font name="Dialog" size="9" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>23a3d141-19d3-45ee-9d4b-6f4ea707aa46</id>
+      <name></name>
+      <point x="2.03" y="0.65"/>
+      <text>16</text>
+      <font name="Dialog" size="9" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>a2b095bd-fcde-4221-afe6-61dcea45a0ab</id>
+      <name></name>
+      <point x="2.13" y="0.65"/>
+      <text>17</text>
+      <font name="Dialog" size="9" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>646e6542-3445-4a07-842a-f320e9f325f0</id>
+      <name></name>
+      <point x="2.23" y="0.65"/>
+      <text>18</text>
+      <font name="Dialog" size="9" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>e28271ee-1dc3-418b-80d1-c4382b6b0d48</id>
+      <name></name>
+      <point x="2.33" y="0.65"/>
+      <text>19</text>
+      <font name="Dialog" size="9" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>3852c920-4150-43e7-8f4e-2ea897cd767c</id>
+      <name></name>
+      <point x="2.43" y="0.65"/>
+      <text>20</text>
+      <font name="Dialog" size="9" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>05d02f6a-6082-40c9-9d67-cd241f505952</id>
+      <name></name>
+      <point x="2.53" y="0.65"/>
+      <text>21</text>
+      <font name="Dialog" size="9" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>e5730f69-4388-4a2d-958e-0ac86d505178</id>
+      <name></name>
+      <point x="2.63" y="0.65"/>
+      <text>22</text>
+      <font name="Dialog" size="9" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>b2915f9d-b886-4cdb-b44d-59254943e23c</id>
+      <name></name>
+      <point x="2.73" y="0.65"/>
+      <text>23</text>
+      <font name="Dialog" size="9" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>31a28480-dae3-422c-917d-7a452d2911cf</id>
+      <name></name>
+      <point x="2.83" y="0.65"/>
+      <text>24</text>
+      <font name="Dialog" size="9" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>cdbf5870-1463-49a3-8210-12dcf4ff633c</id>
+      <name></name>
+      <point x="0.33" y="0.815"/>
+      <text>1</text>
+      <font name="Dialog" size="9" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>85c09cb0-7ba6-4b82-9334-c6b4eac4b77b</id>
+      <name></name>
+      <point x="0.33" y="0.915"/>
+      <text>2</text>
+      <font name="Dialog" size="9" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>f649a658-099a-4046-bf90-e71346c8ec8a</id>
+      <name></name>
+      <point x="0.33" y="1.015"/>
+      <text>3</text>
+      <font name="Dialog" size="9" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>55661091-3fd1-4547-94db-e9057ce0f5d6</id>
+      <name></name>
+      <point x="0.33" y="1.115"/>
+      <text>4</text>
+      <font name="Dialog" size="9" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>70ed8929-af8f-4ee2-a1a6-1da76386fbdd</id>
+      <name></name>
+      <point x="0.33" y="1.215"/>
+      <text>5</text>
+      <font name="Dialog" size="9" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>36754853-35c1-4b9f-8367-546846dc0ae5</id>
+      <name></name>
+      <point x="0.33" y="1.315"/>
+      <text>6</text>
+      <font name="Dialog" size="9" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>594bd4f3-9ce0-4436-8f21-f13750365c41</id>
+      <name></name>
+      <point x="0.33" y="1.415"/>
+      <text>7</text>
+      <font name="Dialog" size="9" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>8fbb8acc-be95-408b-914c-b21c6f6bc1a9</id>
+      <name></name>
+      <point x="0.33" y="1.515"/>
+      <text>8</text>
+      <font name="Dialog" size="9" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>c4df14d8-c8f8-4717-b08b-562da971fa88</id>
+      <name></name>
+      <point x="0.33" y="1.615"/>
+      <text>9</text>
+      <font name="Dialog" size="9" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>17852435-65fc-4ab7-be47-55ead7b79612</id>
+      <name></name>
+      <point x="0.33" y="1.715"/>
+      <text>10</text>
+      <font name="Dialog" size="9" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>16bef5b1-af75-49c9-a657-d1f063f20a16</id>
+      <name></name>
+      <point x="0.33" y="1.815"/>
+      <text>11</text>
+      <font name="Dialog" size="9" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>f269953e-ad3b-4f43-9605-ae0419a3885d</id>
+      <name></name>
+      <point x="0.33" y="1.915"/>
+      <text>12</text>
+      <font name="Dialog" size="9" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>e0d0641f-47d2-4234-abd3-b2adf9c2948e</id>
+      <name></name>
+      <point x="0.33" y="2.015"/>
+      <text>13</text>
+      <font name="Dialog" size="9" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>41fa589d-f277-419c-8105-0c7651cf04c6</id>
+      <name></name>
+      <point x="0.33" y="2.115"/>
+      <text>14</text>
+      <font name="Dialog" size="9" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>837a0719-7a1d-47c9-b30a-47160250b884</id>
+      <name></name>
+      <point x="0.33" y="2.215"/>
+      <text>15</text>
+      <font name="Dialog" size="9" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>57f0e0b5-dceb-4683-98c7-b85a16d407a2</id>
+      <name></name>
+      <point x="0.33" y="2.315"/>
+      <text>16</text>
+      <font name="Dialog" size="9" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>f6c96cab-2914-441e-be5e-bcc919a9eec3</id>
+      <name></name>
+      <point x="0.33" y="2.415"/>
+      <text>17</text>
+      <font name="Dialog" size="9" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>ec3b2e8d-d43d-44c7-9acf-b26d8b9901ff</id>
+      <name></name>
+      <point x="0.33" y="2.515"/>
+      <text>18</text>
+      <font name="Dialog" size="9" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>a920dc16-9e5b-4dc7-a9e1-ac2c886f5a48</id>
+      <name></name>
+      <point x="0.45" y="0.215"/>
+      <text>ADS1115 COMPACT CARRIER - REV H</text>
+      <font name="Dialog" size="20" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>5d066799-9d9e-425f-ae82-59244f6214fe</id>
+      <name></name>
+      <point x="0.45" y="0.35"/>
+      <text>TOP VIEW; wires underneath; coordinates = (column,row)</text>
+      <font name="Dialog" size="13" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>3eb1b68f-79d1-4ac0-b67b-52810e87d5b8</id>
+      <name></name>
+      <point x="0.45" y="0.46"/>
+      <text>H1: pin 1 (2,3); female below, male stacking pins above</text>
+      <font name="Dialog" size="13" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>79523e82-0f42-4c7c-8039-cc9d4a409ce7</id>
+      <name></name>
+      <point x="3.175" y="0.6"/>
+      <text>COMPLETE CIRCUIT - REV H</text>
+      <font name="Dialog" size="15" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>1daabda6-7c6b-41ae-b662-dca6aff8368c</id>
+      <name></name>
+      <point x="3.175" y="0.695"/>
+      <text>Rev G retained; add J8 input plug</text>
+      <font name="Dialog" size="11" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>343420f1-cebc-41bc-a08a-cf27be7c29c9</id>
+      <name></name>
+      <point x="3.175" y="0.79"/>
+      <text></text>
+      <font name="Dialog" size="11" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>54b39832-7940-4129-a4a8-6e9858ebc483</id>
+      <name></name>
+      <point x="3.175" y="0.885"/>
+      <text>SENSORS / HEADER</text>
+      <font name="Dialog" size="11" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>e802f9ca-ceb7-48ef-97c4-b3d41df802b9</id>
+      <name></name>
+      <point x="3.175" y="0.98"/>
+      <text>H1: female below, male pins above</text>
+      <font name="Dialog" size="11" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>b63eb183-48b9-4436-863e-638ff1d6d993</id>
+      <name></name>
+      <point x="3.175" y="1.075"/>
+      <text>Pi: 1=3V3  3=SDA  5=SCL</text>
+      <font name="Dialog" size="11" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>f13b1ee2-b43f-4fdb-af18-14653eec33e0</id>
+      <name></name>
+      <point x="3.175" y="1.17"/>
+      <text>9=GND  13=GPIO27 brake</text>
+      <font name="Dialog" size="11" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>82d62401-327b-4635-894f-332eaa995fd4</id>
+      <name></name>
+      <point x="3.175" y="1.265"/>
+      <text>R1 fuel 1k; R5 brake 10k</text>
+      <font name="Dialog" size="11" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>f0644d88-af07-42b8-a83b-4be8f8645dc5</id>
+      <name></name>
+      <point x="3.175" y="1.36"/>
+      <text>R3 oil bias: empty pending curve</text>
+      <font name="Dialog" size="11" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>3ede5bf1-cba7-4d36-91e2-4f80ac8e756c</id>
+      <name></name>
+      <point x="3.175" y="1.455"/>
+      <text>Fuel/oil wired directly to A0/A1</text>
+      <font name="Dialog" size="11" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>e1a80157-f31e-4a2a-a6f6-6571af80ea89</id>
+      <name></name>
+      <point x="3.175" y="1.55"/>
+      <text></text>
+      <font name="Dialog" size="11" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>2325016d-5d43-4ea3-b417-43c1834c2e98</id>
+      <name></name>
+      <point x="3.175" y="1.645"/>
+      <text>WAKE CIRCUIT - INCLUDED</text>
+      <font name="Dialog" size="11" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>190b12dc-45be-4d1b-85a9-d1d782915bc4</id>
+      <name></name>
+      <point x="3.175" y="1.74"/>
+      <text>J5 -&gt; Pi dedicated J2 (2 wires)</text>
+      <font name="Dialog" size="11" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>fa4fc486-5a9b-4246-8d48-b14076758b7f</id>
+      <name></name>
+      <point x="3.175" y="1.835"/>
+      <text>J6 &lt;- optocoupler OUT / GND</text>
+      <font name="Dialog" size="11" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>f8407c92-1142-42f9-86b8-8896ddf2d081</id>
+      <name></name>
+      <point x="3.175" y="1.93"/>
+      <text>J7 &lt;- switched regulated trigger</text>
+      <font name="Dialog" size="11" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>24a65076-e1bc-4c20-aa75-c0d3b6a510f2</id>
+      <name></name>
+      <point x="3.175" y="2.025"/>
+      <text>J8 -&gt; optocoupler INPUT+ / INPUT-</text>
+      <font name="Dialog" size="11" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>7ebca134-36f8-4b05-8da4-5873cd5a450a</id>
+      <name></name>
+      <point x="3.175" y="2.12"/>
+      <text>R7 10k bleed; R8 470 &gt;=0.5W</text>
+      <font name="Dialog" size="11" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>219fa7c4-d3d6-4dbc-96cd-e0f0abec27e4</id>
+      <name></name>
+      <point x="3.175" y="2.215"/>
+      <text>R9 4.7k across INPUT+ / INPUT-</text>
+      <font name="Dialog" size="11" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>98f36e91-e6af-41fe-a53e-71e5e6f6caba</id>
+      <name></name>
+      <point x="3.175" y="2.31"/>
+      <text>C6 220uF &gt;=25V: + at (17,6)</text>
+      <font name="Dialog" size="11" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>dd6c52d1-dc1b-42fa-8329-559ae1d2e9ca</id>
+      <name></name>
+      <point x="3.175" y="2.405"/>
+      <text>D1 1N4148: band at (21,5)</text>
+      <font name="Dialog" size="11" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>428c1c30-ef16-488c-9272-6ed8d93aea97</id>
+      <name></name>
+      <point x="3.175" y="2.5"/>
+      <text>External optocoupler VCC: unused</text>
+      <font name="Dialog" size="11" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>9f687431-2452-4db1-8932-a29d5021b4f3</id>
+      <name></name>
+      <point x="3.175" y="2.595"/>
+      <text></text>
+      <font name="Dialog" size="11" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>d29a7b4c-319b-42aa-878d-d2e293cce280</id>
+      <name></name>
+      <point x="3.175" y="2.69"/>
+      <text>ASSEMBLY</text>
+      <font name="Dialog" size="11" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>8c55b6c3-bdb5-4ddd-af66-7d7ee36517af</id>
+      <name></name>
+      <point x="3.175" y="2.785"/>
+      <text>Short red 3V3 / gray GND buses</text>
+      <font name="Dialog" size="11" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>a45e9611-2d19-4331-aa38-eba354468757</id>
+      <name></name>
+      <point x="3.175" y="2.88"/>
+      <text>All other jumpers insulated underneath</text>
+      <font name="Dialog" size="11" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>213bd199-14be-4338-9e3f-2f30ae3d2af7</id>
+      <name></name>
+      <point x="3.175" y="2.975"/>
+      <text>Only endpoints are solder joints</text>
+      <font name="Dialog" size="11" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>e7067213-3a77-41b6-bf4b-b7955d59d61f</id>
+      <name></name>
+      <point x="3.175" y="3.07"/>
+      <text>Wake behavior still requires testing</text>
+      <font name="Dialog" size="11" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>47b92bc4-7c57-464e-aaf4-e4103aa1a5e2</id>
+      <name></name>
+      <point x="1.825" y="1.055"/>
+      <text>J5 PI J2</text>
+      <font name="Dialog" size="9" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>5892a97a-8a25-4a05-a1ee-9cfca602bdd5</id>
+      <name></name>
+      <point x="1.825" y="1.67"/>
+      <text>J6 OPTO</text>
+      <font name="Dialog" size="9" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>0cfd0f05-f2d9-4e63-8a2c-d4de157616a2</id>
+      <name></name>
+      <point x="2.575" y="1.055"/>
+      <text>J7 TRIGGER</text>
+      <font name="Dialog" size="8" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>6483ed2d-79e7-4e24-8d24-45f991f85418</id>
+      <name></name>
+      <point x="2.24" y="2.14"/>
+      <text>J8 + / -</text>
+      <font name="Dialog" size="9" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>e1f10aa2-a828-41d8-8b0f-78e275d58f8a</id>
+      <name></name>
+      <point x="0.965" y="2.725"/>
+      <text>J2 FUEL</text>
+      <font name="Dialog" size="11" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>2a57a78f-3d09-4fad-9c17-87372596fa35</id>
+      <name></name>
+      <point x="1.765" y="2.725"/>
+      <text>J3 OIL</text>
+      <font name="Dialog" size="11" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>5bb6b987-4f66-4db4-b567-adad5d7347f0</id>
+      <name></name>
+      <point x="2.525" y="2.725"/>
+      <text>J4 BRAKE</text>
+      <font name="Dialog" size="11" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>dfb7581e-501b-4bda-8732-20c982802e85</id>
+      <name></name>
+      <point x="0.55" y="1.025"/>
+      <text>1</text>
+      <font name="Dialog" size="12" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>8aa07aad-059b-40c6-a1c9-b9be4e4270be</id>
+      <name></name>
+      <point x="0.65" y="1.3"/>
+      <text>U1 ADS1115 module</text>
+      <font name="Dialog" size="15" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>3a356fd7-b29a-4a7d-8be9-29cbbba0e46c</id>
+      <name></name>
+      <point x="0.65" y="1.4"/>
+      <text>Approximate body; verify fit</text>
+      <font name="Dialog" size="11" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+    <diylc.misc.Label>
+      <id>870a11f5-cf3b-4032-9075-d36f7be59d1d</id>
+      <name></name>
+      <point x="0.65" y="1.5"/>
+      <text>VDD left; A3 right</text>
+      <font name="Dialog" size="11" style="0"/>
+      <color hex="404040"/>
+      <horizontalAlignment>LEFT</horizontalAlignment>
+      <verticalAlignment>CENTER</verticalAlignment>
+      <orientation>DEFAULT</orientation>
+    </diylc.misc.Label>
+  </components>
+  <groups/>
+  <groupsEx/>
+  <lockedLayers/>
+  <lockedComponents/>
+  <hiddenLayers/>
+  <font name="Dialog" size="14" style="0"/>
+</project>

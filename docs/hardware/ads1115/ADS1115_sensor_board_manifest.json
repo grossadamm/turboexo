@@ -1,0 +1,1037 @@
+{
+  "revision": "A",
+  "date": "2026-10-30",
+  "board": {
+    "columns": 30,
+    "rows": 24,
+    "pitch_mm": 2.54,
+    "coordinates": "component-side (column,row), 1-based",
+    "type": "individual-pad perfboard"
+  },
+  "parts": [
+    {
+      "ref": "U1",
+      "kind": "header",
+      "value": "ADS1115 1x10 socket",
+      "pins": [
+        [
+          11,
+          7
+        ],
+        [
+          12,
+          7
+        ],
+        [
+          13,
+          7
+        ],
+        [
+          14,
+          7
+        ],
+        [
+          15,
+          7
+        ],
+        [
+          16,
+          7
+        ],
+        [
+          17,
+          7
+        ],
+        [
+          18,
+          7
+        ],
+        [
+          19,
+          7
+        ],
+        [
+          20,
+          7
+        ]
+      ],
+      "names": [
+        "VDD",
+        "GND",
+        "SCL",
+        "SDA",
+        "ADDR",
+        "ALRT",
+        "A0",
+        "A1",
+        "A2",
+        "A3"
+      ]
+    },
+    {
+      "ref": "J1",
+      "kind": "header",
+      "value": "HOST 1x5",
+      "pins": [
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          6
+        ]
+      ],
+      "names": [
+        "3V3",
+        "GND",
+        "SCL",
+        "SDA",
+        "BRAKE"
+      ]
+    },
+    {
+      "ref": "J2",
+      "kind": "header",
+      "value": "FUEL 1x2",
+      "pins": [
+        [
+          3,
+          13
+        ],
+        [
+          3,
+          14
+        ]
+      ],
+      "names": [
+        "SIGNAL",
+        "GND"
+      ]
+    },
+    {
+      "ref": "J3",
+      "kind": "header",
+      "value": "OIL TEMP 1x2 - DO NOT CONNECT YET",
+      "pins": [
+        [
+          3,
+          20
+        ],
+        [
+          3,
+          21
+        ]
+      ],
+      "names": [
+        "SIGNAL",
+        "GND"
+      ]
+    },
+    {
+      "ref": "J4",
+      "kind": "header",
+      "value": "BRAKE 1x2",
+      "pins": [
+        [
+          28,
+          18
+        ],
+        [
+          28,
+          19
+        ]
+      ],
+      "names": [
+        "SWITCH",
+        "GND"
+      ]
+    },
+    {
+      "ref": "R1",
+      "kind": "resistor",
+      "value": "1k - removable BENCH bias",
+      "ohms": 1000,
+      "pins": [
+        [
+          6,
+          9
+        ],
+        [
+          6,
+          13
+        ]
+      ]
+    },
+    {
+      "ref": "R2",
+      "kind": "resistor",
+      "value": "1k fuel series",
+      "ohms": 1000,
+      "pins": [
+        [
+          10,
+          13
+        ],
+        [
+          14,
+          13
+        ]
+      ]
+    },
+    {
+      "ref": "R3A",
+      "kind": "header",
+      "value": "Oil bias socket +3V3",
+      "pins": [
+        [
+          6,
+          16
+        ]
+      ],
+      "names": [
+        "3V3"
+      ]
+    },
+    {
+      "ref": "R3B",
+      "kind": "header",
+      "value": "Oil bias socket SIGNAL",
+      "pins": [
+        [
+          6,
+          20
+        ]
+      ],
+      "names": [
+        "SIGNAL"
+      ]
+    },
+    {
+      "ref": "R4",
+      "kind": "resistor",
+      "value": "1k oil series",
+      "ohms": 1000,
+      "pins": [
+        [
+          10,
+          20
+        ],
+        [
+          14,
+          20
+        ]
+      ]
+    },
+    {
+      "ref": "R5",
+      "kind": "resistor",
+      "value": "10k brake pull-up",
+      "ohms": 10000,
+      "pins": [
+        [
+          24,
+          11
+        ],
+        [
+          24,
+          15
+        ]
+      ]
+    },
+    {
+      "ref": "R6",
+      "kind": "resistor",
+      "value": "1k brake series",
+      "ohms": 1000,
+      "pins": [
+        [
+          24,
+          17
+        ],
+        [
+          24,
+          21
+        ]
+      ]
+    },
+    {
+      "ref": "C1",
+      "kind": "capacitor",
+      "value": "100nF fuel filter",
+      "pins": [
+        [
+          17,
+          13
+        ],
+        [
+          17,
+          15
+        ]
+      ]
+    },
+    {
+      "ref": "C2",
+      "kind": "capacitor",
+      "value": "100nF oil filter",
+      "pins": [
+        [
+          17,
+          20
+        ],
+        [
+          17,
+          22
+        ]
+      ]
+    },
+    {
+      "ref": "C3",
+      "kind": "capacitor",
+      "value": "100nF brake filter",
+      "pins": [
+        [
+          24,
+          23
+        ],
+        [
+          26,
+          23
+        ]
+      ]
+    },
+    {
+      "ref": "C4",
+      "kind": "capacitor",
+      "value": "100nF supply bypass",
+      "pins": [
+        [
+          7,
+          6
+        ],
+        [
+          9,
+          6
+        ]
+      ]
+    },
+    {
+      "ref": "C5",
+      "kind": "electrolytic",
+      "value": "10uF >=10V; + at (7,3)",
+      "pins": [
+        [
+          7,
+          3
+        ],
+        [
+          9,
+          3
+        ]
+      ]
+    },
+    {
+      "ref": "TP1",
+      "kind": "header",
+      "value": "Ground junction",
+      "pins": [
+        [
+          28,
+          9
+        ]
+      ],
+      "names": [
+        "GND"
+      ]
+    }
+  ],
+  "wires": [
+    {
+      "ref": "W01",
+      "net": "3V3",
+      "path": [
+        [
+          3,
+          2
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          7,
+          3
+        ]
+      ]
+    },
+    {
+      "ref": "W02",
+      "net": "3V3",
+      "path": [
+        [
+          7,
+          3
+        ],
+        [
+          7,
+          6
+        ]
+      ]
+    },
+    {
+      "ref": "W03",
+      "net": "3V3",
+      "path": [
+        [
+          7,
+          6
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          11,
+          7
+        ]
+      ]
+    },
+    {
+      "ref": "W04",
+      "net": "3V3",
+      "path": [
+        [
+          11,
+          7
+        ],
+        [
+          11,
+          9
+        ],
+        [
+          6,
+          9
+        ]
+      ]
+    },
+    {
+      "ref": "W05",
+      "net": "3V3",
+      "path": [
+        [
+          6,
+          9
+        ],
+        [
+          8,
+          9
+        ],
+        [
+          8,
+          16
+        ],
+        [
+          6,
+          16
+        ]
+      ]
+    },
+    {
+      "ref": "W06",
+      "net": "3V3",
+      "path": [
+        [
+          6,
+          16
+        ],
+        [
+          8,
+          16
+        ],
+        [
+          8,
+          10
+        ],
+        [
+          24,
+          10
+        ],
+        [
+          24,
+          11
+        ]
+      ]
+    },
+    {
+      "ref": "W07",
+      "net": "GND",
+      "path": [
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          9,
+          1
+        ],
+        [
+          9,
+          3
+        ]
+      ]
+    },
+    {
+      "ref": "W08",
+      "net": "GND",
+      "path": [
+        [
+          9,
+          3
+        ],
+        [
+          9,
+          6
+        ]
+      ]
+    },
+    {
+      "ref": "W09",
+      "net": "GND",
+      "path": [
+        [
+          9,
+          6
+        ],
+        [
+          9,
+          8
+        ],
+        [
+          12,
+          8
+        ],
+        [
+          12,
+          7
+        ]
+      ]
+    },
+    {
+      "ref": "W10",
+      "net": "GND",
+      "path": [
+        [
+          12,
+          7
+        ],
+        [
+          12,
+          8
+        ],
+        [
+          15,
+          8
+        ],
+        [
+          15,
+          7
+        ]
+      ]
+    },
+    {
+      "ref": "W11",
+      "net": "GND",
+      "path": [
+        [
+          15,
+          7
+        ],
+        [
+          15,
+          9
+        ],
+        [
+          28,
+          9
+        ]
+      ]
+    },
+    {
+      "ref": "W12",
+      "net": "GND",
+      "path": [
+        [
+          28,
+          9
+        ],
+        [
+          30,
+          9
+        ],
+        [
+          30,
+          19
+        ],
+        [
+          28,
+          19
+        ]
+      ]
+    },
+    {
+      "ref": "W13",
+      "net": "GND",
+      "path": [
+        [
+          28,
+          19
+        ],
+        [
+          28,
+          23
+        ],
+        [
+          26,
+          23
+        ]
+      ]
+    },
+    {
+      "ref": "W14",
+      "net": "GND",
+      "path": [
+        [
+          26,
+          23
+        ],
+        [
+          26,
+          22
+        ],
+        [
+          17,
+          22
+        ]
+      ]
+    },
+    {
+      "ref": "W15",
+      "net": "GND",
+      "path": [
+        [
+          17,
+          22
+        ],
+        [
+          19,
+          22
+        ],
+        [
+          19,
+          15
+        ],
+        [
+          17,
+          15
+        ]
+      ]
+    },
+    {
+      "ref": "W16",
+      "net": "GND",
+      "path": [
+        [
+          17,
+          15
+        ],
+        [
+          17,
+          17
+        ],
+        [
+          2,
+          17
+        ],
+        [
+          2,
+          21
+        ],
+        [
+          3,
+          21
+        ]
+      ]
+    },
+    {
+      "ref": "W17",
+      "net": "GND",
+      "path": [
+        [
+          3,
+          21
+        ],
+        [
+          2,
+          21
+        ],
+        [
+          2,
+          14
+        ],
+        [
+          3,
+          14
+        ]
+      ]
+    },
+    {
+      "ref": "W18",
+      "net": "SCL",
+      "path": [
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          4,
+          10
+        ],
+        [
+          13,
+          10
+        ],
+        [
+          13,
+          7
+        ]
+      ]
+    },
+    {
+      "ref": "W19",
+      "net": "SDA",
+      "path": [
+        [
+          3,
+          5
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          5,
+          11
+        ],
+        [
+          14,
+          11
+        ],
+        [
+          14,
+          7
+        ]
+      ]
+    },
+    {
+      "ref": "W20",
+      "net": "FUEL_RAW",
+      "path": [
+        [
+          3,
+          13
+        ],
+        [
+          6,
+          13
+        ]
+      ]
+    },
+    {
+      "ref": "W21",
+      "net": "FUEL_RAW",
+      "path": [
+        [
+          6,
+          13
+        ],
+        [
+          10,
+          13
+        ]
+      ]
+    },
+    {
+      "ref": "W22",
+      "net": "FUEL_ADC",
+      "path": [
+        [
+          14,
+          13
+        ],
+        [
+          17,
+          13
+        ]
+      ]
+    },
+    {
+      "ref": "W23",
+      "net": "FUEL_ADC",
+      "path": [
+        [
+          17,
+          13
+        ],
+        [
+          17,
+          7
+        ]
+      ]
+    },
+    {
+      "ref": "W24",
+      "net": "OIL_RAW",
+      "path": [
+        [
+          3,
+          20
+        ],
+        [
+          6,
+          20
+        ]
+      ]
+    },
+    {
+      "ref": "W25",
+      "net": "OIL_RAW",
+      "path": [
+        [
+          6,
+          20
+        ],
+        [
+          10,
+          20
+        ]
+      ]
+    },
+    {
+      "ref": "W26",
+      "net": "OIL_ADC",
+      "path": [
+        [
+          14,
+          20
+        ],
+        [
+          17,
+          20
+        ]
+      ]
+    },
+    {
+      "ref": "W27",
+      "net": "OIL_ADC",
+      "path": [
+        [
+          17,
+          20
+        ],
+        [
+          20,
+          20
+        ],
+        [
+          20,
+          9
+        ],
+        [
+          18,
+          9
+        ],
+        [
+          18,
+          7
+        ]
+      ]
+    },
+    {
+      "ref": "W28",
+      "net": "BRAKE_RAW",
+      "path": [
+        [
+          24,
+          15
+        ],
+        [
+          24,
+          17
+        ]
+      ]
+    },
+    {
+      "ref": "W29",
+      "net": "BRAKE_GPIO",
+      "path": [
+        [
+          24,
+          21
+        ],
+        [
+          24,
+          23
+        ]
+      ]
+    },
+    {
+      "ref": "W30",
+      "net": "BRAKE_GPIO",
+      "path": [
+        [
+          24,
+          23
+        ],
+        [
+          24,
+          24
+        ],
+        [
+          1,
+          24
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          3,
+          6
+        ]
+      ]
+    },
+    {
+      "ref": "W31",
+      "net": "BRAKE_RAW",
+      "path": [
+        [
+          28,
+          18
+        ],
+        [
+          27,
+          18
+        ],
+        [
+          27,
+          15
+        ],
+        [
+          24,
+          15
+        ]
+      ]
+    }
+  ],
+  "expected_nets": {
+    "3V3": [
+      "J1.0",
+      "U1.0",
+      "R1.0",
+      "R3A.0",
+      "R5.0",
+      "C4.0",
+      "C5.0"
+    ],
+    "GND": [
+      "J1.1",
+      "U1.1",
+      "U1.4",
+      "J2.1",
+      "J3.1",
+      "J4.1",
+      "C1.1",
+      "C2.1",
+      "C3.1",
+      "C4.1",
+      "C5.1",
+      "TP1.0"
+    ],
+    "SCL": [
+      "J1.2",
+      "U1.2"
+    ],
+    "SDA": [
+      "J1.3",
+      "U1.3"
+    ],
+    "FUEL_RAW": [
+      "J2.0",
+      "R1.1",
+      "R2.0"
+    ],
+    "FUEL_ADC": [
+      "R2.1",
+      "C1.0",
+      "U1.6"
+    ],
+    "OIL_RAW": [
+      "J3.0",
+      "R3B.0",
+      "R4.0"
+    ],
+    "OIL_ADC": [
+      "R4.1",
+      "C2.0",
+      "U1.7"
+    ],
+    "BRAKE_RAW": [
+      "J4.0",
+      "R5.1",
+      "R6.0"
+    ],
+    "BRAKE_GPIO": [
+      "R6.1",
+      "C3.0",
+      "J1.4"
+    ]
+  },
+  "validation": {
+    "component_leads": 44,
+    "wires": 31,
+    "electrical_nets": 13,
+    "distinct_pads": true,
+    "shorts_or_missing_links": false,
+    "fuel_110ohm_expected_V": 0.327027027027027,
+    "brake_closed_expected_V": 0.0,
+    "brake_open_expected_V": 3.3,
+    "physical_test_performed": false,
+    "oil_bias_installed": false,
+    "max_jumper_ends_per_component_pad": 2,
+    "body_clearance_physical_check_performed": false
+  }
+}

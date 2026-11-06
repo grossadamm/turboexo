@@ -8,7 +8,11 @@ INA219 current using the established `-0.20 A` boundary:
 - `connected` publishes HIGH to a one-line `gpio-mockup` software input.
 - `discharging` publishes LOW.
 - Invalid I2C samples retain the last published state.
-- Sustained discharge still invokes the existing 240-second OS poweroff path.
+- **Current power policy:** automatic shutdown was disabled at the user's request
+  on 2026-10-18 by removing `--poweroff` from the service. The monitor still
+  publishes key state, but does not execute the 240-second shutdown. See
+  [STATUS.md](../STATUS.md#2026-10-18--pi-automatic-shutdown-temporarily-disabled).
+  The verified August shutdown results below are historical, not the current policy.
 
 The Pi4J bridge maps only TSDash logical GPIO17 to that software GPIO. Physical
 RP1 GPIO17 and the UPS/J2 wake circuit are untouched. TSDash provisions the input

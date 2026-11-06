@@ -4,6 +4,17 @@ Updated 2026-10-17. This is the current signal-assignment reference; old commiss
 notes describe earlier hardware. It is not a complete connector-cavity or wire-color
 pinout. Assignments below distinguish documented wiring from staged ECU settings.
 
+Dashboard sensor-carrier and failed Pi wake-circuit component identities, original
+user images, terminal labels, calibration evidence and unresolved values are saved
+in [REFERENCE.md — Dashboard sensor board and wake components](REFERENCE.md#dashboard-sensor-board-and-wake-components--saved-2026-10-30).
+Consult that record before asking for the same component details again. The
+2026-10-30 carrier is a proposed Pi-connected circuit; it does not reassign ECU
+inputs or establish that the physical wake circuit works.
+
+Sensor-carrier assembly is paused pending H1 relocation; see the
+[2026-11-05 build checkpoint](hardware/ads1115/BUILD_STATUS.md) before connecting
+the carrier to the Pi.
+
 ## Ignition and injection
 
 | UA4C output | Connection | Evidence |

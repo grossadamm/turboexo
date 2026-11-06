@@ -1,0 +1,114 @@
+{
+  "status": "DESIGN CALCULATIONS ONLY; no measured current or Pi wake validation",
+  "sources": {
+    "opto": "https://global.sharp/products/device/lineup/data/pdf/datasheet/PC817XxNSZ1B_e.pdf",
+    "capacitor_example": "https://www.nichicon.co.jp/products/pdfs/upw.pdf",
+    "empirical_200ms": "https://forums.raspberrypi.com/viewtopic.php?p=2326617"
+  },
+  "assumptions": {
+    "source_nominal_V": 12.6,
+    "LED_drop_nominal_V": 3.2,
+    "module_R1_ohm": 1000,
+    "external_series_ohm": 470,
+    "capacitor_uF": 220,
+    "source_bleed_ohm": 10000,
+    "input_shunt_proposed_ohm": 4700,
+    "module_R1_evidence": "matching seller photo, not installed measurement",
+    "scenario_ranges": "Vs12.0..13.2V, Vf2.7..3.7V, R1/R8/R9+/-5%, C+/-20%; assumed design scenarios, not warranted installed limits"
+  },
+  "current_circuit": {
+    "initial_LED_mA": 6.39455782312925,
+    "LED_at_200ms_mA": 3.445324514171279,
+    "current_decay_tau_s": 0.3234,
+    "time_above_1mA_s": 0.6000516530961503,
+    "time_above_5mA_s": 0.07955943221496228,
+    "ideal_constant_drop_LED_cutoff_s": null
+  },
+  "with_proposed_input_shunt": {
+    "initial_LED_mA": 5.78343949044586,
+    "LED_at_200ms_mA": 2.582307077131894,
+    "current_decay_tau_s": 0.28480350877192984,
+    "time_above_1mA_s": 0.39931082570790744,
+    "time_above_5mA_s": 0.037534781535777904,
+    "ideal_constant_drop_LED_cutoff_s": 0.6906364678147042
+  },
+  "shunted_scenario_bounds": {
+    "initial_LED_mA": [
+      4.754927612070468,
+      6.91807333408284
+    ],
+    "LED_at_200ms_mA": [
+      1.6580203529599022,
+      3.5518268912675506
+    ],
+    "current_decay_tau_s": [
+      0.21645066666666668,
+      0.3588524210526316
+    ],
+    "time_above_1mA_s": [
+      0.27511413596867834,
+      0.5466374592019839
+    ],
+    "time_above_5mA_s": [
+      0.0,
+      0.09882497342220237
+    ],
+    "ideal_constant_drop_LED_cutoff_s": [
+      0.4702635870043302,
+      0.9659011159633553
+    ]
+  },
+  "source_ramps": [
+    {
+      "rise_s": 0.05,
+      "original_peak_LED_mA": 6.039556452090319,
+      "shunted_peak_LED_mA": 5.353748330388927
+    },
+    {
+      "rise_s": 0.2,
+      "original_peak_LED_mA": 5.122368253160647,
+      "shunted_peak_LED_mA": 4.282921363953121
+    },
+    {
+      "rise_s": 0.5,
+      "original_peak_LED_mA": 3.794558242762051,
+      "shunted_peak_LED_mA": 2.840586922956482
+    },
+    {
+      "rise_s": 1.0,
+      "original_peak_LED_mA": 2.495976690009483,
+      "shunted_peak_LED_mA": 1.5655833328488944
+    },
+    {
+      "rise_s": 3.0,
+      "original_peak_LED_mA": 0.9230877170206622,
+      "shunted_peak_LED_mA": 0.1993873377241835
+    }
+  ],
+  "leakage_example": {
+    "description": "Nichicon UPW limit at rated voltage20C after1min; example cap, not installed cap",
+    "rule": "max(0.03*C_uF*V_rated,4) microamps",
+    "example_220uF_25V_uA": 165,
+    "input_voltage_with_4k7_nominal_V": 0.7755,
+    "input_voltage_with_4k7_plus5percent_V": 0.814275
+  },
+  "known_resistor_checks": {
+    "source_bleed_mA": 1.26,
+    "source_bleed_mW": 15.875999999999998,
+    "series_reset_peak_mA_upper_no_diode_drop": 26.80851063829787,
+    "series_reset_peak_W_upper": 0.3377872340425532,
+    "shunt_peak_W": 0.01717067767627706
+  },
+  "reset": {
+    "stiff_zero_source_tau_s": 0.1034,
+    "floating_source_with_bleed_approx_tau_s": 2.3034,
+    "note": "Approximate diode-conducting reset; upstream capacitance, backfeed and source impedance alter timing"
+  },
+  "interpretation": [
+    "4.7k shunt diverts capacitor DC leakage around series LEDs; upstream10k does not.",
+    "Shunt improves release but reduces LED drive. It does not create a fixed200ms output pulse.",
+    "Times above1mA/5mA are comparison markers, not J2 thresholds. CTR specified atVCE5V is not a saturation guarantee.",
+    "No sourcedJ2 lowthreshold/pullup current/minwake duration available. Empirical200ms is a design reference only.",
+    "A charger edge still presses button whilePi runs. No powerpolicy or board change applied by this calculation."
+  ]
+}

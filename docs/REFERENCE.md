@@ -18,6 +18,204 @@ lives in `EXPERIMENT_LOG.md`; current front line in `STATUS.md`.
 
 ## The rig
 
+### Dashboard sensor board and wake components — saved 2026-10-30
+
+**Build checkpoint, 2026-11-05:** [resume notes](hardware/ads1115/BUILD_STATUS.md).
+H1 was installed socket-up with short solder tails. Its relocation is pending;
+Rev H does not yet describe the repaired header position or mating pin map.
+Do not follow its direct-stack instructions for the current physical assembly.
+
+
+Start here before asking for these component identities or screenshots again.
+Original user images are retained in [sensor-board-components](hardware/sensor-board-components/),
+with [image provenance](hardware/sensor-board-components/image_provenance.json)
+and [SHA-256 checksums](hardware/sensor-board-components/SHA256SUMS.txt).
+Images establish the user's identified parts/listings, not the installed wiring
+or measured electrical behavior. `[user + saved attachments: 2026-10-30]`
+
+| Component | Established details | Remaining limits |
+|---|---|---|
+| ADS1115 breakout | User's blue 10-pin module; labeled VDD, GND, SCL, SDA, ADDR, ALRT, A0, A1, A2, A3, left to right in the supplied front view. [Saved image](hardware/sensor-board-components/ads1115_module_user_reference_2026-10-30.png). `[user/image: 2026-10-30]` | Exact vendor, chip identity, onboard capacitor values and pull-up connections/values have not been measured. Do not equate this generic module with a particular Adafruit revision. `[unverified: 2026-10-30]` |
+| Oil-temperature sender | **Dweekiy**, Amazon **B07ZYWMV89**, advertised **1/8 NPT**, brass, one signal stud with return through the threaded body into the engine/sandwich plate. [Saved listing screenshot](hardware/sensor-board-components/dweekiy_oil_temperature_listing_user_2026-10-30.png), [exact listing](https://www.amazon.com/dp/B07ZYWMV89). `[user/image + web: 2026-10-30]` | No verified resistance-temperature curve, bias current or dissipation specification. This is distinct from the ECU oil-pressure transducer. `[web search result/limit: 2026-10-30]` |
+| Fuel-level sender | Original **1999 Miata sender**, original gauge disconnected. User measured **110 ohms** and clarified that the tank was **very empty**. Preserve that as the actual reported observation. `[user: 2026-10-30; earlier observation recorded in EXPERIMENT_LOG.md]` | Do not replace the observed value with a published nominal point or treat a float inspection table as an exact liters curve. `[evidence limit: 2026-10-30]` |
+| Brake-fluid reservoir switch | Original 1999 Miata type. Factory inspection: open above MIN, continuity below MIN. With an independent 3.3 V pull-up, normal reads HIGH and low fluid reads LOW. `[user + factory manual + circuit inference: 2026-10-30]` | Installed wiring must be independent of any powered warning-light circuit. An unplugged switch also reads open; this simple circuit cannot detect a broken wire. `[circuit inference: 2026-10-30]` |
+| Optocoupler module | User-confirmed green module with INPUT +/− and VCC/OUT/GND terminals, red LED, R1, R2, and a four-pin optocoupler. [Saved front/back image](hardware/sensor-board-components/opto_module_front_back_user_2026-10-30.png). `[user/image: 2026-10-30]` | Earlier chats called it a PC817 module; the package marking is not sufficiently legible in this image to independently verify the exact part. R1/R2 values, input rating, CTR and actual installed connections remain unknown. `[image/evidence limit: 2026-10-30]` |
+| UPS connection | The UPS is **not stacked as a HAT**; the user has connected it with jumpers. The new sensor carrier is intended to stack directly on the Pi with a **40-pin stacking header**, retaining accessible male pins above for existing UPS jumpers. `[user: 2026-10-30]` | Earlier assistant summaries identify a Waveshare UPS Module 3S V2; that exact revision is not independently confirmed from a current photo. Repository UPS code uses I2C bus 1, address 0x41. `[prior-chat attribution + scripts/pi/pi-ups-monitor.py: 2026-10-30]` |
+
+**Optocoupler terminal orientation:** in the upper/front view of the saved image,
+the left block is INPUT **+ above −**. The right block is **VCC above OUT above GND**.
+The lower/back view is flipped; follow the printed labels, not the left/right
+location from the front view. `[user image: 2026-10-30]`
+
+**R1 lookup, 2026-10-30:** [DIYables' higher-resolution seller photo](https://diyables.io/images/products/pc817-1-channel-optocoupler-isolation-module-2.jpg)
+of the matching PCB layout shows R1 as **brown-black-red-gold: 1 kohm +/-5%**.
+Two independent image readings agree. [Local close-up](hardware/sensor-board-components/opto_matching_vendor_R1_closeup_2026-10-30.jpg)
+and [matching front/back view](hardware/sensor-board-components/opto_matching_vendor_front_back_2026-10-30.jpg)
+are saved with source URLs and checksums. This is an evidence-backed value for the
+pictured seller variant, **not a measured value for the installed module**; do not
+erase the distinction. The seller's unit is marked PC817C; that marking does not
+independently identify the IC on the user's actual board. `[seller image + independent review: 2026-10-30]`
+
+Using this R1 value with the proposed additional 470-ohm series resistor and
+220 uF capacitor, a 12.6 V step with an assumed 3.2 V total LED drop gives about
+6.39 mA initial input current and a 0.323 s current-decay time constant.
+**The time constant is not the button-low duration.** Actual wake margin depends
+on the optocoupler, J2 load/threshold and source/reset behavior. The proposed
+10-kohm charger-input bleed draws 1.26 mA / 15.9 mW at 12.6 V. Exact assumptions
+and additional bounds are in [nominal calculations](hardware/sensor-board-components/wake_nominal_calculations_2026-10-30.json).
+No physical wake test or circuit change was performed by this lookup.
+`[calculation, explicitly untested: 2026-10-30]`
+
+**Wake calculation review, 2026-10-31:** reproducible step, source-ramp and
+scenario calculations are in `scripts/analyze_wake_pulse.py` and
+[the saved results](hardware/sensor-board-components/wake-analysis/calculations_2026-10-31.json).
+The numerical ramp model was checked against the independent unshunted closed-form
+solution. Scenarios explicitly assume source 12.0–13.2 V, total LED drop 2.7–3.7 V,
+resistors +/-5% and capacitance +/-20%; these are not measured installed limits.
+No published J2 threshold, input load or guaranteed minimum pulse was found.
+The [firsthand ~200 ms Pi 5 J2 result](https://forums.raspberrypi.com/viewtopic.php?p=2326617)
+is an empirical design reference, not a guaranteed specification. `[web + calculation: 2026-10-31]`
+
+This review identified a separate **capacitor leakage/release issue**. The upstream
+R7 bleed does not divert leakage around the optocoupler LEDs. As an example, the
+[Nichicon UPW datasheet](https://www.nichicon.co.jp/products/pdfs/upw.pdf) allows up
+to 0.03CV uA or 4 uA, whichever is greater, after one minute at rated voltage and
+20 C: 165 uA for 220 uF / 25 V. This is an example specification, not identification
+or a leakage measurement of the user's capacitor. Leakage could keep a sensitive
+opto output active; this is a possible explanation for the reported faint LED,
+not an established cause of the failed wake. `[datasheet + inference: 2026-10-31]`
+
+**Included in Rev F after the user requested implementation:** a 4.7-kohm 1/4-W
+resistor directly across the external optocoupler module's INPUT+ and INPUT-,
+after R8, in parallel with D1. It is not across C6, and does not connect to the
+module's OUT/GND/VCC terminals. At 165 uA, this holds the input around 0.776 V
+(0.814 V with +5% resistance), diverting leakage around the series LEDs. Under
+the nominal 12.6 V / 3.2 V LED-drop model, it reduces initial LED current from
+6.39 to 5.78 mA and 200 ms current from 3.45 to 2.58 mA. Modeled LED conduction
+ends around 0.69 s; this is not a guaranteed J2 low duration. It improves release
+while reducing trigger drive, especially with a slowly rising source. Independent
+review confirmed this tradeoff. Retain 220 uF rather than increasing capacitance
+without evidence; a fixed-width pulse would require a different timing topology.
+`[calculation + independent engineering review; implemented in layout, not physically tested: 2026-10-31]`
+
+The rear traces appear consistent with **R2 between VCC and OUT**, i.e. an output
+pull-up. This is a visual inference, not a continuity-tested schematic. It does
+**not** establish that VCC must be connected to use the optocoupler as an external
+pull-down: the target could provide its own pull-up. Conversely, the old instruction
+to leave VCC disconnected is not a completed verification of this module and target
+together. Do not choose a VCC voltage or decode uncertain resistor bands by guessing.
+`[image/circuit inference; unverified topology: 2026-10-30]`
+
+**Recorded failed wake attempt:** the chats “Trigger Pi boot from UPS power” and
+“Find Raspberry Pi setup chats” describe a 220 uF series capacitor and reverse
+diode across the module input, triggered by incoming charger power; OUT/GND went
+to Pi 5 J2 and VCC was left disconnected. The earlier bare-PC817 suggestion used
+an external 2.2 kohm resistor; the subsequent module advice omitted it, assuming
+an onboard input resistor. The new photo confirms R1 exists but not its value.
+User reported no automatic wake and an LED that flashed brightly, faded, then
+glowed faintly again. LED activity did not prove the output voltage or pulse at J2.
+No successful automatic-wake test or root cause has been established.
+`[prior user/assistant chat record; new image: saved 2026-10-30]`
+
+**Pi 5 wake connection:** [official documentation](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#power-button)
+specifies a normally open momentary contact across the dedicated J2 pads.
+J2 is not on the 40-pin GPIO header; Pi 5 uses its power button rather than GPIO3
+for wake. Rev B's optional J5/J6 pair is only a passive extension requiring two
+separate wires to J2; it does not implement the failed capacitor/optocoupler circuit.
+Do not use the I2C SCL pin as the wake signal. `[web + layout: 2026-10-30]`
+
+**Fuel factory inspection points:** [Mazda workshop scan, printed 09-22-7](https://www.mellens.net/mazda/Mazda-Miata-1999-2001.pdf#page=726)
+gives FULL 6.4–7.6 ohms, 1/2 position 31.8–33.2 ohms, EMPTY 93–97 ohms.
+With a nominal 3.300 V excitation and 1 kohm pull-up, the nominal 7/32.5/95 ohm
+points produce 0.02294/0.10387/0.28630 V. The separately reported 110 ohms produces
+0.32703 V. Factory inspection points and the user's very-empty observation are
+different evidence; retain both. `[factory scan + calculation + user: 2026-10-30]`
+
+**Oil research already performed:** exact ASIN/model/UPC searches, the Amazon
+description and all product-gallery images, and alternative sender documentation
+did not establish a Dweekiy calibration curve. Reseller identifiers are
+**Dweekiycnuo426783**, UPC **738583183222** ([matching reseller](https://snapklik.com/en-ca/product/coolant-temperature-sensor-water-oil-temp-temperature-1-8-npt-electrical-sender-transmitter-sending-unit-temp-sensor/02CY4P879FDE5)).
+The seller's 0–150 C / 0–300 F range is internally inconsistent; it is not a
+calibration specification. The stud is signal; the body is return, not a second
+insulated electrical terminal. `[web/image: 2026-10-30]`
+
+For comparison only, [Z Car Depot 800-1035](https://zcardepot.com/collections/510/products/coolant-temperature-sender-universal-240z-260z-280z-510)
+publishes 100/150/200/250/300 F at 450/158.2/64.3/29.25/14.96 ohms respectively.
+**No verified electrical equivalence to Dweekiy was found. Do not load that curve
+as this sender's calibration.** Measurements at known temperatures or an actual
+manufacturer specification remain needed. `[web; explicitly unverified equivalence: 2026-10-30]`
+
+**Current design artifact:** [Rev H DIYLC layout](hardware/ads1115/revH/ADS1115_sensor_board_revH.diy),
+[machine-readable design and sensor evidence](hardware/ads1115/revH/layout_spec.json),
+[soldering guide](../output/pdf/ADS1115_sensor_board_revH_soldering_guide.pdf).
+Rev H adds only J8, a 2-pin optocoupler input header at (19,13) INPUT+
+and (20,13) INPUT-, plus W33 from D1 K and W34 from R7 lower return pad
+(23,9) via (23,13). Every existing Rev G component, bus and wire route is
+unchanged so the in-progress soldered assembly can be retained. J7 takes the
+switched regulated charger trigger; J6 takes optocoupler OUT/GND; J5 connects
+to the Pi dedicated power-button header. VCC on the optocoupler stays unused.
+`[user-requested additive header update: 2026-11-01]`
+
+Rev G removes the unused F1/F2/C1/C2 filter positions and LK1/LK2 bypass
+links at the user's request. Direct insulated W12/W18 connections replace those
+paths; unused filter ground taps are removed. All other components and electrical
+connections remain as in Rev F. R3 oil bias remains empty and J3 unplugged.
+`[layout update: 2026-11-01]`
+Review correction: W18 now routes via (18,12) and (10,12), avoiding J6/R8
+terminals. The PDF depicts the full 6.3 x 2.5 mm R9 body and notes its tight
+lead bends and actual connector/socket dry-fit requirements. Electrical endpoints
+and component values are unchanged. `[review correction: 2026-11-01]`
+
+Rev F retains every Rev E feature and adds **R9=4.7 kohms, >=1/4 W** at (15,5)-(15,8)
+across the external optocoupler INPUT+/INPUT- nets on the carrier, in parallel with
+D1 after R8. W31/W32 connect it; W24/W29 were locally rerouted for clearance.
+Its maximum drawn body is 6.3 x 2.5 mm on 7.62 mm lead spacing; dry fit remains
+unverified. The native file, wiring table, schematic and BOM include R9. Independent
+review confirmed the restored circuit remains intact and the shunt reaches the
+correct input nets, not C6 or the Pi output terminals. `[layout + review: 2026-10-31]`
+
+The user clarified on October 31 that the request was **layout cleanup, not feature
+removal**. Rev E restores the complete Rev C electrical design and cleans up visual
+grouping, labels and wire rendering. Its component, wire and bus specifications
+were checked for exact equality with Rev C. It retains the 24 x 18 individual-pad
+board, direct 40-pin stacking connection, two straight buses, R1=1 kohm fuel bias
+and R5=10 kohm brake pull-up; R3 oil bias and optional filters remain empty,
+LK1/LK2 fitted. Physical pins 1=3V3, 3=SDA, 5=SCL, 9=GND, 13=GPIO27 brake
+(proposed, live availability unverified). Pins 2/4 pass through without connecting
+to the sensor circuit. `[user correction + independent artifact review: 2026-10-31]`
+
+**Rev D is superseded.** Its omitted wake circuitry was the assistant's mistaken
+interpretation of the cleanup request. Do not use Rev D's empty-wake instruction
+as the current design. Rev E includes J5/J6/J7/R7/R8/C6/D1 and W23-W30; the prior
+oil-bias and optional-filter decisions are unchanged. `[user + artifact checks: 2026-10-31]`
+
+Rev E includes the same **proposed, untested wake input network** as
+[Rev C](hardware/ads1115/revC/ADS1115_sensor_board_revC.diy):
+J7 receives a switched, regulated nominal 12.6 V charger trigger; C6 is 220 uF
+(>=25 V, maximum 8 mm body), positive toward J7+; R8 is 470 ohms (>=0.5 W)
+between C6 negative and the external module's INPUT+; R7 is 10 kohms (1/4 W)
+across J7 before C6; D1 is 1N4148, cathode/band to INPUT+, anode to INPUT-.
+The existing optocoupler remains **external**. Module OUT/GND connect through
+J6/J5 to the Pi's dedicated J2 pads; module VCC remains unconnected. Neither
+charger wire is intentionally tied to the carrier's Pi rails. Replace the old
+capacitor/diode pulse network rather than cascading two networks. Independent
+native netlist review verified C6 polarity, D1 band placement and separate net
+groups; no physical fit or wake test was performed. `[layout + independent review: 2026-10-30]`
+
+The wake circuit does not detect whether the Pi is already running: a charger
+return edge also presses its power button in that state. Running-state handling
+and actual low/release timing remain to be verified before unattended use. The
+guide includes a temporary pull-up for testing the disconnected open-collector
+output; remove that test pull-up before connecting J2. `[circuit behavior and proposed test: 2026-10-30]`
+
+The layout has no validated automotive overvoltage/transient protection. Physical
+fit, module electrical values and GPIO availability remain unverified; native
+netlist checks are not physical tests. Pi numeric sensor ingestion into TSDash is
+still unproven: the existing key-state bridge is digital. Available public
+TSDash 0.9.09.02 code did not expose a supported numeric publishing path; the
+documented installed 0.9.09.10 build could not be inspected while the Pi was
+unreachable. `[design/test limits + code inspection: 2026-10-30]`
+
 ### Bypass valve and boost solenoid — identified listings, 2026-10-18
 - User-supplied [BOV listing](hardware/bov_25mm_seller_listing_2026-10-18.jpg): generic aluminum atmospheric25mm-OD valve, VW/Audi1.8T plastic-Bosch-diverter replacement style, advertised operational up to25psi; no exact brand/model or authenticated pressure rating.25psi is an operating claim, not an opening threshold. `[user-supplied seller screenshot, 2026-10-18]`
 - User-supplied [solenoid listing](hardware/boost_solenoid_seller_listing_2026-10-18.jpg):35A-AAA-DDBA-1BA,3-port,12V,5.4W,25.4ohm, advertised vacuum–120psi. Genuine MAC provenance and actual markings/port plumbing not yet checked. `[user-supplied seller screenshot, 2026-10-18]`

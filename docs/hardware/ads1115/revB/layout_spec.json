@@ -1,0 +1,1097 @@
+{
+  "revision": "B",
+  "date": "2026-10-30",
+  "board": {
+    "columns": 24,
+    "rows": 18,
+    "pitch_mm": 2.54,
+    "type": "individual-pad perfboard",
+    "connection": "2x20 40-pin stacking header directly on Pi5; retain UPS jumpers on male pins above",
+    "orientation": "TOP component view: even pins along outer row2, odd pins along inner row3, pin1 at (2,3). Female socket below, exposed stacking pins above. Verify actual Pi pin1 before mating.",
+    "formal_hat_compliance": false,
+    "mechanical_fit_verified": false
+  },
+  "parts": [
+    {
+      "ref": "H1",
+      "kind": "hat",
+      "value": "2x20 stacking FEMALE BELOW / male pins ABOVE",
+      "pins": [
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          6,
+          3
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          7,
+          3
+        ],
+        [
+          7,
+          2
+        ],
+        [
+          8,
+          3
+        ],
+        [
+          8,
+          2
+        ],
+        [
+          9,
+          3
+        ],
+        [
+          9,
+          2
+        ],
+        [
+          10,
+          3
+        ],
+        [
+          10,
+          2
+        ],
+        [
+          11,
+          3
+        ],
+        [
+          11,
+          2
+        ],
+        [
+          12,
+          3
+        ],
+        [
+          12,
+          2
+        ],
+        [
+          13,
+          3
+        ],
+        [
+          13,
+          2
+        ],
+        [
+          14,
+          3
+        ],
+        [
+          14,
+          2
+        ],
+        [
+          15,
+          3
+        ],
+        [
+          15,
+          2
+        ],
+        [
+          16,
+          3
+        ],
+        [
+          16,
+          2
+        ],
+        [
+          17,
+          3
+        ],
+        [
+          17,
+          2
+        ],
+        [
+          18,
+          3
+        ],
+        [
+          18,
+          2
+        ],
+        [
+          19,
+          3
+        ],
+        [
+          19,
+          2
+        ],
+        [
+          20,
+          3
+        ],
+        [
+          20,
+          2
+        ],
+        [
+          21,
+          3
+        ],
+        [
+          21,
+          2
+        ]
+      ],
+      "names": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+        "19",
+        "20",
+        "21",
+        "22",
+        "23",
+        "24",
+        "25",
+        "26",
+        "27",
+        "28",
+        "29",
+        "30",
+        "31",
+        "32",
+        "33",
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40"
+      ]
+    },
+    {
+      "ref": "U1",
+      "kind": "header",
+      "value": "ADS1115 1x10 removable module socket",
+      "pins": [
+        [
+          3,
+          10
+        ],
+        [
+          4,
+          10
+        ],
+        [
+          5,
+          10
+        ],
+        [
+          6,
+          10
+        ],
+        [
+          7,
+          10
+        ],
+        [
+          8,
+          10
+        ],
+        [
+          9,
+          10
+        ],
+        [
+          10,
+          10
+        ],
+        [
+          11,
+          10
+        ],
+        [
+          12,
+          10
+        ]
+      ],
+      "names": [
+        "VDD",
+        "GND",
+        "SCL",
+        "SDA",
+        "ADDR",
+        "ALRT",
+        "A0",
+        "A1",
+        "A2",
+        "A3"
+      ]
+    },
+    {
+      "ref": "J2",
+      "kind": "header",
+      "value": "FUEL",
+      "pins": [
+        [
+          6,
+          17
+        ],
+        [
+          7,
+          17
+        ]
+      ],
+      "names": [
+        "SIG",
+        "GND"
+      ]
+    },
+    {
+      "ref": "J3",
+      "kind": "header",
+      "value": "OIL TEMP - leave unplugged",
+      "pins": [
+        [
+          14,
+          17
+        ],
+        [
+          15,
+          17
+        ]
+      ],
+      "names": [
+        "SIG",
+        "GND"
+      ]
+    },
+    {
+      "ref": "J4",
+      "kind": "header",
+      "value": "BRAKE",
+      "pins": [
+        [
+          22,
+          17
+        ],
+        [
+          23,
+          17
+        ]
+      ],
+      "names": [
+        "SW",
+        "GND"
+      ]
+    },
+    {
+      "ref": "R1",
+      "kind": "resistor",
+      "value": "1k removable fuel BENCH bias",
+      "pins": [
+        [
+          6,
+          11
+        ],
+        [
+          6,
+          15
+        ]
+      ],
+      "ohms": 1000
+    },
+    {
+      "ref": "R3",
+      "kind": "reserved_resistor",
+      "value": "EMPTY oil bias sockets",
+      "pins": [
+        [
+          14,
+          11
+        ],
+        [
+          14,
+          15
+        ]
+      ],
+      "fitted": false
+    },
+    {
+      "ref": "R5",
+      "kind": "resistor",
+      "value": "10k brake pull-up",
+      "pins": [
+        [
+          22,
+          11
+        ],
+        [
+          22,
+          15
+        ]
+      ],
+      "ohms": 10000
+    },
+    {
+      "ref": "F1",
+      "kind": "reserved_resistor",
+      "value": "Optional fuel series resistor; wire link fitted by default",
+      "pins": [
+        [
+          7,
+          15
+        ],
+        [
+          11,
+          15
+        ]
+      ],
+      "fitted": false
+    },
+    {
+      "ref": "F2",
+      "kind": "reserved_resistor",
+      "value": "Optional oil series resistor; wire link fitted by default",
+      "pins": [
+        [
+          15,
+          15
+        ],
+        [
+          19,
+          15
+        ]
+      ],
+      "fitted": false
+    },
+    {
+      "ref": "C1",
+      "kind": "reserved_capacitor",
+      "value": "Optional fuel filter - EMPTY",
+      "pins": [
+        [
+          12,
+          14
+        ],
+        [
+          12,
+          16
+        ]
+      ],
+      "fitted": false
+    },
+    {
+      "ref": "C2",
+      "kind": "reserved_capacitor",
+      "value": "Optional oil filter - EMPTY",
+      "pins": [
+        [
+          20,
+          14
+        ],
+        [
+          20,
+          16
+        ]
+      ],
+      "fitted": false
+    },
+    {
+      "ref": "J5",
+      "kind": "header",
+      "value": "PI J2: separate 2-wire lead",
+      "pins": [
+        [
+          18,
+          6
+        ],
+        [
+          19,
+          6
+        ]
+      ],
+      "names": [
+        "BTN",
+        "RETURN"
+      ],
+      "optional": true
+    },
+    {
+      "ref": "J6",
+      "kind": "header",
+      "value": "NO momentary dry-contact input",
+      "pins": [
+        [
+          18,
+          8
+        ],
+        [
+          19,
+          8
+        ]
+      ],
+      "names": [
+        "BTN",
+        "RETURN"
+      ],
+      "optional": true
+    }
+  ],
+  "buses": [
+    {
+      "ref": "P_BUS",
+      "net": "3V3",
+      "taps": [
+        [
+          3,
+          11
+        ],
+        [
+          6,
+          11
+        ],
+        [
+          14,
+          11
+        ],
+        [
+          22,
+          11
+        ]
+      ],
+      "kind": "bare_bus"
+    },
+    {
+      "ref": "G_BUS",
+      "net": "GND",
+      "taps": [
+        [
+          4,
+          16
+        ],
+        [
+          7,
+          16
+        ],
+        [
+          12,
+          16
+        ],
+        [
+          15,
+          16
+        ],
+        [
+          20,
+          16
+        ],
+        [
+          23,
+          16
+        ]
+      ],
+      "kind": "bare_bus"
+    }
+  ],
+  "wires": [
+    {
+      "ref": "W01",
+      "net": "3V3",
+      "path": [
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          11
+        ],
+        [
+          3,
+          11
+        ]
+      ],
+      "kind": "insulated"
+    },
+    {
+      "ref": "W02",
+      "net": "3V3",
+      "path": [
+        [
+          3,
+          10
+        ],
+        [
+          3,
+          11
+        ]
+      ],
+      "kind": "insulated"
+    },
+    {
+      "ref": "W03",
+      "net": "GND",
+      "path": [
+        [
+          6,
+          3
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          4,
+          10
+        ]
+      ],
+      "kind": "insulated"
+    },
+    {
+      "ref": "W04",
+      "net": "GND",
+      "path": [
+        [
+          4,
+          10
+        ],
+        [
+          4,
+          16
+        ]
+      ],
+      "kind": "insulated"
+    },
+    {
+      "ref": "W05",
+      "net": "GND",
+      "path": [
+        [
+          7,
+          10
+        ],
+        [
+          7,
+          12
+        ],
+        [
+          8,
+          12
+        ],
+        [
+          8,
+          16
+        ],
+        [
+          7,
+          16
+        ]
+      ],
+      "kind": "insulated"
+    },
+    {
+      "ref": "W06",
+      "net": "SCL",
+      "path": [
+        [
+          4,
+          3
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          5,
+          10
+        ]
+      ],
+      "kind": "insulated"
+    },
+    {
+      "ref": "W07",
+      "net": "SDA",
+      "path": [
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          6,
+          10
+        ]
+      ],
+      "kind": "insulated"
+    },
+    {
+      "ref": "W08",
+      "net": "FUEL",
+      "path": [
+        [
+          6,
+          17
+        ],
+        [
+          6,
+          15
+        ]
+      ],
+      "kind": "insulated"
+    },
+    {
+      "ref": "W09",
+      "net": "FUEL",
+      "path": [
+        [
+          6,
+          15
+        ],
+        [
+          7,
+          15
+        ]
+      ],
+      "kind": "insulated"
+    },
+    {
+      "ref": "LK1",
+      "net": "FUEL",
+      "path": [
+        [
+          7,
+          15
+        ],
+        [
+          11,
+          15
+        ]
+      ],
+      "kind": "removable_link"
+    },
+    {
+      "ref": "W11",
+      "net": "FUEL",
+      "path": [
+        [
+          11,
+          15
+        ],
+        [
+          12,
+          14
+        ]
+      ],
+      "kind": "insulated"
+    },
+    {
+      "ref": "W12",
+      "net": "FUEL",
+      "path": [
+        [
+          12,
+          14
+        ],
+        [
+          12,
+          12
+        ],
+        [
+          9,
+          12
+        ],
+        [
+          9,
+          10
+        ]
+      ],
+      "kind": "insulated"
+    },
+    {
+      "ref": "W13",
+      "net": "GND",
+      "path": [
+        [
+          7,
+          17
+        ],
+        [
+          7,
+          16
+        ]
+      ],
+      "kind": "insulated"
+    },
+    {
+      "ref": "W14",
+      "net": "OIL",
+      "path": [
+        [
+          14,
+          17
+        ],
+        [
+          14,
+          15
+        ]
+      ],
+      "kind": "insulated"
+    },
+    {
+      "ref": "W15",
+      "net": "OIL",
+      "path": [
+        [
+          14,
+          15
+        ],
+        [
+          15,
+          15
+        ]
+      ],
+      "kind": "insulated"
+    },
+    {
+      "ref": "LK2",
+      "net": "OIL",
+      "path": [
+        [
+          15,
+          15
+        ],
+        [
+          19,
+          15
+        ]
+      ],
+      "kind": "removable_link"
+    },
+    {
+      "ref": "W17",
+      "net": "OIL",
+      "path": [
+        [
+          19,
+          15
+        ],
+        [
+          20,
+          14
+        ]
+      ],
+      "kind": "insulated"
+    },
+    {
+      "ref": "W18",
+      "net": "OIL",
+      "path": [
+        [
+          20,
+          14
+        ],
+        [
+          20,
+          9
+        ],
+        [
+          10,
+          9
+        ],
+        [
+          10,
+          10
+        ]
+      ],
+      "kind": "insulated"
+    },
+    {
+      "ref": "W19",
+      "net": "GND",
+      "path": [
+        [
+          15,
+          17
+        ],
+        [
+          15,
+          16
+        ]
+      ],
+      "kind": "insulated"
+    },
+    {
+      "ref": "W20",
+      "net": "BRAKE",
+      "path": [
+        [
+          22,
+          17
+        ],
+        [
+          22,
+          15
+        ]
+      ],
+      "kind": "insulated"
+    },
+    {
+      "ref": "W21",
+      "net": "BRAKE",
+      "path": [
+        [
+          22,
+          15
+        ],
+        [
+          24,
+          15
+        ],
+        [
+          24,
+          4
+        ],
+        [
+          8,
+          4
+        ],
+        [
+          8,
+          3
+        ]
+      ],
+      "kind": "insulated"
+    },
+    {
+      "ref": "W22",
+      "net": "GND",
+      "path": [
+        [
+          23,
+          17
+        ],
+        [
+          23,
+          16
+        ]
+      ],
+      "kind": "insulated"
+    },
+    {
+      "ref": "W23",
+      "net": "WAKE_BTN",
+      "path": [
+        [
+          18,
+          6
+        ],
+        [
+          18,
+          8
+        ]
+      ],
+      "kind": "isolated_wake"
+    },
+    {
+      "ref": "W24",
+      "net": "WAKE_RETURN",
+      "path": [
+        [
+          19,
+          6
+        ],
+        [
+          19,
+          8
+        ]
+      ],
+      "kind": "isolated_wake"
+    }
+  ],
+  "header_use": {
+    "1": "3V3",
+    "3": "GPIO2 SDA",
+    "5": "GPIO3 SCL",
+    "9": "GND",
+    "13": "GPIO27 brake (proposed; live pin assignment unverified)"
+  },
+  "constraints": [
+    "No additional supply capacitors or I2C pullups. R1 and R5 are the only fitted resistors. R3 oil bias empty. C1/C2 filter pads empty. LK1/LK2 wire links fitted.",
+    "Preserve unused 40-pin signals as passthrough only. Pi 5V pins2/4 not connected to sensor circuitry. No I2C EEPROM or formal HAT+ compliance claimed.",
+    "40pin stack needs appropriate header height/standoffs; cooler/component clearance and physical mounting not verified.",
+    "Do not connect external3.3V supply when stacked. Power sensors only from Pi3.3V; prevent backfeed in standby.",
+    "GPIO27 proposed because logicalGPIO17 is reserved for key state; verify GPIO27 is unused before connecting brake. No Pi config changes have been performed.",
+    "Wake via40pin GPIO unsupported onPi5. J5 requires separate two-wire link toPiJ2; J6 dry momentary contact only. No3V3/5V/12V connection toJ5/J6; no ground tie on carrier.",
+    "PC817+220uF automatic charger-edge pulse circuit is NOT recreated. Exact module resistor topology and measurements still needed.",
+    "Fuel1k is a bench starting point, not tank calibration. Oil is identified as Dweekiy B07ZYWMV89 single-wire body-grounded; electrical curve/bias unknown, so J3 remains disconnected. Brake is factory99Miata reservoir isolated switch.",
+    "Series resistors/caps optional; no automotive voltage fault/transient protection claimed. Sensor circuits isolated from old gauges/powered circuits.",
+    "Insulated jumpers are soldered to underside pads beside the component lead; do not force multiple wire ends through a single hole. Bare buses are continuous straight tinned-wire runs soldered at listed taps. Crossovers must remain insulated.",
+    "J5/J6 are passive parallel button-extension pads only. Disconnect or inspect the previously failed J2 circuit before adding a parallel contact; a stuck existing output can hold the button active.",
+    "Existing module VDD bypass capacitor is relied upon; its value/connection not established from supplied stock photo. No duplicate carrier capacitor fitted by default."
+  ],
+  "math": {
+    "fuel_bias_ohms": 1000,
+    "brake_pullup_ohms": 10000,
+    "excitation_V_nominal": 3.3,
+    "fuel_observed_R_ohms": 110,
+    "optional_filter_candidate_series_ohms": 1000,
+    "optional_filter_candidate_C_F": 1e-07
+  },
+  "sources": [
+    "https://www.ti.com/lit/ds/symlink/ads1115.pdf",
+    "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#power-button",
+    "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#raspberry-pi-bootloader-configuration",
+    "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#gpio",
+    "https://www.mellens.net/mazda/Mazda-Miata-1999-2001.pdf",
+    "https://www.amazon.com/dp/B07ZYWMV89",
+    "https://www.mellens.net/mazda/Mazda-Miata-1999-2001.pdf#page=726"
+  ],
+  "sensor_evidence": {
+    "fuel": {
+      "hardware": "Original 1999 Miata sender, original gauge disconnected (user)",
+      "source": "https://www.mellens.net/mazda/Mazda-Miata-1999-2001.pdf#page=726",
+      "printed_page": "09-22-7",
+      "inspection_points": [
+        {
+          "position": "FULL",
+          "ohms_min": 6.4,
+          "ohms_nominal": 7,
+          "ohms_max": 7.6
+        },
+        {
+          "position": "1/2",
+          "ohms_min": 31.8,
+          "ohms_nominal": 32.5,
+          "ohms_max": 33.2
+        },
+        {
+          "position": "EMPTY",
+          "ohms_min": 93,
+          "ohms_nominal": 95,
+          "ohms_max": 97
+        }
+      ],
+      "limits": "Factory float inspection positions; not a complete volume calibration. User clarified 110 ohms was observed when VERY empty. Preserve that observation separately from the factory EMPTY inspection range.",
+      "voltage_formula": "Vout = Vs * Rs / (Rpull + Rs)",
+      "nominal_V_3V3_1k": {
+        "FULL": 0.022939424031777556,
+        "1/2": 0.10387409200968523,
+        "EMPTY": 0.2863013698630137
+      }
+    },
+    "oil_temperature": {
+      "brand": "Dweekiy",
+      "ASIN": "B07ZYWMV89",
+      "source": "https://www.amazon.com/dp/B07ZYWMV89",
+      "model_reseller_identification": "Dweekiycnuo426783",
+      "thread": "1/8 NPT",
+      "wiring": "One insulated signal stud; electrical return through brass threaded body to engine/sandwich plate. Not a two-terminal sender.",
+      "claimed_range": "0-150 C; listing also says 0-300 F, an inconsistent conversion",
+      "resistance_temperature_curve_found": false,
+      "bias_current_or_dissipation_spec_found": false,
+      "configuration": "Keep R3 unpopulated and J3 disconnected until electrical curve/bias established. J3 GND denotes shared return, not a second stud on the sender."
+    },
+    "opto_module": {
+      "user_confirmed_image": "../../sensor-board-components/opto_module_front_back_user_2026-10-30.png",
+      "date": "2026-10-30",
+      "front_input_terminal_order_top_to_bottom": [
+        "INPUT +",
+        "INPUT -"
+      ],
+      "front_output_terminal_order_top_to_bottom": [
+        "VCC",
+        "OUT",
+        "GND"
+      ],
+      "visible_parts": [
+        "red indicator LED",
+        "R1",
+        "R2",
+        "four-pin optocoupler"
+      ],
+      "chip_identification": "Called PC817 in prior chats; exact package marking not legible enough to independently confirm from saved image.",
+      "resistor_values_verified": false,
+      "input_voltage_rating_verified": false,
+      "topology_inference": "Back traces appear consistent with R2 between VCC and OUT as an output pull-up; not continuity-tested. This does not by itself require VCC when the target supplies an external pull-up.",
+      "wake_status": "User-reported failed wake using 220uF capacitor/diode input pulse, OUT/GND to Pi5 J2, VCC unconnected. LED flashed/faded/glowed faintly; no verified output pulse or established root cause.",
+      "R1_matching_seller_photo": {
+        "ohms": 1000,
+        "tolerance_percent": 5,
+        "bands": [
+          "brown",
+          "black",
+          "red",
+          "gold"
+        ],
+        "source": "https://diyables.io/images/products/pc817-1-channel-optocoupler-isolation-module-2.jpg",
+        "local_image": "../../sensor-board-components/opto_matching_vendor_R1_closeup_2026-10-30.jpg",
+        "status": "independently reviewed photo reading; matching PCB layout, installed board value not measured"
+      }
+    }
+  },
+  "component_reference": "../../../REFERENCE.md#dashboard-sensor-board-and-wake-components--saved-2026-10-30"
+}

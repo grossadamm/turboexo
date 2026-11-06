@@ -1,0 +1,146 @@
+{
+  "schema_version": 1,
+  "electrical_connectivity_model_passed": true,
+  "model_scope": "Endpoints and individual bus tap segments; insulated bends and crossings are not connections. Components do not electrically short their two terminals.",
+  "expected_nets": {
+    "3V3": [
+      "H1.0",
+      "R1.0",
+      "R3.0",
+      "R5.0",
+      "U1.0"
+    ],
+    "GND": [
+      "C1.1",
+      "C2.1",
+      "H1.8",
+      "J2.1",
+      "J3.1",
+      "J4.1",
+      "U1.1",
+      "U1.4"
+    ],
+    "SCL": [
+      "H1.4",
+      "U1.2"
+    ],
+    "SDA": [
+      "H1.2",
+      "U1.3"
+    ],
+    "FUEL": [
+      "C1.0",
+      "F1.0",
+      "F1.1",
+      "J2.0",
+      "R1.1",
+      "U1.6"
+    ],
+    "OIL": [
+      "C2.0",
+      "F2.0",
+      "F2.1",
+      "J3.0",
+      "R3.1",
+      "U1.7"
+    ],
+    "BRAKE": [
+      "H1.12",
+      "J4.0",
+      "R5.1"
+    ],
+    "WAKE_BTN": [
+      "J5.0",
+      "J6.0"
+    ],
+    "WAKE_RETURN": [
+      "J5.1",
+      "J6.1"
+    ],
+    "TRIGGER_PLUS": [
+      "C6.0",
+      "J7.0",
+      "R7.0"
+    ],
+    "TRIGGER_RETURN": [
+      "D1.1",
+      "J7.1",
+      "R7.1",
+      "R9.1"
+    ],
+    "CAP_MINUS": [
+      "C6.1",
+      "R8.0"
+    ],
+    "OPTO_INPUT_PLUS": [
+      "D1.0",
+      "R8.1",
+      "R9.0"
+    ]
+  },
+  "unconnected_pins": [
+    "H1.1",
+    "H1.10",
+    "H1.11",
+    "H1.13",
+    "H1.14",
+    "H1.15",
+    "H1.16",
+    "H1.17",
+    "H1.18",
+    "H1.19",
+    "H1.20",
+    "H1.21",
+    "H1.22",
+    "H1.23",
+    "H1.24",
+    "H1.25",
+    "H1.26",
+    "H1.27",
+    "H1.28",
+    "H1.29",
+    "H1.3",
+    "H1.30",
+    "H1.31",
+    "H1.32",
+    "H1.33",
+    "H1.34",
+    "H1.35",
+    "H1.36",
+    "H1.37",
+    "H1.38",
+    "H1.39",
+    "H1.5",
+    "H1.6",
+    "H1.7",
+    "H1.9",
+    "U1.5",
+    "U1.8",
+    "U1.9"
+  ],
+  "bus_segments": 8,
+  "fitted_resistors": [
+    "R1 1k bench",
+    "R5 10k",
+    "R7 10k 0.25W",
+    "R8 470 ohm >=0.5W",
+    "R9 4.7k >=0.25W"
+  ],
+  "optional_parts_unfitted": [
+    "R3",
+    "F1",
+    "F2",
+    "C1",
+    "C2"
+  ],
+  "fitted_links": [
+    "LK1",
+    "LK2"
+  ],
+  "fuel_expected_V_at_110ohm_and_3_3V": 0.327027027027027,
+  "physical_build_or_electrical_test_performed": false,
+  "mechanical_fit_verified": false,
+  "gpio27_availability_verified": false,
+  "formal_hat_compliance": false,
+  "native_roundtrip_pin_order_and_wire_endpoints_verified": true
+}
