@@ -1271,3 +1271,52 @@ After the running milestone commit,17:35:10.mlg received additional data. Refres
 CSV now contains5237 rows through1275.359s; last sample902RPM. Bug-report hash
 updated. Milestone provenance retains the earlier snapshot hashes intentionally.
 This archival update changes no tune settings.
+
+
+## 2026-10-25 — Cold idle hunting: halve proportional gain (disk only)
+
+- **Change/Action:** User authorized halving idle P. Changed only `idleKP` **0.0625 → 0.03125** (INI raw byte 2 → 1). Prepared `TurboExo_idle_P_half_PROVISIONAL_2026-10-25_100457.msq` and matching `CurrentTune.msq`. Backup `TurboExo_pre_idle_P_half_2026-10-25_100457.msq`; SHA256 sidecars alongside both files.
+- **Baseline clarification:** During preparation TunerStudio saved a newer CurrentTune with `idleKI = 0.0`, replacing the earlier observed 0.03125. That newer value was preserved, not changed by this edit. `idleKD = 0.0`, hybrid PWM Closed+Open loop and minimum duty 5% retained. Latest restore point had P 0.0625 / I 0.03125 / minimum 0%; actual current constants were compared and newer settings preserved. The logged hunting baseline must not be assumed to have I=0; timing/burn of the intervening I change is unverified.
+- **Evidence:** Fresh conversion of `2026-10-23_17.35.10.mlg` contains an appended cold segment at Time 0.056–16.871 s, SecL 72–89, coolant 68–75°F, RPM 1308–1883 and IAC duty 81–88%. `2026-10-25_09.09.57.mlg` appears to continue it at Time 17.248–26.918 s, SecL 91–99, coolant 75–82°F, RPM 1328–1716 and duty 82–87%. Hunting period approximately 1.6 s; amplitude decreases over this captured interval. TPS 0, battery 14.6–14.7 V, zero recorded sync losses. Repeated cycles occur at fixed coolant temperature/idle target with warmup enrichment fixed; a temperature-boundary toggle does not explain them.
+- **Why/Hypothesis:** Smaller P should reduce the duty correction caused by each RPM swing and may reduce feedback-driven hunting. Duty increases as overspeed error decreases even while RPM remains above target. Logs show commanded duty, not physical valve position, and do not establish PID as the sole cause. This change halves the proportional term, not necessarily total duty oscillation; reduced disturbance correction is the tradeoff. No fuel correction inferred from transient AFR.
+- **Validation:** XML parsed; exact constant comparison confirms only idleKP changed; byte replacement preserves all other content. CurrentTune readback matched the prepared file immediately after writing. INI scale 0.03125 confirms representability.
+- **Next test:** Load prepared tune in TunerStudio, burn, and verify live P=0.03125 / I=0.0 / D=0.0. Log closed-throttle warmup and compare RPM and duty oscillation at matched coolant temperatures, especially 68–82°F, then warm idle. If both P and I differ from the earlier logged run, improvement cannot be attributed to P alone.
+- **Result/Verdict:** Pending. Disk preparation only; no ECU burn/readback or post-change running result verified.
+
+
+## 2026-10-30 — Separate provisional yellow-injector conversion prepared
+
+**Action / scope:** User explicitly requested a separate provisional tune for the same previously used yellow Denso 195500-4450 set, preserving the current running tune. Prepared `TurboExo_yellow425_PROVISIONAL_2026-10-30_103946.msq` from a fresh CurrentTune snapshot. `CurrentTune.msq` was not written. Preserved `TurboExo_red_injector_baseline_pre_yellow_2026-10-30_103946.msq` with SHA256 sidecars for both MSQs and `TurboExo_yellow425_PROVISIONAL_2026-10-30_103946.changes.json` recording exact differences, hashes and assumptions. Source SHA256: `9904ec2e9aedcbfb4d38da86d2dc6c4c2f4012d78b08f73e2cbb8cbf9fb2b3ab`. Source MSQ bibliography metadata is retained; this entry and sidecar record the derivation date. Disk baseline is not an independently verified ECU readback.
+
+**Baseline check:** Compared actual constants with newest restore `TurboExo_2026-10-25_10.04.07.msq`: CurrentTune differs only in idleKP (0.03125 vs restore 0.0625). Retained the newer P=0.03125, I=0, D=0, hybrid idle, 5% minimum and all other settings.
+
+### Exact calibration changes
+
+| Constant | Previous | Provisional yellow value |
+|---|---|---|
+| reqFuel | 12.6 ms | 7.1 ms |
+| injOpen | 1.0 ms | 1.2 ms (curve scaling base) |
+| brvBins | 7.0, 9.0, 12.1, 13.9, 16.9, 20.3 V | 6.5, 7.8, 9.0, 10.3, 11.5, 14.0 V |
+| injBatRates | 154, 117, 107, 100, 100, 100% | 253, 167, 123, 95, 72, 46% |
+| primePulse | 30, 30, 25, 25 ms | 17, 17, 14, 14 ms |
+
+**Required-fuel hypothesis:** At compatible differential-pressure bases, 12.6 × 238/425 = 7.056 ms, rounded to the supported 0.1 ms step as 7.1 ms. Nominal 425 cc/min and identity come from the historical set record and user's confirmation that it is the same set. Actual flow balance, fuel pressure, regulator configuration and pressure behavior under load remain unverified. Injector-Rehab's [published data](https://injector-rehab.com/knowledge-base/published-injector-data/) and [own-test table](https://injector-rehab.com/knowledge-base/flow-rates/) disagree on pressure basis (3 vs 2.25 bar); this draft explicitly uses the existing nominal ratio, not a resolution of that conflict.
+
+**Dead-time hypothesis / encoding:** Uses historical user-recorded points (V/ms): 6.5/3.03, 7.75/2.02, 9/1.48, 10.25/1.15, 11.5/0.86, 12.75/0.70, 14/0.55. Measurement conditions, driver and exact-set characterization are not established. Retained `battVCorMode = Open Time only`. The 1.2 ms base is a numerical scale, not an asserted 14 V dead time: multiplied by the percentages, bin offsets are 3.036, 2.004, 1.476, 1.140, 0.864 and 0.552 ms. A 1.0 ms base cannot represent 3.03 ms within the 255% limit. Six bins, 0.1 V resolution and integer percentages approximate the seven-point reference with maximum ~0.0308 ms error on the 6.5–14 V firmware grid. This measures encoding error only, not physical calibration accuracy. Firmware clamps above the last bin to 0.552 ms; the flat extension to observed 14.6–14.8 V is unverified. No validated minimum repeatable pulse width or short-pulse correction is available for this set; warm-idle capability remains to be tested.
+
+**Priming hypothesis:** Priming is directly scheduled in milliseconds and does not automatically scale with reqFuel. Scaled total duration by 238/425: 30→16.8 and 25→14.0 ms; rounded to the supported 0.5 ms step gives 17/17/14/14. This intentionally simple provisional estimate does not compensate separately for old/new injector offset or changing key-on voltage; it is not a validated delivered-fuel equivalence. Prime temperature bins retained. Reassess starting/wetting after the swap; do not retain the original long prime solely because reqFuel was changed.
+
+**Preserved:** VE/AFR/ignition tables, sequential fuel/spark, idle settings, boost settings and protections, fuel composition/stoich14.7, flex Off, duty limit90%, priming temperature bins, and all other constants/attributes/PC variables. WUE, ASE and cranking percentage corrections already scale through reqFuel. Current PW-adder acceleration enrichment also scales through reqFuel, so no additional AE scaling was applied. Preserved boost settings are still provisional and do not establish readiness for loaded boost testing.
+
+**Firmware evidence:** [PW and AE calculation](https://github.com/speeduino/speeduino/blob/202501.6/speeduino/speeduino.ino#L1222-L1279), [direct priming schedule](https://github.com/speeduino/speeduino/blob/202501.6/speeduino/scheduler.cpp#L285-L303), [battery correction](https://github.com/speeduino/speeduino/blob/202501.6/speeduino/corrections.cpp), [integer interpolation](https://github.com/speeduino/speeduino/blob/202501.6/speeduino/table2d.cpp#L61-L150), and [boot-time required-fuel initialization](https://github.com/speeduino/speeduino/blob/202501.6/speeduino/init.cpp#L272-L274). Local INI confirms reqFuel/injOpen 0.1 ms, primePulse 0.5 ms, six 0.1 V bins and integer0–255% rates; reqFuel and injOpen marked for power cycle.
+
+**Validation / result:** XML parses; exact comparison confirms only the five constants above differ from preserved baseline. SHA256 and immediate byte comparison confirm CurrentTune remains intact. Independent artifact review passed: complete XML tree comparison confirmed exactly five constant text changes, no other element/attribute/PC-variable differences, valid INI raw encodings and array lengths, and matching CurrentTune/backup SHA256. No artifact blocker identified. No ECU write, hardware swap, leak check, fuel-pressure measurement or post-change running validation performed by assistant.
+
+**Next test / verdict:** Provisional, untested. Use only with yellow injectors installed; arrange the load/burn and ECU power cycle so the power-on prime cannot fire mismatched injector settings (fuel delivery disabled during configuration as needed). Verify ECU readback after power cycle, particularly reqFuel7.1, base1.2, voltage curve, prime pulses and retained sequencing. Check installation for fuel leaks and measure pressure. Start with startup/warm-idle logging, then verify base timing with the user's COP extender before loaded tuning. Do not infer mixture from startup AFR/echo; assess warm sensor validity and settled data. Record any idle changes separately from the previous P/I test. Revert using the preserved red baseline only with the red injectors fitted.
+
+
+## 2026-11-05 — Preserve preparation; yellow swap deferred
+
+- **Action:** User requested committing the prepared work and plans the injector swap tentatively for the coming weekend. No fixed installation date or completed hardware change reported.
+- **State:** Separate October30 yellow provisional tune, red baseline snapshot, exact changes, checksums, idle-P experiment and supporting log evidence preserved. CurrentTune remains byte-identical to the October30 red baseline; no tune edits or ECU writes in this step.
+- **Result / verdict:** Preparation complete; hardware swap, load/burn/power-cycle/readback, pressure verification, startup/warm-idle testing and timing verification remain pending.

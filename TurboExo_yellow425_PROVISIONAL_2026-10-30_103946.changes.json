@@ -1,0 +1,143 @@
+{
+  "created_local": "2026-10-30_103946",
+  "purpose": "Separate provisional same-set yellow injector conversion; no ECU write",
+  "source": "CurrentTune.msq",
+  "source_sha256": "9904ec2e9aedcbfb4d38da86d2dc6c4c2f4012d78b08f73e2cbb8cbf9fb2b3ab",
+  "backup": "TurboExo_red_injector_baseline_pre_yellow_2026-10-30_103946.msq",
+  "output": "TurboExo_yellow425_PROVISIONAL_2026-10-30_103946.msq",
+  "output_sha256": "8d9aec497ab4f5e646689939990cc71c0c761874114c9b8a9e90e31ff83bb593",
+  "latest_restore": "TurboExo_2026-10-25_10.04.07.msq",
+  "current_vs_restore_constants": {
+    "idleKP": {
+      "restore": {
+        "text": "0.0625",
+        "attributes": {
+          "digits": "2",
+          "name": "idleKP",
+          "units": "%"
+        }
+      },
+      "current": {
+        "text": "0.03125",
+        "attributes": {
+          "digits": "2",
+          "name": "idleKP",
+          "units": "%"
+        }
+      }
+    }
+  },
+  "changes": {
+    "reqFuel": {
+      "before": {
+        "text": "12.6",
+        "attributes": {
+          "digits": "1",
+          "name": "reqFuel",
+          "units": "ms"
+        }
+      },
+      "after": {
+        "text": "7.1",
+        "attributes": {
+          "digits": "1",
+          "name": "reqFuel",
+          "units": "ms"
+        }
+      }
+    },
+    "injOpen": {
+      "before": {
+        "text": "1.0",
+        "attributes": {
+          "digits": "1",
+          "name": "injOpen",
+          "units": "ms"
+        }
+      },
+      "after": {
+        "text": "1.2",
+        "attributes": {
+          "digits": "1",
+          "name": "injOpen",
+          "units": "ms"
+        }
+      }
+    },
+    "brvBins": {
+      "before": {
+        "text": "7.0 9.0 12.1 13.9 16.9 20.3",
+        "attributes": {
+          "cols": "1",
+          "digits": "1",
+          "name": "brvBins",
+          "rows": "6",
+          "units": "V"
+        }
+      },
+      "after": {
+        "text": "6.5 7.8 9.0 10.3 11.5 14.0",
+        "attributes": {
+          "cols": "1",
+          "digits": "1",
+          "name": "brvBins",
+          "rows": "6",
+          "units": "V"
+        }
+      }
+    },
+    "injBatRates": {
+      "before": {
+        "text": "154.0 117.0 107.0 100.0 100.0 100.0",
+        "attributes": {
+          "cols": "1",
+          "digits": "0",
+          "name": "injBatRates",
+          "rows": "6",
+          "units": "%"
+        }
+      },
+      "after": {
+        "text": "253.0 167.0 123.0 95.0 72.0 46.0",
+        "attributes": {
+          "cols": "1",
+          "digits": "0",
+          "name": "injBatRates",
+          "rows": "6",
+          "units": "%"
+        }
+      }
+    },
+    "primePulse": {
+      "before": {
+        "text": "30.0 30.0 25.0 25.0",
+        "attributes": {
+          "cols": "1",
+          "digits": "1",
+          "name": "primePulse",
+          "rows": "4",
+          "units": "ms"
+        }
+      },
+      "after": {
+        "text": "17.0 17.0 14.0 14.0",
+        "attributes": {
+          "cols": "1",
+          "digits": "1",
+          "name": "primePulse",
+          "rows": "4",
+          "units": "ms"
+        }
+      }
+    }
+  },
+  "assumptions": [
+    "Same user-confirmed Denso 195500-4450 set; nominal flow425 vs238 at compatible differential pressure; pressure/regulator unverified",
+    "Historic deadtime curve provisional, not verified characterization of exact set",
+    "Base1.2ms is encoding scale; six-bin percentages give .552ms at14V; endpoint held above14V, unverified at logged14.6-14.8V",
+    "Prime total duration scaled by238/425 then rounded to0.5ms; no verified deadtime-adjusted priming model",
+    "No injector short-pulse data or post-swap idle/load validation",
+    "Fuel composition, VE, spark, boost, idle, sequencing and percentage enrichments preserved"
+  ],
+  "current_untouched_verified": true
+}

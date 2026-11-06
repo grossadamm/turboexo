@@ -2,6 +2,39 @@
 
 Current wiring assignments: [docs/WIRING.md](docs/WIRING.md).
 
+## 2026-11-05 — Yellow-injector swap deferred; preparation preserved
+
+User plans to reinstall the same yellows, tentatively this coming weekend; no
+completed swap or ECU application reported. Separate October30 provisional tune
+and its assumptions remain ready for that hardware change. CurrentTune stays on
+the red-injector baseline. Startup/warm-idle validation and timing check remain pending.
+
+## 2026-10-30 — Separate yellow-injector provisional tune ready (disk only)
+
+Prepared `TurboExo_yellow425_PROVISIONAL_2026-10-30_103946.msq` for the same previously used Denso195500-4450 yellows. **CurrentTune remains the red-injector baseline and was not modified.** Snapshot `TurboExo_red_injector_baseline_pre_yellow_2026-10-30_103946.msq`, SHA256 sidecars and exact `.changes.json` saved.
+
+Five constants changed in the separate file: reqFuel12.6→7.1 ms; injOpen1.0→1.2 ms as a curve scaling base; voltage bins6.5/7.8/9/10.3/11.5/14 V with253/167/123/95/72/46%; prime30/30/25/25→17/17/14/14 ms. All other settings retained, including idle P0.03125/I0/D0/min5 and sequential fuel/spark.
+
+Assumes nominal238/425 flow ratio at compatible differential pressures. Actual pressure/regulator and exact-set dead time remain unverified; above14 V offset holds0.552 ms provisionally. Short-pulse behavior unknown. Prime scaling is an approximate total-duration ratio. This is a startup calibration, not validated boost fueling. Full reasoning and test plan: October30 EXPERIMENT_LOG entry.
+
+Load only for the yellow hardware, manage power-on priming during configuration, burn/power-cycle/read back, check fuel leaks/pressure, and log startup through warm idle. ECU application and running result pending. Timing verification remains pending before loaded tuning.
+
+## 2026-10-25 — Cold idle P reduction prepared (disk only)
+
+User authorized `idleKP` 0.0625 → 0.03125. CurrentTune matches
+`TurboExo_idle_P_half_PROVISIONAL_2026-10-25_100457.msq`; backup `TurboExo_pre_idle_P_half_2026-10-25_100457.msq`
+and SHA256 sidecars saved. Only P changed. A concurrent TunerStudio save changed
+I from the earlier observed 0.03125 to 0.0; preserve the newer I=0.0, D=0.0,
+minimum duty 5% and other settings. ECU burn/readback pending; disk state does not
+establish when or whether the I change reached the ECU.
+
+Latest cold segments show ~1.6 s hunting at 68–82°F, duty 81–88%, with RPM
+1308–1883 initially and smaller swings later. Cycles repeat at fixed temperature;
+idle feedback is a candidate cause, not proven. Load/burn the prepared tune,
+verify P/I/D, then compare duty and RPM oscillation at matched coolant temperature.
+Do not attribute a difference to P alone if I also differs from the logged baseline.
+Full evidence, hypothesis, backup and pending result are in EXPERIMENT_LOG.md.
+
 ## 2026-10-23 — Running milestone, manual idle adjustment and neutral-rev findings
 
 **Next action: larger injectors, then recalibration.** Current stock238cc setup

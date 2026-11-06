@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <msq xmlns="http://www.msefi.com/:msq">
-<bibliography author="TunerStudio MS 3.3.01 - EFI Analytics, Inc." tuneComment="" writeDate="Fri Oct 23 17:33:11 PDT 2026"/>
+<bibliography author="TunerStudio MS 3.3.01 - EFI Analytics, Inc." tuneComment="" writeDate="Sun Oct 25 10:04:07 PDT 2026"/>
 <versionInfo fileFormat="5.0" firmwareInfo="Speeduino+2025.01.6" nPages="15" signature="speeduino 202501"/>
 <page>
 <pcVariable name="tsCanId">"CAN ID 0"</pcVariable>
@@ -1096,8 +1096,8 @@
 <constant digits="0" name="lnchRetard" units="deg">-15.0</constant>
 <constant digits="0" name="lnchHardLim" units="rpm">4000.0</constant>
 <constant digits="0" name="lnchFuelAdd" units="%">15.0</constant>
-<constant digits="2" name="idleKP" units="%">0.0625</constant>
-<constant digits="2" name="idleKI" units="%">0.03125</constant>
+<constant digits="2" name="idleKP" units="%">0.03125</constant>
+<constant digits="2" name="idleKI" units="%">0.0</constant>
 <constant digits="3" name="idleKD" units="%">0.0</constant>
 <constant digits="0" name="boostLimit" units="kPa">178.0</constant>
 <constant digits="0" name="boostKP" units="%">35.0</constant>
