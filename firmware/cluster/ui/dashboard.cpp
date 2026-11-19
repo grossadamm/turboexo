@@ -172,13 +172,18 @@ void gauges(lv_layer_t *l, const Snapshot &s, uint64_t now, const Gauge *g,
                                          cluster_text_26.base_line);
     const int scale_y = scale_baseline - (cluster_text_26.line_height -
                                           cluster_text_26.base_line);
-    icon(l, x - 140, label_y - 4,
+    lv_point_t label_size{};
+    lv_text_get_size(&label_size, g[i].name, &cluster_text_26, 0, 0, 1000,
+                     LV_TEXT_FLAG_NONE);
+    constexpr int icon_width = 32, icon_gap = 10;
+    const int label_left = x - (icon_width + icon_gap + label_size.x) / 2;
+    icon(l, label_left, label_y - 4,
          i == 0
              ? 0
              : (g[i].m == Metric::FuelPercent ? 2
                                               : (g[i].signed_value ? 3 : 1)));
-    text(l, x - 108, label_y, 253, g[i].name, &cluster_text_26, muted,
-         LV_TEXT_ALIGN_CENTER);
+    text(l, label_left + icon_width + icon_gap, label_y, label_size.x + 4,
+         g[i].name, &cluster_text_26, muted);
     lv_point_t value_size{}, unit_size{};
     lv_text_get_size(&value_size, b, &cluster_num_64, 0, 0, 1000,
                      LV_TEXT_FLAG_NONE);
