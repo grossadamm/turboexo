@@ -16,6 +16,13 @@ logical 1280×800; the same Dashboard renderer runs in the host simulator.
 - `ui/` is the shared native renderer. `host/` provides deterministic captures
   and the optional SDL window; generated licensed assets are in `assets/`.
 
+## Delivered device
+
+The attached unit was identified as **ESP32-P4 revision 1.3** and flashed with
+the **replay-prev3** image. [Device and boot evidence](../../docs/firmware/DEVICE.md)
+records what was verified and the remaining visual/live checks. Identify any
+replacement unit independently before choosing its silicon profile.
+
 ## Build dependencies
 
 Use ESP-IDF **v5.5.5**, target `esp32p4`. The component manifest and lockfile pin

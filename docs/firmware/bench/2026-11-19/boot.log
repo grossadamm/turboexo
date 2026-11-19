@@ -1,0 +1,86 @@
+Core0 Saved PC:0x4fc012ca
+Core1 SaveESP-ROM:esp32p4-eco2-20240710
+Build:Jul 10 2024
+rst:0x17 (CHIP_USB_UART_RESET),boot:0xf (SPI_FAST_FLASH_BOOT)
+Core0 Saved PC:0x4fc012ca
+Core1 Saved PC:0x4fc058e0
+SPI mode:DIO, clock div:2
+load:0x4ff33ce0,len:0x1664
+load:0x4ff29ed0,len:0xe24
+load:0x4ff2cbd0,len:0x3548
+entry 0x4ff29eda
+I (27) boot: ESP-IDF v5.5.5 2nd stage bootloader
+I (27) boot: compile time Nov 19 2026 13:10:13
+I (28) boot: Multicore bootloader
+I (29) boot: chip revision: v1.3
+I (29) boot: efuse block revision: v0.3
+I (29) boot.esp32p4: SPI Speed      : 40MHz
+I (30) boot.esp32p4: SPI Mode       : DIO
+I (30) boot.esp32p4: SPI Flash Size : 32MB
+I (30) boot: Enabling RNG early entropy source...
+I (31) boot: Partition Table:
+I (31) boot: ## Label            Usage          Type ST Offset   Length
+I (32) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (32) boot:  1 factory          factory app      00 00 00010000 00400000
+I (33) boot: End of partition table
+I (34) esp_image: segment 0: paddr=00010020 vaddr=40080020 size=5a754h (370516) map
+I (107) esp_image: segment 1: paddr=0006a77c vaddr=30100000 size=0007ch (   124) load
+I (108) esp_image: segment 2: paddr=0006a800 vaddr=4ff00000 size=05818h ( 22552) load
+I (114) esp_image: segment 3: paddr=00070020 vaddr=40000020 size=7cce8h (511208) map
+I (214) esp_image: segment 4: paddr=000ecd10 vaddr=4ff05818 size=0e5a0h ( 58784) load
+I (228) esp_image: segment 5: paddr=000fb2b8 vaddr=4ff13e00 size=06a84h ( 27268) load
+I (236) esp_image: segment 6: paddr=00101d44 vaddr=50108080 size=00020h (    32) load
+I (242) boot: Loaded app from partition at offset 0x10000
+I (242) boot: Disabling RNG early entropy source...
+I (246) hex_psram: vendor id    : 0x0d (AP)
+I (246) hex_psram: Latency      : 0x01 (Fixed)
+I (247) hex_psram: DriveStr.    : 0x00 (25 Ohm)
+I (247) hex_psram: dev id       : 0x03 (generation 4)
+I (247) hex_psram: density      : 0x07 (256 Mbit)
+I (248) hex_psram: good-die     : 0x06 (Pass)
+I (248) hex_psram: SRF          : 0x02 (Slow Refresh)
+I (248) hex_psram: BurstType    : 0x00 ( Wrap)
+I (249) hex_psram: BurstLen     : 0x03 (2048 Byte)
+I (249) hex_psram: BitMode      : 0x01 (X16 Mode)
+I (250) hex_psram: Readlatency  : 0x04 (14 cycles@Fixed)
+I (250) hex_psram: DriveStrength: 0x00 (1/1)
+I (250) MSPI Timing: Enter psram timing tuning
+I (424) esp_psram: Found 32MB PSRAM device
+I (424) esp_psram: Speed: 200MHz
+I (425) hex_psram: psram CS IO is dedicated
+I (425) cpu_start: Multicore app
+I (1375) esp_psram: SPI SRAM memory test OK
+I (1386) cpu_start: Pro cpu start user code
+I (1386) cpu_start: cpu freq: 360000000 Hz
+I (1386) app_init: Application information:
+I (1386) app_init: Project name:     turboexo_cluster
+I (1386) app_init: App version:      ee4fd82
+I (1387) app_init: Compile time:     Nov 19 2026 13:13:54
+I (1387) app_init: ELF file SHA256:  5500090e7...
+I (1387) app_init: ESP-IDF:          v5.5.5
+I (1387) efuse_init: Min chip rev:     v0.0
+I (1387) efuse_init: Max chip rev:     v1.99
+I (1388) efuse_init: Chip rev:         v1.3
+I (1388) heap_init: Initializing. RAM available for dynamic allocation:
+I (1388) heap_init: At 4FF1BC00 len 0001F3C0 (124 KiB): RETENT_RAM
+I (1389) heap_init: At 4FF3AFC0 len 00004BF0 (18 KiB): RAM
+I (1389) heap_init: At 4FF508A0 len 0004F760 (317 KiB): RAM
+I (1389) heap_init: At 501080A0 len 00007F60 (31 KiB): RTCRAM
+I (1389) heap_init: At 3010007C len 00001F84 (7 KiB): SPM
+I (1390) esp_psram: Adding pool of 32768K of PSRAM memory to heap allocator
+I (1392) spi_flash: detected chip: gd
+I (1392) spi_flash: flash io: dio
+I (1392) sleep_gpio: Configure to isolate all GPIO pins in sleep state
+I (1393) sleep_gpio: Enable automatic switching of GPIO sleep configuration
+I (1394) main_task: Started on CPU0
+I (1395) esp_psram: Reserving pool of 32K of internal memory for DMA/internal allocations
+I (1396) main_task: Calling app_main()
+I (1396) cluster_board: Detected 32 MiB PSRAM
+I (1396) esp32p4_lcd: MIPI DSI PHY Powered on
+I (1396) esp32p4_lcd: Initialize MIPI DSI bus
+I (1397) esp32p4_lcd: Install panel IO
+I (1397) esp32p4_lcd: Install JD9365 panel driver
+I (1397) jd9365: version: 2.0.2
+I (1557) jd9365: LCD ID: 93 65 04
+I (1687) LVGL: Starting LVGL task
+I (1692) LVGL: Setting PPA context for SW rotation
