@@ -1,0 +1,23 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Exocet datalog replay</title><style>
+#replay{font-family:var(--font-sans,Arial,sans-serif);color:var(--foreground)}
+#replay .row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:12px 0}
+#replay button,#replay select{font:inherit;background:var(--secondary);color:var(--foreground);border:1px solid var(--border);border-radius:var(--radius,6px);padding:10px 14px;min-height:44px}
+#replay button[aria-pressed=true]{background:var(--primary);color:var(--primary-foreground)}
+#replay #display svg{width:100%;height:auto;display:block;background:#050606}
+#replay .row:first-child{margin-top:0}
+#replay input{flex:1;min-width:130px;accent-color:var(--primary)}
+#replay output{font-variant-numeric:tabular-nums;font-size:13px}
+#replay .source{font-size:13px;line-height:1.5;color:var(--muted-foreground);margin:12px 0}
+#replay details{font-size:13px;line-height:1.5;color:var(--muted-foreground)}
+#replay summary{cursor:pointer}#replay label{font-size:13px}
+</style></head><body>
+<div id="replay">
+<div class="row" aria-label="Cluster mode"><button data-mode="street" aria-pressed="true">Street · Sweep</button><button data-mode="track" aria-pressed="false">Track · Ribbon</button><button data-mode="tuning" aria-pressed="false">Tuning · Trace</button></div>
+<div id="display"></div>
+<div class="row"><button id="play">Play</button><button id="revs">Jump to revs</button><label for="rate">Speed</label><select id="rate"><option value="0.5">½×</option><option value="1" selected>1×</option><option value="2">2×</option></select><output id="clock"></output></div>
+<div class="row"><label for="seek">Replay</label><input id="seek" type="range" min="0" max="54.425" step="0.01" value="20"><output id="elapsed"></output></div>
+<p class="source">Actual October 23 engine telemetry + simulated speed, fuel and oil temperature. Same playback position across modes.</p>
+<details><summary>Data and display notes</summary><p>576 original samples from 2026-10-23_17.35.10.csv. Numbers use recorded samples; arc and ribbon movement interpolate between samples. Speed, fuel and oil temperature are simulated preview inputs while their data connections are wired. Simulated road speed is independent of the stationary engine recording; it is not inferred from RPM. Boost/vacuum is derived from recorded MAP minus barometric pressure. CLT/IAT use inferred °F units. Oil-pressure calibration and AFR readiness are unverified; the tuning view shows recorded O₂ and target values without treating them as validated mixture. Gauge ranges are illustrative scales, not calibrated safe bands or warning thresholds. RPM scale is not a redline recommendation. This is replay, not live telemetry.</p></details>
+</div>
+<!-- SCRIPTS -->
+</body></html>

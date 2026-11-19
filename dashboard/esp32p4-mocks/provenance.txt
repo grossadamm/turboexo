@@ -1,0 +1,31 @@
+Source CSV: /Users/adamgross/TunerStudioProjects/TurboExo/DataLogs/2026-10-23_17.35.10.csv
+SHA-256: f4537df5d7288ac235d7aec8a357793c0a8a70398b0a38267c26b8b18cc451f3
+Original MLG: /Users/adamgross/TunerStudioProjects/TurboExo/DataLogs/2026-10-23_17.35.10.mlg
+SHA-256: 5d76bce3b71bef23cdaf6b00334c7a29d5ddb37041b795e774a4c46258590da6
+Clip: 750–804.507 seconds inclusive; 576 samples; observed 750.082–804.507 seconds.
+time: Time; CSV unit='s'; output unit=s
+rpm: RPM; CSV unit='rpm'; output unit=rpm
+map: MAP; CSV unit='kpa'; output unit=kPa
+baro: Baro Pressure; CSV unit='kpa'; output unit=kPa
+oil: Oil Pressure; CSV unit='PSI'; output unit=psi
+coolant: CLT; CSV unit=''; output unit=°F (inferred)
+battery: Battery V; CSV unit='V'; output unit=V
+tps: TPS; CSV unit='%'; output unit=%
+afr: AFR; CSV unit='O2'; output unit=O2 / AFR
+target: AFR Target; CSV unit='O2'; output unit=O2 / AFR
+advance: Advance _Current; CSV unit='deg'; output unit=degrees
+pw: PW; CSV unit='ms'; output unit=ms
+duty: Duty Cycle; CSV unit=''; output unit=% (inferred)
+iat: IAT; CSV unit=''; output unit=°F (inferred)
+ego: Gego; CSV unit='%'; output unit=%
+warmup: Gwarm; CSV unit='%'; output unit=%
+sync: Sync status; CSV unit=''; output unit=status code
+speed: None; CSV unit=None; output unit=None
+fuel: None; CSV unit=None; output unit=None
+oiltemp: None; CSV unit=None; output unit=None
+
+Historical recorded telemetry, not live. Absolute log times, row order, duplicates and irregular spacing preserved.
+CLT and IAT units are blank in CSV; °F inferred from project display context and readings, not encoded in CSV. Duty Cycle unit is blank in CSV; percent inferred from channel meaning.
+Oil Pressure is logged PSI, not raw OilPressure; physical sensor calibration is unverified.
+AFR and target are recorded O2 channels. Sensor readiness and exhaust delay are not established by elapsed time; do not use this replay to tune fuel.
+Speed channel exists in CSV but is not verified as a usable vehicle-speed signal; speed, fuel and oil temperature are null. Sync is the raw status code, not interpreted.
