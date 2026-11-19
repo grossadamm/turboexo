@@ -1,0 +1,7 @@
+# Keep both profiles empty until measurements are available.
+# Use comma-separated raw_counts:engineering_value pairs in ascending count order.
+# Supply 2–16 measured points per channel from the installed circuit and ADC gain.
+# Fuel engineering units are percent (0–100). Oil-temperature units are degrees F.
+# Do not use sender resistance directly as an ADC count.
+CONFIG_CLUSTER_ADS1115_FUEL_KNOTS=""
+CONFIG_CLUSTER_ADS1115_OIL_TEMP_KNOTS=""

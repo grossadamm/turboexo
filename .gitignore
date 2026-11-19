@@ -11,3 +11,15 @@ TuneView/
 projectCfg/persistedChannelValues.properties*
 *.bak
 *.bkup
+
+# ESP32-P4 dependency resolution and local validation outputs
+/firmware/cluster/managed_components/
+/firmware/cluster/build*/
+/firmware/cluster/.build/
+/firmware/cluster/sdkconfig
+/firmware/cluster/sdkconfig.old
+/firmware/cluster/**/__pycache__/
+/.artifacts/firmware/
+
+# Local design iterations; accepted cluster mocks are in dashboard/esp32p4-mocks
+/work/

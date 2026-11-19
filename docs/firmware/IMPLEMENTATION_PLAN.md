@@ -1,6 +1,6 @@
 # ESP32-P4 cluster implementation plan
 
-Status: plan independently reviewed; confirmed findings resolved. Implementation starting; pinned toolchain repair remains in setup. User authorized
+Status: implementation integrated; initial cross-build matrix and native host checks pass. Preparing nine-agent Change review; final rebased gate and branch push remain. User authorized
 planning, independent review, delegated implementation, nine-agent Change
 review, remediation, validation and branch push without a plan-approval stop.
 
@@ -143,13 +143,15 @@ portable core, shared LVGL UI, host harness, assets, tools and tests.
   verified/open distinctions; identify the imported workflow source.
 - [x] Independently review this plan, resolve confirmed findings, commit the
   plan/research checkpoint, then proceed without another approval checkpoint.
-- [ ] Define shared C++ core/UI/platform interfaces before parallel writers.
-- [ ] Implement/test the protocol and model with known-byte fixtures for
+- [x] Define shared C++ core/UI/platform interfaces before parallel writers.
+  Contract: `INTERFACES.md` and `include/cluster/types.hpp`; core, UI and
+  platform implementation owners are now working in non-overlapping paths.
+- [x] Implement/test the protocol and model with known-byte fixtures for
   endian/scaling/signedness, identity suffixes, partial/noisy/extra responses,
   timeouts, recovery, truncated writes, stale data and startup validity gates.
-- [ ] Implement/test replay, 8-second bounded history, calibration and buttons;
+- [x] Implement/test replay, 8-second bounded history, calibration and buttons;
   fixtures detect source mixing, stale curves, time-wrap and repeated presses.
-- [ ] Implement native Street/Track/Tuning and desktop fixture capture; inspect
+- [x] Implement native Street/Track/Tuning and desktop fixture capture; inspect
   actual LVGL images against accepted HTML snapshots, correct visual defects.
   Compare all three explicit modes at replay offsets 20 s and 31.705 s (peak),
   plus live disconnected, target-warmup/raw-unverified, ECU-oil-protection, and
@@ -157,15 +159,15 @@ portable core, shared LVGL UI, host harness, assets, tools and tests.
   Native default is Street; saved mode takes precedence. The accepted replay
   HTML defaults to Track via its build wrapper; source player defaults alone
   do not define native behavior.
-- [ ] Implement the board adapter, persistent controls, optional calibrated
+- [x] Implement the board adapter, persistent controls, optional calibrated
   sensors and SD logging; tests exercise pure failure handling where hardware
   access is unavailable, and cross-build all configured platform paths.
-- [ ] Integrate and build isolated replay/live × pre-v3/v3 configurations, each
+- [x] Integrate and build isolated replay/live × pre-v3/v3 configurations, each
   with its own sdkconfig and build directory; assert generated revision minimums.
   Compile optional ADS and SD branches in checked live profiles. Capture binary
-  size and pinned dependency versions. The current 5.5.5 probe has a binutils
-  lookup failure (Apple as selected); resolve it before claiming cross-builds.
-- [ ] Document build commands, pin maps, UART setup/Aux-mode caveat, calibrated
+  size and pinned dependency versions. The isolated 5.5.5 toolchain was repaired
+  and its generic P4 probe now passes; target board profiles still need builds.
+- [x] Document build commands, pin maps, UART setup/Aux-mode caveat, calibrated
   input enablement, logging, controls, provenance and physical acceptance gates.
 - [ ] Run nine read-only Change reviewers in bounded batches against one commit
   range/diff and the same UI captures: Cleanliness (Luna), Completeness (Terra),
@@ -198,5 +200,17 @@ independent sensor qualification, delay+1-second target gating, explicit silicon
 minimums and isolated build/UI fixture matrices. Those requirements are now
 incorporated above. The partial-command startup recovery proof found an unsafe brownout case;
 explicit operator-confirmed ECU-reset gating resolves it without per-request
-flash writes. Toolchain binutils repair remains a setup task, not deferred code
-correctness assumptions. No additional approval checkpoint is required.
+flash writes. The isolated toolchain reinstall resolved the binutils failure and its generic
+P4 build passed; real platform profiles still require cross-build evidence. No additional approval checkpoint is required.
+
+## Integration evidence
+
+All four replay/live × pre-v3/v3 profiles compiled on the pinned SDK;
+revision minimums and live/replay symbol separation were verified. Host core
+checks pass under ASan/UBSan. The same LVGL renderer exports 30 fixtures covering
+all modes at the two replay offsets and offline, warmup, protection, extreme,
+peripheral and logging states. Integration corrected Tuning RPM wrapping,
+replay-pause timestamp handling, compact inline units, and an extreme-speed
+label collision. Final native RPM graphics use a tested 80 ms display-only
+transition while numeric values/history remain recorded. The final gate will
+rebuild the current reviewed source after rebase.

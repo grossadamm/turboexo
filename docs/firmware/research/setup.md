@@ -15,7 +15,7 @@ The board manufacturer's `4dsystems/esp32p4_lcd` 0.1.1 component declares ESP-ID
 
 ## Isolated ESP-IDF 5.5.5 setup
 
-Espressif's [P4 setup guide](https://docs.espressif.com/projects/esp-idf/en/v5.5/esp32p4/get-started/linux-macos-setup.html) documents the target-specific install. A separate checkout and `IDF_TOOLS_PATH` avoid changing the existing ESP-IDF and global defaults. The following commands require network access and free disk space for submodules, toolchains, and Python packages. A 66 GiB free-space reading was observed before installation; download time depends on network speed. The checkout and tool cache are kept in the persistent project-specific directory shown below.
+Espressif's [P4 setup guide](https://docs.espressif.com/projects/esp-idf/en/v5.5/esp32p4/get-started/linux-macos-setup.html) documents the target-specific install. A separate checkout and `IDF_TOOLS_PATH` avoid changing the existing ESP-IDF and global defaults. For a fresh install, the following commands require network access and free disk space for submodules, toolchains, and Python packages. A 66 GiB free-space reading was observed before installation; download time depends on network speed. The checkout and tool cache are installed in the persistent project-specific directory shown below. A clean v5.5.5 `hello_world` build for `esp32p4` succeeded there with the installed `esp-14.2.0_20260121` RISC-V toolchain. This is a generic cross-build, not a board integration test.
 
 ```sh
 git clone --branch v5.5.5 --depth 1 --recursive --shallow-submodules \

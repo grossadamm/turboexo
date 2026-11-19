@@ -15,6 +15,11 @@ checks. [EXPERIMENT_LOG.md](EXPERIMENT_LOG.md) retains dated reasoning and
 retracted hypotheses. [docs/REFERENCE.md](docs/REFERENCE.md) contains background
 specifications; consult newer status entries for superseded statements.
 
+## ESP32-P4 cluster
+
+[Native firmware, build and bench guide](firmware/cluster/README.md) ·
+[Accepted animated mocks](dashboard/esp32p4-mocks/README.md)
+
 ## Files and workflow
 
 - `CurrentTune.msq`: TunerStudio's working tune. Disk contents alone do not verify

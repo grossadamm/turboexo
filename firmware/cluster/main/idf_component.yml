@@ -1,0 +1,5 @@
+dependencies:
+  idf: "==5.5.5"
+  4dsystems/esp32p4_lcd: "==0.1.1"
+  espressif/esp_lvgl_port: "==2.7.0"
+  lvgl/lvgl: "==9.5.0"

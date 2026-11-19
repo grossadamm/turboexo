@@ -1,0 +1,61 @@
+menu "TurboExo cluster"
+
+config CLUSTER_PANEL_ROTATE_270
+    bool "Rotate panel 270 degrees (default 90 degrees)"
+    default n
+
+config CLUSTER_LIVE
+    bool "Use Speeduino UART1 instead of replay"
+    default n
+    help
+        Live mode starts inhibited on every boot. An actual ECU reset
+        followed by a two-second Mode hold is required to send any request.
+
+if CLUSTER_LIVE
+
+config CLUSTER_ECU_VSS
+    bool "Display a configured and verified ECU vehicle speed sensor"
+    default n
+
+config CLUSTER_ECU_OIL_PRESSURE
+    bool "Display a configured and verified ECU oil pressure sender"
+    default n
+
+config CLUSTER_EGO_DELAY_MS
+    int "Saved ECU EGO delay in milliseconds"
+    range 0 255000
+    default 15000
+
+config CLUSTER_ADS1115
+    bool "Build optional external ADS1115 input support"
+    default n
+    help
+        I2C is initialized only when at least one valid measured calibration
+        is supplied. ADDR is strapped to GND (0x48).
+
+if CLUSTER_ADS1115
+
+config CLUSTER_ADS1115_FUEL_KNOTS
+    string "A0 fuel calibration: ascending raw:value pairs separated by commas"
+    default ""
+    help
+        Supply 2 to 16 measured counts and fuel percentages (0 to 100).
+
+config CLUSTER_ADS1115_OIL_TEMP_KNOTS
+    string "A1 oil temperature calibration: ascending raw:value pairs separated by commas"
+    default ""
+    help
+        Supply 2 to 16 measured counts and temperatures in degrees Fahrenheit
+        (-40 to 400).
+
+endif
+endif
+
+config CLUSTER_SD_LOGGING
+    bool "Log telemetry to the onboard microSD card"
+    default n
+    help
+        Mount an existing FAT volume at startup. Logging stops on removal or
+        write failure. The card is never formatted automatically.
+
+endmenu
