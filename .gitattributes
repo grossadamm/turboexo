@@ -1,3 +1,6 @@
 *.mlg filter=lfs diff=lfs merge=lfs -text
 *.csv filter=lfs diff=lfs merge=lfs -text
 *.dash filter=lfs diff=lfs merge=lfs -text
+
+# Firmware build configuration is source text, not a datalog asset.
+firmware/cluster/partitions.csv -filter diff merge text
