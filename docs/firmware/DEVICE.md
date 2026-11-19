@@ -15,8 +15,9 @@ The bootloader, partition table and application were flashed through
 `/dev/cu.usbmodem1101`; esptool verified every written region. The application
 booted with ESP-IDF 5.5.5, initialized MIPI DSI/JD9365, started LVGL and enabled
 PPA rotation. No application error or restart was reported during the 18-second
-boot capture. This does not establish the display's visual orientation,
-readability, frame rate or longer-term stability.
+boot capture. The user subsequently confirmed an **animated dashboard, upright**. This
+verifies basic visual orientation and animation, not measured frame rate,
+driving readability or longer-term stability.
 
 Evidence: [flash verification](bench/2026-11-19/flash.log) and
 [boot output](bench/2026-11-19/boot.log). Device MAC is omitted from the saved
@@ -25,7 +26,7 @@ flash log. Before writing, the affected flash prefix was backed up locally
 
 ## Remaining physical checks
 
-- User confirmation of upright, animated output, brightness and mode controls.
+- Brightness and physical mode-control operation.
 - Startup-to-visible-image timing, frame pacing and sustained operation.
 - ECU UART translation, wiring, configuration and concurrent USB tuning.
 - External sender calibration and SD behavior in the intended power system.
