@@ -1,0 +1,46 @@
+esptool.py v4.13.0
+Serial port /dev/cu.usbmodem1101
+Connecting...
+Chip is ESP32-P4 (revision v1.3)
+Features: High-Performance MCU
+Crystal is 40MHz
+USB mode: USB-Serial/JTAG
+MAC: [omitted]
+Uploading stub...
+Running stub...
+Stub running...
+Configuring flash size...
+Flash will be erased from 0x00010000 to 0x00101fff...
+Compressed 990656 bytes to 426688...
+Writing at 0x00010000... (3 %)
+Writing at 0x0001c5d3... (7 %)
+Writing at 0x0003162b... (11 %)
+Writing at 0x0004ecaf... (14 %)
+Writing at 0x0005bcb0... (18 %)
+Writing at 0x00066da6... (22 %)
+Writing at 0x0006e49d... (25 %)
+Writing at 0x000753b8... (29 %)
+Writing at 0x0007c78c... (33 %)
+Writing at 0x00083bdd... (37 %)
+Writing at 0x0008b308... (40 %)
+Writing at 0x00091ad4... (44 %)
+Writing at 0x000984e7... (48 %)
+Writing at 0x0009f40d... (51 %)
+Writing at 0x000a665d... (55 %)
+Writing at 0x000acc40... (59 %)
+Writing at 0x000b31aa... (62 %)
+Writing at 0x000b91f5... (66 %)
+Writing at 0x000bffd2... (70 %)
+Writing at 0x000c91f6... (74 %)
+Writing at 0x000d320f... (77 %)
+Writing at 0x000d9ff4... (81 %)
+Writing at 0x000e00be... (85 %)
+Writing at 0x000e7c6e... (88 %)
+Writing at 0x000ee821... (92 %)
+Writing at 0x000f5a36... (96 %)
+Writing at 0x00101647... (100 %)
+Wrote 990656 bytes (426688 compressed) at 0x00010000 in 5.0 seconds (effective 1594.4 kbit/s)...
+Hash of data verified.
+
+Leaving...
+Staying in bootloader.
