@@ -23,12 +23,6 @@ namespace {
 constexpr char kTag[] = "cluster_sd";
 constexpr char kMount[] = "/sdcard";
 constexpr uint64_t kFlushPeriodMs = 1000;
-constexpr const char* kMetricNames[] = {
-    "rpm", "speed_mph", "oil_psi", "coolant_f", "fuel_pct", "oil_temp_f", "map_kpa",
-    "boost_psi", "tps_pct", "afr_raw", "afr_target", "advance_deg", "pw_ms",
-    "injector_duty_pct", "iat_f", "battery_v", "ego_correction_pct", "warmup_pct", "aux0_raw"
-};
-static_assert(sizeof(kMetricNames) / sizeof(*kMetricNames) == kMetricCount);
 QueueHandle_t log_queue = nullptr;
 std::atomic<LogState> state{LogState::Starting};
 
@@ -142,7 +136,8 @@ bool write_header(FILE* file)
                    file) == EOF) {
         return false;
     }
-    for (const auto* name : kMetricNames) {
+    for (size_t index = 0; index < kMetricCount; ++index) {
+        const auto* name = metric_name(static_cast<Metric>(index));
         if (std::fprintf(file, ",%s,%s_quality,%s_observed_ms", name, name, name) < 0) {
             return false;
         }

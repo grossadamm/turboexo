@@ -15,6 +15,34 @@ enum class Metric : uint8_t {
 };
 constexpr size_t kMetricCount = static_cast<size_t>(Metric::Count);
 constexpr size_t metric_index(Metric metric) { return static_cast<size_t>(metric); }
+// Bind CSV names to enum values rather than a second positional list.
+constexpr const char* metric_name(Metric metric)
+{
+    switch (metric) {
+    case Metric::Rpm: return "rpm";
+    case Metric::SpeedMph: return "speed_mph";
+    case Metric::OilPsi: return "oil_psi";
+    case Metric::CoolantF: return "coolant_f";
+    case Metric::FuelPercent: return "fuel_pct";
+    case Metric::OilTempF: return "oil_temp_f";
+    case Metric::MapKpa: return "map_kpa";
+    case Metric::BoostPsi: return "boost_psi";
+    case Metric::TpsPercent: return "tps_pct";
+    case Metric::AfrRaw: return "afr_raw";
+    case Metric::AfrTarget: return "afr_target";
+    case Metric::AdvanceDeg: return "advance_deg";
+    case Metric::PulseWidthMs: return "pw_ms";
+    case Metric::InjectorDutyPercent: return "injector_duty_pct";
+    case Metric::IatF: return "iat_f";
+    case Metric::BatteryV: return "battery_v";
+    case Metric::EgoCorrectionPercent: return "ego_correction_pct";
+    case Metric::WarmupPercent: return "warmup_pct";
+    case Metric::Aux0Raw: return "aux0_raw";
+    case Metric::Count: break;
+    }
+    return "unknown";
+}
+
 constexpr uint64_t kTelemetryStaleMs = 1000;
 constexpr uint64_t kHistoryWindowMs = 8000;
 constexpr size_t kHistoryCapacity = 256;
@@ -60,6 +88,8 @@ struct HistoryPoint {
 class History {
 public:
     void append(const Snapshot& snapshot, uint64_t now_ms);
+    // Recorded rows may share timestamps; preserve their original order.
+    void append_recorded(const HistoryPoint& point, uint64_t now_ms);
     void clear();
     size_t size() const { return count_; }
     const HistoryPoint& at(size_t chronological_index) const;

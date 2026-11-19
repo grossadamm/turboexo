@@ -167,15 +167,15 @@ void Preferences::changed(uint64_t now)
     }
 }
 
-esp_err_t Preferences::save_if_settled(const ViewState& view, uint64_t now)
+PreferenceSaveResult Preferences::save_if_settled(const ViewState& view, uint64_t now)
 {
     if (save_at_ms_ == 0 || now < save_at_ms_) {
-        return ESP_OK;
+        return {ESP_OK, false};
     }
     save_at_ms_ = 0;
     const uint16_t packed = pack_preferences(view);
     if (packed == stored_) {
-        return ESP_OK;
+        return {ESP_OK, false};
     }
     esp_err_t result = nvs_set_u16(handle_, "prefs", packed);
     if (result == ESP_OK) {
@@ -184,7 +184,7 @@ esp_err_t Preferences::save_if_settled(const ViewState& view, uint64_t now)
     if (result == ESP_OK) {
         stored_ = packed;
     }
-    return result;
+    return {result, result == ESP_OK};
 }
 
 } // namespace cluster::platform

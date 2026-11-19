@@ -362,8 +362,10 @@ void TelemetryClient::publish()
                       0, 300, second_ms);
     }
     if (config_.oil_enabled) {
-        set_plausible(next, Metric::OilPsi, second[32], 0, 100, second_ms,
-                      config_.oil_calibrated ? Quality::Valid : Quality::Unverified);
+        // Preserve the ECU's full byte value. Its calibrated endpoints can
+        // exceed the physical sender's 100 psi display scale (e.g. 113 psi).
+        next.set(Metric::OilPsi, second[32],
+                 config_.oil_calibrated ? Quality::Valid : Quality::Unverified, second_ms);
     }
 
     pending_ = next;

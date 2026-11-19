@@ -120,15 +120,12 @@ void header(lv_layer_t *l, const ViewState &v) {
     text(l, 45, 38, 175, log_status, &cluster_text_26,
          v.logging_fault || v.log_dropped ? amber : mint);
   if (v.peripheral_faults) {
-    char f[128] = "";
-    if (v.peripheral_faults & ButtonsFault)
-      std::strcat(f, "INPUT ERROR  ");
-    if (v.peripheral_faults & AdcFault)
-      std::strcat(f, "SENSOR LINK ERROR  ");
-    if (v.peripheral_faults & PreferencesFault)
-      std::strcat(f, "PREFS NOT SAVED  ");
-    if (v.peripheral_faults & UartFault)
-      std::strcat(f, "UART ERROR");
+    char f[80];
+    std::snprintf(f, sizeof f, "CHECK:%s%s%s%s",
+                  v.peripheral_faults & ButtonsFault ? " BUTTONS" : "",
+                  v.peripheral_faults & AdcFault ? " SENSORS" : "",
+                  v.peripheral_faults & PreferencesFault ? " PREFS" : "",
+                  v.peripheral_faults & UartFault ? " UART" : "");
     text(l, 230, 38, 820, f, &cluster_text_26, amber, LV_TEXT_ALIGN_CENTER);
   } else if (s.get(Metric::OilPsi).quality == Quality::Unverified) {
     text(l, 320, 38, 640, "OIL PRESSURE UNVERIFIED", &cluster_text_26, muted,
@@ -315,16 +312,25 @@ void tuning(lv_layer_t *l, const ViewState &v, const History &h, uint64_t now) {
     text(l, xs[i], 78, i == 2 ? 400 : 240, names[i], &cluster_text_26, muted);
     char b[48];
     val(b, sizeof b, get(s, ms[i]), now, i == 2 ? 1 : 0);
-    text(l, xs[i], 110, i == 0 ? 285 : (i == 2 ? 380 : 240), b,
-         &cluster_num_96);
+    const int value_width = i == 0 ? 285 : (i == 2 ? 380 : 240);
+    lv_point_t measured{};
+    lv_text_get_size(&measured, b, &cluster_num_96, 0, 0, 1000,
+                     LV_TEXT_FLAG_NONE);
+    const lv_font_t *value_font =
+        measured.x > value_width ? &cluster_num_64 : &cluster_num_96;
+    text(l, xs[i], 110, value_width, b, value_font);
     if (i == 2) {
       char target[24], label[64];
       if (s.target_echo_possible)
         std::snprintf(target, sizeof target, "--");
       else
         val(target, sizeof target, get(s, Metric::AfrTarget), now, 1);
+      const bool warming = s.link == LinkState::Live &&
+                           s.target_echo_possible && (s.engine_flags & 1) &&
+                           !(s.engine_flags & 2) && s.synchronized &&
+                           valid(get(s, Metric::Rpm), now);
       std::snprintf(label, sizeof label, "TARGET %s%s", target,
-                    s.target_echo_possible ? " / WARMUP" : "");
+                    warming ? " / WARMUP" : "");
       text(l, xs[i], 215, 400, label, &cluster_text_26, muted);
     } else
       text(l, xs[i], 215, 240, units[i], &cluster_text_26, muted);

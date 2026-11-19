@@ -1,6 +1,7 @@
 #include "platform.hpp"
 
 #include "cluster/dashboard.hpp"
+#include "cluster/observations.hpp"
 #include "esp_log.h"
 #include "esp_lvgl_port.h"
 #include "freertos/FreeRTOS.h"
@@ -64,11 +65,10 @@ private:
 #ifdef CONFIG_CLUSTER_LIVE
     bool uart_available_ = false;
 #else
-    uint64_t replay_tick_ms_ = 0;
     // Observation ages and trace positions share a clock that stops on pause.
-    uint64_t replay_clock_ms_ = 0;
+    ReplayTimeline replay_clock_{};
     uint64_t replay_sample_at_ms_ = 0;
-    uint32_t replay_offset_ms_ = 0;
+    uint32_t replay_sample_offset_ms_ = 0;
 #endif
 #ifdef CONFIG_CLUSTER_ADS1115
     LocalSensors local_{};
@@ -77,8 +77,7 @@ private:
 
 bool App::update_source(uint64_t now)
 {
-    const uint64_t previous_sample_ms = view_.telemetry.received_ms;
-    const LinkState previous_link = view_.telemetry.link;
+    const Snapshot previous = view_.telemetry;
 #ifdef CONFIG_CLUSTER_LIVE
     take_uart_snapshot(view_.telemetry);
     // Queue producer timestamps can be newer than the loop's initial clock read.
@@ -95,22 +94,15 @@ bool App::update_source(uint64_t now)
         }
     }
 #else
-    if (!view_.replay_paused) {
-        const uint64_t delta = now - replay_tick_ms_;
-        replay_clock_ms_ += delta;
-        const uint64_t elapsed = replay_offset_ms_ + delta;
-        const bool looped = elapsed >= kReplayDurationMs;
-        if (looped) {
-            history_.clear();
-        }
-        replay_offset_ms_ = elapsed % kReplayDurationMs;
-        if (looped || replay_clock_ms_ >= replay_sample_at_ms_) {
-            view_.telemetry = replay_sample(replay_offset_ms_, replay_clock_ms_);
-            replay_sample_at_ms_ = replay_clock_ms_ + kFramePeriodMs;
-        }
+    const auto advance = replay_clock_.advance(now, view_.replay_paused);
+    if (!view_.replay_paused &&
+        (advance.wrapped || advance.reached_end || now >= replay_sample_at_ms_)) {
+        replay_sample_offset_ms_ = replay_clock_.offset_ms();
+        view_.telemetry = replay_sample(replay_sample_offset_ms_, replay_clock_.now_ms());
+        replay_history(replay_sample_offset_ms_, replay_clock_.now_ms(), history_);
+        replay_sample_at_ms_ = now + kFramePeriodMs;
     }
-    replay_tick_ms_ = now;
-    now = replay_clock_ms_;
+
 #endif
 
 #ifdef CONFIG_CLUSTER_ADS1115
@@ -127,10 +119,10 @@ bool App::update_source(uint64_t now)
     view_.telemetry.get(Metric::OilTempF) = local_.oil_temp;
 #endif
 
-    if (!view_.replay_paused) {
-        history_.append(view_.telemetry, now);
-    }
-    return view_.telemetry.received_ms != previous_sample_ms || view_.telemetry.link != previous_link;
+#ifdef CONFIG_CLUSTER_LIVE
+    history_.append(view_.telemetry, now);
+#endif
+    return has_new_observation(previous, view_.telemetry);
 }
 
 void App::update_controls(uint64_t now)
@@ -159,9 +151,18 @@ void App::render(uint64_t now)
 #ifdef CONFIG_CLUSTER_LIVE
         const uint64_t frame_time = now;
 #else
-        const uint64_t frame_time = replay_clock_ms_;
+        const uint64_t frame_time = replay_clock_.now_ms();
 #endif
         dashboard_.update(view_, history_, frame_time);
+#ifndef CONFIG_CLUSTER_LIVE
+        if (replay_sample_offset_ms_ == kReplayDurationMs &&
+            replay_clock_.offset_ms() == kReplayDurationMs) {
+            // This one frame per loop must actually refresh before the source
+            // may wrap; ordinary frames stay on the LVGL task's async cadence.
+            lv_refr_now(lv_display_get_default());
+            replay_clock_.presented();
+        }
+#endif
         lvgl_port_unlock();
     }
     if (first_frame_deadline_ms_ && now >= first_frame_deadline_ms_) {
@@ -190,8 +191,7 @@ void App::run()
     const uint64_t started = now_ms();
     first_frame_deadline_ms_ = started + 1000;
 #ifndef CONFIG_CLUSTER_LIVE
-    replay_tick_ms_ = started;
-    replay_clock_ms_ = started;
+    replay_clock_.reset(started);
     update_source(started);
 #endif
 
@@ -218,8 +218,11 @@ void App::run()
         const bool new_sample = update_source(now_ms());
         const uint64_t now = now_ms();
         update_controls(now);
-        const esp_err_t save_result = preferences_.save_if_settled(view_, now);
-        check_peripheral(view_, PreferencesFault, "Preferences save", save_result);
+        const auto save_result = preferences_.save_if_settled(view_, now);
+        if (save_result.committed) {
+            view_.peripheral_faults &= ~PreferencesFault;
+        }
+        check_peripheral(view_, PreferencesFault, "Preferences save", save_result.error);
 #ifdef CONFIG_CLUSTER_SD_LOGGING
         const LogState state = log_state();
         view_.logging_active = state == LogState::Active;

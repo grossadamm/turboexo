@@ -4,14 +4,14 @@ Investigated 2026-11-19 on the Apple Silicon development Mac. No firmware was fl
 
 ## Version constraint
 
-The board manufacturer's `4dsystems/esp32p4_lcd` 0.1.1 component declares ESP-IDF >= 5.5.2; use the proposed 5.5.5 pin for board integration, subject to verification against the complete board support package and silicon revision. The existing v5.4.3 checkout is useful as an environment probe but does not meet that component constraint. The board's silicon revision is not yet known; pre-v3 and v3 configurations require separate consideration.
+The board manufacturer's `4dsystems/esp32p4_lcd` 0.1.1 component declares ESP-IDF >= 5.5.2; the project pins 5.5.5 for board integration and builds both supported silicon profiles. The existing v5.4.3 checkout is useful as an environment probe but does not meet that component constraint. The board's silicon revision is not yet known; pre-v3 and v3 configurations require separate consideration.
 
 ## Installed tools
 
 - macOS arm64; Apple clang 21.0.0, CMake 4.0.3, Ninja 1.13.0, Python 3.11.13, SDL2 2.30.9 (`pkg-config`).
 - `/Users/adamgross/dev/esp32_s3/hardware/esp-idf` is an existing ESP-IDF v5.4.3 checkout. `~/.espressif` includes IDF Python environments and RISC-V cross-toolchain versions, but the recorded installs list S3 targets. Do not modify that checkout for this project.
 - An isolated copy of the v5.4.3 `hello_world` example built successfully for `esp32p4` with `idf.py set-target esp32p4 build`, using the existing installation. This verifies the Mac can cross-compile a generic P4 image, not compatibility with the board or its peripherals.
-- Apple clang compiled and ran a C++17 host executable. SDL2's `dummy` video driver created a window surface and saved a BMP headlessly. This is a feasibility probe, not an LVGL simulation: LVGL and its display integration still need to be pinned, built, and tested. A software framebuffer and image export can support screenshot tests; SDL window availability is not needed for the dummy-driver probe.
+- Apple clang compiled and ran a C++17 host executable. SDL2's `dummy` video driver created a window surface and saved a BMP headlessly. The implemented host harness now renders the shared LVGL 9.5.0 Dashboard to a software framebuffer with deterministic image export. SDL window availability is not required for these captures.
 
 ## Isolated ESP-IDF 5.5.5 setup
 
@@ -27,8 +27,23 @@ source ./export.sh
 idf.py --version
 ```
 
-In a new shell repeat the `IDF_TOOLS_PATH` export and `source .../export.sh`. For a disposable generic compile check, copy `examples/get-started/hello_world` outside the IDF checkout, enter the copy, and run `idf.py set-target esp32p4 build`. This only produces build artifacts. For project builds, use the repository's eventual pinned configuration and build instructions; selecting the target can overwrite an existing `sdkconfig`.
+In a new shell repeat the `IDF_TOOLS_PATH` export and `source .../export.sh`. For a disposable generic compile check, copy `examples/get-started/hello_world` outside the IDF checkout, enter the copy, and run `idf.py set-target esp32p4 build`. This only produces build artifacts. For project builds, use the [firmware guide's pinned configuration and build instructions](../../../firmware/cluster/README.md); selecting the target can overwrite an existing `sdkconfig`.
 
-## Host validation approach
+## Host and project validation
 
-Keep portable parsing and application logic independent of ESP-IDF hardware APIs and compile it with Apple clang/CMake and CTest. For screen rendering, pin the same LVGL version as the firmware, create a host display backed by a software framebuffer, and export deterministic frames for inspection. SDL2 is installed and can support interactive simulation; headless screenshot support must be implemented and validated with the chosen LVGL configuration. Host tests and screenshots cannot establish physical display timing, touch behavior, real ECU data, or board-level operation.
+The portable parser, history, replay timeline, calibration and controls compile
+with the host C++ compiler and run under CTest with ASan/UBSan. A focused fake
+of the UART/FreeRTOS boundary compiles the actual UART adapter to exercise
+FIFO-only pending bytes, ISR handoffs, receive-state ordering and uncertain TX.
+Cross-builds separately check the pinned SDK API and both silicon layouts.
+
+The same native Dashboard used by the ESP target runs in a pinned LVGL 9.5.0
+host display backed by a software framebuffer. It exports deterministic PPM
+captures; the standard-library conversion tool emits PNGs for visual inspection.
+SDL2 supports an optional interactive window. The current commands and gates
+are in the [firmware guide](../../../firmware/cluster/README.md).
+
+The full local gate builds replay/live × pre-v3/v3 with separate sdkconfig and
+build paths. These checks establish source/build behavior and rendered layout,
+not physical display timing, actual ECU communications, power robustness or
+sender calibration. Those bench gates remain in the firmware guide.

@@ -57,11 +57,16 @@ esp_err_t backlight(uint8_t percent);
 esp_err_t configure_buttons();
 ButtonInputs read_buttons();
 
+struct PreferenceSaveResult {
+    esp_err_t error;
+    bool committed;
+};
+
 class Preferences {
 public:
     esp_err_t load(ViewState& view);
     void changed(uint64_t now_ms);
-    esp_err_t save_if_settled(const ViewState& view, uint64_t now_ms);
+    PreferenceSaveResult save_if_settled(const ViewState& view, uint64_t now_ms);
 
 private:
     uint32_t handle_ = 0;

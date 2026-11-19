@@ -1,6 +1,7 @@
 #include "cluster/calibration.hpp"
 #include "cluster/controls.hpp"
 #include "cluster/protocol.hpp"
+#include "cluster/observations.hpp"
 #include "cluster/replay.hpp"
 
 #include <algorithm>
@@ -581,6 +582,81 @@ void test_calibration()
     CHECK(!calibration_valid(knots, 3, 100, 0));
 }
 
+void test_oil_overrange()
+{
+    ClientConfig config;
+    config.oil_enabled = config.oil_calibrated = true;
+    for (const uint8_t pressure : {100, 101, 113, 255}) {
+        TelemetryClient client(config);
+        Frames frames;
+        frames.second[34] = pressure;
+        const auto snapshot = cycle(client, connect(client), frames);
+        CHECK(snapshot.get(Metric::OilPsi).quality == Quality::Valid);
+        near(snapshot.get(Metric::OilPsi).value, pressure);
+    }
+}
+
+void test_independent_observation_logging()
+{
+    Snapshot before;
+    Snapshot after = before;
+    CHECK(!has_new_observation(before, after));
+    after.set(Metric::FuelPercent, 62, Quality::Valid, 100);
+    CHECK(has_new_observation(before, after)); // ECU remains disarmed.
+    before = after;
+    after.get(Metric::FuelPercent).observed_ms = 300;
+    CHECK(has_new_observation(before, after)); // Same level, new ADC sample.
+    before = after;
+    after.get(Metric::FuelPercent).quality = Quality::Missing;
+    CHECK(has_new_observation(before, after)); // Sensor stale without ECU change.
+    before = after;
+    CHECK(!has_new_observation(before, after));
+    after.link = LinkState::Stale;
+    CHECK(has_new_observation(before, after));
+}
+
+void test_exact_replay_history_and_endpoint()
+{
+    History history;
+    replay_history(31705, 100000, history);
+    CHECK(history.size() == 85);
+    bool duplicate_transient = false;
+    bool rev_sample = false;
+    for (size_t i = 0; i < history.size(); ++i) {
+        const auto& p = history.at(i);
+        rev_sample |= p.rpm == 6355;
+        if (i != 0 && p.time_ms == history.at(i - 1).time_ms) {
+            const auto& previous = history.at(i - 1);
+            duplicate_transient |= previous.map_kpa == 139 && p.map_kpa == 60 &&
+                                   previous.rpm == 6823 && p.rpm == 6720;
+        }
+    }
+    CHECK(duplicate_transient);
+    CHECK(rev_sample);
+
+    ReplayTimeline clock;
+    clock.reset(1000, kReplayDurationMs - 10);
+    auto step = clock.advance(1015, false);
+    CHECK(step.reached_end && !step.wrapped);
+    CHECK(clock.offset_ms() == kReplayDurationMs);
+    near(replay_sample(clock.offset_ms(), clock.now_ms()).get(Metric::Rpm).value, 977);
+    const auto end_time = clock.now_ms();
+    CHECK(!clock.advance(2000, false).changed); // No rendered endpoint yet.
+    CHECK(clock.now_ms() == end_time);
+    clock.presented();
+    CHECK(!clock.advance(3000, true).changed); // Pause still holds endpoint.
+    step = clock.advance(3010, false);
+    CHECK(step.wrapped && clock.offset_ms() == 0);
+    CHECK(clock.now_ms() == end_time + 10);
+    near(replay_sample(0, clock.now_ms()).get(Metric::Rpm).value, 889);
+    replay_history(0, clock.now_ms(), history);
+    CHECK(history.size() == 1);
+    CHECK(!clock.advance(3020, true).changed);
+    const auto pause_time = clock.now_ms();
+    clock.advance(3030, false);
+    CHECK(clock.now_ms() == pause_time + 10);
+}
+
 } // namespace
 
 int main()
@@ -596,5 +672,8 @@ int main()
     test_history();
     test_controls();
     test_calibration();
+    test_oil_overrange();
+    test_independent_observation_logging();
+    test_exact_replay_history_and_endpoint();
     std::cout << "Core tests passed\n";
 }

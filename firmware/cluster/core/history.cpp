@@ -63,6 +63,23 @@ void History::append(const Snapshot& snapshot, uint64_t now_ms)
     }
 }
 
+void History::append_recorded(const HistoryPoint& point, uint64_t now_ms)
+{
+    if (point.time_ms > now_ms) {
+        return;
+    }
+    if (count_ != 0 && point.time_ms < at(count_ - 1).time_ms) {
+        clear();
+    }
+    points_[head_] = point;
+    head_ = (head_ + 1) % kHistoryCapacity;
+    count_ = std::min(count_ + 1, kHistoryCapacity);
+    have_observation_ = false;
+    while (count_ != 0 && now_ms - at(0).time_ms > kHistoryWindowMs) {
+        --count_;
+    }
+}
+
 void History::clear()
 {
     head_ = 0;

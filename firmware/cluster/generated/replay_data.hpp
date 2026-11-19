@@ -6,6 +6,9 @@
 
 namespace cluster::replay_data {
 
+inline constexpr uint32_t history_window_ms = 8000;
+inline constexpr uint32_t max_history_rows = 86;
+
 struct Sample {
     uint32_t offset_ms;
     float rpm;

@@ -5,6 +5,17 @@ and Tuning views based on the [accepted mocks](../../dashboard/esp32p4-mocks/REA
 The physical display is non-touch. Its portrait 800×1280 scanout is rotated to
 logical 1280×800; the same Dashboard renderer runs in the host simulator.
 
+## Code boundaries
+
+- `core/` and `include/cluster/` contain the platform-independent protocol,
+  telemetry model, exact replay/history, controls and calibration. Host tests
+  exercise these contracts independently of ESP-IDF.
+- `main/` owns hardware adapters and the application loop. The app is the sole
+  writer of display state; UART/ADC snapshots arrive through bounded queues,
+  and a separate bounded queue owns SD writes.
+- `ui/` is the shared native renderer. `host/` provides deterministic captures
+  and the optional SDL window; generated licensed assets are in `assets/`.
+
 ## Build dependencies
 
 Use ESP-IDF **v5.5.5**, target `esp32p4`. The component manifest and lockfile pin
@@ -36,8 +47,9 @@ From the repository root, the local gate is:
 ./scripts/verify-firmware.sh
 ```
 
-The host gate checks the replay source, documentation links, portable core tests
-(with ASan/UBSan on supported host compilers), and actual LVGL captures. The full
+The host gate checks the replay source, documentation links, portable core and UART-adapter boundary tests
+(with ASan/UBSan on supported host compilers), display-only animation tests,
+and actual LVGL captures. The full
 gate also builds all four replay/live × pre-v3/v3 profiles in separate build and
 sdkconfig paths. It never flashes hardware. Evidence is written under
 `.artifacts/firmware/verify/`; `CLUSTER_VERIFY_DIR` selects another persistent
@@ -57,7 +69,13 @@ idf.py -C "$project_dir" -B "$build_dir/build" \
 ```
 
 Use `sdkconfig.rev-v3` for revision 3.0+ and append `;.../sdkconfig.live` for the
-live profile. Do not reuse sdkconfig files between profiles. The pre-v3 profile
+live profile. **The supplied live profile enables SD logging and compiles ADS
+support.** With a FAT card inserted it creates a log automatically; blank ADC
+calibration leaves the I²C bus disabled. To build without card writes, turn off
+`TurboExo cluster → Log telemetry to the onboard microSD card` in that build
+configuration (`CONFIG_CLUSTER_SD_LOGGING=n`). Use `idf.py menuconfig` with the
+same project/build/sdkconfig arguments; existing sdkconfig values take precedence
+over defaults. Do not reuse sdkconfig files between profiles. The pre-v3 profile
 explicitly selects minimum revision 0; the v3 profile selects minimum 3.0
 instead of the SDK default 3.1. **Identify the delivered silicon and board
 revision before choosing an image to flash.** No hardware is accessed by these
@@ -81,7 +99,10 @@ selects the alternative landscape mounting orientation.
 The default build is **replay** with an on-screen replay indication. It uses the
 accepted 54.425-second October 23 clip and explicitly simulated speed, fuel and
 oil temperature. These synthetic values never feed a live build. Replay loops
-clear history; pausing keeps the displayed sample and history consistent.
+clear history only after presenting the final recorded sample; pausing freezes
+the presentation clock. Tuning history consumes the original source rows in
+order, including different measurements that share a timestamp, rather than
+resampling them at display-frame frequency.
 
 A live build starts **AwaitEcuReset on every boot**. Reset the ECU under the
 bench procedure, then hold Mode for two seconds to confirm that reset and enable
@@ -113,7 +134,10 @@ review other active Aux modes, and preserve oil pressure on dedicated A9.
 The client accepts only exact `S` identities for 202501, 202501.6 or 202501.7,
 then sends two fixed `r` spans (0–43 and 76–108) at a maximum of five complete
 cycles per second. Each reply must have its exact header and length and pass a
-quiet guard before advancing. Only a complete cycle is published. There is no
+quiet guard before advancing. The adapter samples the RX line, receiver FSM,
+hardware FIFO, driver ring and queued errors; its ISR and worker share a core
+so a byte in transit between hardware and software cannot masquerade as quiet.
+Only a complete cycle is published. There is no
 CRC in this legacy protocol and the two spans are not an atomic ECU snapshot.
 The implementation sends no tuning commands or arbitrary serial payloads.
 
@@ -161,11 +185,18 @@ invalidate the affected readings without blocking telemetry or display work.
 `CONFIG_CLUSTER_SD_LOGGING` mounts an existing FAT card without formatting it.
 A separate bounded writer queue keeps mount/write/flush latency out of the UI and
 UART paths. Log names are unique per session; timestamps are relative monotonic
-time, not fabricated calendar dates. CSV rows carry per-value quality so raw,
-missing and simulated inputs remain distinguishable.
+time, not fabricated calendar dates. `boot_ms` is the process clock; replay
+`received_ms` and per-value observation timestamps use its pause-adjusted
+presentation clock. CSV rows carry per-value quality so raw,
+missing and simulated inputs remain distinguishable. These are comma-delimited
+cluster records, not TunerStudio MLG files or its semicolon-separated exports.
 
-The screen indicates recording or logging errors/drops. Card absence, removal,
-or a write failure does not stop gauges. Flushes reduce the loss window but do
+The screen indicates recording or logging errors/drops. Fresh local ADC
+observations and validity changes are logged even while the ECU link is offline
+or disarmed. Card absence, removal,
+or a write failure does not stop gauges. Logging does not automatically remount
+a removed or newly inserted card; start a new device session after correcting
+the card issue. Flushes reduce the loss window but do
 not guarantee filesystem or final-row durability during a power cut. Verify the
 specific card and power behavior before relying on logs in the car.
 

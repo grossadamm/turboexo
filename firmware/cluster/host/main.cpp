@@ -42,10 +42,7 @@ static void fixture(ViewState &v, History &h, uint32_t offset,
   v.logging_active = false;
   v.logging_fault = false;
   v.log_dropped = 0;
-  for (uint32_t t = offset > 8000 ? offset - 8000 : 0; t <= offset; t += 100) {
-    auto s = replay_sample(t, now - (offset - t));
-    h.append(s, now - (offset - t));
-  }
+  replay_history(offset, now, h);
   v.telemetry = replay_sample(offset, now);
   if (std::strcmp(scenario, "offline") == 0) {
     v.telemetry = Snapshot{};
@@ -54,6 +51,8 @@ static void fixture(ViewState &v, History &h, uint32_t offset,
   } else if (std::strcmp(scenario, "warmup") == 0) {
     v.telemetry.link = LinkState::Live;
     v.telemetry.target_echo_possible = true;
+    v.telemetry.engine_flags = 1;
+    v.telemetry.synchronized = true;
     for (auto &r : v.telemetry.values)
       if (r.quality == Quality::Simulated)
         r.quality = Quality::Missing;
@@ -76,12 +75,18 @@ static void fixture(ViewState &v, History &h, uint32_t offset,
     v.logging_active = true;
     v.log_dropped = 3;
   } else if (std::strcmp(scenario, "extremes") == 0) {
-    v.telemetry.set(Metric::Rpm, 9999, Quality::Valid, now);
+    v.telemetry.set(Metric::Rpm, 10000, Quality::Valid, now);
     v.telemetry.set(Metric::SpeedMph, 199, Quality::Valid, now);
     v.telemetry.set(Metric::OilPsi, 150, Quality::Valid, now);
     v.telemetry.set(Metric::CoolantF, 350, Quality::Valid, now);
     v.telemetry.set(Metric::OilTempF, 350, Quality::Valid, now);
     v.telemetry.set(Metric::BoostPsi, -25, Quality::Valid, now);
+  }
+  if (v.telemetry.link != LinkState::Replay) {
+    for (auto &reading : v.telemetry.values) {
+      if (reading.quality == Quality::Simulated)
+        reading.quality = Quality::Missing;
+    }
   }
 }
 int main(int argc, char **argv) {
@@ -100,7 +105,7 @@ int main(int argc, char **argv) {
   if (argc == 3 && std::strcmp(argv[1], "--capture-dir") == 0) {
     std::filesystem::create_directories(argv[2]);
     const char *modes[] = {"street", "track", "tuning"};
-    const uint32_t offsets[] = {20000, 31705};
+    const uint32_t offsets[] = {20000, 31705, kReplayDurationMs};
     for (int m = 0; m < 3; m++) {
       v.mode = static_cast<Mode>(m);
       for (auto off : offsets) {
@@ -147,19 +152,39 @@ int main(int argc, char **argv) {
   auto *w = SDL_CreateWindow("TurboExo cluster - 1/2/3 modes, space pause",
                              SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
                              1280, 800, 0);
+  if (!w) {
+    std::fprintf(stderr, "SDL window: %s\n", SDL_GetError());
+    SDL_Quit();
+    return 1;
+  }
   auto *r = SDL_CreateRenderer(w, -1, SDL_RENDERER_ACCELERATED);
   if (!r)
     r = SDL_CreateRenderer(w, -1, SDL_RENDERER_SOFTWARE);
+  if (!r) {
+    std::fprintf(stderr, "SDL renderer: %s\n", SDL_GetError());
+    SDL_DestroyWindow(w);
+    SDL_Quit();
+    return 1;
+  }
   auto *t = SDL_CreateTexture(r, SDL_PIXELFORMAT_ARGB8888,
                               SDL_TEXTUREACCESS_STREAMING, 1280, 800);
+  if (!t) {
+    std::fprintf(stderr, "SDL texture: %s\n", SDL_GetError());
+    SDL_DestroyRenderer(r);
+    SDL_DestroyWindow(w);
+    SDL_Quit();
+    return 1;
+  }
   bool running = true, paused = false;
   auto last = std::chrono::steady_clock::now();
+  ReplayTimeline timeline;
+  timeline.reset(now, offset);
   while (running) {
     SDL_Event e;
     while (SDL_PollEvent(&e)) {
       if (e.type == SDL_QUIT)
         running = false;
-      if (e.type == SDL_KEYDOWN) {
+      if (e.type == SDL_KEYDOWN && e.key.repeat == 0) {
         switch (e.key.keysym.sym) {
         case SDLK_ESCAPE:
           running = false;
@@ -184,12 +209,13 @@ int main(int argc, char **argv) {
                   .count();
     last = cur;
     now += dt;
-    if (!paused)
-      offset = (offset + dt) % kReplayDurationMs;
-    fixture(v, h, offset, "replay", now);
+    timeline.advance(now, paused);
+    offset = timeline.offset_ms();
+    fixture(v, h, offset, "replay", timeline.now_ms());
     v.replay_paused = paused;
-    dashboard.update(v, h, now);
+    dashboard.update(v, h, timeline.now_ms());
     lv_refr_now(d);
+    timeline.presented();
     SDL_UpdateTexture(t, nullptr, frame.data(), 1280 * 4);
     SDL_RenderCopy(r, t, nullptr, nullptr);
     SDL_RenderPresent(r);
@@ -200,9 +226,7 @@ int main(int argc, char **argv) {
   SDL_DestroyWindow(w);
   SDL_Quit();
 #else
-  std::fprintf(
-      stderr,
-      "SDL unavailable; use MODE OFFSET_MS SCENARIO OUTPUT.ppm for capture\n");
+  std::fprintf(stderr, "SDL unavailable; use --capture-dir DIR for capture\n");
   return 1;
 #endif
 }
