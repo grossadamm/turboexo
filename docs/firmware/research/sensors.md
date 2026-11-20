@@ -1,10 +1,10 @@
 # External fuel and oil-temperature input evidence
 
-The current task branch predates the sensor-carrier work. Read-only inspection
-of local `main` at `9a0827c` on 2026-11-19 recovered the following facts from
-`docs/REFERENCE.md`, `docs/hardware/ads1115/revH/layout_spec.json`, and
-`docs/hardware/ads1115/BUILD_STATUS.md`. Those six unrelated unpublished main
-commits were not merged or republished as part of the firmware task.
+The sensor-carrier work and firmware were integrated on main on 2026-11-20.
+These facts were originally checked against sensor-carrier commit `9a0827c`.
+The owning references are [REFERENCE.md](../../REFERENCE.md), the
+[Rev H specification](../../hardware/ads1115/revH/layout_spec.json), and the
+[physical build checkpoint](../../hardware/ads1115/BUILD_STATUS.md).
 
 - The carrier uses an ADS1115-style blue ten-pin breakout, intended at 3.3 V.
   Rev H routes fuel to A0 and oil temperature to A1. The exact breakout vendor,
