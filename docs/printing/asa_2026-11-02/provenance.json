@@ -1,0 +1,10 @@
+{
+  "date": "2026-11-02",
+  "sources": {
+    "ASA_P1S_calibrated.json": "/Users/adamgross/Library/Application Support/BambuStudio/user/3987626796/filament/ASA - P1S 265C 8.8mm3s.json",
+    "intake_4walls_cooling35.3mf": "/Users/adamgross/Downloads/Air Intake - 4 walls - ASA cooling35.3mf",
+    "flow_rate_coarse_baseline095.3mf": "/Users/adamgross/Downloads/ASA Flow Rate Coarse - 265C 8.8 K0.040.3mf",
+    "pressure_advance_K0_to005.gcode": "/Users/adamgross/Downloads/ASA Flow Dynamics - 265C 8.8 - K 0-0.05.gcode"
+  },
+  "purpose": "Calibration and intake preparation archive; final intake print result unconfirmed."
+}

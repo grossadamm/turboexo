@@ -22,6 +22,8 @@ specifications; consult newer status entries for superseded statements.
 
 ## Files and workflow
 
+- [ASA intake printing](docs/ASA_PRINTING.md): P1S calibration results, cooling,
+  four-wall/brim setup, archived print project and restoration instructions.
 - `CurrentTune.msq`: TunerStudio's working tune. Disk contents alone do not verify
   what is burned to the ECU.
 - `restorePoints/`: automatic backups. August 29 19:22:11 is the stock-injector

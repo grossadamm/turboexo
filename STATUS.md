@@ -9,6 +9,17 @@ completed swap or ECU application reported. Separate October30 provisional tune
 and its assumptions remain ready for that hardware change. CurrentTune stays on
 the red-injector baseline. Startup/warm-idle validation and timing check remain pending.
 
+## 2026-11-02 — ASA intake print preparation archived
+
+P1S / standard 0.4 mm nozzle: ASA 265°C, max volumetric speed 8.8 mm³/s,
+flow ratio 0.9975 (coarse +5 from 0.95), K 0.040 saved and verified on AMS A4.
+Final saved project has four wall loops, 10 mm outer brim / 0.1 mm gap,
+100°C textured PEI bed, normal cooling 10–35%, overhang cooling 80%, auxiliary off.
+Fine flow calibration was deliberately skipped. Final reslice and completed intake
+print remain unconfirmed. Calibration evidence, temperature uncertainty in the
+max-flow run, restoration steps and checksummed artifact copies are in
+[docs/ASA_PRINTING.md](docs/ASA_PRINTING.md). No ECU tune change was made for this work.
+
 ## 2026-10-30 — Separate yellow-injector provisional tune ready (disk only)
 
 Prepared `TurboExo_yellow425_PROVISIONAL_2026-10-30_103946.msq` for the same previously used Denso195500-4450 yellows. **CurrentTune remains the red-injector baseline and was not modified.** Snapshot `TurboExo_red_injector_baseline_pre_yellow_2026-10-30_103946.msq`, SHA256 sidecars and exact `.changes.json` saved.

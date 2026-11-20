@@ -35,6 +35,7 @@ tracked in STATUS.md. The OEM Spartan module has been replaced by a non-OEM unit
 
 ## Routing
 
+- **3D-printed intake / ASA calibration:** [docs/ASA_PRINTING.md](docs/ASA_PRINTING.md).
 - **What now / latest tune to load:** start with [STATUS.md](STATUS.md).
 - **Tune edits:** inspect `CurrentTune.msq` and recent `restorePoints/` before editing;
   compare actual constants, not filenames alone. Preserve newer TunerStudio saves.

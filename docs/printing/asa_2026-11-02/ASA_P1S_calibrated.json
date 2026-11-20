@@ -1,0 +1,27 @@
+{
+    "fan_max_speed": [
+        "35"
+    ],
+    "filament_extruder_variant": [
+        "Direct Drive Standard"
+    ],
+    "filament_flow_ratio": [
+        "0.9975"
+    ],
+    "filament_max_volumetric_speed": [
+        "8.8"
+    ],
+    "filament_settings_id": [
+        "ASA - P1S 265C 8.8mm3s"
+    ],
+    "from": "User",
+    "inherits": "Generic ASA",
+    "name": "ASA - P1S 265C 8.8mm3s",
+    "nozzle_temperature": [
+        "265"
+    ],
+    "nozzle_temperature_initial_layer": [
+        "265"
+    ],
+    "version": "2.8.0.6"
+}

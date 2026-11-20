@@ -1,0 +1,72 @@
+{
+  "verified_date": "2026-11-02",
+  "source": "intake_4walls_cooling35.3mf Metadata/project_settings.config",
+  "settings": {
+    "wall_loops": "4",
+    "layer_height": "0.2",
+    "sparse_infill_density": "5%",
+    "sparse_infill_pattern": "gyroid",
+    "brim_type": "outer_only",
+    "brim_width": "10",
+    "brim_object_gap": "0.1",
+    "fan_min_speed": [
+      "10"
+    ],
+    "fan_max_speed": [
+      "35"
+    ],
+    "fan_cooling_layer_time": [
+      "35"
+    ],
+    "slow_down_layer_time": [
+      "3"
+    ],
+    "overhang_fan_speed": [
+      "80"
+    ],
+    "additional_cooling_fan_speed": [
+      "0"
+    ],
+    "close_fan_the_first_x_layers": [
+      "3"
+    ],
+    "filament_flow_ratio": [
+      "0.9975"
+    ],
+    "filament_max_volumetric_speed": [
+      "8.8"
+    ],
+    "nozzle_temperature": [
+      "265"
+    ],
+    "nozzle_temperature_initial_layer": [
+      "265"
+    ],
+    "textured_plate_temp": [
+      "100"
+    ],
+    "textured_plate_temp_initial_layer": [
+      "100"
+    ],
+    "support_type": "tree(auto)",
+    "support_on_build_plate_only": "1",
+    "support_top_z_distance": "0.2",
+    "support_object_xy_distance": "0.35",
+    "outer_wall_speed": [
+      "60",
+      "60"
+    ],
+    "inner_wall_speed": [
+      "300",
+      "300"
+    ]
+  },
+  "pressure_advance": {
+    "K": 0.04,
+    "record_name": "ASA 265C K0.040",
+    "filament": "Generic ASA",
+    "nozzle_mm": 0.4,
+    "assignment": "AMS A4",
+    "evidence": "Saved and re-opened in Bambu Studio Device Materials Setting during this session; separate printer record, not a portable filament JSON setting."
+  }
+}
