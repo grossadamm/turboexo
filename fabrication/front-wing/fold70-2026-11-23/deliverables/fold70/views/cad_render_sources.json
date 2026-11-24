@@ -1,0 +1,103 @@
+{
+  "projection": "Orthographic, common scale and original car coordinates for all components",
+  "source_sha256": {
+    "fold70/full_folded_chin_mm.step": "5ad80088894a328a22209b8bc08aead27410ee93842d2038ee327d1c7c46166a",
+    "full_folded_chin/seal_installed_mm.step": "bd62d11d34986f011a69d19ee275f940a0fc3e8c070143f0284ecf9be351fb64",
+    "front_end_v9/fiberglass_v9_mm.stl": "87ef9e8eb9bb1585eace29017adffb0ee0a302eb2dbd29b1140d3f9eaa27e5f7",
+    "front_end_v9/front_end_v9_mm.3mf": "202565e094aa661b31d25528bf5171307493261302db11df3ec3a051b28fa6ab"
+  },
+  "hardware_component_names": [
+    "outer_splitter_plates/outer_plate_car_left",
+    "outer_splitter_plates/outer_plate_car_right",
+    "inboard_splitter_mounts/car_left_inboard/cross_web_and_full_hanger",
+    "inboard_splitter_mounts/car_left_inboard/diagonal_bar",
+    "inboard_splitter_mounts/car_right_inboard/cross_web_and_full_hanger",
+    "inboard_splitter_mounts/car_right_inboard/diagonal_bar",
+    "supports_and_fasteners/Green_rectangular_cooler_surround_and_mounting_lugs",
+    "supports_and_fasteners/Splitter_mount_interface_upper_spacer_car_right",
+    "supports_and_fasteners/Splitter_mount_interface_upper_fastener_car_right",
+    "supports_and_fasteners/Splitter_mount_interface_lower_fastener_car_right",
+    "supports_and_fasteners/Splitter_mount_interface_upper_spacer_car_left",
+    "supports_and_fasteners/Splitter_mount_interface_upper_fastener_car_left",
+    "supports_and_fasteners/Splitter_mount_interface_lower_fastener_car_left",
+    "supports_and_fasteners/Center_wired_accessory_above_core",
+    "supports_and_fasteners/Center_wired_accessory_eye_insert",
+    "supports_and_fasteners/Intercooler_upper_link_car_right",
+    "supports_and_fasteners/Intercooler_core_pedestal_car_right",
+    "supports_and_fasteners/Intercooler_forward_link_bolt_car_right",
+    "supports_and_fasteners/Intercooler_rear_link_bolt_car_right",
+    "supports_and_fasteners/Intercooler_upper_link_car_left",
+    "supports_and_fasteners/Intercooler_core_pedestal_car_left",
+    "supports_and_fasteners/Intercooler_forward_link_bolt_car_left",
+    "supports_and_fasteners/Intercooler_rear_link_bolt_car_left",
+    "intercooler/Tube_core_with_recessed_fin_pack",
+    "intercooler/Intercooler_car_right_end_tank_and_neck",
+    "intercooler/Intercooler_car_left_end_tank_and_neck",
+    "fin_face/Exterior_corrugated_strip_01",
+    "fin_face/Exterior_corrugated_strip_02",
+    "fin_face/Exterior_corrugated_strip_03",
+    "fin_face/Exterior_corrugated_strip_04",
+    "fin_face/Exterior_corrugated_strip_05",
+    "fin_face/Exterior_corrugated_strip_06",
+    "fin_face/Exterior_corrugated_strip_07",
+    "fin_face/Exterior_corrugated_strip_08",
+    "fin_face/Exterior_corrugated_strip_09",
+    "fin_face/Exterior_corrugated_strip_10",
+    "fin_face/Exterior_corrugated_strip_11",
+    "fin_face/Exterior_corrugated_strip_12",
+    "fin_face/Exterior_corrugated_strip_13",
+    "radiator_stays/Radiator_formed_upper_retaining_stay_car_right",
+    "radiator_stays/Radiator_header_rubber_isolator_car_right",
+    "radiator_stays/Radiator_header_mounting_post_car_right",
+    "radiator_stays/Radiator_stay_chassis_saddle_car_right",
+    "radiator_stays/Radiator_stay_aft_fixing_car_right",
+    "radiator_stays/Green_front_section_upper_chassis_tube_car_right",
+    "radiator_stays/Radiator_formed_upper_retaining_stay_car_left",
+    "radiator_stays/Radiator_header_rubber_isolator_car_left",
+    "radiator_stays/Radiator_header_mounting_post_car_left",
+    "radiator_stays/Radiator_stay_chassis_saddle_car_left",
+    "radiator_stays/Radiator_stay_aft_fixing_car_left",
+    "radiator_stays/Green_front_section_upper_chassis_tube_car_left",
+    "overflow_line/Overflow_hose_visible_run",
+    "overflow_line/Overflow_small_hose_clamp",
+    "overflow_line/Overflow_neck_spigot",
+    "charge_hoses/Car_right_silicone_elbow",
+    "charge_hoses/Car_right_neck_clamp",
+    "charge_hoses/Car_right_coupler_clamp",
+    "charge_hoses/Car_left_silicone_elbow",
+    "charge_hoses/Car_left_coupler_visible_portion",
+    "charge_hoses/Car_left_neck_clamp",
+    "charge_hoses/Car_left_coupler_clamp",
+    "rear_radiator/rear_finned_core",
+    "rear_radiator/right_side_channel",
+    "rear_radiator/left_side_channel",
+    "rear_radiator/upper_stepped_header",
+    "rear_radiator/lower_header",
+    "rear_radiator/filler_neck_and_cap",
+    "rear_fin_field/Rear_fin_bay_01"
+  ],
+  "chin_bounds_mm": [
+    [
+      -229.66680908203125,
+      -468.3154602050781,
+      98.29344177246094
+    ],
+    [
+      96.59061431884766,
+      465.8170166015625,
+      234.52764892578125
+    ]
+  ],
+  "seal_bounds_mm": [
+    [
+      -123.03497314453125,
+      -305.0,
+      214.34222412109375
+    ],
+    [
+      -42.82485580444336,
+      325.0,
+      237.05616760253906
+    ]
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "projection": "orthographic",
+  "fixed_center_car_mm": [
+    -165.725811046,
+    -0.44653115950001165,
+    397.50874559742186
+  ],
+  "pixels_per_mm": 0.48607355377090294,
+  "elevation_ratio": 0.8,
+  "width": 900,
+  "height": 600,
+  "source_step_sha256": "5ad80088894a328a22209b8bc08aead27410ee93842d2038ee327d1c7c46166a",
+  "frames": [
+    {
+      "file": "frame_00.webp",
+      "yaw_degrees": -55.0
+    },
+    {
+      "file": "frame_01.webp",
+      "yaw_degrees": -47.142857
+    },
+    {
+      "file": "frame_02.webp",
+      "yaw_degrees": -39.285714
+    },
+    {
+      "file": "frame_03.webp",
+      "yaw_degrees": -31.428571
+    },
+    {
+      "file": "frame_04.webp",
+      "yaw_degrees": -23.571429
+    },
+    {
+      "file": "frame_05.webp",
+      "yaw_degrees": -15.714286
+    },
+    {
+      "file": "frame_06.webp",
+      "yaw_degrees": -7.857143
+    },
+    {
+      "file": "frame_07.webp",
+      "yaw_degrees": 0.0
+    },
+    {
+      "file": "frame_08.webp",
+      "yaw_degrees": 7.857143
+    },
+    {
+      "file": "frame_09.webp",
+      "yaw_degrees": 15.714286
+    },
+    {
+      "file": "frame_10.webp",
+      "yaw_degrees": 23.571429
+    },
+    {
+      "file": "frame_11.webp",
+      "yaw_degrees": 31.428571
+    },
+    {
+      "file": "frame_12.webp",
+      "yaw_degrees": 39.285714
+    },
+    {
+      "file": "frame_13.webp",
+      "yaw_degrees": 47.142857
+    },
+    {
+      "file": "frame_14.webp",
+      "yaw_degrees": 55.0
+    }
+  ]
+}

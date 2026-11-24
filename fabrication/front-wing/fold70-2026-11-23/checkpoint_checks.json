@@ -1,0 +1,17 @@
+{
+  "checks": {
+    "copied_geometry_source_matches_original": true,
+    "python_source_syntax_parses": true,
+    "final_chin_step_reimport_valid_single_solid": true,
+    "assembly_qa_sha256_matches_final_and_prior_and_chin": true,
+    "render_source_sha256_matches_checkpoint_cad": true,
+    "archive_all_seven_members_readback_sha256_matches_original": true
+  },
+  "not_repeated": [
+    "full assembly STEP reimport",
+    "full geometry regeneration",
+    "full image regeneration",
+    "physical fit verification"
+  ],
+  "archive_bytes": 51753444
+}

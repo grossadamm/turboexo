@@ -1,0 +1,6 @@
+# Restored large CAD are preserved losslessly in cad-inputs.tar.xz.
+/deliverables/fold70/installed_mm.step
+/deliverables/full_folded_chin/
+/deliverables/front_end_v9/
+/deliverables/hidden_flange_corner/
+__pycache__/

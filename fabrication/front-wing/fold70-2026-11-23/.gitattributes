@@ -1,0 +1,3 @@
+# Preserve CAD exporter bytes and avoid treating STEP as hand-written text.
+*.step -text -diff
+*.tar.xz -text -diff

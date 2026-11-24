@@ -1,0 +1,30 @@
+{
+  "deliverables/fold70/installed_mm.step": {
+    "bytes": 93011147,
+    "sha256": "bc3956603271417edd9c7cd075719d545b90edf5179a7887dff4651f81482804"
+  },
+  "deliverables/full_folded_chin/installed_mm.step": {
+    "bytes": 94654858,
+    "sha256": "c758d5d3767971e4f51d84f8ec065a6b7e4a8f216ed1ed791571cdc7161046d6"
+  },
+  "deliverables/full_folded_chin/seal_installed_mm.step": {
+    "bytes": 60554209,
+    "sha256": "bd62d11d34986f011a69d19ee275f940a0fc3e8c070143f0284ecf9be351fb64"
+  },
+  "deliverables/front_end_v9/fiberglass_v9_mm.step": {
+    "bytes": 4974485,
+    "sha256": "7465bbd4d147b5d3bdc2d8ff147fe336a780f119641f8112fe7bcd6cf3f39cde"
+  },
+  "deliverables/front_end_v9/fiberglass_v9_mm.stl": {
+    "bytes": 43026034,
+    "sha256": "87ef9e8eb9bb1585eace29017adffb0ee0a302eb2dbd29b1140d3f9eaa27e5f7"
+  },
+  "deliverables/front_end_v9/front_end_v9_mm.3mf": {
+    "bytes": 31652369,
+    "sha256": "202565e094aa661b31d25528bf5171307493261302db11df3ec3a051b28fa6ab"
+  },
+  "deliverables/hidden_flange_corner/corner_mm.step": {
+    "bytes": 118565,
+    "sha256": "9fbe605ecefec37580b5e9bf732a19bf35563f9906cf14755f7c15b7bbaea0f4"
+  }
+}
