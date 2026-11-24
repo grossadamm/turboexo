@@ -1,0 +1,270 @@
+{
+  "original": {
+    "top_left": {
+      "normal_sections": [
+        {
+          "w_mm": -12.48999999999999,
+          "closed_bore_diameter_mm": [
+            3.4
+          ],
+          "min_stock_to_outer_edge_mm": [
+            3.200000000000081
+          ]
+        },
+        {
+          "w_mm": -10.00999999999999,
+          "closed_bore_diameter_mm": [
+            3.4
+          ],
+          "min_stock_to_outer_edge_mm": [
+            3.199999999999112
+          ]
+        },
+        {
+          "w_mm": -7.189999999999989,
+          "closed_bore_diameter_mm": [
+            3.4
+          ],
+          "min_stock_to_outer_edge_mm": [
+            3.1999999999980138
+          ]
+        },
+        {
+          "w_mm": -4.209999999999988,
+          "closed_bore_diameter_mm": [
+            3.4
+          ],
+          "min_stock_to_outer_edge_mm": [
+            1.69999999999677
+          ]
+        }
+      ],
+      "shank_path_overlap_mm3": 0.0,
+      "access_overlap_mm3": {
+        "side_loaded_nut": {
+          "surround": 0.0,
+          "LCD": 0.0
+        },
+        "front_washer_and_driver": {
+          "surround": 0.0,
+          "LCD": 0.0
+        },
+        "bolt": {
+          "surround": 0.0,
+          "LCD": 0.0
+        },
+        "washer": {
+          "surround": 0.0,
+          "LCD": 0.0
+        },
+        "nut": {
+          "surround": 0.0,
+          "LCD": 0.0
+        }
+      }
+    },
+    "top_right": {
+      "normal_sections": [
+        {
+          "w_mm": -12.48999999999999,
+          "closed_bore_diameter_mm": [
+            3.4
+          ],
+          "min_stock_to_outer_edge_mm": [
+            2.9313020732738226
+          ]
+        },
+        {
+          "w_mm": -10.00999999999999,
+          "closed_bore_diameter_mm": [
+            3.4
+          ],
+          "min_stock_to_outer_edge_mm": [
+            3.199999999998436
+          ]
+        },
+        {
+          "w_mm": -7.189999999999989,
+          "closed_bore_diameter_mm": [
+            3.4
+          ],
+          "min_stock_to_outer_edge_mm": [
+            3.1999999999973303
+          ]
+        },
+        {
+          "w_mm": -4.209999999999988,
+          "closed_bore_diameter_mm": [
+            3.4
+          ],
+          "min_stock_to_outer_edge_mm": [
+            1.6999999999997157
+          ]
+        }
+      ],
+      "shank_path_overlap_mm3": 0.0,
+      "access_overlap_mm3": {
+        "side_loaded_nut": {
+          "surround": 0.0,
+          "LCD": 0.0
+        },
+        "front_washer_and_driver": {
+          "surround": 0.0,
+          "LCD": 0.0
+        },
+        "bolt": {
+          "surround": 0.0,
+          "LCD": 0.0
+        },
+        "washer": {
+          "surround": 0.0,
+          "LCD": 0.0
+        },
+        "nut": {
+          "surround": 0.0,
+          "LCD": 0.0
+        }
+      }
+    }
+  },
+  "revision": {
+    "top_left": {
+      "normal_sections": [
+        {
+          "w_mm": -12.48999999999999,
+          "closed_bore_diameter_mm": [
+            3.4
+          ],
+          "min_stock_to_outer_edge_mm": [
+            3.6499999999942765
+          ]
+        },
+        {
+          "w_mm": -10.00999999999999,
+          "closed_bore_diameter_mm": [
+            3.4
+          ],
+          "min_stock_to_outer_edge_mm": [
+            3.649999999994276
+          ]
+        },
+        {
+          "w_mm": -7.189999999999989,
+          "closed_bore_diameter_mm": [
+            3.4
+          ],
+          "min_stock_to_outer_edge_mm": [
+            3.6499999999943045
+          ]
+        },
+        {
+          "w_mm": -4.209999999999988,
+          "closed_bore_diameter_mm": [
+            3.4
+          ],
+          "min_stock_to_outer_edge_mm": [
+            1.69999999999677
+          ]
+        }
+      ],
+      "shank_path_overlap_mm3": 0.0,
+      "access_overlap_mm3": {
+        "side_loaded_nut": {
+          "surround": 0.0,
+          "LCD": 0.0
+        },
+        "front_washer_and_driver": {
+          "surround": 0.0,
+          "LCD": 0.0
+        },
+        "bolt": {
+          "surround": 0.0,
+          "LCD": 0.0
+        },
+        "washer": {
+          "surround": 0.0,
+          "LCD": 0.0
+        },
+        "nut": {
+          "surround": 0.0,
+          "LCD": 0.0
+        }
+      },
+      "positive_volume_joints_mm3": {
+        "roof_mm3": 89.28510274914544,
+        "side_rail_mm3": 160.78373007118574
+      }
+    },
+    "top_right": {
+      "normal_sections": [
+        {
+          "w_mm": -12.48999999999999,
+          "closed_bore_diameter_mm": [
+            3.4
+          ],
+          "min_stock_to_outer_edge_mm": [
+            2.9313020732738226
+          ]
+        },
+        {
+          "w_mm": -10.00999999999999,
+          "closed_bore_diameter_mm": [
+            3.4
+          ],
+          "min_stock_to_outer_edge_mm": [
+            3.6499999999992876
+          ]
+        },
+        {
+          "w_mm": -7.189999999999989,
+          "closed_bore_diameter_mm": [
+            3.4
+          ],
+          "min_stock_to_outer_edge_mm": [
+            3.649999999999288
+          ]
+        },
+        {
+          "w_mm": -4.209999999999988,
+          "closed_bore_diameter_mm": [
+            3.4
+          ],
+          "min_stock_to_outer_edge_mm": [
+            1.6999999999997157
+          ]
+        }
+      ],
+      "shank_path_overlap_mm3": 0.0,
+      "access_overlap_mm3": {
+        "side_loaded_nut": {
+          "surround": 0.0,
+          "LCD": 0.0
+        },
+        "front_washer_and_driver": {
+          "surround": 0.0,
+          "LCD": 0.0
+        },
+        "bolt": {
+          "surround": 0.0,
+          "LCD": 0.0
+        },
+        "washer": {
+          "surround": 0.0,
+          "LCD": 0.0
+        },
+        "nut": {
+          "surround": 0.0,
+          "LCD": 0.0
+        }
+      },
+      "positive_volume_joints_mm3": {
+        "roof_mm3": 220.21149716982163,
+        "side_rail_mm3": 68.9804335583605
+      }
+    }
+  },
+  "outside_upper_ear_regions": {
+    "original_only_mm3": 0.0,
+    "revision_only_mm3": 0.0
+  }
+}

@@ -1,0 +1,1340 @@
+{
+  "approved_hashes": {
+    "surround.step": "3b76aa7c49469d2188ff980de8c8a88cd0796313fe69f2b0faede2871b2ce3d7",
+    "surround.stl": "cf30e51288384439885d90bc7d48cf51bb4a8aba3e051fadf6836179e323a8dc",
+    "validation.json": "51a583b2dbe1c25bb8cc7f551a5fb022527ad4a2fc78c81d94a93391642d5d7e",
+    "model_view.html": "a86ae85e2667aaeefbc43e879c33511c19c5497eead0b01e20c2550682c14233"
+  },
+  "trim_solid_volume_mm3": 8309.68327924522,
+  "assembly_step_solid_count": 17,
+  "assembly_3mf_object_count": 17,
+  "original_release_hashes_verified": 18,
+  "difference_outside_local_lip_region_mm3": [
+    0.0,
+    0.0
+  ],
+  "lip_profile": {
+    "throat_z_mm": 0.53,
+    "throat_size_mm": [
+      151.48,
+      95.18
+    ],
+    "throat_center_mm": [
+      -1.65,
+      0.11
+    ],
+    "throat_plan_radius_mm": 0.18,
+    "rear_z_mm": 0.35,
+    "rear_opening_mm": [
+      151.67999999999998,
+      95.38000000000001
+    ],
+    "rear_chamfer_radial_mm": 0.1,
+    "rear_chamfer_axial_mm": 0.18000000000000005,
+    "rear_land_width_mm": 1.05,
+    "root_offset_from_throat_mm": 2.3,
+    "blend_joins_original_at_z_mm": 1.1,
+    "approved_back_opening_mm": [
+      151.97220930232558,
+      95.45482558139534
+    ],
+    "approved_front_opening_mm": [
+      154.04779069767443,
+      97.97517441860465
+    ],
+    "throat_margin_active_each_edge_mm": {
+      "left": 0.37999999999999545,
+      "right": 0.37999999999999545,
+      "top": 0.600000000000002,
+      "bottom": 0.380000000000002
+    }
+  },
+  "assembly_export_base_symmetric_difference_mm3": [
+    0.0,
+    0.0
+  ],
+  "trim_print_meshes": {
+    "display_trim.stl": {
+      "watertight": true,
+      "winding_consistent": true,
+      "components": 1,
+      "bbox_mm": [
+        [
+          81.9913558959961,
+          0.5659230351448059,
+          -106.0699234008789
+        ],
+        [
+          138.47494506835938,
+          183.68609619140625,
+          -3.7842602729797363
+        ]
+      ],
+      "volume_mm3": 8308.639139562263
+    },
+    "display_trim_face_down.stl": {
+      "watertight": true,
+      "winding_consistent": true,
+      "components": 1,
+      "bbox_mm": [
+        [
+          -91.37000274658203,
+          -56.04999923706055,
+          -7.993605777301127e-15
+        ],
+        [
+          91.37000274658203,
+          56.04999923706055,
+          5.900000095367432
+        ]
+      ],
+      "volume_mm3": 8308.642832019415
+    }
+  },
+  "installed_fit": {
+    "base": {
+      "overlap_mm3": 0.0,
+      "distance_mm": 0.2893801707498098
+    },
+    "frame_lugs": {
+      "overlap_mm3": 0.0,
+      "distance_mm": 7.133849067031406e-12
+    },
+    "glass_1": {
+      "overlap_mm3": 0.0,
+      "distance_mm": 0.3499999999644145
+    },
+    "glass_2": {
+      "overlap_mm3": 0.0,
+      "distance_mm": 0.5940538695909865
+    },
+    "frontmost_flex_bounds": {
+      "overlap_mm3": 0.0,
+      "distance_mm": 2.211514200995704
+    }
+  },
+  "glass_bbox_local_mm": {
+    "glass_1": [
+      [
+        -77.40999999998932,
+        -47.500000000009024,
+        -1.0899999999850887
+      ],
+      [
+        74.11000000001071,
+        47.49999999999102,
+        1.49235978768898e-11
+      ]
+    ],
+    "glass_2": [
+      [
+        -77.00999999998925,
+        -47.100000000009075,
+        -0.499999999985164
+      ],
+      [
+        73.7100000000108,
+        47.099999999991006,
+        1.4838314218696036e-11
+      ]
+    ]
+  },
+  "lug": {
+    "front_z_mm": -3.6,
+    "back_z_mm": -4.2,
+    "thickness_mm": 0.6
+  },
+  "rear_component_max_z_mm": -2.6248955755565646,
+  "OEM_outline_uncovered_outside_trim_silhouette_mm2": 0.0,
+  "viewing_cones": {
+    "screen normal": {
+      "buffer_each_edge_mm": 0.3,
+      "overlap_mm3": 0.0,
+      "distance_mm": 0.03857864375451159,
+      "actual_active_overlap_mm3": 0.0
+    },
+    "226": {
+      "buffer_each_edge_mm": 0.3,
+      "overlap_mm3": 0.0,
+      "distance_mm": 0.009849063144599313,
+      "actual_active_overlap_mm3": 0.0
+    },
+    "236": {
+      "buffer_each_edge_mm": 0.3,
+      "overlap_mm3": 0.0,
+      "distance_mm": 0.04587228225162283,
+      "actual_active_overlap_mm3": 0.0
+    },
+    "244": {
+      "buffer_each_edge_mm": 0.3,
+      "overlap_mm3": 0.0,
+      "distance_mm": 0.05244592120909533,
+      "actual_active_overlap_mm3": 0.0
+    }
+  },
+  "hardware": {
+    "top_right": {
+      "axis_error_mm": {
+        "fascia": 1.0707777739073014e-12,
+        "metal_lug": 1.3968075065580278e-11,
+        "surround": 2.3527182881457493e-12
+      },
+      "lug_contact_area_mm2": 32.25041208450769,
+      "washer_contact_area_mm2": 15.071790755597076,
+      "overlaps_mm3": {
+        "Button head screw": {
+          "base": 0.0,
+          "LCD": 0.0,
+          "trim": 0.0
+        },
+        "Washer": {
+          "base": 0.0,
+          "LCD": 0.0,
+          "trim": 0.0
+        },
+        "Retained nut": {
+          "base": 0.0,
+          "LCD": 0.0,
+          "trim": 0.0
+        },
+        "6.25 mm washer and driver approach": {
+          "base": 0.0,
+          "LCD": 0.0,
+          "trim": 0.0
+        },
+        "side loaded nut travel": {
+          "base": 0.0,
+          "LCD": 0.0,
+          "trim": 0.0
+        },
+        "screw insertion shank path": {
+          "base": 0.0,
+          "LCD": 0.0,
+          "trim": 0.0
+        }
+      },
+      "axial_clearance_beyond_tip_to_first_stop_mm": 1.8999999999997357
+    },
+    "bottom_right": {
+      "axis_error_mm": {
+        "fascia": 3.345970516524717e-12,
+        "metal_lug": 1.392954933026846e-11,
+        "surround": 2.1097898689903062e-12
+      },
+      "lug_contact_area_mm2": 32.25041208450769,
+      "washer_contact_area_mm2": 15.071790755597076,
+      "overlaps_mm3": {
+        "Button head screw": {
+          "base": 0.0,
+          "LCD": 0.0,
+          "trim": 0.0
+        },
+        "Washer": {
+          "base": 0.0,
+          "LCD": 0.0,
+          "trim": 0.0
+        },
+        "Retained nut": {
+          "base": 0.0,
+          "LCD": 0.0,
+          "trim": 0.0
+        },
+        "6.25 mm washer and driver approach": {
+          "base": 0.0,
+          "LCD": 0.0,
+          "trim": 0.0
+        },
+        "side loaded nut travel": {
+          "base": 0.0,
+          "LCD": 0.0,
+          "trim": 0.0
+        },
+        "screw insertion shank path": {
+          "base": 0.0,
+          "LCD": 0.0,
+          "trim": 0.0
+        }
+      },
+      "axial_clearance_beyond_tip_to_first_stop_mm": null
+    },
+    "top_left": {
+      "axis_error_mm": {
+        "fascia": 6.2953221816423204e-12,
+        "metal_lug": 1.402870229831235e-11,
+        "surround": 8.765791451275323e-12
+      },
+      "lug_contact_area_mm2": 32.25041208450769,
+      "washer_contact_area_mm2": 15.071790755597076,
+      "overlaps_mm3": {
+        "Button head screw": {
+          "base": 0.0,
+          "LCD": 0.0,
+          "trim": 0.0
+        },
+        "Washer": {
+          "base": 0.0,
+          "LCD": 0.0,
+          "trim": 0.0
+        },
+        "Retained nut": {
+          "base": 0.0,
+          "LCD": 0.0,
+          "trim": 0.0
+        },
+        "6.25 mm washer and driver approach": {
+          "base": 0.0,
+          "LCD": 0.0,
+          "trim": 0.0
+        },
+        "side loaded nut travel": {
+          "base": 0.0,
+          "LCD": 0.0,
+          "trim": 0.0
+        },
+        "screw insertion shank path": {
+          "base": 0.0,
+          "LCD": 0.0,
+          "trim": 0.0
+        }
+      },
+      "axial_clearance_beyond_tip_to_first_stop_mm": 5.106689061055842
+    },
+    "bottom_left": {
+      "axis_error_mm": {
+        "fascia": 6.266334642231056e-12,
+        "metal_lug": 1.4037862046881877e-11,
+        "surround": 1.4693946745026313e-12
+      },
+      "lug_contact_area_mm2": 23.517148457322072,
+      "washer_contact_area_mm2": 15.071790755597076,
+      "overlaps_mm3": {
+        "Button head screw": {
+          "base": 0.0,
+          "LCD": 0.0,
+          "trim": 0.0
+        },
+        "Washer": {
+          "base": 0.0,
+          "LCD": 0.0,
+          "trim": 0.0
+        },
+        "Retained nut": {
+          "base": 0.0,
+          "LCD": 0.0,
+          "trim": 0.0
+        },
+        "6.25 mm washer and driver approach": {
+          "base": 0.0,
+          "LCD": 0.0,
+          "trim": 0.0
+        },
+        "side loaded nut travel": {
+          "base": 0.0,
+          "LCD": 0.0,
+          "trim": 0.0
+        },
+        "screw insertion shank path": {
+          "base": 0.0,
+          "LCD": 0.0,
+          "trim": 0.0
+        }
+      },
+      "axial_clearance_beyond_tip_to_first_stop_mm": null
+    }
+  },
+  "screw_stack": {
+    "fascia_mm": 5.9,
+    "washer_mm": 0.5,
+    "metal_lug_mm": 0.6,
+    "front_web_mm": 3.0,
+    "nut_mm": 2.4,
+    "thread_engagement_mm": 2.4,
+    "tip_past_nut_mm": 1.5999999999999996,
+    "M3x8_engagement_mm": 0.0,
+    "M3x12_engagement_mm": 1.9999999999999991
+  },
+  "fascia_pivot_local_y_mm": -52.7,
+  "fascia_motion_check": [
+    {
+      "pose": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "base_overlap_mm3": 0.0,
+      "lcd_overlap_mm3": 0.0,
+      "base_distance_mm": 0.2893801707498098,
+      "lcd_distance_mm": 7.133849067031406e-12,
+      "flex_overlap_mm3": 0.0
+    },
+    {
+      "pose": [
+        1.0,
+        0.075,
+        0.075,
+        0.005
+      ],
+      "base_overlap_mm3": 0.0,
+      "lcd_overlap_mm3": 0.0,
+      "base_distance_mm": 0.26107536071308524,
+      "lcd_distance_mm": 0.002494126296189947,
+      "flex_overlap_mm3": 0.0
+    },
+    {
+      "pose": [
+        2.0,
+        0.15,
+        0.15,
+        0.01
+      ],
+      "base_overlap_mm3": 0.0,
+      "lcd_overlap_mm3": 0.0,
+      "base_distance_mm": 0.25091073212831533,
+      "lcd_distance_mm": 0.006085610794196672,
+      "flex_overlap_mm3": 0.0
+    },
+    {
+      "pose": [
+        3.0,
+        0.22499999999999998,
+        0.22499999999999998,
+        0.015
+      ],
+      "base_overlap_mm3": 0.0,
+      "lcd_overlap_mm3": 0.0,
+      "base_distance_mm": 0.2596723850345999,
+      "lcd_distance_mm": 0.010774882527054164,
+      "flex_overlap_mm3": 0.0
+    },
+    {
+      "pose": [
+        4.0,
+        0.3,
+        0.3,
+        0.02
+      ],
+      "base_overlap_mm3": 0.0,
+      "lcd_overlap_mm3": 0.0,
+      "base_distance_mm": 0.2860392869100036,
+      "lcd_distance_mm": 0.01656203614560159,
+      "flex_overlap_mm3": 0.0
+    },
+    {
+      "pose": [
+        4.75,
+        0.35,
+        0.38749999999999996,
+        0.035
+      ],
+      "base_overlap_mm3": 0.0,
+      "lcd_overlap_mm3": 0.0,
+      "base_distance_mm": 0.31238939891693107,
+      "lcd_distance_mm": 0.03287275467973094,
+      "flex_overlap_mm3": 0.0
+    },
+    {
+      "pose": [
+        5.5,
+        0.4,
+        0.475,
+        0.05
+      ],
+      "base_overlap_mm3": 0.0,
+      "lcd_overlap_mm3": 0.0,
+      "base_distance_mm": 0.3482029207803315,
+      "lcd_distance_mm": 0.04980067917354125,
+      "flex_overlap_mm3": 0.0
+    },
+    {
+      "pose": [
+        6.25,
+        0.45,
+        0.5625,
+        0.065
+      ],
+      "base_overlap_mm3": 0.0,
+      "lcd_overlap_mm3": 0.0,
+      "base_distance_mm": 0.391653094836917,
+      "lcd_distance_mm": 0.06734547928709533,
+      "flex_overlap_mm3": 0.0
+    },
+    {
+      "pose": [
+        7.0,
+        0.5,
+        0.65,
+        0.08
+      ],
+      "base_overlap_mm3": 0.0,
+      "lcd_overlap_mm3": 0.0,
+      "base_distance_mm": 0.4410878067647197,
+      "lcd_distance_mm": 0.08550671898199536,
+      "flex_overlap_mm3": 0.0
+    },
+    {
+      "pose": [
+        7.75,
+        0.525,
+        0.7625000000000001,
+        0.11
+      ],
+      "base_overlap_mm3": 0.0,
+      "lcd_overlap_mm3": 0.0,
+      "base_distance_mm": 0.47468525618027047,
+      "lcd_distance_mm": 0.11928385659609386,
+      "flex_overlap_mm3": 0.0
+    },
+    {
+      "pose": [
+        8.5,
+        0.55,
+        0.875,
+        0.14
+      ],
+      "base_overlap_mm3": 0.0,
+      "lcd_overlap_mm3": 0.0,
+      "base_distance_mm": 0.5107236501971434,
+      "lcd_distance_mm": 0.15367624493630405,
+      "flex_overlap_mm3": 0.0
+    },
+    {
+      "pose": [
+        9.25,
+        0.575,
+        0.9875,
+        0.17
+      ],
+      "base_overlap_mm3": 0.0,
+      "lcd_overlap_mm3": 0.0,
+      "base_distance_mm": 0.5491888015725591,
+      "lcd_distance_mm": 0.18868313138949588,
+      "flex_overlap_mm3": 0.0
+    },
+    {
+      "pose": [
+        10.0,
+        0.6,
+        1.1,
+        0.2
+      ],
+      "base_overlap_mm3": 0.0,
+      "lcd_overlap_mm3": 0.0,
+      "base_distance_mm": 0.5900571786138041,
+      "lcd_distance_mm": 0.22430365805145325,
+      "flex_overlap_mm3": 0.0
+    },
+    {
+      "pose": [
+        10.0,
+        0.6375,
+        1.4500000000000002,
+        0.27
+      ],
+      "base_overlap_mm3": 0.0,
+      "lcd_overlap_mm3": 0.0,
+      "base_distance_mm": 0.5875324863071623,
+      "lcd_distance_mm": 0.2841766980940576,
+      "flex_overlap_mm3": 0.0
+    },
+    {
+      "pose": [
+        10.0,
+        0.675,
+        1.8,
+        0.33999999999999997
+      ],
+      "base_overlap_mm3": 0.0,
+      "lcd_overlap_mm3": 0.0,
+      "base_distance_mm": 0.5793728057798019,
+      "lcd_distance_mm": 0.3491632565950194,
+      "flex_overlap_mm3": 0.0
+    },
+    {
+      "pose": [
+        10.0,
+        0.7125,
+        2.15,
+        0.41
+      ],
+      "base_overlap_mm3": 0.0,
+      "lcd_overlap_mm3": 0.0,
+      "base_distance_mm": 0.534250164940317,
+      "lcd_distance_mm": 0.4191632565950194,
+      "flex_overlap_mm3": 0.0
+    },
+    {
+      "pose": [
+        10.0,
+        0.75,
+        2.5,
+        0.48
+      ],
+      "base_overlap_mm3": 0.0,
+      "lcd_overlap_mm3": 0.0,
+      "base_distance_mm": 0.3668546841086691,
+      "lcd_distance_mm": 0.400000000007239,
+      "flex_overlap_mm3": 0.0
+    },
+    {
+      "pose": [
+        10.0,
+        0.78,
+        2.625,
+        0.5725
+      ],
+      "base_overlap_mm3": 0.0,
+      "lcd_overlap_mm3": 0.0,
+      "base_distance_mm": 0.34722289804591183,
+      "lcd_distance_mm": 0.3700000000072379,
+      "flex_overlap_mm3": 0.0
+    },
+    {
+      "pose": [
+        10.0,
+        0.81,
+        2.75,
+        0.665
+      ],
+      "base_overlap_mm3": 0.0,
+      "lcd_overlap_mm3": 0.0,
+      "base_distance_mm": 0.3294440777426117,
+      "lcd_distance_mm": 0.34000000000723674,
+      "flex_overlap_mm3": 0.0
+    },
+    {
+      "pose": [
+        10.0,
+        0.84,
+        2.875,
+        0.7575
+      ],
+      "base_overlap_mm3": 0.0,
+      "lcd_overlap_mm3": 0.0,
+      "base_distance_mm": 0.31357481325430336,
+      "lcd_distance_mm": 0.3100000000072356,
+      "flex_overlap_mm3": 0.0
+    },
+    {
+      "pose": [
+        10.0,
+        0.87,
+        3.0,
+        0.85
+      ],
+      "base_overlap_mm3": 0.0,
+      "lcd_overlap_mm3": 0.0,
+      "base_distance_mm": 0.28549866494413206,
+      "lcd_distance_mm": 0.28000000000723446,
+      "flex_overlap_mm3": 0.0
+    },
+    {
+      "pose": [
+        10.0,
+        0.9175,
+        3.25,
+        1.0125
+      ],
+      "base_overlap_mm3": 0.0,
+      "lcd_overlap_mm3": 0.0,
+      "base_distance_mm": 0.17222847278260964,
+      "lcd_distance_mm": 0.23250000000723503,
+      "flex_overlap_mm3": 0.0
+    },
+    {
+      "pose": [
+        10.0,
+        0.9650000000000001,
+        3.5,
+        1.175
+      ],
+      "base_overlap_mm3": 0.0,
+      "lcd_overlap_mm3": 0.0,
+      "base_distance_mm": 0.20366271499251107,
+      "lcd_distance_mm": 0.1850000000072356,
+      "flex_overlap_mm3": 0.0
+    },
+    {
+      "pose": [
+        10.0,
+        1.0125,
+        3.75,
+        1.3375
+      ],
+      "base_overlap_mm3": 0.0,
+      "lcd_overlap_mm3": 0.0,
+      "base_distance_mm": 0.2766020910304888,
+      "lcd_distance_mm": 0.13750000000723617,
+      "flex_overlap_mm3": 0.0
+    },
+    {
+      "pose": [
+        10.0,
+        1.06,
+        4.0,
+        1.5
+      ],
+      "base_overlap_mm3": 0.0,
+      "lcd_overlap_mm3": 0.0,
+      "base_distance_mm": 0.33556195647403264,
+      "lcd_distance_mm": 0.09000000000723674,
+      "flex_overlap_mm3": 0.0
+    },
+    {
+      "pose": [
+        10.0,
+        1.0325,
+        4.25,
+        1.725
+      ],
+      "base_overlap_mm3": 0.0,
+      "lcd_overlap_mm3": 0.0,
+      "base_distance_mm": 0.32607508085476905,
+      "lcd_distance_mm": 0.11750000000724015,
+      "flex_overlap_mm3": 0.0
+    },
+    {
+      "pose": [
+        10.0,
+        1.005,
+        4.5,
+        1.95
+      ],
+      "base_overlap_mm3": 0.0,
+      "lcd_overlap_mm3": 0.0,
+      "base_distance_mm": 0.3165882052355193,
+      "lcd_distance_mm": 0.14500000000724356,
+      "flex_overlap_mm3": 0.0
+    },
+    {
+      "pose": [
+        10.0,
+        0.9774999999999999,
+        4.75,
+        2.175
+      ],
+      "base_overlap_mm3": 0.0,
+      "lcd_overlap_mm3": 0.0,
+      "base_distance_mm": 0.3071013296162702,
+      "lcd_distance_mm": 0.17250000000723276,
+      "flex_overlap_mm3": 0.0
+    },
+    {
+      "pose": [
+        10.0,
+        0.95,
+        5.0,
+        2.4
+      ],
+      "base_overlap_mm3": 0.0,
+      "lcd_overlap_mm3": 0.0,
+      "base_distance_mm": 0.29761445399702074,
+      "lcd_distance_mm": 0.20000000000723617,
+      "flex_overlap_mm3": 0.0
+    },
+    {
+      "pose": [
+        10.0,
+        0.9124999999999999,
+        5.25,
+        2.75
+      ],
+      "base_overlap_mm3": 0.0,
+      "lcd_overlap_mm3": 0.0,
+      "base_distance_mm": 0.29052779571336085,
+      "lcd_distance_mm": 0.2375000000072447,
+      "flex_overlap_mm3": 0.0
+    },
+    {
+      "pose": [
+        10.0,
+        0.875,
+        5.5,
+        3.0999999999999996
+      ],
+      "base_overlap_mm3": 0.0,
+      "lcd_overlap_mm3": 0.0,
+      "base_distance_mm": 0.2834411374297157,
+      "lcd_distance_mm": 0.3082524529304434,
+      "flex_overlap_mm3": 0.0
+    },
+    {
+      "pose": [
+        10.0,
+        0.8375000000000001,
+        5.75,
+        3.4499999999999997
+      ],
+      "base_overlap_mm3": 0.0,
+      "lcd_overlap_mm3": 0.0,
+      "base_distance_mm": 0.27635447914607025,
+      "lcd_distance_mm": 0.5486680930800709,
+      "flex_overlap_mm3": 0.0
+    },
+    {
+      "pose": [
+        10.0,
+        0.8,
+        6.0,
+        3.8
+      ],
+      "base_overlap_mm3": 0.0,
+      "lcd_overlap_mm3": 0.0,
+      "base_distance_mm": 0.26926782086241047,
+      "lcd_distance_mm": 0.8498431763422893,
+      "flex_overlap_mm3": 0.0
+    },
+    {
+      "pose": [
+        10.0,
+        0.7625000000000001,
+        6.25,
+        4.3
+      ],
+      "base_overlap_mm3": 0.0,
+      "lcd_overlap_mm3": 0.0,
+      "base_distance_mm": 0.2770008833353031,
+      "lcd_distance_mm": 1.3041676108043605,
+      "flex_overlap_mm3": 0.0
+    },
+    {
+      "pose": [
+        10.0,
+        0.7250000000000001,
+        6.5,
+        4.8
+      ],
+      "base_overlap_mm3": 0.0,
+      "lcd_overlap_mm3": 0.0,
+      "base_distance_mm": 0.2847339458081812,
+      "lcd_distance_mm": 1.7752401569507974,
+      "flex_overlap_mm3": 0.0
+    },
+    {
+      "pose": [
+        10.0,
+        0.6875,
+        6.75,
+        5.3
+      ],
+      "base_overlap_mm3": 0.0,
+      "lcd_overlap_mm3": 0.0,
+      "base_distance_mm": 0.29246700828108774,
+      "lcd_distance_mm": 2.2544959264289033,
+      "flex_overlap_mm3": 0.0
+    },
+    {
+      "pose": [
+        10.0,
+        0.65,
+        7.0,
+        5.8
+      ],
+      "base_overlap_mm3": 0.0,
+      "lcd_overlap_mm3": 0.0,
+      "base_distance_mm": 0.3002000707539804,
+      "lcd_distance_mm": 2.73857298411607,
+      "flex_overlap_mm3": 0.0
+    },
+    {
+      "pose": [
+        10.0,
+        0.6325000000000001,
+        7.25,
+        6.3
+      ],
+      "base_overlap_mm3": 0.0,
+      "lcd_overlap_mm3": 0.0,
+      "base_distance_mm": 0.3278322331498756,
+      "lcd_distance_mm": 3.2198969380875297,
+      "flex_overlap_mm3": 0.0
+    },
+    {
+      "pose": [
+        10.0,
+        0.615,
+        7.5,
+        6.8
+      ],
+      "base_overlap_mm3": 0.0,
+      "lcd_overlap_mm3": 0.0,
+      "base_distance_mm": 0.35546439554579934,
+      "lcd_distance_mm": 3.7041824923584996,
+      "flex_overlap_mm3": 0.0
+    },
+    {
+      "pose": [
+        10.0,
+        0.5974999999999999,
+        7.75,
+        7.3
+      ],
+      "base_overlap_mm3": 0.0,
+      "lcd_overlap_mm3": 0.0,
+      "base_distance_mm": 0.38309655794172315,
+      "lcd_distance_mm": 4.19066075815516,
+      "flex_overlap_mm3": 0.0
+    },
+    {
+      "pose": [
+        10.0,
+        0.58,
+        8.0,
+        7.8
+      ],
+      "base_overlap_mm3": 0.0,
+      "lcd_overlap_mm3": 0.0,
+      "base_distance_mm": 0.41048555321437824,
+      "lcd_distance_mm": 4.678827654527091,
+      "flex_overlap_mm3": 0.0
+    },
+    {
+      "pose": [
+        10.0,
+        0.5599999999999999,
+        8.5,
+        9.6
+      ],
+      "base_overlap_mm3": 0.0,
+      "lcd_overlap_mm3": 0.0,
+      "base_distance_mm": 0.38194300714629786,
+      "lcd_distance_mm": 6.436661518760994,
+      "flex_overlap_mm3": 0.0
+    },
+    {
+      "pose": [
+        10.0,
+        0.54,
+        9.0,
+        11.4
+      ],
+      "base_overlap_mm3": 0.0,
+      "lcd_overlap_mm3": 0.0,
+      "base_distance_mm": 0.33738114990991996,
+      "lcd_distance_mm": 8.205847322583004,
+      "flex_overlap_mm3": 0.0
+    },
+    {
+      "pose": [
+        10.0,
+        0.52,
+        9.5,
+        13.2
+      ],
+      "base_overlap_mm3": 0.0,
+      "lcd_overlap_mm3": 0.0,
+      "base_distance_mm": 1.3727029832865774,
+      "lcd_distance_mm": 9.981808436566725,
+      "flex_overlap_mm3": 0.0
+    },
+    {
+      "pose": [
+        10.0,
+        0.5,
+        10.0,
+        15.0
+      ],
+      "base_overlap_mm3": 0.0,
+      "lcd_overlap_mm3": 0.0,
+      "base_distance_mm": 1.376030371076426,
+      "lcd_distance_mm": 11.762275520233239,
+      "flex_overlap_mm3": 0.0
+    },
+    {
+      "pose": [
+        10.0,
+        0.375,
+        10.0,
+        17.5
+      ],
+      "base_overlap_mm3": 0.0,
+      "lcd_overlap_mm3": 0.0,
+      "base_distance_mm": 1.4729842324180968,
+      "lcd_distance_mm": 14.253762727511335,
+      "flex_overlap_mm3": 0.0
+    },
+    {
+      "pose": [
+        10.0,
+        0.25,
+        10.0,
+        20.0
+      ],
+      "base_overlap_mm3": 0.0,
+      "lcd_overlap_mm3": 0.0,
+      "base_distance_mm": 1.5699380937597716,
+      "lcd_distance_mm": 16.744714397904424,
+      "flex_overlap_mm3": 0.0
+    },
+    {
+      "pose": [
+        10.0,
+        0.125,
+        10.0,
+        22.5
+      ],
+      "base_overlap_mm3": 0.0,
+      "lcd_overlap_mm3": 0.0,
+      "base_distance_mm": 1.666891955101417,
+      "lcd_distance_mm": 19.204980424110886,
+      "flex_overlap_mm3": 0.0
+    },
+    {
+      "pose": [
+        10.0,
+        0.0,
+        10.0,
+        25.0
+      ],
+      "base_overlap_mm3": 0.0,
+      "lcd_overlap_mm3": 0.0,
+      "base_distance_mm": 1.7638458164430737,
+      "lcd_distance_mm": 21.67171506128836,
+      "flex_overlap_mm3": 0.0
+    },
+    {
+      "pose": [
+        10.0,
+        0.0,
+        10.0,
+        37.5
+      ],
+      "base_overlap_mm3": 0.0,
+      "lcd_overlap_mm3": 0.0,
+      "base_distance_mm": 1.6236698635805915,
+      "lcd_distance_mm": 34.11144645538968,
+      "flex_overlap_mm3": 0.0
+    },
+    {
+      "pose": [
+        10.0,
+        0.0,
+        10.0,
+        50.0
+      ],
+      "base_overlap_mm3": 0.0,
+      "lcd_overlap_mm3": 0.0,
+      "base_distance_mm": 1.4834939107125522,
+      "lcd_distance_mm": 46.57555964438304,
+      "flex_overlap_mm3": 0.0
+    },
+    {
+      "pose": [
+        10.0,
+        0.0,
+        10.0,
+        62.5
+      ],
+      "base_overlap_mm3": 0.0,
+      "lcd_overlap_mm3": 0.0,
+      "base_distance_mm": 1.3433179578452603,
+      "lcd_distance_mm": 59.051451905359684,
+      "flex_overlap_mm3": 0.0
+    },
+    {
+      "pose": [
+        10.0,
+        0.0,
+        10.0,
+        75.0
+      ],
+      "base_overlap_mm3": 0.0,
+      "lcd_overlap_mm3": 0.0,
+      "base_distance_mm": 1.3459799158549843,
+      "lcd_distance_mm": 71.53405832238022,
+      "flex_overlap_mm3": 0.0
+    }
+  ],
+  "fascia_tight_interval_resample": [
+    {
+      "pose": [
+        10.0,
+        0.87,
+        3.0,
+        0.85
+      ],
+      "base_distance_mm": 0.28549866494413206,
+      "approved_fascia_base_distance_mm": 0.28549866494413206,
+      "lcd_distance_mm": 0.28000000000723446
+    },
+    {
+      "pose": [
+        10.0,
+        0.8779166666666667,
+        3.0416666666666665,
+        0.8770833333333333
+      ],
+      "base_distance_mm": 0.2660621290361791,
+      "approved_fascia_base_distance_mm": 0.2660621290361791,
+      "lcd_distance_mm": 0.272083333340575
+    },
+    {
+      "pose": [
+        10.0,
+        0.8858333333333334,
+        3.0833333333333335,
+        0.9041666666666666
+      ],
+      "base_distance_mm": 0.2466255931282331,
+      "approved_fascia_base_distance_mm": 0.2466255931282331,
+      "lcd_distance_mm": 0.2641666666739013
+    },
+    {
+      "pose": [
+        10.0,
+        0.89375,
+        3.125,
+        0.93125
+      ],
+      "base_distance_mm": 0.2271890572202836,
+      "approved_fascia_base_distance_mm": 0.2271890572202836,
+      "lcd_distance_mm": 0.25625000000724185
+    },
+    {
+      "pose": [
+        10.0,
+        0.9016666666666666,
+        3.1666666666666665,
+        0.9583333333333334
+      ],
+      "base_distance_mm": 0.20775252131233105,
+      "approved_fascia_base_distance_mm": 0.20775252131233105,
+      "lcd_distance_mm": 0.24833333334056817
+    },
+    {
+      "pose": [
+        10.0,
+        0.9095833333333334,
+        3.208333333333333,
+        0.9854166666666667
+      ],
+      "base_distance_mm": 0.18835422943291938,
+      "approved_fascia_base_distance_mm": 0.18835422943291938,
+      "lcd_distance_mm": 0.2404166666739087
+    },
+    {
+      "pose": [
+        10.0,
+        0.9175,
+        3.25,
+        1.0125
+      ],
+      "base_distance_mm": 0.17222847278260964,
+      "approved_fascia_base_distance_mm": 0.17222847278260964,
+      "lcd_distance_mm": 0.23250000000723503
+    },
+    {
+      "pose": [
+        10.0,
+        0.9254166666666668,
+        3.2916666666666665,
+        1.0395833333333333
+      ],
+      "base_distance_mm": 0.16189100294690167,
+      "approved_fascia_base_distance_mm": 0.16189100294690167,
+      "lcd_distance_mm": 0.22458333334057556
+    },
+    {
+      "pose": [
+        10.0,
+        0.9333333333333333,
+        3.333333333333333,
+        1.0666666666666669
+      ],
+      "base_distance_mm": 0.15781908443395334,
+      "approved_fascia_base_distance_mm": 0.15781908443395334,
+      "lcd_distance_mm": 0.2166666666739019
+    },
+    {
+      "pose": [
+        10.0,
+        0.9412499999999999,
+        3.375,
+        1.09375
+      ],
+      "base_distance_mm": 0.16021588172354098,
+      "approved_fascia_base_distance_mm": 0.16021588172354098,
+      "lcd_distance_mm": 0.20875000000724242
+    },
+    {
+      "pose": [
+        10.0,
+        0.9491666666666667,
+        3.4166666666666665,
+        1.1208333333333333
+      ],
+      "base_distance_mm": 0.16896357028761103,
+      "approved_fascia_base_distance_mm": 0.16896357028761103,
+      "lcd_distance_mm": 0.20083333334056874
+    },
+    {
+      "pose": [
+        10.0,
+        0.9570833333333334,
+        3.4583333333333335,
+        1.1479166666666667
+      ],
+      "base_distance_mm": 0.18365110746356508,
+      "approved_fascia_base_distance_mm": 0.18365110746356508,
+      "lcd_distance_mm": 0.19291666667390928
+    },
+    {
+      "pose": [
+        10.0,
+        0.9650000000000001,
+        3.5,
+        1.175
+      ],
+      "base_distance_mm": 0.20366271499251107,
+      "approved_fascia_base_distance_mm": 0.20366271499251107,
+      "lcd_distance_mm": 0.1850000000072356
+    },
+    {
+      "pose": [
+        10.0,
+        0.9729166666666667,
+        3.5416666666666665,
+        1.2020833333333334
+      ],
+      "base_distance_mm": 0.22828739020809471,
+      "approved_fascia_base_distance_mm": 0.22828739020809471,
+      "lcd_distance_mm": 0.17708333334057613
+    },
+    {
+      "pose": [
+        10.0,
+        0.9808333333333333,
+        3.583333333333333,
+        1.2291666666666665
+      ],
+      "base_distance_mm": 0.2394713010980706,
+      "approved_fascia_base_distance_mm": 0.2394713010980706,
+      "lcd_distance_mm": 0.16916666667390245
+    },
+    {
+      "pose": [
+        10.0,
+        0.98875,
+        3.625,
+        1.25625
+      ],
+      "base_distance_mm": 0.24720550200787358,
+      "approved_fascia_base_distance_mm": 0.24720550200787358,
+      "lcd_distance_mm": 0.161250000007243
+    },
+    {
+      "pose": [
+        10.0,
+        0.9966666666666667,
+        3.6666666666666665,
+        1.2833333333333334
+      ],
+      "base_distance_mm": 0.2569488025492979,
+      "approved_fascia_base_distance_mm": 0.2569488025492979,
+      "lcd_distance_mm": 0.1533333333405693
+    },
+    {
+      "pose": [
+        10.0,
+        1.0045833333333334,
+        3.708333333333333,
+        1.3104166666666668
+      ],
+      "base_distance_mm": 0.26677544678989334,
+      "approved_fascia_base_distance_mm": 0.26677544678989334,
+      "lcd_distance_mm": 0.14541666667390984
+    },
+    {
+      "pose": [
+        10.0,
+        1.0125,
+        3.75,
+        1.3375
+      ],
+      "base_distance_mm": 0.2766020910304888,
+      "approved_fascia_base_distance_mm": 0.2766020910304888,
+      "lcd_distance_mm": 0.13750000000723617
+    },
+    {
+      "pose": [
+        10.0,
+        1.0204166666666667,
+        3.7916666666666665,
+        1.3645833333333335
+      ],
+      "base_distance_mm": 0.28642873527106977,
+      "approved_fascia_base_distance_mm": 0.28642873527106977,
+      "lcd_distance_mm": 0.1295833333405767
+    },
+    {
+      "pose": [
+        10.0,
+        1.0283333333333333,
+        3.833333333333333,
+        1.3916666666666666
+      ],
+      "base_distance_mm": 0.2962553795116655,
+      "approved_fascia_base_distance_mm": 0.2962553795116655,
+      "lcd_distance_mm": 0.12166666667390302
+    },
+    {
+      "pose": [
+        10.0,
+        1.03625,
+        3.875,
+        1.41875
+      ],
+      "base_distance_mm": 0.3060820237522464,
+      "approved_fascia_base_distance_mm": 0.3060820237522464,
+      "lcd_distance_mm": 0.11375000000724356
+    },
+    {
+      "pose": [
+        10.0,
+        1.0441666666666667,
+        3.9166666666666665,
+        1.4458333333333333
+      ],
+      "base_distance_mm": 0.3159086679928418,
+      "approved_fascia_base_distance_mm": 0.3159086679928418,
+      "lcd_distance_mm": 0.10583333334056988
+    },
+    {
+      "pose": [
+        10.0,
+        1.0520833333333335,
+        3.958333333333333,
+        1.4729166666666667
+      ],
+      "base_distance_mm": 0.32573531223343716,
+      "approved_fascia_base_distance_mm": 0.32573531223343716,
+      "lcd_distance_mm": 0.09791666667391041
+    },
+    {
+      "pose": [
+        10.0,
+        1.06,
+        4.0,
+        1.5
+      ],
+      "base_distance_mm": 0.33556195647403264,
+      "approved_fascia_base_distance_mm": 0.33556195647403264,
+      "lcd_distance_mm": 0.09000000000723674
+    }
+  ],
+  "LCD_service_local_up_out_mm": [
+    [
+      0.0,
+      0.0
+    ],
+    [
+      10.0,
+      20.0
+    ],
+    [
+      10.0,
+      250.0
+    ]
+  ],
+  "LCD_service_swept_base_and_nut_overlap_mm3": 0.0
+}

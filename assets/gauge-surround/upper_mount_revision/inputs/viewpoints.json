@@ -1,0 +1,20 @@
+{
+  "note": "Captured driver-side camera viewpoints, not a certified ergonomic eye envelope; use for occlusion checks. Model mm.",
+  "camera_centers": {
+    "226": [
+      -281.5569345425642,
+      169.66058481410724,
+      -25.58362674930322
+    ],
+    "236": [
+      -291.7621250222641,
+      134.3069904120863,
+      -33.09404197080277
+    ],
+    "244": [
+      -303.9122280276188,
+      133.82742817358195,
+      -38.595755697385954
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "material": "PLA",
+  "walls": 2,
+  "layer_height_mm": 0.28,
+  "geometry_and_pose_unchanged": true,
+  "nozzle_C": 220,
+  "bed_C": 55,
+  "configured_cooling": "Generic PLA",
+  "sha256": "5abf493faa5b24fedefc7d792d43e583cede2abb04c2d12512a70f04fa71880a",
+  "zip_ok": true
+}

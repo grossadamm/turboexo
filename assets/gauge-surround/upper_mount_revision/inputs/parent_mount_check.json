@@ -1,0 +1,64 @@
+{
+  "source": "Independent parent calculation from OEM mounting pattern and vendor tab rear-plane offset; display rotation orthonormalized. Nominal contact geometry; no print allowances.",
+  "hole_pattern_mm": [
+    173.7,
+    98.4
+  ],
+  "hole_diameter_mm": 3.5,
+  "front_to_tab_rear_mm": 4.2,
+  "axes_toward_viewer": [
+    -0.8872366770161071,
+    -0.011214076229274948,
+    -0.46117819056384385
+  ],
+  "points": [
+    {
+      "display_local_u_v_w": [
+        -86.85,
+        -49.2,
+        -4.2
+      ],
+      "tab_rear_hole_center_model_mm": [
+        136.14678630596114,
+        178.52866788369096,
+        -97.21814673417809
+      ]
+    },
+    {
+      "display_local_u_v_w": [
+        -86.85,
+        49.2,
+        -4.2
+      ],
+      "tab_rear_hole_center_model_mm": [
+        90.7582374922805,
+        179.22031689749804,
+        -9.914302269974598
+      ]
+    },
+    {
+      "display_local_u_v_w": [
+        86.85,
+        -49.2,
+        -4.2
+      ],
+      "tab_rear_hole_center_model_mm": [
+        137.3119505946548,
+        4.843881342827856,
+        -95.23640092928912
+      ]
+    },
+    {
+      "display_local_u_v_w": [
+        86.85,
+        49.2,
+        -4.2
+      ],
+      "tab_rear_hole_center_model_mm": [
+        91.92340178097417,
+        5.535530356634965,
+        -7.932556465085625
+      ]
+    }
+  ]
+}

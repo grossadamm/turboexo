@@ -1,0 +1,135 @@
+{
+ "units": "mm",
+ "frame": "origin hood rear-right corner, paper/top surface; +X forward (toward crossbar), +Y toward car left, +Z hood-plane normal up (not gravity-referenced)",
+ "scale": {
+  "grid_pitch_mm": 6.35,
+  "source": "user statement: four squares per linear inch",
+  "corroboration": "hood length counts 44.01 cells = 279.5 mm; equals 11.00 in (US-letter long side) - consistency check, not independent proof",
+  "reconstruction_mm_per_unit": 205.822,
+  "IMG_2740_corner_reproj_rms_px": 15.1,
+  "reconstruction_scale_source": "hood outline (grid mm) fitted to IMG_2740 with RealityKit pose and EXIF 24 mm-equivalent focal length"
+ },
+ "thickness_mm": 3.0,
+ "thickness_source": "design assumption carried from earlier agreement (3 mm); paper template has no thickness",
+ "hood": {
+  "type": "planar panel, paper = top surface, solid extends -Z by 3 mm",
+  "length_X_mm": 279.48,
+  "width_rear_Y_mm": 171.95,
+  "width_front_Y_mm": 174.12,
+  "outline_XY_mm": [
+   [
+    0,
+    0
+   ],
+   [
+    279.48,
+    0
+   ],
+   [
+    279.48,
+    174.12
+   ],
+   [
+    0,
+    171.95
+   ]
+  ],
+  "evidence": {
+   "length": "grid cells edge-to-edge in IMG_2740, 11 clean strips median 44.012 cells (all 19: median 44.006, range 42.73-44.36); 8/19 strips had peak-gap anomalies and were excluded",
+   "width": "19 strips, 27.05-27.49 cells; linear fit rear 27.079 / front 27.421 cells, residual RMS 0.039 cells; 0/19 strips anomalous",
+   "planarity": "RealityKit point cloud paper cluster thickness (1 sigma) 0.006 units = 1.2 mm",
+   "held_out": "outline projected into IMG_2741, IMG_2742 (not used in fit) and video frames lands on paper edges (deliverables/overlays/). Video focal length is not constant: top-down segment fits ~3000 px, driver-seat segment 3300 px"
+  },
+  "provenance": {
+   "Y=0 right edge straight": "observed edge; taper (2.2 mm) assigned to the Y=w left edge = design choice (width counts cannot locate it)",
+   "rear/front edges": "observed edges, parallel to grid within count noise"
+  }
+ },
+ "cheek": {
+  "type": "planar side panel hanging below the hood right edge; separate paper piece taped under hood (its own printed logo); paper = outboard face, solid extends +Y (inboard) 3 mm",
+  "plane_normal_model": [
+   -0.0794,
+   0.9956,
+   -0.0496
+  ],
+  "plane_point_model": [
+   22.69,
+   2.09,
+   -30.69
+  ],
+  "angle_to_hood_plane_deg": 87.2,
+  "plane_fit_rms_mm": 0.61,
+  "vertices_model_mm": {
+   "top_outboard (inferred: outboard edge P3-P2 extended to joint)": [
+    6.54,
+    2.25,
+    -1.5
+   ],
+   "bottom_outboard P2 (observed, 5 views)": [
+    4.78,
+    0.0,
+    -43.93
+   ],
+   "bottom_inboard P4 (observed in 1 view + plane constraint; visually consistent in v_0110/v_0179)": [
+    110.28,
+    8.62,
+    -39.8
+   ],
+   "top_inboard (inferred: inboard edge P4-P5 extended to joint)": [
+    91.14,
+    9.0,
+    -1.5
+   ]
+  },
+  "hole_triangle_model_mm": {
+   "H1": [
+    42.0,
+    3.59,
+    -31.51
+   ],
+   "H2": [
+    29.3,
+    2.55,
+    -32.06
+   ],
+   "H3": [
+    35.83,
+    2.77,
+    -38.04
+   ]
+  },
+  "hole_note": "triangular cutout with rounded corners; vertices observed in 5 views; corner radius 1.5 mm = design estimate",
+  "reference_only": {
+   "P3 top of free edge (rounded/curled corner, 5 views)": [
+    6.41,
+    2.09,
+    -4.56
+   ],
+   "P5 inboard edge point (1 view + plane)": [
+    103.25,
+    8.76,
+    -25.73
+   ],
+   "printed logo centre (not geometry)": [
+    17.76,
+    2.14,
+    -34.07
+   ]
+  },
+  "triangulation": {
+   "video_focal_px": 3300,
+   "rms_px": 3.96,
+   "per_point_rms_px": {
+    "P2": 2.5888717981882166,
+    "P3": 8.020813672091423,
+    "H1": 2.222193893312904,
+    "H2": 2.330898085931428,
+    "H3": 2.4217308353760254,
+    "L": 2.6104235897271257
+   },
+   "leave_one_frame_out_max_shift_mm": 4.32,
+   "rejected_before_fit": "1 of 33 clicked observations (v_0110 inboard point: identity inconsistent, 74 mm off plane) = 3.0%"
+  },
+  "joint": "cheek top edge extended to Z=-1.5 (1.5 mm into the 3 mm hood) so the joined model fuses; labelled design overlap, not measured"
+ }
+}

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:var(--font-sans,system-ui,sans-serif);color:var(--foreground,#dce5ef)}
+nav{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}button{font:inherit;color:inherit;background:var(--secondary,#283444);border:1px solid var(--border,#52657a);border-radius:6px;padding:6px 10px}
+canvas{width:100%;height:375px;display:block;background:#171e29;border-radius:8px;touch-action:none}
+small{display:block;color:var(--muted-foreground,#a6b2bd);margin:7px 0 12px}
+figure{margin:12px 0 0}img{display:block;width:100%;height:auto;border-radius:8px}
+</style>
+<nav aria-label="Installed assembly views"><button data-view="0">Front</button><button data-eye="226">Eye 226</button><button data-eye="236">Eye 236</button><button data-eye="244">Eye 244</button><button data-view="2">Rear</button><button data-view="3">Fascia only</button></nav>
+<canvas aria-label="Rotatable CAD assembly"></canvas>
+<small>Drag to rotate · Scroll to zoom · Blue fascia · Gray surround</small>
+<figure><img src="SECTION_PATH" alt="Before and after at the marked driver-left outer edge"></figure>
+<script>
+const meshes=/* ASSEMBLY_MESH */;
+const eyes=/* DRIVER_EYES */;
+const canvas=document.querySelector('canvas');
+const gl=canvas.getContext('webgl',{antialias:true,depth:true});
+if (!gl) {
+  canvas.style.display='none';
+  const fallback = document.createElement('div');
+  fallback.innerHTML='<img src="FRONT_PATH" alt="CAD assembly front view"><img src="OBLIQUE_PATH" alt="CAD assembly oblique view">';
+  canvas.after(fallback);
+} else {
+  function shader(type,source) {
+    const s=gl.createShader(type);gl.shaderSource(s,source);gl.compileShader(s);
+    if(!gl.getShaderParameter(s,gl.COMPILE_STATUS)) throw Error(gl.getShaderInfoLog(s));
+    return s;
+  }
+  const vertex=shader(gl.VERTEX_SHADER,`
+    attribute vec3 pos, normal, color;
+    uniform mat3 camera;
+    uniform vec2 scale;
+    uniform vec3 target;
+    uniform float inverseEyeDistance;
+    varying vec3 tint;
+    void main(){
+      vec3 p=camera*(pos-target);
+      gl_Position=vec4(p.xy*scale,-p.z/400.,1.-p.z*inverseEyeDistance);
+      vec3 n=normalize(camera*normal);
+      float illumination=.50+.50*max(0.,dot(n,vec3(-.3,.45,.84)));
+      tint=color*illumination;
+    }`);
+  const fragment=shader(gl.FRAGMENT_SHADER,'precision mediump float; varying vec3 tint; void main(){gl_FragColor=vec4(tint,1.);}');
+  const p=gl.createProgram();gl.attachShader(p,vertex);gl.attachShader(p,fragment);gl.linkProgram(p);gl.useProgram(p);
+  const batches=meshes.map(({c,v,f})=>{
+    const values=new Float32Array(f.length*27);
+    let i=0;
+    for(const ids of f){
+      const [a,b,d]=ids.map(k=>v[k]);
+      const u=b.map((n,k)=>n-a[k]), t=d.map((n,k)=>n-a[k]);
+      const n=[u[1]*t[2]-u[2]*t[1],u[2]*t[0]-u[0]*t[2],u[0]*t[1]-u[1]*t[0]];
+      if(Math.hypot(...n)<1e-8)continue;
+      for(const k of ids){values.set([...v[k],...n,...c],i);i+=9;}
+    }
+    const buffer=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buffer);gl.bufferData(gl.ARRAY_BUFFER,values.subarray(0,i),gl.STATIC_DRAW);
+    return {buffer,count:i/9};
+  });
+  const attrs=['pos','normal','color'].map(k=>gl.getAttribLocation(p,k));
+  const uniforms=Object.fromEntries(['camera','scale','target','inverseEyeDistance'].map(k=>[k,gl.getUniformLocation(p,k)]));
+  gl.enable(gl.DEPTH_TEST);gl.depthFunc(gl.LEQUAL);
+  let yaw=0,pitch=0,zoom=1,mode=0,eyeDistance=Infinity,drag;
+  const poses=[[0,0],[-.25,.22],[2.67,.27],[2.78,-.34]];
+  function draw(){
+    const w=canvas.clientWidth,h=canvas.clientHeight,d=Math.min(2,devicePixelRatio);
+    if(!w||!h)return;
+    canvas.width=w*d;canvas.height=h*d;gl.viewport(0,0,canvas.width,canvas.height);
+    gl.clearColor(.086,.118,.161,1);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);
+    const a=Math.cos(yaw),b=Math.sin(yaw),c=Math.cos(pitch),s=Math.sin(pitch);
+    gl.uniformMatrix3fv(uniforms.camera,false,[a,-b*s,b*c,0,c,s,-b,-a*s,a*c]);
+    const normal = mode===0 && !Number.isFinite(eyeDistance);
+    const k=Math.min(w/(normal?250:240),h/(normal?190:185))*zoom;
+    gl.uniform2f(uniforms.scale,2*k/w,2*k/h);
+    gl.uniform3f(uniforms.target,normal?8:0,normal?14:0,mode===2?-44:0);
+    gl.uniform1f(uniforms.inverseEyeDistance,1/eyeDistance);
+    for(const [index,{buffer,count}] of batches.entries()){
+      if(mode===3&&index!==4)continue;
+      // Both OEM glass solids include Z=0. Bias the outer glass at that shared plane.
+      if(index===2){gl.enable(gl.POLYGON_OFFSET_FILL);gl.polygonOffset(0,3);}
+      else gl.disable(gl.POLYGON_OFFSET_FILL);
+      gl.bindBuffer(gl.ARRAY_BUFFER,buffer);
+      attrs.forEach((a,i)=>{gl.enableVertexAttribArray(a);gl.vertexAttribPointer(a,3,gl.FLOAT,false,36,i*12)});
+      gl.drawArrays(gl.TRIANGLES,0,count);
+    }
+  }
+  document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>{
+    mode=Number(b.dataset.view);[yaw,pitch]=poses[mode];eyeDistance=Infinity;zoom=1;draw();
+  });
+  document.querySelectorAll('[data-eye]').forEach(b=>b.onclick=()=>{
+    const [x,y,z]=eyes[b.dataset.eye];
+    eyeDistance=Math.hypot(x,y,z);
+    yaw=Math.atan2(x,z);pitch=Math.atan2(y,Math.hypot(x,z));
+    mode=0;zoom=1;draw();
+  });
+  canvas.onpointerdown=e=>{drag=[e.clientX,e.clientY];canvas.setPointerCapture(e.pointerId)};
+  canvas.onpointerup=canvas.onpointercancel=()=>drag=null;
+  canvas.onpointermove=e=>{if(!drag)return;yaw-=(e.clientX-drag[0])*.009;pitch=Math.max(-1.55,Math.min(1.55,pitch+(e.clientY-drag[1])*.009));drag=[e.clientX,e.clientY];draw()};
+  canvas.onwheel=e=>{e.preventDefault();zoom=Math.min(3,Math.max(.55,zoom*Math.exp(-e.deltaY*.001)));draw()};
+  new ResizeObserver(draw).observe(canvas);draw();
+}
+</script>
+</html>

@@ -1,0 +1,211 @@
+{
+  "error_string": "Success.",
+  "layer_height": 0.20000000298023224,
+  "peak_rss_mb": 173.15625,
+  "plate_index": 1,
+  "return_code": 0,
+  "sliced_plates": [
+    {
+      "feature_type_times": {
+        "Bottom surface": 149.0226593017578,
+        "Brim": 144.79318237304688,
+        "Custom": 362.7114562988281,
+        "Flush": 29.0,
+        "Gap infill": 31.41922950744629,
+        "Inner wall": 257.7971496582031,
+        "Internal solid infill": 456.9622802734375,
+        "Outer wall": 194.24330139160156,
+        "Top surface": 170.31365966796875,
+        "Travel": 171.6255645751953,
+        "Undefined": 155.84230041503906
+      },
+      "filament_change_times": 0,
+      "filaments": [
+        {
+          "filament_id": "GFB98",
+          "id": 1,
+          "main_used_g": 9.29157829284668,
+          "total_used_g": 9.29157829284668
+        }
+      ],
+      "id": 1,
+      "layer_filament_change": 0,
+      "main_predication": 1547.0992431640625,
+      "obj_cached_cnt": 0,
+      "objects": [
+        {
+          "bbox": {
+            "depth": 112.10000610351562,
+            "height": 5.900000095367432,
+            "width": 182.74000549316406,
+            "x": 36.62999725341797,
+            "y": 71.94999694824219,
+            "z": 3.9968028886505635e-15
+          },
+          "id": 5,
+          "name": "TurboExo soft-lip fascia",
+          "triangle_count": 42584
+        }
+      ],
+      "times": {
+        "conflict_check_time": 0,
+        "detect_overhangs_time": 2,
+        "export_gcode_time": 136,
+        "flush_plan_time": 0,
+        "generate_support_material_time": 22,
+        "infill_generate_time": 72,
+        "infill_time": 96,
+        "ironing_time": 0,
+        "make_perimeters_time": 111,
+        "multifilament_segment_2d_time": 0,
+        "other_slice_time": 2,
+        "prepare_infill_time": 24,
+        "region_split_time": 0,
+        "skirt_brim_time": 8,
+        "slice_layers_time": 27,
+        "sliced_time": 396,
+        "sliced_time_with_cache": 144,
+        "support_detect_time": 0,
+        "support_interface_time": 0,
+        "support_normal_generate_time": 0,
+        "support_toolpath_time": 0,
+        "support_tree_generate_time": 0,
+        "toolpath_time": 12,
+        "wall_time": 84,
+        "wipe_tower_time": 2
+      },
+      "total_predication": 1951.996826171875,
+      "triangle_count": 42584,
+      "warning_message": ""
+    }
+  ],
+  "sparse_infill_density": 15.0,
+  "times": {
+    "export_3mf_time": 186,
+    "export_slicedata_time": 0,
+    "export_time": 558,
+    "import_time": 112,
+    "load_slicedata_time": 0,
+    "prepare_time": 115
+  },
+  "upward_compatible_machine": [
+    "Bambu Lab P1P 0.4 nozzle",
+    "Bambu Lab X1 0.4 nozzle",
+    "Bambu Lab X1 Carbon 0.4 nozzle",
+    "Bambu Lab X1E 0.4 nozzle",
+    "Bambu Lab A1 0.4 nozzle",
+    "Bambu Lab H2D 0.4 nozzle",
+    "Bambu Lab H2D Pro 0.4 nozzle",
+    "Bambu Lab H2S 0.4 nozzle",
+    "Bambu Lab P2S 0.4 nozzle",
+    "Bambu Lab H2C 0.4 nozzle",
+    "Bambu Lab X2D 0.4 nozzle",
+    "Bambu Lab A2L 0.4 nozzle",
+    "Bambu Lab H3C 0.4 nozzle"
+  ],
+  "wall_loops": 4,
+  "export_audit": {
+    "mesh_matches_stl": true,
+    "max_exported_vertex_delta_mm": 1.4013085443812215e-07,
+    "triangles": 42584,
+    "archived_gcode_matches_cli": true
+  },
+  "aperture_gcode_audit": {
+    "support_features": [],
+    "bridge_features": [],
+    "nominal_wall_width_mm": 0.42,
+    "lip_last_toolpath_layer_mm": 2.0,
+    "aperture_perimeter_by_layer": [
+      {
+        "print_z_mm": 0.2,
+        "perimeter_centerline_size_mm": [
+          154.726,
+          98.62700000000001
+        ],
+        "perimeter_seam_gap_mm": 0.0605392434706786,
+        "max_shift_from_prior_mm": null
+      },
+      {
+        "print_z_mm": 0.4,
+        "perimeter_centerline_size_mm": [
+          154.102,
+          97.96129431090918
+        ],
+        "perimeter_seam_gap_mm": 0.06020797289397706,
+        "max_shift_from_prior_mm": 0.3763481702982683
+      },
+      {
+        "print_z_mm": 0.6,
+        "perimeter_centerline_size_mm": [
+          153.858,
+          97.6653962666101
+        ],
+        "perimeter_seam_gap_mm": 0.05964059020499858,
+        "max_shift_from_prior_mm": 0.18517047949084664
+      },
+      {
+        "print_z_mm": 0.8,
+        "perimeter_centerline_size_mm": [
+          153.614,
+          97.36693171686719
+        ],
+        "perimeter_seam_gap_mm": 0.06046486583133269,
+        "max_shift_from_prior_mm": 0.18969631777358376
+      },
+      {
+        "print_z_mm": 1.0,
+        "perimeter_centerline_size_mm": [
+          153.368,
+          97.07111361351592
+        ],
+        "perimeter_seam_gap_mm": 0.060440052945046396,
+        "max_shift_from_prior_mm": 0.18737826377268726
+      },
+      {
+        "print_z_mm": 1.2,
+        "perimeter_centerline_size_mm": [
+          153.12400000000002,
+          96.77530362985297
+        ],
+        "perimeter_seam_gap_mm": 0.0598163857149542,
+        "max_shift_from_prior_mm": 0.18496418378281118
+      },
+      {
+        "print_z_mm": 1.4,
+        "perimeter_centerline_size_mm": [
+          152.82456645578583,
+          96.44559314464124
+        ],
+        "perimeter_seam_gap_mm": 0.060000000000002274,
+        "max_shift_from_prior_mm": 0.20669523378162805
+      },
+      {
+        "print_z_mm": 1.6,
+        "perimeter_centerline_size_mm": [
+          152.43872692002063,
+          96.0887869445517
+        ],
+        "perimeter_seam_gap_mm": 0.06021627686930177,
+        "max_shift_from_prior_mm": 0.24380272743773523
+      },
+      {
+        "print_z_mm": 1.8,
+        "perimeter_centerline_size_mm": [
+          152.0470004408195,
+          95.72500000000001
+        ],
+        "perimeter_seam_gap_mm": 0.05964059020499858,
+        "max_shift_from_prior_mm": 0.22716564406469864
+      },
+      {
+        "print_z_mm": 2.0,
+        "perimeter_centerline_size_mm": [
+          152.044,
+          95.744
+        ],
+        "perimeter_seam_gap_mm": 0.06003332407923322,
+        "max_shift_from_prior_mm": 0.02662566153855245
+      }
+    ]
+  }
+}

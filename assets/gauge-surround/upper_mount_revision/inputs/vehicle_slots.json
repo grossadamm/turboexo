@@ -1,0 +1,85 @@
+{
+  "status": "Photo-estimated prototype cutters. Vehicle hardware and installed fit unverified.",
+  "frame": "Hood mm. Origin rear-right top corner, +X forward, +Y car left, +Z hood normal.",
+  "construction": "Make capsules on the vehicle-facing polymer plane with the given major axis. Extrude toward driver through the full 6 mm pad, with a small overrun both ways.",
+  "sides": {
+    "right": {
+      "vehicle_slot_center_mm": [
+        137.35169043442443,
+        -25.40870222327827,
+        -112.7727286358133
+      ],
+      "driver_axis_xyz": [
+        -0.9907097367171203,
+        0.08940000723681084,
+        0.10247856497801242
+      ],
+      "pad_vehicle_face_entry_mm": [
+        130.41672227738601,
+        -24.78290217261892,
+        -112.05537868096529
+      ],
+      "slot_major_axis_xyz": [
+        0.08435287246785067,
+        0.995047835245006,
+        -0.05257754730538445
+      ],
+      "long_axis_rotation_nominal_deg": -2.5,
+      "total_length_mm": 7.6,
+      "width_mm": 5.0,
+      "min_polymer_ligament_mm": 4.808114786897435,
+      "pad_driver_face_exit_mm": [
+        124.47246385709296,
+        -24.246502129198927,
+        -111.44050729109821
+      ],
+      "estimated_bracket_center_under_alternate_shroud_pick_mm": [
+        137.698,
+        -21.167,
+        -113.127
+      ]
+    },
+    "left": {
+      "vehicle_slot_center_mm": [
+        138.51733624623597,
+        178.4349417031661,
+        -113.62554180938056
+      ],
+      "driver_axis_xyz": [
+        -0.9936765161757568,
+        0.01488062967391636,
+        -0.11129037721797279
+      ],
+      "pad_vehicle_face_entry_mm": [
+        134.54263018153028,
+        178.4944642218618,
+        -114.07070331825275
+      ],
+      "slot_major_axis_xyz": [
+        0.030134594225505032,
+        0.9901584235877665,
+        -0.1366682202600644
+      ],
+      "long_axis_rotation_nominal_deg": -8.0,
+      "total_length_mm": 7.8,
+      "width_mm": 6.4,
+      "min_polymer_ligament_mm": 2.706280248997075,
+      "pad_driver_face_exit_mm": [
+        128.58057108448116,
+        178.5837479999052,
+        -114.73844558155999
+      ],
+      "estimated_bracket_center_under_alternate_shroud_pick_mm": [
+        138.696,
+        180.18,
+        -114.989
+      ]
+    }
+  },
+  "combined_virtual_cut": {
+    "valid": true,
+    "solid_count": 1,
+    "volume_removed_mm3": 442.5891767538851,
+    "residual_material_inside_cutters_mm3": 0
+  }
+}

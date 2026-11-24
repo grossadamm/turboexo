@@ -17,6 +17,8 @@ specifications; consult newer status entries for superseded statements.
 
 ## Files and workflow
 
+- Gauge surround CAD and current print handoff: [docs/GAUGE_SURROUND_HANDOFF.md](docs/GAUGE_SURROUND_HANDOFF.md).
+
 - `CurrentTune.msq`: TunerStudio's working tune. Disk contents alone do not verify
   what is burned to the ECU.
 - `restorePoints/`: automatic backups. August 29 19:22:11 is the stock-injector

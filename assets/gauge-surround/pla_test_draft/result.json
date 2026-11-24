@@ -1,0 +1,112 @@
+{
+    "error_string": "Success.",
+    "layer_height": 0.2800000011920929,
+    "peak_rss_mb": 412.0625,
+    "plate_index": 1,
+    "return_code": 0,
+    "sliced_plates": [
+        {
+            "feature_type_times": {
+                "Bridge": 128.61798095703125,
+                "Brim": 93.87994384765625,
+                "Custom": 354.48663330078125,
+                "Flush": 29.0,
+                "Gap infill": 28.50444793701172,
+                "Inner wall": 4208.18896484375,
+                "Internal solid infill": 6582.04833984375,
+                "Outer wall": 7136.818359375,
+                "Overhang wall": 361.3555603027344,
+                "Sparse infill": 1358.978759765625,
+                "Support": 6403.1484375,
+                "Support interface": 370.2900085449219,
+                "Support transition": 117.07880401611328,
+                "Top surface": 57.598934173583984,
+                "Travel": 2371.721435546875,
+                "Undefined": 2364.08837890625
+            },
+            "filament_change_times": 0,
+            "filaments": [
+                {
+                    "filament_id": "GFL99",
+                    "id": 1,
+                    "main_used_g": 280.2762145996094,
+                    "total_used_g": 280.2762451171875
+                }
+            ],
+            "id": 1,
+            "layer_filament_change": 0,
+            "main_predication": 29187.380859375,
+            "obj_cached_cnt": 0,
+            "objects": [
+                {
+                    "bbox": {
+                        "depth": 231.36474609375,
+                        "height": 230.6573486328125,
+                        "width": 196.8185272216797,
+                        "x": 29.590736389160156,
+                        "y": 12.317626953125,
+                        "z": -3.164062434279913e-07
+                    },
+                    "id": 5,
+                    "name": "One-piece TurboExo surround",
+                    "triangle_count": 37018
+                }
+            ],
+            "times": {
+                "conflict_check_time": 0,
+                "detect_overhangs_time": 39,
+                "export_gcode_time": 1324,
+                "flush_plan_time": 0,
+                "generate_support_material_time": 1123,
+                "infill_generate_time": 208,
+                "infill_time": 348,
+                "ironing_time": 0,
+                "make_perimeters_time": 149,
+                "multifilament_segment_2d_time": 0,
+                "other_slice_time": 4,
+                "prepare_infill_time": 139,
+                "region_split_time": 1,
+                "skirt_brim_time": 9,
+                "slice_layers_time": 53,
+                "sliced_time": 3046,
+                "sliced_time_with_cache": 1333,
+                "support_detect_time": 130,
+                "support_interface_time": 12,
+                "support_normal_generate_time": 899,
+                "support_toolpath_time": 82,
+                "support_tree_generate_time": 0,
+                "toolpath_time": 39,
+                "wall_time": 95,
+                "wipe_tower_time": 6
+            },
+            "total_predication": 29592.203125,
+            "triangle_count": 37018,
+            "warning_message": ""
+        }
+    ],
+    "sparse_infill_density": 15.0,
+    "times": {
+        "export_3mf_time": 601,
+        "export_slicedata_time": 0,
+        "export_time": 602,
+        "import_time": 61,
+        "load_slicedata_time": 0,
+        "prepare_time": 67
+    },
+    "upward_compatible_machine": [
+        "Bambu Lab P1P 0.4 nozzle",
+        "Bambu Lab X1 0.4 nozzle",
+        "Bambu Lab X1 Carbon 0.4 nozzle",
+        "Bambu Lab X1E 0.4 nozzle",
+        "Bambu Lab A1 0.4 nozzle",
+        "Bambu Lab H2D 0.4 nozzle",
+        "Bambu Lab H2D Pro 0.4 nozzle",
+        "Bambu Lab H2S 0.4 nozzle",
+        "Bambu Lab P2S 0.4 nozzle",
+        "Bambu Lab H2C 0.4 nozzle",
+        "Bambu Lab X2D 0.4 nozzle",
+        "Bambu Lab A2L 0.4 nozzle",
+        "Bambu Lab H3C 0.4 nozzle"
+    ],
+    "wall_loops": 2
+}

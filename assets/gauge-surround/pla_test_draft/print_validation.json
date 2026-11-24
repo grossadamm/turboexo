@@ -1,0 +1,365 @@
+{
+  "project_sha256": "5abf493faa5b24fedefc7d792d43e583cede2abb04c2d12512a70f04fa71880a",
+  "stl_sha256": "ec1f5b25f2a3c46f0d5ef39d4084c027854400f48da043d5970b55c5bd5bfe6f",
+  "mesh": {
+    "max_vertex_delta_mm": 8.437605625084034e-06,
+    "triangles": 37018,
+    "same_connectivity": true
+  },
+  "placement": {
+    "emitted_xy_bounds": [
+      [
+        29.590999999999998,
+        8.29249875067228
+      ],
+      [
+        231.77499999999998,
+        243.56544899407157
+      ]
+    ],
+    "last_deposition_z": 230.36,
+    "cutter_half_model_road_clearance_mm": 16.58849793917197,
+    "actual_purge_centerline_to_first_layer_road_edge_mm": 6.79249875067228,
+    "purge_start_xyz_end_xyz_and_relative_E": [
+      [
+        18.0,
+        1.0,
+        0.2,
+        240.0,
+        1.0,
+        0.2,
+        15.0
+      ],
+      [
+        240.0,
+        1.0,
+        0.2,
+        240.0,
+        11.0,
+        0.2,
+        0.7
+      ],
+      [
+        239.5,
+        11.0,
+        0.2,
+        239.5,
+        1.5,
+        0.2,
+        0.7
+      ],
+      [
+        239.5,
+        1.5,
+        0.2,
+        18.0,
+        1.5,
+        0.2,
+        15.0
+      ]
+    ],
+    "first_layer": {
+      "Outer wall": {
+        "area": 139.11143269505442,
+        "longitudinal_bounds": [
+          223.714,
+          38.828,
+          224.437,
+          231.318
+        ],
+        "islands": 1
+      },
+      "Brim": {
+        "area": 2117.0339525289783,
+        "longitudinal_bounds": [
+          216.379,
+          31.493,
+          231.772,
+          238.652
+        ],
+        "islands": 1
+      },
+      "Support": {
+        "area": 4832.558446721587,
+        "longitudinal_bounds": [
+          38.99902332648105,
+          8.2955033266604,
+          228.396,
+          243.5624308188201
+        ],
+        "islands": 2
+      }
+    }
+  },
+  "machine_and_process": {
+    "bed_exclude_area": "0x0,18x0,18x28,0x28",
+    "enable_prime_tower": "0",
+    "extruder_offset": "0x2",
+    "filament_settings_id": "\"Generic PLA\"",
+    "inner_wall_line_width": "0.45",
+    "nozzle_diameter": "0.4",
+    "nozzle_temperature": "220",
+    "nozzle_temperature_initial_layer": "220",
+    "outer_wall_line_width": "0.42",
+    "printable_height": "250",
+    "printer_settings_id": "Bambu Lab P1S 0.4 nozzle",
+    "seam_position": "aligned",
+    "support_object_xy_distance": "0.35",
+    "support_style": "snug",
+    "support_top_z_distance": "0.2",
+    "support_type": "normal(auto)",
+    "textured_plate_temp": "55",
+    "wall_loops": "2",
+    "ABL_box_command": "G29 A X29.5907 Y10.2888 I202.16 J235.275"
+  },
+  "support_centerlines": {
+    "bottom_right nut route": {
+      "Support": {
+        "centerline_mm": 349.44380005621133,
+        "layer_count": 44,
+        "top_z_span": [
+          58.52,
+          64.68
+        ],
+        "feature_depth_range": 9.288161477161026,
+        "feature_depth_max": 13.513762214469864
+      }
+    },
+    "bottom_left nut route": {
+      "Support": {
+        "centerline_mm": 386.56986097579545,
+        "layer_count": 34,
+        "top_z_span": [
+          58.36,
+          63.12
+        ],
+        "feature_depth_range": 8.62285862860793,
+        "feature_depth_max": 19.696505362186812
+      },
+      "Support interface": {
+        "centerline_mm": 4.899711630578061,
+        "layer_count": 6,
+        "top_z_span": [
+          58.52,
+          59.76
+        ],
+        "feature_depth_range": 2.9035729855157513,
+        "feature_depth_max": 8.735246383534403
+      }
+    },
+    "USB-PROG": {
+      "Support": {
+        "centerline_mm": 675.6938215008512,
+        "layer_count": 38,
+        "top_z_span": [
+          145.32,
+          152.72
+        ],
+        "feature_depth_range": 5.342522317874909e-05,
+        "feature_depth_max": 6.4755107868972175
+      },
+      "Support interface": {
+        "centerline_mm": 126.31466411817894,
+        "layer_count": 6,
+        "top_z_span": [
+          152.72,
+          153.44
+        ],
+        "feature_depth_range": 6.293770636839525,
+        "feature_depth_max": 6.856362059080972
+      },
+      "Support transition": {
+        "centerline_mm": 37.62534651924843,
+        "layer_count": 2,
+        "top_z_span": [
+          152.58,
+          152.88
+        ],
+        "feature_depth_range": 6.176468022274911,
+        "feature_depth_max": 6.592502947692566
+      }
+    },
+    "USB": {
+      "Support": {
+        "centerline_mm": 633.4456747022505,
+        "layer_count": 38,
+        "top_z_span": [
+          145.32,
+          152.72
+        ],
+        "feature_depth_range": 0.002127200255010564,
+        "feature_depth_max": 6.48890177503516
+      },
+      "Support interface": {
+        "centerline_mm": 127.96211435326137,
+        "layer_count": 6,
+        "top_z_span": [
+          152.72,
+          153.44
+        ],
+        "feature_depth_range": 6.295987083825544,
+        "feature_depth_max": 6.872954103640012
+      },
+      "Support transition": {
+        "centerline_mm": 38.05266940291753,
+        "layer_count": 2,
+        "top_z_span": [
+          152.58,
+          152.88
+        ],
+        "feature_depth_range": 6.1785877014632575,
+        "feature_depth_max": 6.608761431547656
+      }
+    },
+    "bottom_left bore": {
+      "Support interface": {
+        "centerline_mm": 4.6970595868297815,
+        "layer_count": 10,
+        "top_z_span": [
+          61.72,
+          63.96
+        ],
+        "feature_depth_range": 0.14243574144290605,
+        "feature_depth_max": 1.7950813670477368
+      }
+    }
+  },
+  "slot_beads": {
+    "right": {
+      "samples_inside": 0,
+      "max_axial_depth_mm": 0.0
+    },
+    "left": {
+      "samples_inside": 0,
+      "max_axial_depth_mm": 0.0
+    }
+  },
+  "nut_seat_beads": {
+    "top_right": 0,
+    "bottom_right": 0,
+    "top_left": 0,
+    "bottom_left": 0
+  },
+  "upper_path_beads": {
+    "top_right": {
+      "bore": 0,
+      "nut_load": 0
+    },
+    "top_left": {
+      "bore": 0,
+      "nut_load": 0
+    }
+  },
+  "slice": {
+    "error_string": "Success.",
+    "layer_height": 0.2800000011920929,
+    "peak_rss_mb": 412.0625,
+    "plate_index": 1,
+    "return_code": 0,
+    "sliced_plates": [
+      {
+        "feature_type_times": {
+          "Bridge": 128.61798095703125,
+          "Brim": 93.87994384765625,
+          "Custom": 354.48663330078125,
+          "Flush": 29.0,
+          "Gap infill": 28.50444793701172,
+          "Inner wall": 4208.18896484375,
+          "Internal solid infill": 6582.04833984375,
+          "Outer wall": 7136.818359375,
+          "Overhang wall": 361.3555603027344,
+          "Sparse infill": 1358.978759765625,
+          "Support": 6403.1484375,
+          "Support interface": 370.2900085449219,
+          "Support transition": 117.07880401611328,
+          "Top surface": 57.598934173583984,
+          "Travel": 2371.721435546875,
+          "Undefined": 2364.08837890625
+        },
+        "filament_change_times": 0,
+        "filaments": [
+          {
+            "filament_id": "GFL99",
+            "id": 1,
+            "main_used_g": 280.2762145996094,
+            "total_used_g": 280.2762451171875
+          }
+        ],
+        "id": 1,
+        "layer_filament_change": 0,
+        "main_predication": 29187.380859375,
+        "obj_cached_cnt": 0,
+        "objects": [
+          {
+            "bbox": {
+              "depth": 231.36474609375,
+              "height": 230.6573486328125,
+              "width": 196.8185272216797,
+              "x": 29.590736389160156,
+              "y": 12.317626953125,
+              "z": -3.164062434279913e-07
+            },
+            "id": 5,
+            "name": "One-piece TurboExo surround",
+            "triangle_count": 37018
+          }
+        ],
+        "times": {
+          "conflict_check_time": 0,
+          "detect_overhangs_time": 39,
+          "export_gcode_time": 1324,
+          "flush_plan_time": 0,
+          "generate_support_material_time": 1123,
+          "infill_generate_time": 208,
+          "infill_time": 348,
+          "ironing_time": 0,
+          "make_perimeters_time": 149,
+          "multifilament_segment_2d_time": 0,
+          "other_slice_time": 4,
+          "prepare_infill_time": 139,
+          "region_split_time": 1,
+          "skirt_brim_time": 9,
+          "slice_layers_time": 53,
+          "sliced_time": 3046,
+          "sliced_time_with_cache": 1333,
+          "support_detect_time": 130,
+          "support_interface_time": 12,
+          "support_normal_generate_time": 899,
+          "support_toolpath_time": 82,
+          "support_tree_generate_time": 0,
+          "toolpath_time": 39,
+          "wall_time": 95,
+          "wipe_tower_time": 6
+        },
+        "total_predication": 29592.203125,
+        "triangle_count": 37018,
+        "warning_message": ""
+      }
+    ],
+    "sparse_infill_density": 15.0,
+    "times": {
+      "export_3mf_time": 601,
+      "export_slicedata_time": 0,
+      "export_time": 602,
+      "import_time": 61,
+      "load_slicedata_time": 0,
+      "prepare_time": 67
+    },
+    "upward_compatible_machine": [
+      "Bambu Lab P1P 0.4 nozzle",
+      "Bambu Lab X1 0.4 nozzle",
+      "Bambu Lab X1 Carbon 0.4 nozzle",
+      "Bambu Lab X1E 0.4 nozzle",
+      "Bambu Lab A1 0.4 nozzle",
+      "Bambu Lab H2D 0.4 nozzle",
+      "Bambu Lab H2D Pro 0.4 nozzle",
+      "Bambu Lab H2S 0.4 nozzle",
+      "Bambu Lab P2S 0.4 nozzle",
+      "Bambu Lab H2C 0.4 nozzle",
+      "Bambu Lab X2D 0.4 nozzle",
+      "Bambu Lab A2L 0.4 nozzle",
+      "Bambu Lab H3C 0.4 nozzle"
+    ],
+    "wall_loops": 2
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "continuous_base_clearance_lower_bound_mm": 0.12070975725641447,
+  "distance_samples": 427,
+  "certified_subintervals": 220,
+  "minimum_sampled_base_clearance_mm": 0.16548371838479906,
+  "minimum_sampled_pose": [
+    10.0,
+    0.92125,
+    3.4990625,
+    1.053125
+  ]
+}

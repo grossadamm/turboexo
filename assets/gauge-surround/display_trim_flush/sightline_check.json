@@ -1,0 +1,106 @@
+{
+  "normal": {
+    "left": {
+      "rays": 8767,
+      "previously_open": 550,
+      "now_open": 0,
+      "first_open_display_points_mm": [],
+      "previously_recessed_beyond_12_mm": 6453,
+      "now_recessed_beyond_12_mm": 0
+    },
+    "right": {
+      "rays": 8607,
+      "previously_open": 661,
+      "now_open": 0,
+      "first_open_display_points_mm": [],
+      "previously_recessed_beyond_12_mm": 6918,
+      "now_recessed_beyond_12_mm": 0
+    },
+    "top": {
+      "rays": 2118,
+      "previously_open": 0,
+      "now_open": 0,
+      "first_open_display_points_mm": [],
+      "previously_recessed_beyond_12_mm": 0,
+      "now_recessed_beyond_12_mm": 0
+    }
+  },
+  "226": {
+    "left": {
+      "rays": 8767,
+      "previously_open": 3833,
+      "now_open": 0,
+      "first_open_display_points_mm": [],
+      "previously_recessed_beyond_12_mm": 5427,
+      "now_recessed_beyond_12_mm": 0
+    },
+    "right": {
+      "rays": 8607,
+      "previously_open": 16,
+      "now_open": 0,
+      "first_open_display_points_mm": [],
+      "previously_recessed_beyond_12_mm": 1670,
+      "now_recessed_beyond_12_mm": 0
+    },
+    "top": {
+      "rays": 2118,
+      "previously_open": 0,
+      "now_open": 0,
+      "first_open_display_points_mm": [],
+      "previously_recessed_beyond_12_mm": 969,
+      "now_recessed_beyond_12_mm": 0
+    }
+  },
+  "236": {
+    "left": {
+      "rays": 8767,
+      "previously_open": 1995,
+      "now_open": 0,
+      "first_open_display_points_mm": [],
+      "previously_recessed_beyond_12_mm": 4097,
+      "now_recessed_beyond_12_mm": 0
+    },
+    "right": {
+      "rays": 8607,
+      "previously_open": 1020,
+      "now_open": 0,
+      "first_open_display_points_mm": [],
+      "previously_recessed_beyond_12_mm": 2654,
+      "now_recessed_beyond_12_mm": 0
+    },
+    "top": {
+      "rays": 2118,
+      "previously_open": 0,
+      "now_open": 0,
+      "first_open_display_points_mm": [],
+      "previously_recessed_beyond_12_mm": 793,
+      "now_recessed_beyond_12_mm": 0
+    }
+  },
+  "244": {
+    "left": {
+      "rays": 8767,
+      "previously_open": 2014,
+      "now_open": 0,
+      "first_open_display_points_mm": [],
+      "previously_recessed_beyond_12_mm": 4127,
+      "now_recessed_beyond_12_mm": 0
+    },
+    "right": {
+      "rays": 8607,
+      "previously_open": 1128,
+      "now_open": 0,
+      "first_open_display_points_mm": [],
+      "previously_recessed_beyond_12_mm": 2786,
+      "now_recessed_beyond_12_mm": 0
+    },
+    "top": {
+      "rays": 2118,
+      "previously_open": 0,
+      "now_open": 0,
+      "first_open_display_points_mm": [],
+      "previously_recessed_beyond_12_mm": 691,
+      "now_recessed_beyond_12_mm": 0
+    }
+  }
+}

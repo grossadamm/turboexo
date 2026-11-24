@@ -1,3 +1,14 @@
 *.mlg filter=lfs diff=lfs merge=lfs -text
 *.csv filter=lfs diff=lfs merge=lfs -text
 *.dash filter=lfs diff=lfs merge=lfs -text
+
+# Gauge surround release CAD, print projects, and image/reference assets.
+assets/gauge-surround/**/*.step filter=lfs diff=lfs merge=lfs -text
+assets/gauge-surround/**/*.stl filter=lfs diff=lfs merge=lfs -text
+assets/gauge-surround/**/*.3mf filter=lfs diff=lfs merge=lfs -text
+assets/gauge-surround/**/*.brep filter=lfs diff=lfs merge=lfs -text
+assets/gauge-surround/**/*.png filter=lfs diff=lfs merge=lfs -text
+assets/gauge-surround/**/*.jpg filter=lfs diff=lfs merge=lfs -text
+assets/gauge-surround/**/*.HEIC filter=lfs diff=lfs merge=lfs -text
+assets/gauge-surround/**/*.ply filter=lfs diff=lfs merge=lfs -text
+assets/gauge-surround/**/*.pdf filter=lfs diff=lfs merge=lfs -text

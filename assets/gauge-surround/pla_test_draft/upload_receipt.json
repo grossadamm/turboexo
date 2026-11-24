@@ -1,0 +1,12 @@
+{
+  "action": "uploaded",
+  "source": "/Users/adamgross/dev/artifacts/gauge-surround-design-2026-11-21/pla_test_draft/TurboExo_Bracket_TEST_PLA_2wall_028.gcode.3mf",
+  "remote_path": "/model/TurboExo_Bracket_TEST_PLA_2wall_028.gcode.3mf",
+  "bytes": 3525509,
+  "sha256": "5abf493faa5b24fedefc7d792d43e583cede2abb04c2d12512a70f04fa71880a",
+  "remote_sha256": "5abf493faa5b24fedefc7d792d43e583cede2abb04c2d12512a70f04fa71880a",
+  "verified": true,
+  "print_started": false,
+  "tls_certificate_validation": true,
+  "timestamp_utc": "2026-11-24T17:52:58Z"
+}

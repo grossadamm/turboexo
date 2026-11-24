@@ -1,5 +1,12 @@
 # TurboExo — Status (living)
 
+## 2026-11-24 — Gauge surround PLA test started
+
+User reports starting the final matched-base PLA fit test from Bambu Handy.
+2 walls / 0.28 mm, estimate 8 h 13 min / 280 g. Completion and physical fit pending.
+CAD, sources, matched fascia, exact print file and continuation notes are saved in
+[docs/GAUGE_SURROUND_HANDOFF.md](docs/GAUGE_SURROUND_HANDOFF.md). No ECU changes.
+
 Current wiring assignments: [docs/WIRING.md](docs/WIRING.md).
 
 ## 2026-10-19 — Boost-table import units warning corrected (disk only)

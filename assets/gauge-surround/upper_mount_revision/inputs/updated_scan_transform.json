@@ -1,0 +1,32 @@
+{
+ "rotation_rows_world_to_model": [
+  [
+   0.9209772350019099,
+   0.2146524569264272,
+   0.32515420240815773
+  ],
+  [
+   0.3896149152364292,
+   -0.5096921096232951,
+   -0.7670815935824983
+  ],
+  [
+   0.0010725533356890082,
+   0.8331496119499207,
+   -0.5530466437339783
+  ]
+ ],
+ "origin_world": [
+  -0.4917505498623478,
+  2.710082435540105,
+  -1.2626499322184928
+ ],
+ "mm_per_world_unit": 216.27826780034715,
+ "still_focal_px": 4161.323874186446,
+ "corner_reproj_rms_px": 14.168267370153286,
+ "source": "display_alignment_v2/refit_registration.py; same construction as code/hood_pose_fit.py + export_reference.py, only still focal changed (3960 -> 4161.3, from still_focal_fixedvideo.json)",
+ "previous": {
+  "mm_per_world_unit": 205.82163144162044,
+  "still_focal_px": 3960.0
+ }
+}
