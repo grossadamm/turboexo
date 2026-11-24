@@ -1,0 +1,74 @@
+{
+  "design-inputs.tar.xz": {
+    "deliverables/skin_first_wing/installed_wing_first_mm.step": {
+      "bytes": 93557819,
+      "sha256": "eb93d6292dcd42b4d14e84acd907a18b19880a612d5db68983f3c208d9557e81"
+    },
+    "deliverables/skin_first_wing/chin.step": {
+      "bytes": 1045865,
+      "sha256": "76173f56f42db39a52f80f3719b5bc070af9bc2c3f698424fb25cb24a944f7ff"
+    },
+    "deliverables/skin_first_wing/wing_left.step": {
+      "bytes": 676426,
+      "sha256": "56b799eadb8452092ed548bc696bae66e22c064fc45a2ea8c1027aa231d7c3f7"
+    },
+    "deliverables/skin_first_wing/wing_right.step": {
+      "bytes": 670928,
+      "sha256": "7e1cfab1bef98f3e6c8c5fe95b4b669d09bfdf54f330783272d1f102acabd4e6"
+    },
+    "deliverables/front_end_v9/fiberglass_v9_mm.step": {
+      "bytes": 4974485,
+      "sha256": "7465bbd4d147b5d3bdc2d8ff147fe336a780f119641f8112fe7bcd6cf3f39cde"
+    },
+    "deliverables/full_folded_chin/seal_installed_mm.step": {
+      "bytes": 60554209,
+      "sha256": "bd62d11d34986f011a69d19ee275f940a0fc3e8c070143f0284ecf9be351fb64"
+    },
+    "deliverables/faired42_wing/render_front.glb": {
+      "bytes": 32045528,
+      "sha256": "fbfe18396ffa25ed792cef717c6a0c7604c43090c01640807ae91ec865d8dca6"
+    }
+  },
+  "approved-cad.tar.xz": {
+    "deliverables/closed42_joint/chin.step": {
+      "bytes": 1260430,
+      "sha256": "10de8e8f6948967757f2f22af428d5e23f457d99c70ef9581bcbfcd973346a04"
+    },
+    "deliverables/closed42_joint/chin.stl": {
+      "bytes": 15562284,
+      "sha256": "58adedc42481715e36fcf2dd984b46815772832c5a2bb7c3dcd1f1b31fd99263"
+    },
+    "deliverables/closed42_joint/installed_mm.step": {
+      "bytes": 141825003,
+      "sha256": "f74dfa21886a13175c7ca490b5b5d602a299a9a0cf88ae74ea4f787c15f5c112"
+    },
+    "deliverables/closed42_joint/render_front.glb": {
+      "bytes": 35108216,
+      "sha256": "185e86a61c0ba087d02f1fc49d327f36bd9ba37c5770d3e73f251b49b907828d"
+    },
+    "deliverables/closed42_joint/seal.step": {
+      "bytes": 98285559,
+      "sha256": "fac416109c5d70a9138e11644ff8e2b944b8b46655ea55321cc9dba24689b896"
+    },
+    "deliverables/closed42_joint/seal.stl": {
+      "bytes": 561484,
+      "sha256": "67da27a3a8e4c18786e2975e6569f1ffe9e51123431cace13a7cfedceed248b4"
+    },
+    "deliverables/faired42_wing/wing_left.step": {
+      "bytes": 4035285,
+      "sha256": "9c37d203cfe7c367678f9752411d18b9e443aa67078fce869eb1b25b771932ef"
+    },
+    "deliverables/faired42_wing/wing_left.stl": {
+      "bytes": 6644784,
+      "sha256": "59539f20b2ba57d2279ddd5ea3766217df19e99a10028eeb41f767390c420f0b"
+    },
+    "deliverables/faired42_wing/wing_right.step": {
+      "bytes": 4112688,
+      "sha256": "a5cfc601afc3de20cbb5d60bd13c242d73cae7c62e716f5d1eade7cd850854d7"
+    },
+    "deliverables/faired42_wing/wing_right.stl": {
+      "bytes": 6519484,
+      "sha256": "6226d0d389891627c24ca0783dd122bd7396bf91e02a316538ca353ca45a1e5f"
+    }
+  }
+}

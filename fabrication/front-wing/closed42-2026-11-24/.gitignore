@@ -1,0 +1,5 @@
+# Models restored from the checksum-verified archives.
+/deliverables/*/*.step
+/deliverables/*/*.stl
+/deliverables/*/*.glb
+__pycache__/

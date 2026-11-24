@@ -1,0 +1,137 @@
+{
+  "frame": "car XYZ millimetres; X forward, Y left, Z up",
+  "source_chin": "skin_first_wing/chin.step",
+  "source_bumper": "front_end_v9/fiberglass_v9_mm.step",
+  "previous_gasket_limits_y_mm": [
+    -305,
+    325
+  ],
+  "contact_limits_y_mm": [
+    -344.0,
+    363.0
+  ],
+  "front_edge_at_gasket_ends_xyz_mm": [
+    [
+      -225.14817014458825,
+      -344.0000000001439,
+      216.28536795225975
+    ],
+    [
+      -225.33259340058797,
+      362.99999999999125,
+      225.89404155679037
+    ]
+  ],
+  "wall_runout_ends_y_mm": [
+    -386.0,
+    392.0
+  ],
+  "sample_count": 1239,
+  "gasket_installed_z_height_range_mm": [
+    0.38818335464978304,
+    3.574793140482228
+  ],
+  "maximum_sampled_chin_and_bumper_contact_error_mm": 6.120046691648895e-10,
+  "chin_volume_mm3": 732235.1702689746,
+  "seal_volume_mm3": 5107.76523995466,
+  "interferences_mm3": {
+    "chin_bumper": 0,
+    "chin_seal": 0,
+    "seal_bumper": 0
+  },
+  "sha256_by_path_relative_to_deliverables": {
+    "skin_first_wing/chin.step": "76173f56f42db39a52f80f3719b5bc070af9bc2c3f698424fb25cb24a944f7ff",
+    "front_end_v9/fiberglass_v9_mm.step": "7465bbd4d147b5d3bdc2d8ff147fe336a780f119641f8112fe7bcd6cf3f39cde",
+    "full_folded_chin/seal_installed_mm.step": "bd62d11d34986f011a69d19ee275f940a0fc3e8c070143f0284ecf9be351fb64",
+    "closed42_joint/chin.step": "10de8e8f6948967757f2f22af428d5e23f457d99c70ef9581bcbfcd973346a04",
+    "closed42_joint/chin.stl": "58adedc42481715e36fcf2dd984b46815772832c5a2bb7c3dcd1f1b31fd99263",
+    "closed42_joint/seal.step": "fac416109c5d70a9138e11644ff8e2b944b8b46655ea55321cc9dba24689b896",
+    "closed42_joint/seal.stl": "67da27a3a8e4c18786e2975e6569f1ffe9e51123431cace13a7cfedceed248b4"
+  },
+  "terminal_measurements": [
+    {
+      "y_mm": -344.0,
+      "distance_outboard_of_tip_mm": 0.0,
+      "vertical_glass_to_rim_distances_mm": [
+        0.4507975307185177,
+        0.3914027879840205,
+        0.4563340232321593
+      ]
+    },
+    {
+      "y_mm": -345.0,
+      "distance_outboard_of_tip_mm": 1.0,
+      "vertical_glass_to_rim_distances_mm": [
+        0.7253434988512026,
+        0.6464718815341826,
+        0.6850166550368044
+      ]
+    },
+    {
+      "y_mm": -346.0,
+      "distance_outboard_of_tip_mm": 2.0,
+      "vertical_glass_to_rim_distances_mm": [
+        1.517253504632663,
+        1.3624006903752104,
+        1.3334504353473449
+      ]
+    },
+    {
+      "y_mm": -347.0,
+      "distance_outboard_of_tip_mm": 3.0,
+      "vertical_glass_to_rim_distances_mm": [
+        2.821356045059531,
+        2.5254591941304056,
+        2.383878556939976
+      ]
+    },
+    {
+      "y_mm": 363.0,
+      "distance_outboard_of_tip_mm": 0.0,
+      "vertical_glass_to_rim_distances_mm": [
+        0.4697419473484956,
+        0.44731894471772193,
+        0.4709598989225299
+      ]
+    },
+    {
+      "y_mm": 364.0,
+      "distance_outboard_of_tip_mm": 1.0,
+      "vertical_glass_to_rim_distances_mm": [
+        0.6835290791715352,
+        0.6494537627568775,
+        0.6573998010990749
+      ]
+    },
+    {
+      "y_mm": 365.0,
+      "distance_outboard_of_tip_mm": 2.0,
+      "vertical_glass_to_rim_distances_mm": [
+        1.354748458881886,
+        1.2868190099121364,
+        1.2620378057481219
+      ]
+    },
+    {
+      "y_mm": 366.0,
+      "distance_outboard_of_tip_mm": 3.0,
+      "vertical_glass_to_rim_distances_mm": [
+        2.540828821125075,
+        2.4146208037676047,
+        2.338111764412645
+      ]
+    }
+  ],
+  "stl_meshes": {
+    "chin": {
+      "triangle_count": 311244,
+      "watertight": true,
+      "consistent_winding": true
+    },
+    "seal": {
+      "triangle_count": 11228,
+      "watertight": true,
+      "consistent_winding": true
+    }
+  }
+}

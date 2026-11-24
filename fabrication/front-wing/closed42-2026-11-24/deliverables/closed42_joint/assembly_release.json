@@ -1,0 +1,148 @@
+{
+  "source_sha256": {
+    "deliverables/skin_first_wing/installed_wing_first_mm.step": "eb93d6292dcd42b4d14e84acd907a18b19880a612d5db68983f3c208d9557e81",
+    "deliverables/faired42_wing/wing_left.step": "9c37d203cfe7c367678f9752411d18b9e443aa67078fce869eb1b25b771932ef",
+    "deliverables/faired42_wing/wing_right.step": "a5cfc601afc3de20cbb5d60bd13c242d73cae7c62e716f5d1eade7cd850854d7",
+    "deliverables/closed42_joint/chin.step": "10de8e8f6948967757f2f22af428d5e23f457d99c70ef9581bcbfcd973346a04",
+    "deliverables/closed42_joint/seal.step": "fac416109c5d70a9138e11644ff8e2b944b8b46655ea55321cc9dba24689b896"
+  },
+  "output_sha256": "f74dfa21886a13175c7ca490b5b5d602a299a9a0cf88ae74ea4f787c15f5c112",
+  "leaf_count": 160,
+  "replacement_parts": {
+    "wing_left": {
+      "signature": [
+        -220.00000010099998,
+        462.40011483505,
+        121.49673598123455,
+        26.650780100000002,
+        596.0000001001229,
+        211.28112046668005,
+        128044.17024429051,
+        417913.33999018255
+      ],
+      "location": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -0.0,
+          0.0
+        ]
+      ],
+      "color": [
+        0.9100000088894052,
+        0.5999999947550138,
+        0.2999999961013092,
+        1.0
+      ],
+      "solids": 1
+    },
+    "wing_right": {
+      "signature": [
+        -220.00000010099998,
+        -585.1000001000531,
+        121.49673598123455,
+        26.506990100000003,
+        -469.1519793023652,
+        211.28112046668002,
+        113375.9902841999,
+        394766.5963729483
+      ],
+      "location": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -0.0,
+          0.0
+        ]
+      ],
+      "color": [
+        0.9100000088894052,
+        0.5999999947550138,
+        0.2999999961013092,
+        1.0
+      ],
+      "solids": 1
+    },
+    "complete_folded_splitter_chin": {
+      "signature": [
+        -234.96147314200618,
+        -468.5187472263879,
+        133.88542773495914,
+        96.59061490315462,
+        465.81665878944,
+        234.52814238213242,
+        434657.3562323647,
+        740973.2859889702
+      ],
+      "location": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -0.0,
+          0.0
+        ]
+      ],
+      "color": [
+        0.8799999977705522,
+        0.5099999951771147,
+        0.19999999868206275,
+        1.0
+      ],
+      "solids": 1
+    },
+    "compressed_underside_seal": {
+      "signature": [
+        -227.9650912235054,
+        -344.218409869278,
+        206.40530628501793,
+        -42.622453915463396,
+        363.61004546929536,
+        237.41668846285762,
+        8896.115765960867,
+        47.37878508869258
+      ],
+      "location": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -0.0,
+          0.0
+        ]
+      ],
+      "color": [
+        0.09999999991362188,
+        0.09999999991362188,
+        0.09999999991362188,
+        1.0
+      ],
+      "solids": 1
+    }
+  },
+  "unchanged_reference_leaf_count": 156,
+  "max_roundtrip_absolute_signature_difference": 1240.179334349085,
+  "max_roundtrip_location_difference": 0.0,
+  "max_roundtrip_color_difference": 0.0,
+  "seal_bidirectional_sampled_surface_max_distance_mm": {
+    "compressed_underside_seal": [
+      0.029799223871666388,
+      0.02168727985693253
+    ]
+  },
+  "verification": "Names, world-space bounding boxes/area/volume, solid count, placements and colors checked after STEP reopen. When seal mass properties are unstable, 1000 sampled points per direction check tessellated surfaces at 0.04 mm tessellation tolerance. Signatures and samples are not exact shape equality proofs; this is an assembly preservation audit, not a fit or fabrication certification."
+}
