@@ -1,0 +1,112 @@
+{
+    "error_string": "Success.",
+    "layer_height": 0.2800000011920929,
+    "peak_rss_mb": 484.984375,
+    "plate_index": 1,
+    "return_code": 0,
+    "sliced_plates": [
+        {
+            "feature_type_times": {
+                "Bottom surface": 88.93287658691406,
+                "Bridge": 123.98213195800781,
+                "Brim": 107.80935668945313,
+                "Custom": 363.1783142089844,
+                "Flush": 29.0,
+                "Gap infill": 68.13787078857422,
+                "Inner wall": 4603.63037109375,
+                "Internal solid infill": 376.3473815917969,
+                "Outer wall": 6255.1240234375,
+                "Overhang wall": 644.5266723632813,
+                "Sparse infill": 1510.52294921875,
+                "Support": 4498.58642578125,
+                "Support interface": 524.8277587890625,
+                "Support transition": 362.5940246582031,
+                "Top surface": 300.8313293457031,
+                "Travel": 3228.709716796875,
+                "Undefined": 3219.104248046875
+            },
+            "filament_change_times": 0,
+            "filaments": [
+                {
+                    "filament_id": "GFB98",
+                    "id": 1,
+                    "main_used_g": 119.7513427734375,
+                    "total_used_g": 119.75133514404297
+                }
+            ],
+            "id": 1,
+            "layer_filament_change": 0,
+            "main_predication": 22669.8125,
+            "obj_cached_cnt": 0,
+            "objects": [
+                {
+                    "bbox": {
+                        "depth": 218.04745483398438,
+                        "height": 205.89031982421875,
+                        "width": 220.13128662109375,
+                        "x": 17.934354782104492,
+                        "y": 18.976280212402344,
+                        "z": 8.789062633240974e-08
+                    },
+                    "id": 5,
+                    "name": "fold70 car-RIGHT 1:1 fit section",
+                    "triangle_count": 33618
+                }
+            ],
+            "times": {
+                "conflict_check_time": 0,
+                "detect_overhangs_time": 482,
+                "export_gcode_time": 1639,
+                "flush_plan_time": 0,
+                "generate_support_material_time": 2316,
+                "infill_generate_time": 178,
+                "infill_time": 328,
+                "ironing_time": 0,
+                "make_perimeters_time": 226,
+                "multifilament_segment_2d_time": 0,
+                "other_slice_time": 2,
+                "prepare_infill_time": 150,
+                "region_split_time": 0,
+                "skirt_brim_time": 12,
+                "slice_layers_time": 62,
+                "sliced_time": 5083,
+                "sliced_time_with_cache": 1651,
+                "support_detect_time": 682,
+                "support_interface_time": 307,
+                "support_normal_generate_time": 0,
+                "support_toolpath_time": 158,
+                "support_tree_generate_time": 1112,
+                "toolpath_time": 75,
+                "wall_time": 164,
+                "wipe_tower_time": 3
+            },
+            "total_predication": 23081.35546875,
+            "triangle_count": 33618,
+            "warning_message": ""
+        }
+    ],
+    "sparse_infill_density": 3.0,
+    "times": {
+        "export_3mf_time": 1019,
+        "export_slicedata_time": 0,
+        "export_time": 1022,
+        "import_time": 152,
+        "load_slicedata_time": 0,
+        "prepare_time": 157
+    },
+    "upward_compatible_machine": [
+        "Bambu Lab P1P 0.4 nozzle",
+        "Bambu Lab X1 0.4 nozzle",
+        "Bambu Lab X1 Carbon 0.4 nozzle",
+        "Bambu Lab X1E 0.4 nozzle",
+        "Bambu Lab A1 0.4 nozzle",
+        "Bambu Lab H2D 0.4 nozzle",
+        "Bambu Lab H2D Pro 0.4 nozzle",
+        "Bambu Lab H2S 0.4 nozzle",
+        "Bambu Lab P2S 0.4 nozzle",
+        "Bambu Lab H2C 0.4 nozzle",
+        "Bambu Lab X2D 0.4 nozzle",
+        "Bambu Lab A2L 0.4 nozzle"
+    ],
+    "wall_loops": 2
+}

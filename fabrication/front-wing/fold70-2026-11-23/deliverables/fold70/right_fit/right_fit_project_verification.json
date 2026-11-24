@@ -1,0 +1,99 @@
+{
+  "source_stl_sha256": "80c41fe615929660302953b1699ab726aaf0a97e699fb9b14154f615f668e149",
+  "project_sha256": "09ed291eda24c97026617ed35f62cf79ef38db9cf825221b65d713e3c3d9ba81",
+  "gcode_sha256": "7302d97d635bbe2ce4d772448b679a3587fbd84dfac6f641c6abb88b8a7d5695",
+  "template_project": "deliverables/drawn_corner/corner_asa_p1s_project.3mf",
+  "filament_profile_basis": "TurboExo docs/ASA_PRINTING.md and docs/printing/asa_2026-11-02/ASA_P1S_calibrated.json",
+  "slicer": "BambuStudio 02.09.01.70",
+  "reopen_validation": "Native project exported with Bambu CLI, loaded in a fresh CLI invocation and sliced again. Final project is that second export. Both CLI result files report Success / return_code 0.",
+  "source_to_project_scale": 1.0,
+  "source_to_project_additional_translation_mm": [
+    0,
+    0,
+    0
+  ],
+  "project_mesh_world_bounds_mm": [
+    [
+      17.934356000000008,
+      18.976280000000017,
+      0.0
+    ],
+    [
+      238.065642,
+      237.023734,
+      205.89032
+    ]
+  ],
+  "max_project_vertex_distance_from_source_mm": 1.1577602981873812e-05,
+  "mesh_watertight": true,
+  "triangle_count": 33618,
+  "settings": {
+    "printer_model": "Bambu Lab P1S",
+    "printer_settings_id": "Bambu Lab P1S 0.4 nozzle",
+    "nozzle_diameter": [
+      "0.4"
+    ],
+    "curr_bed_type": "Textured PEI Plate",
+    "filament_type": [
+      "ASA"
+    ],
+    "filament_settings_id": [
+      "ASA - P1S 265C 8.8mm3s"
+    ],
+    "nozzle_temperature_initial_layer": [
+      "265"
+    ],
+    "nozzle_temperature": [
+      "265"
+    ],
+    "textured_plate_temp_initial_layer": [
+      "100"
+    ],
+    "textured_plate_temp": [
+      "100"
+    ],
+    "filament_flow_ratio": [
+      "0.9975"
+    ],
+    "filament_max_volumetric_speed": [
+      "8.8"
+    ],
+    "fan_min_speed": [
+      "10"
+    ],
+    "fan_max_speed": [
+      "35"
+    ],
+    "additional_cooling_fan_speed": [
+      "0"
+    ],
+    "layer_height": "0.28",
+    "initial_layer_print_height": "0.2",
+    "wall_loops": "2",
+    "sparse_infill_density": "3%",
+    "sparse_infill_pattern": "gyroid",
+    "top_shell_layers": "2",
+    "top_shell_thickness": "0",
+    "bottom_shell_layers": "2",
+    "bottom_shell_thickness": "0",
+    "brim_type": "outer_only",
+    "brim_width": "5",
+    "enable_support": "1",
+    "support_type": "tree(auto)",
+    "support_style": "tree_slim",
+    "support_on_build_plate_only": "1",
+    "support_critical_regions_only": "1",
+    "support_threshold_angle": "30",
+    "support_top_z_distance": "0.28",
+    "support_bottom_z_distance": "0.28",
+    "support_object_xy_distance": "0.35"
+  },
+  "printer_dispatch": false,
+  "notes": [
+    "Native 3MF contains mesh, full embedded settings, sliced G-code and refreshed previews.",
+    "Normal 0.28 mm layers, first layer 0.20 mm. Independent support layer heights add layers.",
+    "K0.040 is the documented printer PA record; the printer assignment is external state, not established by this project.",
+    "CLI warns its optional machine_full/process_full system JSON paths are absent; embedded effective settings shown here were used and read back from both the project and generated G-code.",
+    "ASA spool density 1.04 g/cm3 is inherited; grams are slicer estimates."
+  ]
+}

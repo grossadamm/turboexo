@@ -1,0 +1,29 @@
+{
+  "section_sha256": "a4dc2a4a9bbb3f81773589646d593c3e21e693b5b34e27c48ac24678822b1367",
+  "source_sha256": "5ad80088894a328a22209b8bc08aead27410ee93842d2038ee327d1c7c46166a",
+  "coordinate_frame": "car mm; car-right negative Y",
+  "retained_y_mm": [
+    -468.31546767698495,
+    -260.0
+  ],
+  "valid_single_solid": true,
+  "section_volume_mm3": 188751.1662412587,
+  "source_clipped_volume_mm3": 188751.14284345802,
+  "section_minus_clipped_source_mm3": 0.0,
+  "clipped_source_minus_section_mm3": 0.0,
+  "bore_test": "6 mm diameter 10 mm long fitted right B and E coaxial probes have zero material intersection; 6 mm radius, 7 mm long cylinders find 460.683 mm3 surrounding material at each axis",
+  "distance_mm": {
+    "v9_fiberglass_shell": 0.6689367814545905,
+    "original_central_seal": 6.369570778308278e-13,
+    "right_outer_plate": 0.0,
+    "right_inboard_cross_web_hanger": 18.124315971328812,
+    "right_diagonal_bar": 2.9483204776121643
+  },
+  "intersection_volume_mm3": {
+    "right_outer_plate": 0.0,
+    "right_inboard_cross_web_hanger": 0.0,
+    "right_diagonal_bar": 0.0
+  },
+  "seal_band": "original seal spans Y=-305 to +325; section retains -305 to -260, 45 mm nominal; minimum distance demonstrates contact somewhere, not sealing along whole band",
+  "limitations": "All dimensions and clearances are nominal CAD in surveyed frame; fiberglass is modeled as a shell. Physical fit, full joint sealing and mounting engagement require a car test."
+}

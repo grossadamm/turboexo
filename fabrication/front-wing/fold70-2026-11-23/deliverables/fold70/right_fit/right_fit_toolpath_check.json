@@ -1,0 +1,51 @@
+{
+  "method": "All deposited G0/G1/G2/G3 model/support/brim extrusion after first CHANGE_LAYER, excluding custom startup/end; arc chords <=0.25 mm; width/2 plus 0.002 mm conservative envelope. Per-segment test against bed and expanded excluded rectangle.",
+  "all_extrusion_bounds_including_width_mm": [
+    18.058,
+    12.306999999999999,
+    238.041,
+    234.927
+  ],
+  "first_layer_bounds_including_width_mm": [
+    18.121000000000002,
+    12.306999999999999,
+    219.30700000000002,
+    202.854
+  ],
+  "layer_z_range_mm": [
+    0.2,
+    206.0
+  ],
+  "bed_bounds_mm": [
+    0,
+    0,
+    256,
+    256
+  ],
+  "excluded_rectangle_mm": [
+    0,
+    0,
+    18,
+    28
+  ],
+  "extrusion_segments": 295584,
+  "feature_segment_counts": {
+    "Support": 130991,
+    "Brim": 957,
+    "Outer wall": 48969,
+    "Inner wall": 35730,
+    "Bottom surface": 1084,
+    "Internal solid infill": 721,
+    "Sparse infill": 21161,
+    "Floating vertical shell": 11253,
+    "Bridge": 711,
+    "Gap infill": 5509,
+    "Top surface": 5262,
+    "Overhang wall": 2049,
+    "Support transition": 12147,
+    "Support interface": 19040
+  },
+  "minimum_excluded_region_clearance_mm": 109.41595076502526,
+  "violation_count": 0,
+  "first_violations": []
+}
