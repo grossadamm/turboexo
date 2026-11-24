@@ -1,0 +1,63 @@
+{
+  "project_sha256": "783f3ea5b096e8ccc2e50d6493883dd6070d691044b45854847a3cda37c5ff41",
+  "preset": "Generic PLA",
+  "nozzle_bed_c": [
+    220,
+    55
+  ],
+  "same_mesh_and_build_transform_as_verified_fit_print": true,
+  "fresh_reopen_slice_success": true,
+  "estimated_seconds": 20892,
+  "estimated_grams": 137.74,
+  "toolpath": {
+    "method": "All deposited G0/G1/G2/G3 model/support/brim extrusion after first CHANGE_LAYER, excluding custom startup/end; arc chords <=0.25 mm; width/2 plus 0.002 mm conservative envelope. Per-segment test against bed and expanded excluded rectangle.",
+    "all_extrusion_bounds_including_width_mm": [
+      18.058,
+      12.306999999999999,
+      238.041,
+      234.927
+    ],
+    "first_layer_bounds_including_width_mm": [
+      18.121000000000002,
+      12.306999999999999,
+      219.30700000000002,
+      202.854
+    ],
+    "layer_z_range_mm": [
+      0.2,
+      206.0
+    ],
+    "bed_bounds_mm": [
+      0,
+      0,
+      256,
+      256
+    ],
+    "excluded_rectangle_mm": [
+      0,
+      0,
+      18,
+      28
+    ],
+    "extrusion_segments": 292203,
+    "feature_segment_counts": {
+      "Support": 127577,
+      "Brim": 957,
+      "Outer wall": 48969,
+      "Inner wall": 35812,
+      "Bottom surface": 1084,
+      "Internal solid infill": 721,
+      "Sparse infill": 21161,
+      "Floating vertical shell": 11243,
+      "Bridge": 711,
+      "Gap infill": 5509,
+      "Top surface": 5262,
+      "Overhang wall": 2049,
+      "Support transition": 12113,
+      "Support interface": 19035
+    },
+    "minimum_excluded_region_clearance_mm": 109.41595076502526,
+    "violation_count": 0,
+    "first_violations": []
+  }
+}
