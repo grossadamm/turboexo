@@ -58,5 +58,11 @@
     "path": "code/drawn_corner_mount.py",
     "checkpoint_sha256": "ac4f76949c5420261aa477df1ce2a0f36ed0525a52cfd9da11deb942ac692ca0",
     "original_sha256": "ac4f76949c5420261aa477df1ce2a0f36ed0525a52cfd9da11deb942ac692ca0"
+  },
+  {
+    "path": "code/adapter_surface.py",
+    "checkpoint_sha256": "dc58a82a0f6e8a44670636b353c98a5850c29227ae3511e5f7f625a3ed3b49a4",
+    "original_sha256": "0741b315c42dc31d8ecf7126e732c50f5eb6ff0e2867893aed23b6a89a74a34d",
+    "note": "Minimal extraction: knot_vector function AST identical; only numpy and OCP array imports retained."
   }
 ]

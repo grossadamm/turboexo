@@ -66,10 +66,17 @@ The renderer loads `/tmp/fw_scan_raster.dylib`, matching its original macOS
 workflow. Set `CAD_PYTHON` if STEP tessellation needs a separate CadQuery Python.
 The copied renderer imports the local `step_mesh.py` helper instead of the
 unrelated historical preview stack; its tessellation command is preserved.
-All other copied source files are byte-identical to their artifact originals.
+`adapter_surface.py` retains the original `knot_vector` function unchanged with
+only its required NumPy/OCP imports. `dependency_audit.json` records all imports,
+including function-local ones. Other copied source files are byte-identical to
+their artifact originals.
 `package_front_v4.py` is included for the assembly `leaves` helper only;
 regenerating the unrelated V4 design and predecessor geometry is outside this
 checkpoint. Their required final geometry is included as exact input CAD.
 
-The final chin's independent STEP reimport and archive byte checks were run;
-a complete geometry or image regeneration was not run during checkpointing.
+The final chin was regenerated in an isolated temporary copy after restoring all
+seven archive members. Its STEP DATA section and plan datums match the saved
+original byte-for-byte; the exported STEP header timestamp may differ. Reimport
+confirmed the same bounds/volume, valid geometry and one solid. See
+`regeneration_check.json`. Archive byte checks were also run. The full assembly
+installation and images were not regenerated during checkpointing.

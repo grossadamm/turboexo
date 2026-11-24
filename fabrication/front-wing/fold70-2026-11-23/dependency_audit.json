@@ -1,0 +1,719 @@
+{
+  "method": "AST walk includes imports inside all functions, not just module top level. Actual fold70.py regeneration additionally exercises geometry path.",
+  "imports": [
+    {
+      "file": "adapter_surface.py",
+      "line": 6,
+      "module": "numpy",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "adapter_surface.py",
+      "line": 7,
+      "module": "OCP",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "drawn_corner_mount.py",
+      "line": 6,
+      "module": "pathlib",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "drawn_corner_mount.py",
+      "line": 7,
+      "module": "json",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "drawn_corner_mount.py",
+      "line": 8,
+      "module": "cadquery",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "drawn_corner_mount.py",
+      "line": 9,
+      "module": "numpy",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "drawn_corner_mount.py",
+      "line": 10,
+      "module": "OCP",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "drawn_corner_mount.py",
+      "line": 11,
+      "module": "OCP",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "fold70.py",
+      "line": 2,
+      "module": "json",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "fold70.py",
+      "line": 3,
+      "module": "cadquery",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "fold70.py",
+      "line": 4,
+      "module": "numpy",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "fold70.py",
+      "line": 5,
+      "module": "full_folded_chin",
+      "scope": "module",
+      "bundled_local_module": true
+    },
+    {
+      "file": "fold70.py",
+      "line": 6,
+      "module": "folded_corner",
+      "scope": "module",
+      "bundled_local_module": true
+    },
+    {
+      "file": "fold70.py",
+      "line": 7,
+      "module": "splitter_chin_v1",
+      "scope": "module",
+      "bundled_local_module": true
+    },
+    {
+      "file": "fold70_cad_views.py",
+      "line": 2,
+      "module": "ctypes",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "fold70_cad_views.py",
+      "line": 3,
+      "module": "hashlib",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "fold70_cad_views.py",
+      "line": 4,
+      "module": "json",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "fold70_cad_views.py",
+      "line": 5,
+      "module": "pathlib",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "fold70_cad_views.py",
+      "line": 6,
+      "module": "re",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "fold70_cad_views.py",
+      "line": 7,
+      "module": "zipfile",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "fold70_cad_views.py",
+      "line": 8,
+      "module": "numpy",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "fold70_cad_views.py",
+      "line": 9,
+      "module": "PIL",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "fold70_cad_views.py",
+      "line": 10,
+      "module": "trimesh",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "fold70_cad_views.py",
+      "line": 11,
+      "module": "step_mesh",
+      "scope": "module",
+      "bundled_local_module": true
+    },
+    {
+      "file": "fold70_install.py",
+      "line": 2,
+      "module": "pathlib",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "fold70_install.py",
+      "line": 3,
+      "module": "hashlib",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "fold70_install.py",
+      "line": 4,
+      "module": "json",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "fold70_install.py",
+      "line": 5,
+      "module": "cadquery",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "fold70_install.py",
+      "line": 6,
+      "module": "package_front_v4",
+      "scope": "module",
+      "bundled_local_module": true
+    },
+    {
+      "file": "fold70_orbit_views.py",
+      "line": 2,
+      "module": "ctypes",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "fold70_orbit_views.py",
+      "line": 3,
+      "module": "hashlib",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "fold70_orbit_views.py",
+      "line": 4,
+      "module": "json",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "fold70_orbit_views.py",
+      "line": 5,
+      "module": "pathlib",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "fold70_orbit_views.py",
+      "line": 6,
+      "module": "numpy",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "fold70_orbit_views.py",
+      "line": 7,
+      "module": "PIL",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "fold70_orbit_views.py",
+      "line": 8,
+      "module": "trimesh",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "fold70_orbit_views.py",
+      "line": 9,
+      "module": "fold70_cad_views",
+      "scope": "module",
+      "bundled_local_module": true
+    },
+    {
+      "file": "fold70_viewer.py",
+      "line": 2,
+      "module": "pathlib",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "fold70_viewer.py",
+      "line": 3,
+      "module": "io",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "fold70_viewer.py",
+      "line": 4,
+      "module": "base64",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "fold70_viewer.py",
+      "line": 4,
+      "module": "json",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "fold70_viewer.py",
+      "line": 5,
+      "module": "PIL",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "folded_corner.py",
+      "line": 2,
+      "module": "json",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "folded_corner.py",
+      "line": 3,
+      "module": "pathlib",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "folded_corner.py",
+      "line": 4,
+      "module": "cadquery",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "folded_corner.py",
+      "line": 5,
+      "module": "numpy",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "folded_corner.py",
+      "line": 6,
+      "module": "drawn_corner_mount",
+      "scope": "module",
+      "bundled_local_module": true
+    },
+    {
+      "file": "full_folded_chin.py",
+      "line": 2,
+      "module": "json",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "full_folded_chin.py",
+      "line": 3,
+      "module": "pathlib",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "full_folded_chin.py",
+      "line": 5,
+      "module": "cadquery",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "full_folded_chin.py",
+      "line": 6,
+      "module": "numpy",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "full_folded_chin.py",
+      "line": 7,
+      "module": "OCP",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "full_folded_chin.py",
+      "line": 8,
+      "module": "OCP",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "full_folded_chin.py",
+      "line": 9,
+      "module": "OCP",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "full_folded_chin.py",
+      "line": 10,
+      "module": "OCP",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "full_folded_chin.py",
+      "line": 12,
+      "module": "splitter_chin_v1",
+      "scope": "module",
+      "bundled_local_module": true
+    },
+    {
+      "file": "full_folded_chin.py",
+      "line": 213,
+      "module": "OCP",
+      "scope": "compressed_seal",
+      "bundled_local_module": false
+    },
+    {
+      "file": "full_folded_chin.py",
+      "line": 214,
+      "module": "OCP",
+      "scope": "compressed_seal",
+      "bundled_local_module": false
+    },
+    {
+      "file": "full_folded_chin.py",
+      "line": 215,
+      "module": "OCP",
+      "scope": "compressed_seal",
+      "bundled_local_module": false
+    },
+    {
+      "file": "full_folded_chin.py",
+      "line": 216,
+      "module": "OCP",
+      "scope": "compressed_seal",
+      "bundled_local_module": false
+    },
+    {
+      "file": "full_folded_chin.py",
+      "line": 217,
+      "module": "scipy",
+      "scope": "compressed_seal",
+      "bundled_local_module": false
+    },
+    {
+      "file": "full_folded_chin.py",
+      "line": 218,
+      "module": "hashlib",
+      "scope": "compressed_seal",
+      "bundled_local_module": false
+    },
+    {
+      "file": "full_folded_chin.py",
+      "line": 275,
+      "module": "argparse",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "package_front_v4.py",
+      "line": 3,
+      "module": "json",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "package_front_v4.py",
+      "line": 4,
+      "module": "re",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "package_front_v4.py",
+      "line": 5,
+      "module": "xml",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "package_front_v4.py",
+      "line": 6,
+      "module": "zipfile",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "package_front_v4.py",
+      "line": 7,
+      "module": "hashlib",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "package_front_v4.py",
+      "line": 8,
+      "module": "pathlib",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "package_front_v4.py",
+      "line": 9,
+      "module": "xml",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "package_front_v4.py",
+      "line": 11,
+      "module": "cadquery",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "package_front_v4.py",
+      "line": 12,
+      "module": "numpy",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "package_front_v4.py",
+      "line": 13,
+      "module": "trimesh",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "package_front_v4.py",
+      "line": 316,
+      "module": "lib3mf",
+      "scope": "write_meshes",
+      "bundled_local_module": false
+    },
+    {
+      "file": "package_front_v4.py",
+      "line": 93,
+      "module": "pymeshlab",
+      "scope": "mesh_for",
+      "bundled_local_module": false
+    },
+    {
+      "file": "package_front_v4.py",
+      "line": 167,
+      "module": "fin_mesh_v4",
+      "scope": "write_meshes",
+      "bundled_local_module": false
+    },
+    {
+      "file": "package_front_v4.py",
+      "line": 184,
+      "module": "OCP",
+      "scope": "write_meshes",
+      "bundled_local_module": false
+    },
+    {
+      "file": "package_front_v4.py",
+      "line": 185,
+      "module": "OCP",
+      "scope": "write_meshes",
+      "bundled_local_module": false
+    },
+    {
+      "file": "package_front_v4.py",
+      "line": 200,
+      "module": "radiator_fins_v4",
+      "scope": "write_meshes",
+      "bundled_local_module": false
+    },
+    {
+      "file": "package_front_v4.py",
+      "line": 201,
+      "module": "radiator_fins_v4",
+      "scope": "write_meshes",
+      "bundled_local_module": false
+    },
+    {
+      "file": "splitter_chin_v1.py",
+      "line": 2,
+      "module": "json",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "splitter_chin_v1.py",
+      "line": 3,
+      "module": "pathlib",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "splitter_chin_v1.py",
+      "line": 4,
+      "module": "numpy",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "splitter_chin_v1.py",
+      "line": 5,
+      "module": "cadquery",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "splitter_chin_v1.py",
+      "line": 6,
+      "module": "trimesh",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "splitter_chin_v1.py",
+      "line": 7,
+      "module": "scipy",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "splitter_chin_v1.py",
+      "line": 8,
+      "module": "OCP",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "splitter_chin_v1.py",
+      "line": 9,
+      "module": "OCP",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "splitter_chin_v1.py",
+      "line": 71,
+      "module": "scipy",
+      "scope": "swept_solid",
+      "bundled_local_module": false
+    },
+    {
+      "file": "splitter_chin_v1.py",
+      "line": 72,
+      "module": "OCP",
+      "scope": "swept_solid",
+      "bundled_local_module": false
+    },
+    {
+      "file": "splitter_chin_v1.py",
+      "line": 73,
+      "module": "OCP",
+      "scope": "swept_solid",
+      "bundled_local_module": false
+    },
+    {
+      "file": "splitter_chin_v1.py",
+      "line": 74,
+      "module": "OCP",
+      "scope": "swept_solid",
+      "bundled_local_module": false
+    },
+    {
+      "file": "splitter_chin_v1.py",
+      "line": 75,
+      "module": "OCP",
+      "scope": "swept_solid",
+      "bundled_local_module": false
+    },
+    {
+      "file": "splitter_chin_v1.py",
+      "line": 76,
+      "module": "adapter_surface",
+      "scope": "swept_solid",
+      "bundled_local_module": true
+    },
+    {
+      "file": "step_mesh.py",
+      "line": 2,
+      "module": "os",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "step_mesh.py",
+      "line": 3,
+      "module": "pathlib",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "step_mesh.py",
+      "line": 4,
+      "module": "subprocess",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "step_mesh.py",
+      "line": 5,
+      "module": "sys",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "step_mesh.py",
+      "line": 6,
+      "module": "tempfile",
+      "scope": "module",
+      "bundled_local_module": false
+    },
+    {
+      "file": "step_mesh.py",
+      "line": 7,
+      "module": "trimesh",
+      "scope": "module",
+      "bundled_local_module": false
+    }
+  ],
+  "unbundled_historical_local_modules": [
+    {
+      "module": "fin_mesh_v4",
+      "used_only_by": "package_front_v4 mesh/export functions; fold70_install uses leaves only"
+    },
+    {
+      "module": "radiator_fins_v4",
+      "used_only_by": "package_front_v4 mesh/export functions; fold70_install uses leaves only"
+    }
+  ],
+  "other_unbundled_optional_imports": [
+    "pymeshlab and lib3mf: historical package_front_v4 export utilities only"
+  ],
+  "dynamic_import_mechanisms": "No __import__, importlib import_module, or exec/eval in bundled Python. step_mesh subprocess imports cadquery and sys explicitly."
+}

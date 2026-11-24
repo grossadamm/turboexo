@@ -5,11 +5,14 @@
     "final_chin_step_reimport_valid_single_solid": true,
     "assembly_qa_sha256_matches_final_and_prior_and_chin": true,
     "render_source_sha256_matches_checkpoint_cad": true,
-    "archive_all_seven_members_readback_sha256_matches_original": true
+    "archive_all_seven_members_readback_sha256_matches_original": true,
+    "minimal_knot_vector_helper_function_ast_matches_original": true,
+    "function_local_import_audit_complete": true,
+    "isolated_restored_geometry_regeneration_passed": true,
+    "regenerated_step_data_section_and_plan_datums_byte_identical": true
   },
   "not_repeated": [
     "full assembly STEP reimport",
-    "full geometry regeneration",
     "full image regeneration",
     "physical fit verification"
   ],

@@ -1,0 +1,41 @@
+{
+  "command": "python code/fold70.py",
+  "environment": "Existing CadQuery 2.8.0 geometry environment documented in README",
+  "location": "Temporary copied checkpoint with seven CAD members restored from committed archive; committed original STEP untouched",
+  "returncode": 0,
+  "stdout": [
+    "core True 1",
+    "join True 1",
+    "trim True 1"
+  ],
+  "original": {
+    "valid": true,
+    "solids": 1,
+    "volume_mm3": 744165.5000015569,
+    "bounds_mm": [
+      -229.66775553590227,
+      -468.31546767698495,
+      98.29342174460228,
+      96.59061490315462,
+      465.81700360042345,
+      234.5281423821325
+    ]
+  },
+  "regenerated": {
+    "valid": true,
+    "solids": 1,
+    "volume_mm3": 744165.5000015569,
+    "bounds_mm": [
+      -229.66775553590227,
+      -468.31546767698495,
+      98.29342174460228,
+      96.59061490315462,
+      465.81700360042345,
+      234.5281423821325
+    ]
+  },
+  "step_data_section_byte_identical": true,
+  "plan_datums_byte_identical": true,
+  "original_step_sha256": "5ad80088894a328a22209b8bc08aead27410ee93842d2038ee327d1c7c46166a",
+  "regenerated_step_sha256": "6faa553d182b86e5c38056e58094c06169a9e340dfd958513d19d9cbcf9035d1"
+}
