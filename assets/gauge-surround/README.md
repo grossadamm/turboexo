@@ -48,8 +48,13 @@ Matplotlib, Pillow and VTK. The original local working interpreter was
 `/Users/adamgross/dev/artifacts/gauge-surround-2026-11-13/.venv/bin/python`.
 
 ```sh
+python -m pip install -r assets/gauge-surround/requirements.txt
 python assets/gauge-surround/rebuild.py --output /tmp/surround-rebuild --validate
 ```
+
+The archived source was rebuilt in a separate directory on 2026-11-24.
+`portable_rebuild_check.json` records zero added/removed volume for both final
+parts compared with the released STEP files.
 
 The output path must not already exist; archived release files remain untouched.
 Validation scripts use only archived geometry/data, not credentials or the printer.

@@ -1,0 +1,14 @@
+{
+  "surround": {
+    "rebuild_valid": true,
+    "solids": 1,
+    "removed_volume_mm3": 0.0,
+    "added_volume_mm3": 0.0
+  },
+  "display_trim": {
+    "rebuild_valid": true,
+    "solids": 1,
+    "removed_volume_mm3": 0.0,
+    "added_volume_mm3": 0.0
+  }
+}

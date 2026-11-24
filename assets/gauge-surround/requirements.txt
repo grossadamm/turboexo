@@ -1,0 +1,9 @@
+# CAD rebuild and optional rendering; Python 3.11
+cadquery==2.8.0
+numpy==2.4.6
+scipy==1.17.1
+trimesh==5.2.1
+matplotlib==3.11.2
+Pillow==13.0.0
+vtk==9.6.2
+shapely==2.2.0
