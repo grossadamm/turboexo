@@ -1,0 +1,8 @@
+{
+  "control_and_blade_fused_mm3": 394740.70714714105,
+  "control_mm3": 386807.70726768434,
+  "approved_full_mm3": 394740.7038655921,
+  "accepted_full_source": "deliverables/faired42_wing/wing_right.step",
+  "method": "Control from accepted generator with precisely one final blade union removed. Exact standalone blade from the same generator; separate mask is OR-ed into the common control to avoid noise from independent voxelizations outside the blade. Re-fused control and blade checked valid with one solid and compared to accepted STEP by volume."
+}
+cached meshes 16

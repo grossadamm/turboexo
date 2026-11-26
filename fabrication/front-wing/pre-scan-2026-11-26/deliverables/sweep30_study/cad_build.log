@@ -1,0 +1,69 @@
+right building the unchanged upper shell
+right 211.46016989494953
+right backing only the retained skin over cavities
+right cutting the continuous fascia
+right valid STEP 380979.4982957785
+right mesh 100182 True 1 381055.3088431131
+variant blade ready; fusing the printable assembly
+{
+  "coordinate_frame": "Car-frame millimetres, X forward, Y car-left, Z up.",
+  "crest_inlet_car_xy_mm": [
+    -36.0,
+    -501.24048641475986
+  ],
+  "crest_inlet_tangent_deg": 0.0,
+  "crest_blend_start_car_xy_mm": [
+    -116.0,
+    -506.0515162563613
+  ],
+  "baseline_crest_outlet_car_xy_mm": [
+    -220.0,
+    -527.0999999999999
+  ],
+  "baseline_crest_design_exit_deg": 16.0,
+  "variant_crest_outlet_car_xy_mm": [
+    -220.0,
+    -537.1743026256016
+  ],
+  "variant_crest_exit_cad": [
+    {
+      "point_car_xyz_mm": [
+        -220.0,
+        -537.1743026256,
+        211.28112036668
+      ],
+      "outward_angle_deg": 29.99999954581661,
+      "upsweep_angle_deg": 36.00000043307589
+    }
+  ],
+  "variant_exit_outward_displacement_mm": 10.074302625601717,
+  "lower_guide_cross_section": "Original inboard foot and outer plan held fixed. The inboard shoulder spreads toward the new crest to keep skin continuous above the unchanged underside; the wheel-side shelf narrows by the crest shift. Upper control-point heights are unchanged.",
+  "blade": {
+    "narrowing_rule": "None. Both the original rib offsets and relative X/Z rib profiles are retained.",
+    "minimum_distance_to_original_plan_boundary_mm": 1.9999984102541646,
+    "stray_volume_beyond_plan_mm3": 0.0,
+    "control_overlap_mm3": 847.2214918722339,
+    "triangles": 31984,
+    "volume_mm3": 8777.433628505227
+  },
+  "fused": {
+    "triangles": 131350,
+    "volume_mm3": 388988.6604346922
+  },
+  "unchanged_sections": {
+    "matched_lower_section_count": 1977,
+    "max_underside_delta_mm": 0.0,
+    "aft_inboard_shoulder_thickness_sample_count": 672,
+    "minimum_sampled_aft_shoulder_thickness_mm": 3.3746267500000044,
+    "max_inboard_or_forward_section_delta_mm": 0.0,
+    "common_shelf_samples": 28,
+    "max_shelf_height_delta_mm": 5.999999075356754e-08
+  },
+  "sha256_sources": {
+    "code/faired42_wing.py": "c2042cf8b9ff7654e3fbbc6085b4e9b1ae48c7cc42db49486e4b2d84e4480480",
+    "code/swept_ramp_wing.py": "588878452e3e0441198e17f48a46631af74175f4caefde98ba71ffff14dd5b0b",
+    "code/layered_channel_wing.py": "53686c305a4f47eb47e7cecf038cf0fae5a9c3b199ed1b1f783b73de19117028",
+    "deliverables/cfd_corner_study/blade_off_cad/wing_right.step": "3b3e284e253141c5aa274288ac3500b5531508c924c2ba1fa3d7f1ada9128d2d",
+    "deliverables/faired42_wing/wing_right.step": "a5cfc601afc3de20cbb5d60bd13c242d73cae7c62e716f5d1eade7cd850854d7"
+  }
+}

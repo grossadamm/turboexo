@@ -1,0 +1,223 @@
+{
+  "car_frame": "millimetres, X forward, Y left, Z up",
+  "scale": 1.0,
+  "placement_xy_at_plate_center_mm": [
+    128.0,
+    128.0
+  ],
+  "bed_bounds_mm": [
+    0,
+    0,
+    256,
+    256
+  ],
+  "excluded_bed_corner_mm": [
+    0,
+    0,
+    18,
+    28
+  ],
+  "xy_buffer_around_full_model_projection_for_fit_check_mm": 7.0,
+  "buffer_note": "Geometric allowance for brim and supports; not a sliced toolpath check.",
+  "cadquery_version": "2.8.0",
+  "input_sha256": {
+    "deliverables/closed42_joint/chin.step": "10de8e8f6948967757f2f22af428d5e23f457d99c70ef9581bcbfcd973346a04",
+    "deliverables/skin_first_wing/mount_rail_right.step": "8e78b456a5995bb6d84a5d1d2644f06618ad7f3a3cd4459415ac297efee1cbb3",
+    "deliverables/faired42_wing/wing_right.step": "a5cfc601afc3de20cbb5d60bd13c242d73cae7c62e716f5d1eade7cd850854d7",
+    "grid/plate_v2.json": "81d7a53733f9c8d92367845bc0c4b9f371b6e6b1e481d09ba64042a159d7ba42"
+  },
+  "parts": {
+    "inner": {
+      "filename": "inner_bed.stl",
+      "sha256": "69995e14f64887d5c907a5787ff38c0ee374866373f7a64873a9f26fe10ef3ae",
+      "rotation_car_to_bed": [
+        [
+          -0.48480962024633717,
+          0.0,
+          0.8746197071393957
+        ],
+        [
+          -0.8746197071393957,
+          0.0,
+          -0.48480962024633717
+        ],
+        [
+          0.0,
+          -1.0,
+          0.0
+        ]
+      ],
+      "translation_car_to_bed_mm": [
+        -182.0978426234215,
+        -5.295006959455755,
+        -290.0
+      ],
+      "transform_convention": "column vectors, bed_point = R @ car_point + t",
+      "bed_face": "flat inboard cut",
+      "yaw_deg": 151,
+      "extent_mm": [
+        240.97454833984375,
+        239.5625457763672,
+        178.51873779296875
+      ],
+      "bounds_bed_local_mm": [
+        [
+          -120.48727416992188,
+          -119.7812728881836,
+          0.0
+        ],
+        [
+          120.48727416992188,
+          119.7812728881836,
+          178.51873779296875
+        ]
+      ],
+      "mesh_volume_mm3": 177753.63585343398,
+      "triangles": 203456,
+      "watertight": true,
+      "connected_volume_count": 1,
+      "face_area_within_0_020_mm_of_bed_mm2": 689.34360686506,
+      "projected_downward_area_beyond_bed_mm2": 8572.864539109576,
+      "model_edge_margin_at_plate_centre_mm": 7.512725830078125,
+      "reserved_envelope_to_excluded_corner_mm": 9.48675834522823,
+      "cad_volume_mm3": 177754.48473804488,
+      "linear_mesh_tolerance_mm": 0.022,
+      "angular_mesh_tolerance_rad": 0.075,
+      "bounds_car_mm": [
+        [
+          -234.96124267578125,
+          -468.51873779296875,
+          75.36548614501953
+        ],
+        [
+          48.58344650268555,
+          -290.0,
+          217.7783203125
+        ]
+      ],
+      "cut_plane_y_mm": -290.0,
+      "preserved_side_of_cut": "Y <= cut_plane_y_mm",
+      "joint_seal_end_y_mm": -344.0,
+      "wall_runout_end_y_mm": -386.0,
+      "nominal_fuse": {
+        "retained_chin_mm3": 162501.0759193298,
+        "rail_mm3": 15253.408986554816,
+        "volume_deviation_from_sum_mm3": -0.00016783973842393607,
+        "fuzzy_tolerance_mm": 1e-05,
+        "note": "Face union at nominal location. No added bridge, connector, or material."
+      },
+      "mount_bores": {
+        "B": {
+          "center_on_outer_rail_face_car_mm": [
+            7.794783850038637,
+            -464.65213551692085,
+            120.424389932237
+          ],
+          "nominal_bore_diameter_mm": 6.8,
+          "mesh_test_radius_mm": 3.35,
+          "ray_count": 17,
+          "clear_axial_distance_mm_between_1_mm_face_standoffs": 8.0
+        },
+        "E": {
+          "center_on_outer_rail_face_car_mm": [
+            -24.102554708436806,
+            -465.21054091701,
+            113.51858352930697
+          ],
+          "nominal_bore_diameter_mm": 6.8,
+          "mesh_test_radius_mm": 3.35,
+          "ray_count": 17,
+          "clear_axial_distance_mm_between_1_mm_face_standoffs": 8.0
+        }
+      }
+    },
+    "outer": {
+      "filename": "outer_bed.stl",
+      "sha256": "0d2f61e0e3747770e152f4ae0f51348c7d3e3fa75cac53157ed3b3ff55f49e04",
+      "rotation_car_to_bed": [
+        [
+          0.8290375725550417,
+          0.0,
+          0.5591929034707467
+        ],
+        [
+          0.5591929034707467,
+          0.0,
+          -0.8290375725550417
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ]
+      ],
+      "translation_car_to_bed_mm": [
+        2.926029925869784,
+        197.18401857590257,
+        585.0999755859375
+      ],
+      "transform_convention": "column vectors, bed_point = R @ car_point + t",
+      "bed_face": "flat wheel-side edge",
+      "yaw_deg": 124,
+      "extent_mm": [
+        203.5806884765625,
+        201.996826171875,
+        115.947998046875
+      ],
+      "bounds_bed_local_mm": [
+        [
+          -101.79034423828125,
+          -100.9984130859375,
+          0.0
+        ],
+        [
+          101.79034423828125,
+          100.9984130859375,
+          115.947998046875
+        ]
+      ],
+      "mesh_volume_mm3": 394820.1437526624,
+      "triangles": 130388,
+      "watertight": true,
+      "connected_volume_count": 1,
+      "face_area_within_0_020_mm_of_bed_mm2": 2268.99064440004,
+      "projected_downward_area_beyond_bed_mm2": 1962.8724128813033,
+      "model_edge_margin_at_plate_centre_mm": 26.20965576171875,
+      "reserved_envelope_to_excluded_corner_mm": 32.80311594058439,
+      "cad_volume_mm3": 394740.7038655921,
+      "linear_mesh_tolerance_mm": 0.018,
+      "angular_mesh_tolerance_rad": 0.06,
+      "bounds_car_mm": [
+        [
+          -220.0,
+          -585.0999755859375,
+          121.49673461914062
+        ],
+        [
+          26.506990432739258,
+          -469.1519775390625,
+          211.2811279296875
+        ]
+      ],
+      "blind_spar_socket_checks": {
+        "fore": {
+          "centerline_car_x_z_mm": [
+            -58.0,
+            129.5
+          ],
+          "blind_end_car_y_mm": -563.5999755859375,
+          "test_confirms": "open centerline from inboard toward the blind end"
+        },
+        "aft": {
+          "centerline_car_x_z_mm": [
+            -170.0,
+            129.5
+          ],
+          "blind_end_car_y_mm": -563.5999755859375,
+          "test_confirms": "open centerline from inboard toward the blind end"
+        }
+      },
+      "orientation_note": "The wheel-side face sits on the bed. Both spar socket openings face up. The complete faired floor and layered blade are unchanged; validate any slicer-generated supports separately."
+    }
+  }
+}

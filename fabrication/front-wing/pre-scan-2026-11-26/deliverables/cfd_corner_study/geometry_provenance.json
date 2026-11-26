@@ -1,0 +1,294 @@
+{
+  "solver_axes": {
+    "x": "-carX (rearward)",
+    "y": "-carY (outboard)",
+    "z": "carZ (up)"
+  },
+  "units": "mm",
+  "wing_equivalence": {
+    "control_and_blade_fused_mm3": 394740.70714714105,
+    "control_mm3": 386807.70726768434,
+    "approved_full_mm3": 394740.7038655921,
+    "accepted_full_source": "deliverables/faired42_wing/wing_right.step",
+    "method": "Control from accepted generator with precisely one final blade union removed. Exact standalone blade from the same generator; separate mask is OR-ed into the common control to avoid noise from independent voxelizations outside the blade. Re-fused control and blade checked valid with one solid and compared to accepted STEP by volume."
+  },
+  "wing_control": {
+    "source": "deliverables/cfd_corner_study/blade_off_cad/wing_right.stl",
+    "triangle_count": 99478,
+    "mesh_bounds_in_solver_mm": [
+      [
+        -26.506990432739258,
+        469.1519775390625,
+        121.49673461914062
+      ],
+      [
+        220.0,
+        585.0999755859375,
+        211.2811279296875
+      ]
+    ],
+    "note": "Audited STL of source-generated pre-blade solid. Vertical envelope seals plate-facing lightening cavities and spar pockets only."
+  },
+  "upper_blade": {
+    "source": "code/faired42_wing.py",
+    "triangle_count": 31240,
+    "mesh_bounds_in_solver_mm": [
+      [
+        144.927001953125,
+        508.98858642578125,
+        163.35064697265625
+      ],
+      [
+        218.0,
+        571.2097778320312,
+        208.64520263671875
+      ]
+    ],
+    "note": "Exact isolated 42 degree design blade before union with common wing. Rib-geometry source: code/layered_channel_wing.py."
+  },
+  "bumper": {
+    "source": "deliverables/front_end_v9/fiberglass_v9_mm.step",
+    "triangle_count": 79448,
+    "mesh_bounds_in_solver_mm": [
+      [
+        22.116716384887695,
+        -28.096378326416016,
+        159.47166442871094
+      ],
+      [
+        339.0,
+        419.5999450683594,
+        703.1689453125
+      ]
+    ],
+    "note": "Right exterior derived by first x-ray hit of V9 fiberglass mesh. Occupancy continues to common planar aft closure at x=339.2 mm; grille openings are left clear where no fiberglass intersects the ray."
+  },
+  "chin": {
+    "source": "deliverables/closed42_joint/chin.stl",
+    "triangle_count": 164159,
+    "mesh_bounds_in_solver_mm": [
+      [
+        -96.57888793945312,
+        -10.563438415527344,
+        133.8854217529297
+      ],
+      [
+        234.96127319335938,
+        468.51873779296875,
+        234.19801330566406
+      ]
+    ],
+    "note": "Same installed rigid chin in both configurations."
+  },
+  "seal": {
+    "source": "deliverables/closed42_joint/seal.stl",
+    "triangle_count": 5811,
+    "mesh_bounds_in_solver_mm": [
+      [
+        42.95026779174805,
+        -4.222222328186035,
+        206.52328491210938
+      ],
+      [
+        227.53598022460938,
+        344.0,
+        236.76544189453125
+      ]
+    ],
+    "note": "Same thin compressed seal in both configurations."
+  },
+  "green_web": {
+    "source": "deliverables/bracket/inboard_mounts_v4_mm.step",
+    "triangle_count": 5464,
+    "mesh_bounds_in_solver_mm": [
+      [
+        160.07981872558594,
+        269.3596496582031,
+        100.56255340576172
+      ],
+      [
+        312.1105651855469,
+        469.61431884765625,
+        484.90765380859375
+      ]
+    ]
+  },
+  "green_brace": {
+    "source": "deliverables/bracket/inboard_mounts_v4_mm.step",
+    "triangle_count": 16,
+    "mesh_bounds_in_solver_mm": [
+      [
+        192.0,
+        283.60540771484375,
+        112.22240447998047
+      ],
+      [
+        235.1638946533203,
+        468.4565734863281,
+        184.09803771972656
+      ]
+    ]
+  },
+  "green_plate": {
+    "source": "deliverables/skin_first_wing/plate_right.stl",
+    "triangle_count": 6892,
+    "mesh_bounds_in_solver_mm": [
+      [
+        -20.0,
+        464.4047546386719,
+        99.8581314086914
+      ],
+      [
+        279.84112548828125,
+        474.03082275390625,
+        235.43934631347656
+      ]
+    ],
+    "note": "Released outer plate from the same assembly; obsolete mount rail, add-on receivers and spars excluded."
+  },
+  "tire": {
+    "source": "deliverables/outboard_wing_study/assets/tire_car_right_inferred_envelope_mm.obj",
+    "triangle_count": 1536,
+    "mesh_bounds_in_solver_mm": [
+      [
+        418.5,
+        585.0999755859375,
+        0.0
+      ],
+      [
+        998.5,
+        790.0999755859375,
+        580.0
+      ]
+    ],
+    "note": "Inferred straight-ahead right tire envelope, not measured production tread or sidewall. Vertical exterior envelope fills the wheel/rim center. No tread, rotation, steering, camber, or contact deformation."
+  },
+  "intercooler_0": {
+    "source": "deliverables/body/intercooler_v4_mm.step",
+    "triangle_count": 22,
+    "mesh_bounds_in_solver_mm": [
+      [
+        179.8473358154297,
+        -173.3562774658203,
+        285.2425231933594
+      ],
+      [
+        259.1117858886719,
+        175.37074279785156,
+        504.8583679199219
+      ]
+    ]
+  },
+  "intercooler_1": {
+    "source": "deliverables/body/intercooler_v4_mm.step",
+    "triangle_count": 22484,
+    "mesh_bounds_in_solver_mm": [
+      [
+        178.14390563964844,
+        169.04261779785156,
+        295.3052673339844
+      ],
+      [
+        264.12432861328125,
+        239.3279571533203,
+        509.8865661621094
+      ]
+    ]
+  },
+  "radiator_0": {
+    "source": "deliverables/body/radiator_v4_mm.step",
+    "triangle_count": 686,
+    "mesh_bounds_in_solver_mm": [
+      [
+        306.85955810546875,
+        -316.59259033203125,
+        226.43373107910156
+      ],
+      [
+        353.2184753417969,
+        318.8809509277344,
+        558.0533447265625
+      ]
+    ]
+  },
+  "radiator_1": {
+    "source": "deliverables/body/radiator_v4_mm.step",
+    "triangle_count": 12,
+    "mesh_bounds_in_solver_mm": [
+      [
+        310.0846252441406,
+        314.78350830078125,
+        226.12881469726562
+      ],
+      [
+        353.3345947265625,
+        330.8769836425781,
+        542.005126953125
+      ]
+    ]
+  },
+  "radiator_3": {
+    "source": "deliverables/body/radiator_v4_mm.step",
+    "triangle_count": 20,
+    "mesh_bounds_in_solver_mm": [
+      [
+        311.11322021484375,
+        -323.49151611328125,
+        541.7002563476562
+      ],
+      [
+        354.09967041015625,
+        331.3095703125,
+        592.1029663085938
+      ]
+    ]
+  },
+  "radiator_4": {
+    "source": "deliverables/body/radiator_v4_mm.step",
+    "triangle_count": 10,
+    "mesh_bounds_in_solver_mm": [
+      [
+        302.9986877441406,
+        -328.0795593261719,
+        188.34571838378906
+      ],
+      [
+        346.08770751953125,
+        326.779541015625,
+        242.76141357421875
+      ]
+    ]
+  },
+  "radiator_5": {
+    "source": "deliverables/body/radiator_v4_mm.step",
+    "triangle_count": 707,
+    "mesh_bounds_in_solver_mm": [
+      [
+        314.22265625,
+        -11.539934158325195,
+        590.9475708007812
+      ],
+      [
+        353.22265625,
+        30.389808654785156,
+        614.6920166015625
+      ]
+    ]
+  },
+  "sources_sha256_relative_to_artifact_root": {
+    "deliverables/faired42_wing/wing_right.step": "a5cfc601afc3de20cbb5d60bd13c242d73cae7c62e716f5d1eade7cd850854d7",
+    "deliverables/cfd_corner_study/blade_off_cad/wing_right.stl": "8305300338d0695ca1d8fdfd31b349fe7fb6f56b37bfb1c36989ddd12d600d33",
+    "code/faired42_wing.py": "c2042cf8b9ff7654e3fbbc6085b4e9b1ae48c7cc42db49486e4b2d84e4480480",
+    "code/layered_channel_wing.py": "53686c305a4f47eb47e7cecf038cf0fae5a9c3b199ed1b1f783b73de19117028",
+    "deliverables/cfd_corner_study/blade_off_cad/wing_right.step": "3b3e284e253141c5aa274288ac3500b5531508c924c2ba1fa3d7f1ada9128d2d",
+    "deliverables/front_end_v9/fiberglass_v9_mm.step": "7465bbd4d147b5d3bdc2d8ff147fe336a780f119641f8112fe7bcd6cf3f39cde",
+    "deliverables/closed42_joint/chin.stl": "58adedc42481715e36fcf2dd984b46815772832c5a2bb7c3dcd1f1b31fd99263",
+    "deliverables/closed42_joint/seal.stl": "67da27a3a8e4c18786e2975e6569f1ffe9e51123431cace13a7cfedceed248b4",
+    "deliverables/bracket/inboard_mounts_v4_mm.step": "8e7ff2c5109ee7865f5343cf54ac8e88f43a90e4cb9ffddd90be415376bd950e",
+    "deliverables/skin_first_wing/plate_right.stl": "6f8424cbbc88483097ef3591483442566843a12b7321f4160556e32aeec27ea3",
+    "deliverables/outboard_wing_study/assets/tire_car_right_inferred_envelope_mm.obj": "ad89e62d712a02dba8c26acecbd76d73937e3f1d6e656281a85a5f76e8e0284f",
+    "deliverables/outboard_wing_study/assets/tire_context_provenance.json": "64b4f72375d762f71db8320e644f8479e353b4e6e102a4c33a04086e395e3af1",
+    "deliverables/body/intercooler_v4_mm.step": "bb220fc7864c791a5ae1fcab4a12c9c2c6a287067274efbae2f2080fefa9a3b9",
+    "deliverables/body/radiator_v4_mm.step": "9cac08c4a06f88139a2b12ef89e13b1ee4ebdf55fdcc0acecdc9a92a71708632"
+  }
+}

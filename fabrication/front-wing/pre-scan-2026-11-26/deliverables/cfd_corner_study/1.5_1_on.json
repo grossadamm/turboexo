@@ -1,0 +1,86 @@
+{
+  "active_cells": 2694082,
+  "solver_iterations": 20,
+  "relative_linear_residual": 4.30976237104277e-09,
+  "net_exterior_flux_over_inlet": 9.04999235040649e-11,
+  "boundary_flux_mm2_U": [
+    -4361436.446330374,
+    4356157.464930317,
+    -0.0,
+    3920.6518716905302,
+    -0.0,
+    1358.3299230758766
+  ],
+  "windows": {
+    "inside_slot": {
+      "station_mm": 205.0,
+      "outward_mm": [
+        550.0,
+        568.0
+      ],
+      "height_mm": [
+        187.5,
+        194.5
+      ],
+      "area_mm2": 126.0,
+      "signed_flux_mm2_U": 140.45183832557575,
+      "forward_flux_mm2_U": 140.45183832557572,
+      "velocity_over_U": [
+        1.1361600675288073,
+        -0.25123870410034554,
+        0.8378861857314788
+      ],
+      "up_deg": 36.40773376302259,
+      "outward_deg": -12.46914127140603
+    },
+    "exit_patch": {
+      "station_mm": 228.0,
+      "outward_mm": [
+        547.0,
+        576.0
+      ],
+      "height_mm": [
+        197.0,
+        220.0
+      ],
+      "area_mm2": 666.9999999999999,
+      "signed_flux_mm2_U": 778.9232023556297,
+      "forward_flux_mm2_U": 778.9232023556297,
+      "velocity_over_U": [
+        1.1699951827261075,
+        -0.11489955292985633,
+        -0.29990786305236194
+      ],
+      "up_deg": -14.3772175849305,
+      "outward_deg": -5.608756033764091
+    },
+    "upstream_of_tire": {
+      "station_mm": 395.0,
+      "outward_mm": [
+        550.0,
+        635.0
+      ],
+      "height_mm": [
+        175.0,
+        265.0
+      ],
+      "area_mm2": 7650.000000000001,
+      "signed_flux_mm2_U": 6263.054571362012,
+      "forward_flux_mm2_U": 6263.054571361994,
+      "velocity_over_U": [
+        0.8955718766106924,
+        -0.6063034807982769,
+        -0.04851137038612316
+      ],
+      "up_deg": -3.100569724077196,
+      "outward_deg": -34.09805818946685
+    }
+  },
+  "blade_only_cells": 1667,
+  "local_spacing_mm": [
+    2.25,
+    1.5,
+    1.5
+  ],
+  "domain_multiplier": 1.0
+}

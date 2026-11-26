@@ -1,0 +1,140 @@
+{
+  "coordinate_frame": "Car-frame millimetres, X forward, Y car-left, Z up.",
+  "crest_inlet_car_xy_mm": [
+    -36.0,
+    -501.24048641475986
+  ],
+  "crest_inlet_tangent_deg": 0.0,
+  "crest_blend_start_car_xy_mm": [
+    -116.0,
+    -506.0515162563613
+  ],
+  "baseline_crest_outlet_car_xy_mm": [
+    -220.0,
+    -527.0999999999999
+  ],
+  "baseline_crest_design_exit_deg": 16.0,
+  "variant_crest_outlet_car_xy_mm": [
+    -220.0,
+    -537.1743026256016
+  ],
+  "variant_crest_exit_cad": [
+    {
+      "point_car_xyz_mm": [
+        -220.0,
+        -537.1743026256,
+        211.28112036668
+      ],
+      "outward_angle_deg": 29.99999954581661,
+      "upsweep_angle_deg": 36.00000043307589
+    }
+  ],
+  "variant_exit_outward_displacement_mm": 10.074302625601717,
+  "lower_guide_cross_section": "Original inboard foot and outer plan held fixed. The inboard shoulder spreads toward the new crest to keep skin continuous above the unchanged underside; the wheel-side shelf narrows by the crest shift. Upper control-point heights are unchanged.",
+  "blade": {
+    "narrowing_rule": "None. Both the original rib offsets and relative X/Z rib profiles are retained.",
+    "minimum_distance_to_original_plan_boundary_mm": 1.9999984102541646,
+    "stray_volume_beyond_plan_mm3": 0.0,
+    "control_overlap_mm3": 847.2214918722339,
+    "triangles": 31984,
+    "volume_mm3": 8777.433628505227,
+    "section_rib_trailing_edge_measurements": [
+      {
+        "rib_fraction": 0.0,
+        "blade_lower_exit_upsweep_deg": 41.99999999999959,
+        "blade_lower_exit_outward_deg_baseline": 15.821500088671044,
+        "blade_lower_exit_outward_deg_variant": 29.375685023340893,
+        "blade_lower_exit_car_xyz_mm": [
+          -218.0,
+          -534.8340776167706,
+          207.24519677224365
+        ],
+        "blade_lower_exit_outward_displacement_mm": 9.504198321494414
+      },
+      {
+        "rib_fraction": 0.25,
+        "blade_lower_exit_upsweep_deg": 42.00000000000005,
+        "blade_lower_exit_outward_deg_baseline": 15.799198714317468,
+        "blade_lower_exit_outward_deg_variant": 29.297786308977837,
+        "blade_lower_exit_car_xyz_mm": [
+          -217.75,
+          -546.443573304001,
+          207.02358279409395
+        ],
+        "blade_lower_exit_outward_displacement_mm": 9.434485654220111
+      },
+      {
+        "rib_fraction": 0.5,
+        "blade_lower_exit_upsweep_deg": 42.00000000000029,
+        "blade_lower_exit_outward_deg_baseline": 15.732309309967437,
+        "blade_lower_exit_outward_deg_variant": 29.064294541047953,
+        "blade_lower_exit_car_xyz_mm": [
+          -217.0,
+          -557.7747377962934,
+          206.35714243106747
+        ],
+        "blade_lower_exit_outward_displacement_mm": 9.227394662341453
+      },
+      {
+        "rib_fraction": 0.75,
+        "blade_lower_exit_upsweep_deg": 42.00000000000022,
+        "blade_lower_exit_outward_deg_baseline": 15.620875780936451,
+        "blade_lower_exit_outward_deg_variant": 28.67586497309089,
+        "blade_lower_exit_car_xyz_mm": [
+          -215.75,
+          -568.8355509345554,
+          205.2409850654866
+        ],
+        "blade_lower_exit_outward_displacement_mm": 8.889015998087643
+      },
+      {
+        "rib_fraction": 1.0,
+        "blade_lower_exit_upsweep_deg": 41.99999999999942,
+        "blade_lower_exit_outward_deg_baseline": 15.46497046989125,
+        "blade_lower_exit_outward_deg_variant": 28.133730189334134,
+        "blade_lower_exit_car_xyz_mm": [
+          -214.0,
+          -579.6391376731049,
+          203.66664188753518
+        ],
+        "blade_lower_exit_outward_displacement_mm": 8.429332823163804
+      }
+    ],
+    "diagnostic_matched_width_baseline": {
+      "file": "upper_blade_16_matched_width.stl",
+      "geometry": "Exact accepted 16-degree blade; no width change on either case.",
+      "source": "code/faired42_wing.py: upper_blade('right')",
+      "triangles": 31836,
+      "volume_mm3": 8779.364608603944,
+      "sha256": "a67a7c527d68f442fd88d855b7563f4504272d24a1ca04bb52a578ae1747a32f"
+    }
+  },
+  "fused": {
+    "triangles": 131350,
+    "volume_mm3": 388988.6604346922
+  },
+  "unchanged_sections": {
+    "matched_lower_section_count": 1977,
+    "max_underside_delta_mm": 0.0,
+    "aft_inboard_shoulder_thickness_sample_count": 672,
+    "minimum_sampled_aft_shoulder_thickness_mm": 3.3746267500000044,
+    "max_inboard_or_forward_section_delta_mm": 0.0,
+    "common_shelf_samples": 28,
+    "max_shelf_height_delta_mm": 5.999999075356754e-08
+  },
+  "sha256_sources": {
+    "code/faired42_wing.py": "c2042cf8b9ff7654e3fbbc6085b4e9b1ae48c7cc42db49486e4b2d84e4480480",
+    "code/swept_ramp_wing.py": "588878452e3e0441198e17f48a46631af74175f4caefde98ba71ffff14dd5b0b",
+    "code/layered_channel_wing.py": "53686c305a4f47eb47e7cecf038cf0fae5a9c3b199ed1b1f783b73de19117028",
+    "deliverables/cfd_corner_study/blade_off_cad/wing_right.step": "3b3e284e253141c5aa274288ac3500b5531508c924c2ba1fa3d7f1ada9128d2d",
+    "deliverables/faired42_wing/wing_right.step": "a5cfc601afc3de20cbb5d60bd13c242d73cae7c62e716f5d1eade7cd850854d7"
+  },
+  "sha256_candidate_outputs": {
+    "wing_right.step": "3d917598339c1c5ed3ab179d99ea977fabe8a4618502f6142f8bb042dfe695d5",
+    "wing_right.stl": "db882a67e8e11a122e6dfc4be96b536e61881682b254b785041a1616c3286c45",
+    "upper_blade.step": "bf65eb774fdacdc71f827b98ad1d98c8d1d8e87571c5158956348386a6b556aa",
+    "upper_blade.stl": "3ad990a8fe3d203b494d1db8645f4b4a0ad114bc3db59017db37bc681f29f870",
+    "blade_off_cad/wing_right.step": "24e5deff4cffbcb5f843d6c178ce52b97057e3feecd18b92724b78ce3f4f6b2a",
+    "blade_off_cad/wing_right.stl": "5571a619504df8773006e017f9edea4f0f290749d44391571d8c62c300511f72"
+  }
+}

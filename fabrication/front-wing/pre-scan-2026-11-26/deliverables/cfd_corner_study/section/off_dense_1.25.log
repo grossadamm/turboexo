@@ -1,0 +1,43 @@
+grid=off_1.25.grid nx=896 nz=376 dx=1.250 Re_c=650.00 U_lat=0.06500 Ma_inf=0.11258 tau_plus=0.5508226 tau_minus=4.1893025 steps=57338 links=1198
+step=32575 t*=12.49861 mean_rho=0.9993779 min=0.9842646 max=1.0074586 maxMach=0.18517 mass_flux_imbalance_pct=0.23427 bad=0
+elapsed_s=32.62
+step=33878 t*=12.99856 mean_rho=0.9991885 min=0.9805675 max=1.0069321 maxMach=0.18653 mass_flux_imbalance_pct=0.14081 bad=0
+elapsed_s=33.85
+step=35181 t*=13.49850 mean_rho=0.9997101 min=0.9808309 max=1.0078791 maxMach=0.18082 mass_flux_imbalance_pct=0.15774 bad=0
+elapsed_s=35.09
+step=36484 t*=13.99845 mean_rho=0.9992891 min=0.9849497 max=1.0073375 maxMach=0.18310 mass_flux_imbalance_pct=0.23286 bad=0
+elapsed_s=36.55
+step=37787 t*=14.49839 mean_rho=0.9992626 min=0.9797627 max=1.0070034 maxMach=0.18617 mass_flux_imbalance_pct=0.12228 bad=0
+elapsed_s=38.08
+step=39090 t*=14.99833 mean_rho=0.9997216 min=0.9813484 max=1.0079235 maxMach=0.18170 mass_flux_imbalance_pct=0.17340 bad=0
+elapsed_s=39.46
+step=40393 t*=15.49828 mean_rho=0.9992145 min=0.9855748 max=1.0072270 maxMach=0.18367 mass_flux_imbalance_pct=0.22440 bad=0
+elapsed_s=40.70
+step=41696 t*=15.99822 mean_rho=0.9993521 min=0.9794420 max=1.0070919 maxMach=0.18544 mass_flux_imbalance_pct=0.10955 bad=0
+elapsed_s=41.93
+step=42999 t*=16.49817 mean_rho=0.9996992 min=0.9818621 max=1.0079104 maxMach=0.18432 mass_flux_imbalance_pct=0.18915 bad=0
+elapsed_s=43.16
+step=44302 t*=16.99811 mean_rho=0.9991580 min=0.9861068 max=1.0071215 maxMach=0.18442 mass_flux_imbalance_pct=0.21113 bad=0
+elapsed_s=44.41
+step=45605 t*=17.49806 mean_rho=0.9994445 min=0.9794432 max=1.0072736 maxMach=0.18442 mass_flux_imbalance_pct=0.10648 bad=0
+elapsed_s=45.73
+step=46908 t*=17.99800 mean_rho=0.9996438 min=0.9823852 max=1.0078217 maxMach=0.18621 mass_flux_imbalance_pct=0.20383 bad=0
+elapsed_s=46.96
+step=48211 t*=18.49795 mean_rho=0.9991240 min=0.9857901 max=1.0070195 maxMach=0.18522 mass_flux_imbalance_pct=0.19568 bad=0
+elapsed_s=48.22
+step=49514 t*=18.99789 mean_rho=0.9995322 min=0.9796354 max=1.0074701 maxMach=0.18332 mass_flux_imbalance_pct=0.11328 bad=0
+elapsed_s=49.48
+step=50817 t*=19.49784 mean_rho=0.9995634 min=0.9829605 max=1.0076535 maxMach=0.18714 mass_flux_imbalance_pct=0.21751 bad=0
+elapsed_s=50.99
+step=52120 t*=19.99778 mean_rho=0.9991166 min=0.9839517 max=1.0069396 maxMach=0.18597 mass_flux_imbalance_pct=0.17888 bad=0
+elapsed_s=53.05
+step=53423 t*=20.49772 mean_rho=0.9996092 min=0.9799481 max=1.0076439 maxMach=0.18221 mass_flux_imbalance_pct=0.12653 bad=0
+elapsed_s=54.41
+step=54726 t*=20.99767 mean_rho=0.9994695 min=0.9835976 max=1.0075708 maxMach=0.18688 mass_flux_imbalance_pct=0.22854 bad=0
+elapsed_s=55.90
+step=56029 t*=21.49761 mean_rho=0.9991389 min=0.9819062 max=1.0069065 maxMach=0.18644 mass_flux_imbalance_pct=0.16017 bad=0
+elapsed_s=57.40
+step=57332 t*=21.99756 mean_rho=0.9996711 min=0.9803719 max=1.0077848 maxMach=0.18120 mass_flux_imbalance_pct=0.14218 bad=0
+elapsed_s=59.01
+step=57338 t*=21.99986 mean_rho=0.9996727 min=0.9803850 max=1.0077894 maxMach=0.18118 mass_flux_imbalance_pct=0.14269 bad=0
+elapsed_s=59.02

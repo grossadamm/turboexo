@@ -1,0 +1,35 @@
+{
+  "base": "/Users/adamgross/dev/artifacts/front-wing-2026-11-20/deliverables/sweep30_study/render_front.glb",
+  "source_scoop": "/Users/adamgross/dev/artifacts/front-wing-2026-11-20/duct_progressive_turn/TurboExo_brake_scoop_progressive_turn_mm.stl",
+  "source_scoop_sha256": "0fb73829f4a894e7c64bb8b70df01b7f8898c05c8a391d374b721ff488810c3a",
+  "original_meshes_validated": 85,
+  "assembled_meshes": 87,
+  "transform_car_to_gltf": "(Y,Z,X)/1000",
+  "right_fit_car_mm": [
+    [
+      0.998702737131617,
+      0.05060795556297755,
+      0.0056282927743041035,
+      -24.381317526877908
+    ],
+    [
+      0.05059821478822647,
+      -0.9987173581259705,
+      0.0018599027197129566,
+      -0.673238104207087
+    ],
+    [
+      -0.005715199564503226,
+      0.001572708370290361,
+      0.9999824313868328,
+      6.048274347114855
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "glb_sha256": "9f33a4e9fe94e0ed8e531e11ead17ebec67903aec702db59c7a6ace0d3715825"
+}

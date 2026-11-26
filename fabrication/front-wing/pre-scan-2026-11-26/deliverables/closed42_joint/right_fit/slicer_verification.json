@@ -1,0 +1,3124 @@
+{
+  "project": "closed42_right_fit_draft_pla_p1s.3mf",
+  "project_sha256": "3af8060ee2d7542333374b91093fb719e55eeb8b97ecdec47ef17901d5f6201d",
+  "slicer": "Bambu Studio 02.09.01.70",
+  "reopen_and_reslice_success": true,
+  "printer_dispatch": false,
+  "plates": [
+    {
+      "plate": 1,
+      "name": "Inner chin + inboard rail",
+      "source_stl": "inner_bed.stl",
+      "source_stl_sha256": "69995e14f64887d5c907a5787ff38c0ee374866373f7a64873a9f26fe10ef3ae",
+      "triangle_count": 203456,
+      "mesh_only_transform_from_stl_to_physical_plate_mm": [
+        128,
+        132.4,
+        0
+      ],
+      "max_distance_from_source_face_vertex_mm": 6.398759787684839e-07,
+      "physical_plate_mesh_bounds_mm": [
+        [
+          7.512726000000001,
+          12.618727000000007,
+          0.0
+        ],
+        [
+          248.487274,
+          252.181273,
+          178.5187378
+        ]
+      ],
+      "bed_clearance_mm_lower_bound": 5.881,
+      "excluded_corner_clearance_mm_lower_bound": 22.071999999999996,
+      "gcode": "Metadata/plate_1.gcode",
+      "gcode_sha256": "fb018d30abfbf692df662b85a6921e280b4ab325bee9f9ad39059c9b59134bac",
+      "estimated_total_time": "5h 38m 54s",
+      "estimated_filament_g": 129.82,
+      "slice_warning": null,
+      "verified_object_settings_overrides": {}
+    },
+    {
+      "plate": 2,
+      "name": "Complete outer wing",
+      "source_stl": "outer_bed.stl",
+      "source_stl_sha256": "0d2f61e0e3747770e152f4ae0f51348c7d3e3fa75cac53157ed3b3ff55f49e04",
+      "triangle_count": 130388,
+      "mesh_only_transform_from_stl_to_physical_plate_mm": [
+        128,
+        128,
+        0
+      ],
+      "max_distance_from_source_face_vertex_mm": 4.995095761749506e-07,
+      "physical_plate_mesh_bounds_mm": [
+        [
+          26.209655999999995,
+          27.001587,
+          0.0
+        ],
+        [
+          229.790344,
+          228.998413,
+          115.947998
+        ]
+      ],
+      "bed_clearance_mm_lower_bound": 23.72,
+      "excluded_corner_clearance_mm_lower_bound": 20.380496681877016,
+      "gcode": "Metadata/plate_2.gcode",
+      "gcode_sha256": "9e437730fa7deb10f98638ee0932b11b2dffe248518434951a851a67adcd3cf3",
+      "estimated_total_time": "5h 0m 11s",
+      "estimated_filament_g": 144.09,
+      "slice_warning": null,
+      "verified_object_settings_overrides": {
+        "support_critical_regions_only": "1",
+        "support_object_xy_distance": "0.3",
+        "support_style": "default",
+        "support_threshold_angle": "25",
+        "support_type": "normal(auto)"
+      }
+    }
+  ],
+  "verified_embedded_project_settings": {
+    "printer_settings_id": "Bambu Lab P1S 0.4 nozzle",
+    "printer_model": "Bambu Lab P1S",
+    "nozzle_diameter": [
+      "0.4"
+    ],
+    "filament_settings_id": [
+      "Generic PLA"
+    ],
+    "filament_type": [
+      "PLA"
+    ],
+    "nozzle_temperature_initial_layer": [
+      "220"
+    ],
+    "nozzle_temperature": [
+      "220"
+    ],
+    "textured_plate_temp_initial_layer": [
+      "55"
+    ],
+    "textured_plate_temp": [
+      "55"
+    ],
+    "curr_bed_type": "Textured PEI Plate",
+    "initial_layer_print_height": "0.2",
+    "layer_height": "0.28",
+    "wall_loops": "2",
+    "sparse_infill_density": "3%",
+    "sparse_infill_pattern": "gyroid",
+    "enable_support": "1",
+    "support_type": "tree(auto)",
+    "support_style": "tree_slim",
+    "support_on_build_plate_only": "1",
+    "support_critical_regions_only": "1",
+    "support_top_z_distance": "0.28",
+    "support_bottom_z_distance": "0.28",
+    "brim_type": "outer_only",
+    "brim_width": "5",
+    "brim_object_gap": "0.1",
+    "bed_exclude_area": [
+      "0x0",
+      "18x0",
+      "18x28",
+      "0x28"
+    ],
+    "printable_area": [
+      "0x0",
+      "256x0",
+      "256x256",
+      "0x256"
+    ],
+    "printable_height": "250"
+  },
+  "toolpath_envelopes": {
+    "1": {
+      "method": "G0 through G3 deposited model/support/brim trajectories, not printer start/end routines. Exact angular extrema of each G2/G3 arc plus start/end radius mismatch; conservative deposited envelope adds line width / 2 and 0.003 mm rounding allowance. Per-command bounding-box separation from exclusion rectangle.",
+      "bed_print_volume_mm": [
+        256,
+        256,
+        250
+      ],
+      "excluded_xy_rectangle_mm": [
+        0,
+        0,
+        18,
+        28
+      ],
+      "total_extrusion_xy_bounds_mm": [
+        7.254515284705463,
+        5.967,
+        248.47346211131097,
+        250.119
+      ],
+      "first_layer_extrusion_xy_bounds_mm": [
+        24.198,
+        5.967,
+        232.22761341191642,
+        206.49512233466726
+      ],
+      "first_layer_support_xy_bounds_mm": [
+        24.198,
+        63.827,
+        232.22761341191642,
+        206.49512233466726
+      ],
+      "total_extrusion_z_bounds_mm": [
+        0.2,
+        178.56
+      ],
+      "minimum_bed_edge_clearance_mm": 5.881,
+      "minimum_exclusion_zone_clearance_lower_bound_mm": 22.071999999999996,
+      "first_layer_exclusion_zone_clearance_lower_bound_mm": 26.392000000000003,
+      "deposition_commands_by_feature": {
+        "Support": 113283,
+        "Brim": 1072,
+        "Outer wall": 53464,
+        "Inner wall": 34681,
+        "Bottom surface": 309,
+        "Internal solid infill": 6819,
+        "Sparse infill": 19825,
+        "Floating vertical shell": 8077,
+        "Overhang wall": 1915,
+        "Support transition": 11954,
+        "Support interface": 18878,
+        "Gap infill": 1829,
+        "Top surface": 5050,
+        "Bridge": 1285
+      },
+      "arc_count": 130702,
+      "violation_count": 0,
+      "first_violations": [],
+      "xy_bounds_extremal_commands": {
+        "0": [
+          583962,
+          "Support interface",
+          168.48
+        ],
+        "1": [
+          4151,
+          "Brim",
+          0.2
+        ],
+        "2": [
+          369019,
+          "Outer wall",
+          60.96
+        ],
+        "3": [
+          557800,
+          "Outer wall",
+          164.28
+        ]
+      }
+    },
+    "2": {
+      "method": "G0 through G3 deposited model/support/brim trajectories, not printer start/end routines. Exact angular extrema of each G2/G3 arc plus start/end radius mismatch; conservative deposited envelope adds line width / 2 and 0.003 mm rounding allowance. Per-command bounding-box separation from exclusion rectangle.",
+      "bed_print_volume_mm": [
+        256,
+        256,
+        250
+      ],
+      "excluded_xy_rectangle_mm": [
+        0,
+        0,
+        18,
+        28
+      ],
+      "total_extrusion_xy_bounds_mm": [
+        26.272026154377016,
+        23.72,
+        229.712,
+        226.92604572415704
+      ],
+      "first_layer_extrusion_xy_bounds_mm": [
+        51.403999999999996,
+        23.72,
+        190.24099999999999,
+        202.541
+      ],
+      "first_layer_support_xy_bounds_mm": [
+        54.319,
+        23.72,
+        190.24099999999999,
+        202.541
+      ],
+      "total_extrusion_z_bounds_mm": [
+        0.2,
+        115.84
+      ],
+      "minimum_bed_edge_clearance_mm": 23.72,
+      "minimum_exclusion_zone_clearance_lower_bound_mm": 20.380496681877016,
+      "first_layer_exclusion_zone_clearance_lower_bound_mm": 39.179,
+      "deposition_commands_by_feature": {
+        "Support transition": 1225,
+        "Support interface": 2945,
+        "Support": 41355,
+        "Brim": 780,
+        "Outer wall": 61867,
+        "Inner wall": 38222,
+        "Bottom surface": 187,
+        "Overhang wall": 1018,
+        "Bridge": 2340,
+        "Internal solid infill": 2034,
+        "Sparse infill": 32582,
+        "Floating vertical shell": 5248,
+        "Gap infill": 8506,
+        "Top surface": 1884
+      },
+      "arc_count": 74926,
+      "violation_count": 0,
+      "first_violations": [],
+      "xy_bounds_extremal_commands": {
+        "0": [
+          380712,
+          "Outer wall",
+          106.04
+        ],
+        "1": [
+          1124,
+          "Support",
+          0.2
+        ],
+        "2": [
+          387907,
+          "Outer wall",
+          110.24
+        ],
+        "3": [
+          401139,
+          "Outer wall",
+          115.56
+        ]
+      }
+    }
+  },
+  "support_region_checks": {
+    "bores": {
+      "B": {
+        "probe_xyz_bed_local_mm": [
+          [
+            -80.551,
+            -70.495,
+            174.652
+          ],
+          [
+            -80.511,
+            -70.4,
+            168.653
+          ]
+        ],
+        "support_count": 21,
+        "first_hits": [
+          {
+            "gcode_line": 585815,
+            "feature": "Support interface",
+            "layer_z_mm": 168.48,
+            "support_bounds_in_probe_xy_mm": [
+              1.9452205925269404,
+              -1.400279407473061,
+              4.005306862879099,
+              0.747279407473055
+            ]
+          },
+          {
+            "gcode_line": 585816,
+            "feature": "Support interface",
+            "layer_z_mm": 168.48,
+            "support_bounds_in_probe_xy_mm": [
+              2.8666310241478996,
+              -2.0100454800691536,
+              4.585368975852099,
+              -0.9711310241479013
+            ]
+          },
+          {
+            "gcode_line": 585830,
+            "feature": "Support interface",
+            "layer_z_mm": 168.48,
+            "support_bounds_in_probe_xy_mm": [
+              2.4979999999999984,
+              -1.0675000000000017,
+              3.3489999999999958,
+              0.3584999999999984
+            ]
+          },
+          {
+            "gcode_line": 585831,
+            "feature": "Support interface",
+            "layer_z_mm": 168.48,
+            "support_bounds_in_probe_xy_mm": [
+              2.9224509895519706,
+              -0.4460490104480268,
+              3.7295490104480233,
+              0.3590490104480235
+            ]
+          },
+          {
+            "gcode_line": 585832,
+            "feature": "Support interface",
+            "layer_z_mm": 168.48,
+            "support_bounds_in_probe_xy_mm": [
+              3.3023789654627964,
+              -0.6081210345372026,
+              4.087621034537204,
+              -0.01887896546279985
+            ]
+          },
+          {
+            "gcode_line": 585833,
+            "feature": "Support interface",
+            "layer_z_mm": 168.48,
+            "support_bounds_in_probe_xy_mm": [
+              3.3519999999999976,
+              -1.3325000000000022,
+              4.087000000000002,
+              -0.18150000000000074
+            ]
+          },
+          {
+            "gcode_line": 585843,
+            "feature": "Support interface",
+            "layer_z_mm": 168.48,
+            "support_bounds_in_probe_xy_mm": [
+              2.469999491879512,
+              1.7394994918795126,
+              3.673019308753879,
+              4.0335005081204836
+            ]
+          },
+          {
+            "gcode_line": 585844,
+            "feature": "Support interface",
+            "layer_z_mm": 168.48,
+            "support_bounds_in_probe_xy_mm": [
+              1.5419545075853902,
+              1.6942123057786505,
+              2.896287694221348,
+              4.033787694221344
+            ]
+          }
+        ]
+      },
+      "E": {
+        "probe_xyz_bed_local_mm": [
+          [
+            -71.127,
+            -39.249,
+            175.211
+          ],
+          [
+            -71.087,
+            -39.154,
+            169.211
+          ]
+        ],
+        "support_count": 25,
+        "first_hits": [
+          {
+            "gcode_line": 591707,
+            "feature": "Support interface",
+            "layer_z_mm": 169.04,
+            "support_bounds_in_probe_xy_mm": [
+              2.2619386562388937,
+              -0.19056134376111403,
+              3.239186591364908,
+              1.8185613437611
+            ]
+          },
+          {
+            "gcode_line": 591708,
+            "feature": "Support interface",
+            "layer_z_mm": 169.04,
+            "support_bounds_in_probe_xy_mm": [
+              2.5150000000000015,
+              1.392499999999992,
+              2.942999999999997,
+              1.9424999999999875
+            ]
+          },
+          {
+            "gcode_line": 591709,
+            "feature": "Support interface",
+            "layer_z_mm": 169.04,
+            "support_bounds_in_probe_xy_mm": [
+              2.5169758856502753,
+              1.516475885650266,
+              3.350170530612547,
+              3.695524114349709
+            ]
+          },
+          {
+            "gcode_line": 591710,
+            "feature": "Support interface",
+            "layer_z_mm": 169.04,
+            "support_bounds_in_probe_xy_mm": [
+              1.2609816220092103,
+              2.449481622009208,
+              2.9580183779907836,
+              3.7119922683172133
+            ]
+          },
+          {
+            "gcode_line": 591711,
+            "feature": "Support interface",
+            "layer_z_mm": 169.04,
+            "support_bounds_in_probe_xy_mm": [
+              1.2576680259896522,
+              1.5773496128001392,
+              1.9611503871998528,
+              2.8756503871998493
+            ]
+          },
+          {
+            "gcode_line": 591712,
+            "feature": "Support interface",
+            "layer_z_mm": 169.04,
+            "support_bounds_in_probe_xy_mm": [
+              1.308582768208875,
+              1.2180827682088622,
+              1.9617171118870251,
+              2.003917231791118
+            ]
+          },
+          {
+            "gcode_line": 591713,
+            "feature": "Support interface",
+            "layer_z_mm": 169.04,
+            "support_bounds_in_probe_xy_mm": [
+              1.1476117855189485,
+              -0.21288821448106734,
+              2.630123192704789,
+              1.6446231927047728
+            ]
+          },
+          {
+            "gcode_line": 591726,
+            "feature": "Support interface",
+            "layer_z_mm": 169.04,
+            "support_bounds_in_probe_xy_mm": [
+              1.7440000000000007,
+              1.5164999999999873,
+              2.9040000000000026,
+              3.0914999999999884
+            ]
+          }
+        ]
+      }
+    },
+    "sockets": {
+      "fore": {
+        "probe_xyz_bed_local_mm": [
+          [
+            27.257,
+            57.39,
+            21.5
+          ],
+          [
+            27.257,
+            57.39,
+            116.1
+          ]
+        ],
+        "support_count": 0,
+        "first_hits": []
+      },
+      "aft": {
+        "probe_xyz_bed_local_mm": [
+          [
+            -65.595,
+            -5.239,
+            21.5
+          ],
+          [
+            -65.595,
+            -5.239,
+            116.1
+          ]
+        ],
+        "support_count": 0,
+        "first_hits": []
+      }
+    },
+    "runner_gap_samples": [
+      {
+        "probe_xyz_bed_local_mm": [
+          [
+            -41.653,
+            -26.428,
+            61.86
+          ],
+          [
+            -36.506,
+            -34.059,
+            61.86
+          ]
+        ],
+        "gap_width_mm": 9.204551591468208,
+        "support_count": 8,
+        "first_hits": [
+          {
+            "gcode_line": 239185,
+            "feature": "Support",
+            "layer_z_mm": 61.66,
+            "support_bounds_in_probe_xy_mm": [
+              4.919286839892083,
+              -5.177585460345168,
+              9.465324152209524,
+              1.3568281262673159
+            ]
+          },
+          {
+            "gcode_line": 239197,
+            "feature": "Support",
+            "layer_z_mm": 61.66,
+            "support_bounds_in_probe_xy_mm": [
+              4.147468687817731,
+              -1.2072584284586856,
+              8.086236656870142,
+              4.426810810289907
+            ]
+          },
+          {
+            "gcode_line": 239492,
+            "feature": "Support",
+            "layer_z_mm": 61.8,
+            "support_bounds_in_probe_xy_mm": [
+              4.147468687817731,
+              -1.2072584284586856,
+              8.086236656870142,
+              4.426810810289907
+            ]
+          },
+          {
+            "gcode_line": 239504,
+            "feature": "Support",
+            "layer_z_mm": 61.8,
+            "support_bounds_in_probe_xy_mm": [
+              4.919286839892083,
+              -5.177585460345168,
+              9.465324152209524,
+              1.3568281262673159
+            ]
+          },
+          {
+            "gcode_line": 240558,
+            "feature": "Support",
+            "layer_z_mm": 61.94,
+            "support_bounds_in_probe_xy_mm": [
+              4.919286839892083,
+              -5.177585460345168,
+              9.465324152209524,
+              1.3568281262673159
+            ]
+          },
+          {
+            "gcode_line": 240570,
+            "feature": "Support",
+            "layer_z_mm": 61.94,
+            "support_bounds_in_probe_xy_mm": [
+              4.147468687817731,
+              -1.2072584284586856,
+              8.085118297121959,
+              4.425152717568246
+            ]
+          },
+          {
+            "gcode_line": 240873,
+            "feature": "Support",
+            "layer_z_mm": 62.08,
+            "support_bounds_in_probe_xy_mm": [
+              4.147468687817731,
+              -1.2072584284586856,
+              8.085118297121959,
+              4.425152717568246
+            ]
+          },
+          {
+            "gcode_line": 240885,
+            "feature": "Support",
+            "layer_z_mm": 62.08,
+            "support_bounds_in_probe_xy_mm": [
+              4.919286839892083,
+              -5.177585460345168,
+              9.465324152209524,
+              1.3568281262673159
+            ]
+          }
+        ]
+      },
+      {
+        "probe_xyz_bed_local_mm": [
+          [
+            -42.068,
+            -25.812,
+            51.86
+          ],
+          [
+            -36.507,
+            -34.057,
+            51.86
+          ]
+        ],
+        "gap_width_mm": 9.945086525516004,
+        "support_count": 6,
+        "first_hits": [
+          {
+            "gcode_line": 191830,
+            "feature": "Support",
+            "layer_z_mm": 51.7324,
+            "support_bounds_in_probe_xy_mm": [
+              5.662094585662088,
+              -5.1779203024342815,
+              10.21477361401479,
+              1.3664880034042524
+            ]
+          },
+          {
+            "gcode_line": 191833,
+            "feature": "Support",
+            "layer_z_mm": 51.7324,
+            "support_bounds_in_probe_xy_mm": [
+              4.890232020132349,
+              -1.2076019046311721,
+              8.85634108903492,
+              4.467130207057689
+            ]
+          },
+          {
+            "gcode_line": 191834,
+            "feature": "Support",
+            "layer_z_mm": 51.7324,
+            "support_bounds_in_probe_xy_mm": [
+              2.5191415384659246,
+              -1.2076019046311721,
+              5.316232020132349,
+              0.8176260115055122
+            ]
+          },
+          {
+            "gcode_line": 192902,
+            "feature": "Support",
+            "layer_z_mm": 52.011,
+            "support_bounds_in_probe_xy_mm": [
+              5.662094585662088,
+              -5.1779203024342815,
+              10.213655272814696,
+              1.3648298981723217
+            ]
+          },
+          {
+            "gcode_line": 192904,
+            "feature": "Support",
+            "layer_z_mm": 52.011,
+            "support_bounds_in_probe_xy_mm": [
+              4.890232020132349,
+              -1.2076019046311721,
+              8.85634108903492,
+              4.467130207057689
+            ]
+          },
+          {
+            "gcode_line": 192905,
+            "feature": "Support",
+            "layer_z_mm": 52.011,
+            "support_bounds_in_probe_xy_mm": [
+              2.5191415384659246,
+              -1.2076019046311721,
+              5.316232020132349,
+              0.8176260115055122
+            ]
+          }
+        ]
+      },
+      {
+        "probe_xyz_bed_local_mm": [
+          [
+            -42.068,
+            -25.813,
+            41.86
+          ],
+          [
+            -36.498,
+            -34.07,
+            41.86
+          ]
+        ],
+        "gap_width_mm": 9.960067720653305,
+        "support_count": 6,
+        "first_hits": [
+          {
+            "gcode_line": 154107,
+            "feature": "Support",
+            "layer_z_mm": 41.7018,
+            "support_bounds_in_probe_xy_mm": [
+              5.660890985568768,
+              -5.177804295201774,
+              10.254296385225775,
+              1.4259814112556457
+            ]
+          },
+          {
+            "gcode_line": 154110,
+            "feature": "Support",
+            "layer_z_mm": 41.7018,
+            "support_bounds_in_probe_xy_mm": [
+              4.889327958535866,
+              -1.2074276763763234,
+              8.958731900935948,
+              4.619575259422134
+            ]
+          },
+          {
+            "gcode_line": 154111,
+            "feature": "Support",
+            "layer_z_mm": 41.7018,
+            "support_bounds_in_probe_xy_mm": [
+              2.5183581356066904,
+              -1.2074276763763234,
+              5.315327958535867,
+              0.8179791195199516
+            ]
+          },
+          {
+            "gcode_line": 155138,
+            "feature": "Support",
+            "layer_z_mm": 41.9804,
+            "support_bounds_in_probe_xy_mm": [
+              5.660890985568768,
+              -5.177804295201774,
+              10.252059452644106,
+              1.4226653695452622
+            ]
+          },
+          {
+            "gcode_line": 155140,
+            "feature": "Support",
+            "layer_z_mm": 41.9804,
+            "support_bounds_in_probe_xy_mm": [
+              4.889327958535866,
+              -1.2074276763763234,
+              8.95258033633635,
+              4.610456144718564
+            ]
+          },
+          {
+            "gcode_line": 155141,
+            "feature": "Support",
+            "layer_z_mm": 41.9804,
+            "support_bounds_in_probe_xy_mm": [
+              2.5183581356066904,
+              -1.2074276763763234,
+              5.315327958535867,
+              0.8179791195199516
+            ]
+          }
+        ]
+      },
+      {
+        "probe_xyz_bed_local_mm": [
+          [
+            -42.068,
+            -25.814,
+            31.86
+          ],
+          [
+            -36.429,
+            -34.173,
+            31.86
+          ]
+        ],
+        "gap_width_mm": 10.083213872570596,
+        "support_count": 6,
+        "first_hits": [
+          {
+            "gcode_line": 115732,
+            "feature": "Support",
+            "layer_z_mm": 31.6712,
+            "support_bounds_in_probe_xy_mm": [
+              5.659983232170902,
+              -5.177338219202996,
+              10.4072793536913,
+              1.6543568117934697
+            ]
+          },
+          {
+            "gcode_line": 115750,
+            "feature": "Support",
+            "layer_z_mm": 31.6712,
+            "support_bounds_in_probe_xy_mm": [
+              4.888483182850137,
+              -1.2069493624412246,
+              13.311705201452655,
+              11.073772902765116
+            ]
+          },
+          {
+            "gcode_line": 115751,
+            "feature": "Support",
+            "layer_z_mm": 31.6712,
+            "support_bounds_in_probe_xy_mm": [
+              2.5175387298088694,
+              -1.2069493624412246,
+              5.314483182850137,
+              0.818495041279279
+            ]
+          },
+          {
+            "gcode_line": 116756,
+            "feature": "Support",
+            "layer_z_mm": 31.9498,
+            "support_bounds_in_probe_xy_mm": [
+              5.659983232170902,
+              -5.177338219202996,
+              10.400568398151213,
+              1.6444087931093803
+            ]
+          },
+          {
+            "gcode_line": 116773,
+            "feature": "Support",
+            "layer_z_mm": 31.9498,
+            "support_bounds_in_probe_xy_mm": [
+              4.888483182850137,
+              -1.2069493624412246,
+              13.311705201452655,
+              11.073772902765116
+            ]
+          },
+          {
+            "gcode_line": 116774,
+            "feature": "Support",
+            "layer_z_mm": 31.9498,
+            "support_bounds_in_probe_xy_mm": [
+              2.5175387298088694,
+              -1.2069493624412246,
+              5.314483182850137,
+              0.818495041279279
+            ]
+          }
+        ]
+      },
+      {
+        "probe_xyz_bed_local_mm": [
+          [
+            -47.119,
+            -36.207,
+            59.859
+          ],
+          [
+            -41.939,
+            -43.887,
+            59.859
+          ]
+        ],
+        "gap_width_mm": 9.263627799086068,
+        "support_count": 9,
+        "first_hits": [
+          {
+            "gcode_line": 229880,
+            "feature": "Support",
+            "layer_z_mm": 59.7,
+            "support_bounds_in_probe_xy_mm": [
+              3.01141279462318,
+              -0.7473651652852927,
+              7.315299598704859,
+              5.428088629183292
+            ]
+          },
+          {
+            "gcode_line": 229892,
+            "feature": "Support",
+            "layer_z_mm": 59.7,
+            "support_bounds_in_probe_xy_mm": [
+              3.881663648267728,
+              -4.571776159377182,
+              8.80399930675666,
+              2.5206056663361363
+            ]
+          },
+          {
+            "gcode_line": 229893,
+            "feature": "Support",
+            "layer_z_mm": 59.7,
+            "support_bounds_in_probe_xy_mm": [
+              8.37798147393127,
+              -0.7913398591624777,
+              10.307255428298044,
+              2.5206234991615286
+            ]
+          },
+          {
+            "gcode_line": 230019,
+            "feature": "Support",
+            "layer_z_mm": 59.84,
+            "support_bounds_in_probe_xy_mm": [
+              3.881663648267728,
+              -4.571776159377182,
+              8.80399930675666,
+              2.5206056663361363
+            ]
+          },
+          {
+            "gcode_line": 230021,
+            "feature": "Support",
+            "layer_z_mm": 59.84,
+            "support_bounds_in_probe_xy_mm": [
+              3.01141279462318,
+              -0.7473651652852927,
+              7.315299598704859,
+              5.428088629183292
+            ]
+          },
+          {
+            "gcode_line": 231238,
+            "feature": "Support",
+            "layer_z_mm": 59.98,
+            "support_bounds_in_probe_xy_mm": [
+              3.01141279462318,
+              -0.7473651652852927,
+              7.3141812463460765,
+              5.426430531477609
+            ]
+          },
+          {
+            "gcode_line": 231240,
+            "feature": "Support",
+            "layer_z_mm": 59.98,
+            "support_bounds_in_probe_xy_mm": [
+              3.920805980825145,
+              -4.513742739678154,
+              8.80399930675666,
+              2.5206056663361363
+            ]
+          },
+          {
+            "gcode_line": 231376,
+            "feature": "Support",
+            "layer_z_mm": 60.12,
+            "support_bounds_in_probe_xy_mm": [
+              3.920805980825145,
+              -4.513742739678154,
+              8.80399930675666,
+              2.5206056663361363
+            ]
+          }
+        ]
+      },
+      {
+        "probe_xyz_bed_local_mm": [
+          [
+            -47.533,
+            -35.593,
+            49.859
+          ],
+          [
+            -41.938,
+            -43.889,
+            49.859
+          ]
+        ],
+        "gap_width_mm": 10.006380014770581,
+        "support_count": 6,
+        "first_hits": [
+          {
+            "gcode_line": 184424,
+            "feature": "Support",
+            "layer_z_mm": 49.782,
+            "support_bounds_in_probe_xy_mm": [
+              9.113083488448822,
+              -0.7880103990264739,
+              11.05035890552125,
+              2.5137333852123045
+            ]
+          },
+          {
+            "gcode_line": 184425,
+            "feature": "Support",
+            "layer_z_mm": 49.782,
+            "support_bounds_in_probe_xy_mm": [
+              4.523962410985026,
+              -4.717608653025798,
+              9.539410336429707,
+              2.513406537231418
+            ]
+          },
+          {
+            "gcode_line": 184437,
+            "feature": "Support",
+            "layer_z_mm": 49.782,
+            "support_bounds_in_probe_xy_mm": [
+              3.7519689439572668,
+              -0.7473157057904872,
+              8.046681199823707,
+              5.415026899154648
+            ]
+          },
+          {
+            "gcode_line": 185480,
+            "feature": "Support",
+            "layer_z_mm": 50.0606,
+            "support_bounds_in_probe_xy_mm": [
+              9.11327269854992,
+              -0.6860187390387676,
+              10.995798184524412,
+              2.5135441751112064
+            ]
+          },
+          {
+            "gcode_line": 185481,
+            "feature": "Support",
+            "layer_z_mm": 50.0606,
+            "support_bounds_in_probe_xy_mm": [
+              4.523962410985026,
+              -4.717608653025798,
+              9.539410336429707,
+              2.513406537231418
+            ]
+          },
+          {
+            "gcode_line": 185493,
+            "feature": "Support",
+            "layer_z_mm": 50.0606,
+            "support_bounds_in_probe_xy_mm": [
+              3.7519689439572668,
+              -0.7473157057904872,
+              8.046681199823707,
+              5.415026899154648
+            ]
+          }
+        ]
+      },
+      {
+        "probe_xyz_bed_local_mm": [
+          [
+            -47.533,
+            -35.593,
+            39.859
+          ],
+          [
+            -41.939,
+            -43.887,
+            39.859
+          ]
+        ],
+        "gap_width_mm": 10.004162733582458,
+        "support_count": 6,
+        "first_hits": [
+          {
+            "gcode_line": 146655,
+            "feature": "Support",
+            "layer_z_mm": 39.7514,
+            "support_bounds_in_probe_xy_mm": [
+              9.101059488062175,
+              -0.5950122955746612,
+              10.935513020611902,
+              2.4950133757443336
+            ]
+          },
+          {
+            "gcode_line": 146656,
+            "feature": "Support",
+            "layer_z_mm": 39.7514,
+            "support_bounds_in_probe_xy_mm": [
+              4.523832182959748,
+              -4.717745594423369,
+              9.527175157028092,
+              2.4948977067784153
+            ]
+          },
+          {
+            "gcode_line": 146668,
+            "feature": "Support",
+            "layer_z_mm": 39.7514,
+            "support_bounds_in_probe_xy_mm": [
+              3.751953495493142,
+              -0.7474303308914133,
+              8.037325741647521,
+              5.4007064959953155
+            ]
+          },
+          {
+            "gcode_line": 147720,
+            "feature": "Support",
+            "layer_z_mm": 40.03,
+            "support_bounds_in_probe_xy_mm": [
+              9.100701648553878,
+              -0.7975899563588528,
+              11.044338108094626,
+              2.4953712152526304
+            ]
+          },
+          {
+            "gcode_line": 147721,
+            "feature": "Support",
+            "layer_z_mm": 40.03,
+            "support_bounds_in_probe_xy_mm": [
+              4.523832182959748,
+              -4.717745594423369,
+              9.527175157028092,
+              2.4948977067784153
+            ]
+          },
+          {
+            "gcode_line": 147733,
+            "feature": "Support",
+            "layer_z_mm": 40.03,
+            "support_bounds_in_probe_xy_mm": [
+              3.751953495493142,
+              -0.7474303308914133,
+              8.037325741647521,
+              5.4007064959953155
+            ]
+          }
+        ]
+      },
+      {
+        "probe_xyz_bed_local_mm": [
+          [
+            -47.533,
+            -35.593,
+            29.859
+          ],
+          [
+            -41.953,
+            -43.866,
+            29.859
+          ]
+        ],
+        "gap_width_mm": 9.978924240618321,
+        "support_count": 4,
+        "first_hits": [
+          {
+            "gcode_line": 108378,
+            "feature": "Support",
+            "layer_z_mm": 29.7208,
+            "support_bounds_in_probe_xy_mm": [
+              4.523770904382688,
+              -4.717810029223605,
+              9.51546344812896,
+              2.477361012785879
+            ]
+          },
+          {
+            "gcode_line": 108380,
+            "feature": "Support",
+            "layer_z_mm": 29.7208,
+            "support_bounds_in_probe_xy_mm": [
+              3.751946225260486,
+              -0.7474842661787261,
+              8.059204271328198,
+              5.432932904989407
+            ]
+          },
+          {
+            "gcode_line": 109450,
+            "feature": "Support",
+            "layer_z_mm": 29.9994,
+            "support_bounds_in_probe_xy_mm": [
+              4.523770904382688,
+              -4.717810029223605,
+              9.514904269617784,
+              2.4765319655057763
+            ]
+          },
+          {
+            "gcode_line": 109452,
+            "feature": "Support",
+            "layer_z_mm": 29.9994,
+            "support_bounds_in_probe_xy_mm": [
+              3.751946225260486,
+              -0.7474842661787261,
+              8.057526735794672,
+              5.43044576314911
+            ]
+          }
+        ]
+      },
+      {
+        "probe_xyz_bed_local_mm": [
+          [
+            -53.311,
+            -48.487,
+            57.246
+          ],
+          [
+            -48.113,
+            -56.193,
+            57.246
+          ]
+        ],
+        "gap_width_mm": 9.29524824843318,
+        "support_count": 16,
+        "first_hits": [
+          {
+            "gcode_line": 216219,
+            "feature": "Support",
+            "layer_z_mm": 57.04,
+            "support_bounds_in_probe_xy_mm": [
+              0.2085020293471492,
+              0.11492669098578276,
+              3.004686602278122,
+              2.139709381109739
+            ]
+          },
+          {
+            "gcode_line": 216220,
+            "feature": "Support",
+            "layer_z_mm": 57.04,
+            "support_bounds_in_probe_xy_mm": [
+              2.578686602278122,
+              0.11492669098578276,
+              6.652975609052768,
+              5.9494905782896295
+            ]
+          },
+          {
+            "gcode_line": 216222,
+            "feature": "Support",
+            "layer_z_mm": 57.04,
+            "support_bounds_in_probe_xy_mm": [
+              4.949700200942897,
+              -1.4844152095929242,
+              8.21704852151646,
+              3.153864543839139
+            ]
+          },
+          {
+            "gcode_line": 216234,
+            "feature": "Support",
+            "layer_z_mm": 57.04,
+            "support_bounds_in_probe_xy_mm": [
+              5.7213718990289655,
+              -5.454770708836406,
+              9.812437219446037,
+              0.40466395048139503
+            ]
+          },
+          {
+            "gcode_line": 217352,
+            "feature": "Support",
+            "layer_z_mm": 57.18,
+            "support_bounds_in_probe_xy_mm": [
+              0.2085020293471492,
+              0.11492669098578276,
+              3.004686602278122,
+              2.139709381109739
+            ]
+          },
+          {
+            "gcode_line": 217353,
+            "feature": "Support",
+            "layer_z_mm": 57.18,
+            "support_bounds_in_probe_xy_mm": [
+              2.578686602278122,
+              0.11492669098578276,
+              6.651857188143267,
+              5.947832526822023
+            ]
+          },
+          {
+            "gcode_line": 217355,
+            "feature": "Support",
+            "layer_z_mm": 57.18,
+            "support_bounds_in_probe_xy_mm": [
+              4.949700200942897,
+              -1.4844152095929242,
+              8.21704852151646,
+              3.153864543839139
+            ]
+          },
+          {
+            "gcode_line": 217367,
+            "feature": "Support",
+            "layer_z_mm": 57.18,
+            "support_bounds_in_probe_xy_mm": [
+              5.7213718990289655,
+              -5.454770708836406,
+              9.812996429900787,
+              0.4054929762151981
+            ]
+          }
+        ]
+      },
+      {
+        "probe_xyz_bed_local_mm": [
+          [
+            -53.724,
+            -47.874,
+            47.246
+          ],
+          [
+            -48.121,
+            -56.182,
+            47.246
+          ]
+        ],
+        "gap_width_mm": 10.020802013811064,
+        "support_count": 9,
+        "first_hits": [
+          {
+            "gcode_line": 173994,
+            "feature": "Support",
+            "layer_z_mm": 46.9957,
+            "support_bounds_in_probe_xy_mm": [
+              6.460983769744699,
+              -5.454586843808308,
+              10.547093803796844,
+              0.39854043852354415
+            ]
+          },
+          {
+            "gcode_line": 173997,
+            "feature": "Support",
+            "layer_z_mm": 46.9957,
+            "support_bounds_in_probe_xy_mm": [
+              5.6889597352075825,
+              -1.4842998403163645,
+              8.954815962361698,
+              3.152573894325168
+            ]
+          },
+          {
+            "gcode_line": 173998,
+            "feature": "Support",
+            "layer_z_mm": 46.9957,
+            "support_bounds_in_probe_xy_mm": [
+              3.3178042161930534,
+              -1.4842998403163645,
+              6.114959735207583,
+              0.5408316441610489
+            ]
+          },
+          {
+            "gcode_line": 173999,
+            "feature": "Support",
+            "layer_z_mm": 46.9957,
+            "support_bounds_in_probe_xy_mm": [
+              3.3178042161930534,
+              0.11483164416104893,
+              7.390494965060774,
+              5.948061117941729
+            ]
+          },
+          {
+            "gcode_line": 175057,
+            "feature": "Support",
+            "layer_z_mm": 47.2743,
+            "support_bounds_in_probe_xy_mm": [
+              6.460983769744699,
+              -5.454586843808308,
+              10.547652940679532,
+              0.3993695138798462
+            ]
+          },
+          {
+            "gcode_line": 175058,
+            "feature": "Support",
+            "layer_z_mm": 47.2743,
+            "support_bounds_in_probe_xy_mm": [
+              8.528615312438825,
+              -0.02683113604302792,
+              10.547853590602406,
+              3.152774544248042
+            ]
+          },
+          {
+            "gcode_line": 175059,
+            "feature": "Support",
+            "layer_z_mm": 47.2743,
+            "support_bounds_in_probe_xy_mm": [
+              5.6889597352075825,
+              -1.4842998403163645,
+              8.954815962361698,
+              3.152573894325168
+            ]
+          },
+          {
+            "gcode_line": 175060,
+            "feature": "Support",
+            "layer_z_mm": 47.2743,
+            "support_bounds_in_probe_xy_mm": [
+              3.3178042161930534,
+              -1.4842998403163645,
+              6.114959735207583,
+              0.5408316441610489
+            ]
+          }
+        ]
+      },
+      {
+        "probe_xyz_bed_local_mm": [
+          [
+            -53.724,
+            -47.875,
+            37.246
+          ],
+          [
+            -48.135,
+            -56.16,
+            37.246
+          ]
+        ],
+        "gap_width_mm": 9.993905442818635,
+        "support_count": 8,
+        "first_hits": [
+          {
+            "gcode_line": 136754,
+            "feature": "Support",
+            "layer_z_mm": 37.2437,
+            "support_bounds_in_probe_xy_mm": [
+              6.4594974917505885,
+              -5.454864384222659,
+              10.544610258949858,
+              0.3953169140857956
+            ]
+          },
+          {
+            "gcode_line": 136766,
+            "feature": "Support",
+            "layer_z_mm": 37.2437,
+            "support_bounds_in_probe_xy_mm": [
+              5.687971280689566,
+              -1.4844806111289535,
+              8.956033191572446,
+              3.154524028639282
+            ]
+          },
+          {
+            "gcode_line": 136768,
+            "feature": "Support",
+            "layer_z_mm": 37.2437,
+            "support_bounds_in_probe_xy_mm": [
+              3.3170162886122014,
+              0.11494816988738851,
+              7.39597740665372,
+              5.95601041053401
+            ]
+          },
+          {
+            "gcode_line": 136769,
+            "feature": "Support",
+            "layer_z_mm": 37.2437,
+            "support_bounds_in_probe_xy_mm": [
+              0.9468903017768263,
+              0.11494816988738851,
+              3.7430162886122016,
+              2.1398177100712044
+            ]
+          },
+          {
+            "gcode_line": 137864,
+            "feature": "Support",
+            "layer_z_mm": 37.5224,
+            "support_bounds_in_probe_xy_mm": [
+              6.4594974917505885,
+              -5.454864384222659,
+              10.546287981447428,
+              0.3978039298117507
+            ]
+          },
+          {
+            "gcode_line": 137876,
+            "feature": "Support",
+            "layer_z_mm": 37.5224,
+            "support_bounds_in_probe_xy_mm": [
+              5.687971280689566,
+              -1.4844806111289535,
+              8.956592432404973,
+              3.1553530338812714
+            ]
+          },
+          {
+            "gcode_line": 137878,
+            "feature": "Support",
+            "layer_z_mm": 37.5224,
+            "support_bounds_in_probe_xy_mm": [
+              3.3170162886122014,
+              0.11494816988738851,
+              7.397095888318764,
+              5.957668421017977
+            ]
+          },
+          {
+            "gcode_line": 137879,
+            "feature": "Support",
+            "layer_z_mm": 37.5224,
+            "support_bounds_in_probe_xy_mm": [
+              0.9468903017768263,
+              0.11494816988738851,
+              3.7430162886122016,
+              2.1398177100712044
+            ]
+          }
+        ]
+      },
+      {
+        "probe_xyz_bed_local_mm": [
+          [
+            -53.724,
+            -47.875,
+            27.246
+          ],
+          [
+            -48.14,
+            -56.153,
+            27.246
+          ]
+        ],
+        "gap_width_mm": 9.985306204618851,
+        "support_count": 8,
+        "first_hits": [
+          {
+            "gcode_line": 98362,
+            "feature": "Support",
+            "layer_z_mm": 27.2131,
+            "support_bounds_in_probe_xy_mm": [
+              6.4596184089557545,
+              -5.45471046209772,
+              10.541250720272863,
+              0.390581134084777
+            ]
+          },
+          {
+            "gcode_line": 98374,
+            "feature": "Support",
+            "layer_z_mm": 27.2131,
+            "support_bounds_in_probe_xy_mm": [
+              5.688000609550062,
+              -1.484344487575936,
+              8.959879886327297,
+              3.160528838563387
+            ]
+          },
+          {
+            "gcode_line": 98376,
+            "feature": "Support",
+            "layer_z_mm": 27.2131,
+            "support_bounds_in_probe_xy_mm": [
+              3.3170087225863236,
+              0.11502959998210968,
+              7.396963368776624,
+              5.95783414173772
+            ]
+          },
+          {
+            "gcode_line": 98377,
+            "feature": "Support",
+            "layer_z_mm": 27.2131,
+            "support_bounds_in_probe_xy_mm": [
+              0.9468458537648848,
+              0.11502959998210968,
+              3.7430087225863238,
+              2.139844465831216
+            ]
+          },
+          {
+            "gcode_line": 99497,
+            "feature": "Support",
+            "layer_z_mm": 27.4918,
+            "support_bounds_in_probe_xy_mm": [
+              6.4596184089557545,
+              -5.45471046209772,
+              10.541250720272863,
+              0.390581134084777
+            ]
+          },
+          {
+            "gcode_line": 99509,
+            "feature": "Support",
+            "layer_z_mm": 27.4918,
+            "support_bounds_in_probe_xy_mm": [
+              5.688000609550062,
+              -1.484344487575936,
+              8.959879886327297,
+              3.160528838563387
+            ]
+          },
+          {
+            "gcode_line": 99511,
+            "feature": "Support",
+            "layer_z_mm": 27.4918,
+            "support_bounds_in_probe_xy_mm": [
+              3.3170087225863236,
+              0.11502959998210968,
+              7.396963368776624,
+              5.95783414173772
+            ]
+          },
+          {
+            "gcode_line": 99512,
+            "feature": "Support",
+            "layer_z_mm": 27.4918,
+            "support_bounds_in_probe_xy_mm": [
+              0.9468458537648848,
+              0.11502959998210968,
+              3.7430087225863238,
+              2.139844465831216
+            ]
+          }
+        ]
+      },
+      {
+        "probe_xyz_bed_local_mm": [
+          [
+            -60.077,
+            -63.492,
+            53.904
+          ],
+          [
+            -54.535,
+            -71.709,
+            53.904
+          ]
+        ],
+        "gap_width_mm": 9.911248811325454,
+        "support_count": 6,
+        "first_hits": [
+          {
+            "gcode_line": 199451,
+            "feature": "Support",
+            "layer_z_mm": 53.6827,
+            "support_bounds_in_probe_xy_mm": [
+              9.170780823670254,
+              -1.573359902402312,
+              11.364963750456846,
+              1.3468123660884008
+            ]
+          },
+          {
+            "gcode_line": 199452,
+            "feature": "Support",
+            "layer_z_mm": 53.6827,
+            "support_bounds_in_probe_xy_mm": [
+              5.722072473690976,
+              -4.193024086866284,
+              9.596987605449096,
+              1.346605584309558
+            ]
+          },
+          {
+            "gcode_line": 199454,
+            "feature": "Support",
+            "layer_z_mm": 53.6827,
+            "support_bounds_in_probe_xy_mm": [
+              3.3509666274583423,
+              -2.593818951193746,
+              7.850466422344517,
+              3.8718684927939373
+            ]
+          },
+          {
+            "gcode_line": 200598,
+            "feature": "Support",
+            "layer_z_mm": 53.9614,
+            "support_bounds_in_probe_xy_mm": [
+              9.170659166419552,
+              -1.5726525016648285,
+              11.365644570342395,
+              1.3469340233391027
+            ]
+          },
+          {
+            "gcode_line": 200599,
+            "feature": "Support",
+            "layer_z_mm": 53.9614,
+            "support_bounds_in_probe_xy_mm": [
+              5.722072473690976,
+              -4.193024086866284,
+              9.596987605449096,
+              1.346605584309558
+            ]
+          },
+          {
+            "gcode_line": 200601,
+            "feature": "Support",
+            "layer_z_mm": 53.9614,
+            "support_bounds_in_probe_xy_mm": [
+              3.3509666274583423,
+              -2.593818951193746,
+              7.850466422344517,
+              3.8718684927939373
+            ]
+          }
+        ]
+      },
+      {
+        "probe_xyz_bed_local_mm": [
+          [
+            -60.492,
+            -62.876,
+            43.904
+          ],
+          [
+            -54.553,
+            -71.681,
+            43.904
+          ]
+        ],
+        "gap_width_mm": 10.620722480132875,
+        "support_count": 6,
+        "first_hits": [
+          {
+            "gcode_line": 161342,
+            "feature": "Support",
+            "layer_z_mm": 43.6522,
+            "support_bounds_in_probe_xy_mm": [
+              9.891813978947493,
+              -0.404192173604926,
+              11.23307393895926,
+              1.3150985660934804
+            ]
+          },
+          {
+            "gcode_line": 161343,
+            "feature": "Support",
+            "layer_z_mm": 43.6522,
+            "support_bounds_in_probe_xy_mm": [
+              6.464694114752209,
+              -4.1936282556656295,
+              10.318527773724206,
+              1.3143847713167656
+            ]
+          },
+          {
+            "gcode_line": 161345,
+            "feature": "Support",
+            "layer_z_mm": 43.6522,
+            "support_bounds_in_probe_xy_mm": [
+              4.09364072859077,
+              -2.594345341365483,
+              8.578799705830196,
+              3.8496534453988147
+            ]
+          },
+          {
+            "gcode_line": 162380,
+            "feature": "Support",
+            "layer_z_mm": 43.9308,
+            "support_bounds_in_probe_xy_mm": [
+              9.894205343214733,
+              -1.597141524034634,
+              12.091807231428701,
+              1.3168718902532985
+            ]
+          },
+          {
+            "gcode_line": 162381,
+            "feature": "Support",
+            "layer_z_mm": 43.9308,
+            "support_bounds_in_probe_xy_mm": [
+              6.464694114752209,
+              -4.1936282556656295,
+              10.320205343214731,
+              1.3168718902532985
+            ]
+          },
+          {
+            "gcode_line": 162383,
+            "feature": "Support",
+            "layer_z_mm": 43.9308,
+            "support_bounds_in_probe_xy_mm": [
+              4.09364072859077,
+              -2.594345341365483,
+              8.579358895660373,
+              3.8504824850443296
+            ]
+          }
+        ]
+      },
+      {
+        "probe_xyz_bed_local_mm": [
+          [
+            -60.491,
+            -62.878,
+            33.904
+          ],
+          [
+            -54.588,
+            -71.63,
+            33.904
+          ]
+        ],
+        "gap_width_mm": 10.556652547090863,
+        "support_count": 6,
+        "first_hits": [
+          {
+            "gcode_line": 123915,
+            "feature": "Support",
+            "layer_z_mm": 33.9002,
+            "support_bounds_in_probe_xy_mm": [
+              6.462555407894903,
+              -4.193207154926119,
+              10.290566778430819,
+              1.2767371979334925
+            ]
+          },
+          {
+            "gcode_line": 123918,
+            "feature": "Support",
+            "layer_z_mm": 33.9002,
+            "support_bounds_in_probe_xy_mm": [
+              4.091470455695941,
+              -2.5939710405716307,
+              8.550229496508733,
+              3.811142482246174
+            ]
+          },
+          {
+            "gcode_line": 123929,
+            "feature": "Support",
+            "layer_z_mm": 33.9002,
+            "support_bounds_in_probe_xy_mm": [
+              3.3196216178514772,
+              -0.061844130004095194,
+              5.877939973465371,
+              1.8023500259818321
+            ]
+          },
+          {
+            "gcode_line": 124981,
+            "feature": "Support",
+            "layer_z_mm": 34.1788,
+            "support_bounds_in_probe_xy_mm": [
+              6.462555407894903,
+              -4.193207154926119,
+              10.291685125363939,
+              1.2783952992986745
+            ]
+          },
+          {
+            "gcode_line": 124983,
+            "feature": "Support",
+            "layer_z_mm": 34.1788,
+            "support_bounds_in_probe_xy_mm": [
+              4.091470455695941,
+              -2.5939710405716307,
+              8.550788669975292,
+              3.811971532928765
+            ]
+          },
+          {
+            "gcode_line": 124994,
+            "feature": "Support",
+            "layer_z_mm": 34.1788,
+            "support_bounds_in_probe_xy_mm": [
+              3.3196216178514772,
+              -0.061844130004095194,
+              5.877939973465371,
+              1.8023500259818321
+            ]
+          }
+        ]
+      },
+      {
+        "probe_xyz_bed_local_mm": [
+          [
+            -60.493,
+            -62.875,
+            23.904
+          ],
+          [
+            -54.637,
+            -71.557,
+            23.904
+          ]
+        ],
+        "gap_width_mm": 10.47233784787332,
+        "support_count": 12,
+        "first_hits": [
+          {
+            "gcode_line": 80998,
+            "feature": "Support",
+            "layer_z_mm": 23.72,
+            "support_bounds_in_probe_xy_mm": [
+              3.323253942334421,
+              -0.061959227349483476,
+              5.88154802264188,
+              1.802270919423203
+            ]
+          },
+          {
+            "gcode_line": 81009,
+            "feature": "Support",
+            "layer_z_mm": 23.72,
+            "support_bounds_in_probe_xy_mm": [
+              4.0950357657828755,
+              -2.594063174452859,
+              8.514193416678578,
+              3.7521203510042005
+            ]
+          },
+          {
+            "gcode_line": 81011,
+            "feature": "Support",
+            "layer_z_mm": 23.72,
+            "support_bounds_in_probe_xy_mm": [
+              6.466093724445132,
+              -4.193339309666652,
+              10.252251170773695,
+              1.2143695272569497
+            ]
+          },
+          {
+            "gcode_line": 82012,
+            "feature": "Support",
+            "layer_z_mm": 23.86,
+            "support_bounds_in_probe_xy_mm": [
+              6.466093724445132,
+              -4.193339309666652,
+              10.254487920613157,
+              1.2176856922341042
+            ]
+          },
+          {
+            "gcode_line": 82014,
+            "feature": "Support",
+            "layer_z_mm": 23.86,
+            "support_bounds_in_probe_xy_mm": [
+              4.0950357657828755,
+              -2.594063174452859,
+              8.515870979058173,
+              3.754607474737063
+            ]
+          },
+          {
+            "gcode_line": 82025,
+            "feature": "Support",
+            "layer_z_mm": 23.86,
+            "support_bounds_in_probe_xy_mm": [
+              3.323253942334421,
+              -0.061959227349483476,
+              5.88154802264188,
+              1.802270919423203
+            ]
+          },
+          {
+            "gcode_line": 82500,
+            "feature": "Support",
+            "layer_z_mm": 24.0,
+            "support_bounds_in_probe_xy_mm": [
+              3.323253942334421,
+              -0.061959227349483476,
+              5.88154802264188,
+              1.802270919423203
+            ]
+          },
+          {
+            "gcode_line": 82511,
+            "feature": "Support",
+            "layer_z_mm": 24.0,
+            "support_bounds_in_probe_xy_mm": [
+              4.0950357657828755,
+              -2.594063174452859,
+              8.515870979058173,
+              3.754607474737063
+            ]
+          }
+        ]
+      },
+      {
+        "probe_xyz_bed_local_mm": [
+          [
+            -64.639,
+            -74.612,
+            51.32
+          ],
+          [
+            -58.514,
+            -83.691,
+            51.32
+          ]
+        ],
+        "gap_width_mm": 10.95188869556297,
+        "support_count": 6,
+        "first_hits": [
+          {
+            "gcode_line": 189622,
+            "feature": "Support",
+            "layer_z_mm": 51.1751,
+            "support_bounds_in_probe_xy_mm": [
+              9.743728746173097,
+              -1.1403023386472455,
+              12.042334062944512,
+              1.62382304883723
+            ]
+          },
+          {
+            "gcode_line": 189623,
+            "feature": "Support",
+            "layer_z_mm": 51.1751,
+            "support_bounds_in_probe_xy_mm": [
+              5.338404117595885,
+              -5.332126714893813,
+              10.169728746173096,
+              1.62382304883723
+            ]
+          },
+          {
+            "gcode_line": 189635,
+            "feature": "Support",
+            "layer_z_mm": 51.1751,
+            "support_bounds_in_probe_xy_mm": [
+              4.5678191313350975,
+              -1.362280398101513,
+              8.31864519670155,
+              3.9920617810759764
+            ]
+          },
+          {
+            "gcode_line": 190687,
+            "feature": "Support",
+            "layer_z_mm": 51.4537,
+            "support_bounds_in_probe_xy_mm": [
+              9.743169481906422,
+              -1.1403023386472455,
+              12.042334062944512,
+              1.6229940594042276
+            ]
+          },
+          {
+            "gcode_line": 190688,
+            "feature": "Support",
+            "layer_z_mm": 51.4537,
+            "support_bounds_in_probe_xy_mm": [
+              5.338404117595885,
+              -5.332126714893813,
+              10.16916948190642,
+              1.6229940594042276
+            ]
+          },
+          {
+            "gcode_line": 190700,
+            "feature": "Support",
+            "layer_z_mm": 51.4537,
+            "support_bounds_in_probe_xy_mm": [
+              4.5678191313350975,
+              -1.362280398101513,
+              8.31864519670155,
+              3.9920617810759764
+            ]
+          }
+        ]
+      },
+      {
+        "probe_xyz_bed_local_mm": [
+          [
+            -65.053,
+            -73.998,
+            41.32
+          ],
+          [
+            -58.527,
+            -83.673,
+            41.32
+          ]
+        ],
+        "gap_width_mm": 11.670231403018532,
+        "support_count": 6,
+        "first_hits": [
+          {
+            "gcode_line": 151914,
+            "feature": "Support",
+            "layer_z_mm": 41.1445,
+            "support_bounds_in_probe_xy_mm": [
+              10.464024019229898,
+              -1.1552747176337688,
+              12.772315401585706,
+              1.594613221125127
+            ]
+          },
+          {
+            "gcode_line": 151915,
+            "feature": "Support",
+            "layer_z_mm": 41.1445,
+            "support_bounds_in_probe_xy_mm": [
+              6.0793323852007175,
+              -5.331829861809646,
+              10.890024019229896,
+              1.594613221125127
+            ]
+          },
+          {
+            "gcode_line": 151927,
+            "feature": "Support",
+            "layer_z_mm": 41.1445,
+            "support_bounds_in_probe_xy_mm": [
+              5.3084423583180405,
+              -1.3620427684691534,
+              9.037080898118623,
+              3.9602226119431414
+            ]
+          },
+          {
+            "gcode_line": 153003,
+            "feature": "Support",
+            "layer_z_mm": 41.4231,
+            "support_bounds_in_probe_xy_mm": [
+              6.0793323852007175,
+              -5.331829861809646,
+              10.890024019229896,
+              1.594613221125127
+            ]
+          },
+          {
+            "gcode_line": 153005,
+            "feature": "Support",
+            "layer_z_mm": 41.4231,
+            "support_bounds_in_probe_xy_mm": [
+              5.3084423583180405,
+              -1.3620427684691534,
+              9.037640098684117,
+              3.96105164434755
+            ]
+          },
+          {
+            "gcode_line": 153006,
+            "feature": "Support",
+            "layer_z_mm": 41.4231,
+            "support_bounds_in_probe_xy_mm": [
+              2.9374096817214985,
+              -1.3620427684691534,
+              5.734442358318041,
+              0.6632708488403073
+            ]
+          }
+        ]
+      },
+      {
+        "probe_xyz_bed_local_mm": [
+          [
+            -65.053,
+            -73.997,
+            31.32
+          ],
+          [
+            -58.548,
+            -83.642,
+            31.32
+          ]
+        ],
+        "gap_width_mm": 11.633617236268343,
+        "support_count": 6,
+        "first_hits": [
+          {
+            "gcode_line": 113596,
+            "feature": "Support",
+            "layer_z_mm": 31.1139,
+            "support_bounds_in_probe_xy_mm": [
+              6.080440252765691,
+              -5.332046276882881,
+              10.86729328494549,
+              1.5598149829747916
+            ]
+          },
+          {
+            "gcode_line": 113598,
+            "feature": "Support",
+            "layer_z_mm": 31.1139,
+            "support_bounds_in_probe_xy_mm": [
+              5.309333999412843,
+              -1.3623011785119465,
+              9.010866383373513,
+              3.9203490664228244
+            ]
+          },
+          {
+            "gcode_line": 113599,
+            "feature": "Support",
+            "layer_z_mm": 31.1139,
+            "support_bounds_in_probe_xy_mm": [
+              2.938214214415666,
+              -1.3623011785119465,
+              5.735333999412843,
+              0.6628832902704936
+            ]
+          },
+          {
+            "gcode_line": 114633,
+            "feature": "Support",
+            "layer_z_mm": 31.3925,
+            "support_bounds_in_probe_xy_mm": [
+              6.080440252765691,
+              -5.332046276882881,
+              10.867852440354158,
+              1.5606440458366828
+            ]
+          },
+          {
+            "gcode_line": 114635,
+            "feature": "Support",
+            "layer_z_mm": 31.3925,
+            "support_bounds_in_probe_xy_mm": [
+              5.309333999412843,
+              -1.3623011785119465,
+              9.011984694190842,
+              3.9220071921465944
+            ]
+          },
+          {
+            "gcode_line": 114636,
+            "feature": "Support",
+            "layer_z_mm": 31.3925,
+            "support_bounds_in_probe_xy_mm": [
+              2.938214214415666,
+              -1.3623011785119465,
+              5.735333999412843,
+              0.6628832902704936
+            ]
+          }
+        ]
+      },
+      {
+        "probe_xyz_bed_local_mm": [
+          [
+            -65.053,
+            -73.997,
+            21.32
+          ],
+          [
+            -58.585,
+            -83.586,
+            21.32
+          ]
+        ],
+        "gap_width_mm": 11.566500983443516,
+        "support_count": 12,
+        "first_hits": [
+          {
+            "gcode_line": 64356,
+            "feature": "Support",
+            "layer_z_mm": 21.06,
+            "support_bounds_in_probe_xy_mm": [
+              6.080158155970637,
+              -5.332393071833829,
+              10.827105006841059,
+              1.4995375640654496
+            ]
+          },
+          {
+            "gcode_line": 64358,
+            "feature": "Support",
+            "layer_z_mm": 21.06,
+            "support_bounds_in_probe_xy_mm": [
+              5.309270658294096,
+              -1.3626054873495006,
+              8.966334577580925,
+              3.8535416867447254
+            ]
+          },
+          {
+            "gcode_line": 64359,
+            "feature": "Support",
+            "layer_z_mm": 21.06,
+            "support_bounds_in_probe_xy_mm": [
+              2.9382390006427457,
+              -1.3626054873495006,
+              5.735270658294096,
+              0.6627096405771774
+            ]
+          },
+          {
+            "gcode_line": 64885,
+            "feature": "Support",
+            "layer_z_mm": 21.2,
+            "support_bounds_in_probe_xy_mm": [
+              2.9382390006427457,
+              -1.3626054873495006,
+              5.735270658294096,
+              0.6627096405771774
+            ]
+          },
+          {
+            "gcode_line": 64886,
+            "feature": "Support",
+            "layer_z_mm": 21.2,
+            "support_bounds_in_probe_xy_mm": [
+              5.309270658294096,
+              -1.3626054873495006,
+              8.966334577580925,
+              3.8535416867447254
+            ]
+          },
+          {
+            "gcode_line": 64888,
+            "feature": "Support",
+            "layer_z_mm": 21.2,
+            "support_bounds_in_probe_xy_mm": [
+              6.080158155970637,
+              -5.332393071833829,
+              10.827105006841059,
+              1.4995375640654496
+            ]
+          },
+          {
+            "gcode_line": 65691,
+            "feature": "Support",
+            "layer_z_mm": 21.34,
+            "support_bounds_in_probe_xy_mm": [
+              6.080158155970637,
+              -5.332393071833829,
+              10.828223409028418,
+              1.501195628161705
+            ]
+          },
+          {
+            "gcode_line": 65693,
+            "feature": "Support",
+            "layer_z_mm": 21.34,
+            "support_bounds_in_probe_xy_mm": [
+              5.309270658294096,
+              -1.3626054873495006,
+              8.967452979768284,
+              3.8551997508409817
+            ]
+          }
+        ]
+      }
+    ],
+    "blade": [
+      {
+        "probe_xyz_bed_local_mm": [
+          -60.09429313389422,
+          -92.07892332650769,
+          13.890170735996435
+        ],
+        "radius_mm": 1.6,
+        "nearby_model_layers": {
+          "14.2": {
+            "Overhang wall": 4
+          },
+          "14.48": {
+            "Outer wall": 7,
+            "Overhang wall": 3
+          },
+          "14.76": {
+            "Outer wall": 10,
+            "Overhang wall": 3,
+            "Gap infill": 1
+          }
+        },
+        "nearby_support_layers": {
+          "13.36": {
+            "Support": 1,
+            "Support interface": 6
+          },
+          "13.64": {
+            "Support": 2,
+            "Support transition": 2,
+            "Support interface": 6
+          },
+          "13.92": {
+            "Support": 3,
+            "Support interface": 8
+          },
+          "14.2": {
+            "Support": 3,
+            "Support interface": 8
+          },
+          "14.48": {
+            "Support": 8,
+            "Support interface": 2
+          },
+          "14.76": {
+            "Support": 8,
+            "Support interface": 2
+          }
+        }
+      },
+      {
+        "probe_xyz_bed_local_mm": [
+          -58.676740165114175,
+          -87.63403436398718,
+          14.891748114478673
+        ],
+        "radius_mm": 1.6,
+        "nearby_model_layers": {
+          "14.48": {
+            "Outer wall": 1
+          },
+          "14.76": {
+            "Outer wall": 1
+          },
+          "15.04": {
+            "Inner wall": 1,
+            "Outer wall": 1,
+            "Overhang wall": 2
+          },
+          "15.32": {
+            "Inner wall": 1,
+            "Outer wall": 5,
+            "Overhang wall": 3,
+            "Gap infill": 2
+          },
+          "15.6": {
+            "Outer wall": 7,
+            "Overhang wall": 3,
+            "Gap infill": 4
+          },
+          "15.88": {
+            "Outer wall": 8,
+            "Overhang wall": 3,
+            "Gap infill": 6
+          }
+        },
+        "nearby_support_layers": {
+          "14.2": {
+            "Support transition": 8,
+            "Support": 2,
+            "Support interface": 4
+          },
+          "14.48": {
+            "Support interface": 3,
+            "Support": 2
+          },
+          "14.76": {
+            "Support": 2,
+            "Support interface": 4
+          },
+          "15.04": {
+            "Support": 2,
+            "Support interface": 6
+          },
+          "15.32": {
+            "Support": 5,
+            "Support interface": 6
+          },
+          "15.6": {
+            "Support": 5,
+            "Support interface": 3
+          },
+          "15.88": {
+            "Support": 6
+          }
+        }
+      },
+      {
+        "probe_xyz_bed_local_mm": [
+          -58.115014461366684,
+          -81.80956503492419,
+          15.887342611534791
+        ],
+        "radius_mm": 1.6,
+        "nearby_model_layers": {
+          "15.32": {
+            "Inner wall": 1,
+            "Outer wall": 1
+          },
+          "15.6": {
+            "Outer wall": 1
+          },
+          "15.88": {
+            "Outer wall": 1
+          },
+          "16.16": {
+            "Outer wall": 1
+          },
+          "16.44": {
+            "Outer wall": 2,
+            "Overhang wall": 3,
+            "Gap infill": 1
+          },
+          "16.72": {
+            "Outer wall": 6,
+            "Inner wall": 5,
+            "Overhang wall": 6,
+            "Gap infill": 1
+          }
+        },
+        "nearby_support_layers": {
+          "15.32": {
+            "Support interface": 6,
+            "Support transition": 7,
+            "Support": 2
+          },
+          "15.6": {
+            "Support interface": 5,
+            "Support transition": 2
+          },
+          "15.88": {
+            "Support interface": 5
+          },
+          "16.16": {
+            "Support": 2,
+            "Support interface": 7
+          },
+          "16.3": {
+            "Support": 4,
+            "Support interface": 1
+          },
+          "16.44": {
+            "Support interface": 1,
+            "Support": 4
+          },
+          "16.58": {
+            "Support": 4
+          },
+          "16.72": {
+            "Support": 4
+          },
+          "16.86": {
+            "Support": 3
+          }
+        }
+      },
+      {
+        "probe_xyz_bed_local_mm": [
+          -55.58499403365295,
+          -78.72317126408862,
+          16.886209617531676
+        ],
+        "radius_mm": 1.6,
+        "nearby_model_layers": {
+          "16.44": {
+            "Inner wall": 1,
+            "Outer wall": 1
+          },
+          "16.72": {
+            "Inner wall": 1,
+            "Outer wall": 1
+          },
+          "17.0": {
+            "Outer wall": 1,
+            "Overhang wall": 2
+          },
+          "17.28": {
+            "Inner wall": 6,
+            "Outer wall": 6,
+            "Overhang wall": 6
+          },
+          "17.56": {
+            "Outer wall": 8,
+            "Inner wall": 9,
+            "Overhang wall": 6
+          },
+          "17.84": {
+            "Outer wall": 8,
+            "Inner wall": 9,
+            "Overhang wall": 5,
+            "Gap infill": 1
+          }
+        },
+        "nearby_support_layers": {
+          "16.3": {
+            "Support interface": 4,
+            "Support": 3
+          },
+          "16.44": {
+            "Support transition": 6,
+            "Support interface": 4,
+            "Support": 1
+          },
+          "16.58": {
+            "Support": 1,
+            "Support interface": 4
+          },
+          "16.72": {
+            "Support interface": 4,
+            "Support": 1
+          },
+          "16.86": {
+            "Support interface": 5,
+            "Support": 3
+          },
+          "17.0": {
+            "Support": 2,
+            "Support interface": 5,
+            "Support transition": 2
+          },
+          "17.14": {
+            "Support": 3,
+            "Support interface": 5
+          },
+          "17.28": {
+            "Support interface": 5,
+            "Support": 3
+          },
+          "17.42": {
+            "Support": 5,
+            "Support interface": 3
+          },
+          "17.56": {
+            "Support": 2,
+            "Support interface": 3
+          },
+          "17.7": {
+            "Support": 4
+          },
+          "17.84": {
+            "Support": 5
+          },
+          "17.98": {
+            "Support": 5
+          }
+        }
+      },
+      {
+        "probe_xyz_bed_local_mm": [
+          -53.29147433601939,
+          -67.9033436523421,
+          18.886211737703775
+        ],
+        "radius_mm": 1.6,
+        "nearby_model_layers": {
+          "18.4": {
+            "Inner wall": 1
+          },
+          "19.24": {
+            "Overhang wall": 2
+          },
+          "19.52": {
+            "Overhang wall": 4,
+            "Inner wall": 1,
+            "Outer wall": 3,
+            "Gap infill": 1
+          },
+          "19.8": {
+            "Inner wall": 5,
+            "Overhang wall": 4,
+            "Outer wall": 3,
+            "Gap infill": 2
+          }
+        },
+        "nearby_support_layers": {
+          "18.26": {
+            "Support": 3,
+            "Support interface": 5
+          },
+          "18.4": {
+            "Support interface": 5,
+            "Support": 3
+          },
+          "18.54": {
+            "Support": 3,
+            "Support interface": 5
+          },
+          "18.68": {
+            "Support": 2,
+            "Support transition": 5,
+            "Support interface": 5
+          },
+          "18.82": {
+            "Support interface": 7,
+            "Support": 2
+          },
+          "18.96": {
+            "Support": 2,
+            "Support interface": 7
+          },
+          "19.1": {
+            "Support": 2,
+            "Support interface": 7
+          },
+          "19.24": {
+            "Support": 2,
+            "Support interface": 7
+          },
+          "19.38": {
+            "Support interface": 8,
+            "Support": 3
+          },
+          "19.52": {
+            "Support interface": 8,
+            "Support": 3
+          },
+          "19.66": {
+            "Support": 2
+          },
+          "19.8": {
+            "Support": 2
+          },
+          "19.94": {
+            "Support": 2
+          }
+        }
+      },
+      {
+        "probe_xyz_bed_local_mm": [
+          -47.16121159207976,
+          -54.13200204987078,
+          21.884483656884186
+        ],
+        "radius_mm": 1.6,
+        "nearby_model_layers": {
+          "21.2": {
+            "Outer wall": 1
+          },
+          "21.48": {
+            "Inner wall": 1,
+            "Outer wall": 1
+          },
+          "21.76": {
+            "Inner wall": 1,
+            "Outer wall": 1
+          },
+          "22.04": {
+            "Inner wall": 1,
+            "Outer wall": 1
+          },
+          "22.32": {
+            "Inner wall": 1,
+            "Outer wall": 1,
+            "Overhang wall": 3
+          },
+          "22.6": {
+            "Inner wall": 4,
+            "Outer wall": 5,
+            "Overhang wall": 4,
+            "Bridge": 3
+          },
+          "22.88": {
+            "Outer wall": 4,
+            "Inner wall": 4,
+            "Overhang wall": 1,
+            "Bridge": 2
+          }
+        },
+        "nearby_support_layers": {
+          "21.2": {
+            "Support": 2,
+            "Support transition": 8
+          },
+          "21.34": {
+            "Support": 2,
+            "Support interface": 6
+          },
+          "21.48": {
+            "Support transition": 1,
+            "Support interface": 6,
+            "Support": 1
+          },
+          "21.62": {
+            "Support": 1,
+            "Support interface": 8
+          },
+          "21.76": {
+            "Support transition": 8,
+            "Support interface": 8
+          },
+          "21.9": {
+            "Support interface": 8
+          },
+          "22.04": {
+            "Support interface": 8
+          },
+          "22.18": {
+            "Support": 4,
+            "Support interface": 6
+          },
+          "22.32": {
+            "Support interface": 6,
+            "Support": 4
+          },
+          "22.46": {
+            "Support": 3
+          },
+          "22.6": {
+            "Support": 3
+          },
+          "22.74": {
+            "Support": 3
+          },
+          "22.88": {
+            "Support": 3
+          }
+        }
+      },
+      {
+        "probe_xyz_bed_local_mm": [
+          -38.23616845616002,
+          -42.10419076490189,
+          24.891954912795313
+        ],
+        "radius_mm": 1.6,
+        "nearby_model_layers": {
+          "24.84": {
+            "Overhang wall": 1
+          },
+          "25.12": {
+            "Inner wall": 1,
+            "Overhang wall": 6,
+            "Bridge": 2
+          },
+          "25.4": {
+            "Inner wall": 7,
+            "Overhang wall": 6,
+            "Outer wall": 6,
+            "Bridge": 4,
+            "Internal solid infill": 1
+          },
+          "25.68": {
+            "Inner wall": 9,
+            "Overhang wall": 5,
+            "Outer wall": 7,
+            "Bridge": 4,
+            "Internal solid infill": 1
+          },
+          "25.96": {
+            "Inner wall": 6,
+            "Outer wall": 4,
+            "Bridge": 4,
+            "Internal solid infill": 1
+          }
+        },
+        "nearby_support_layers": {
+          "24.28": {
+            "Support": 2,
+            "Support transition": 6,
+            "Support interface": 4
+          },
+          "24.42": {
+            "Support interface": 4,
+            "Support": 2
+          },
+          "24.56": {
+            "Support": 2,
+            "Support interface": 4
+          },
+          "24.7": {
+            "Support interface": 5,
+            "Support": 2
+          },
+          "24.84": {
+            "Support interface": 5,
+            "Support transition": 2
+          },
+          "24.98": {
+            "Support": 2,
+            "Support interface": 4
+          },
+          "25.12": {
+            "Support interface": 4,
+            "Support": 2
+          },
+          "25.26": {
+            "Support": 2,
+            "Support interface": 3
+          },
+          "25.4": {
+            "Support interface": 3
+          },
+          "25.82": {
+            "Support": 3
+          }
+        }
+      }
+    ],
+    "method": "CAD-derived axial/section probes tested against conservative projected extrusion-command bounds and matching Z layers. Bore cylinders and socket rectangular envelopes conservatively enlarged at Z ends by 0.28 mm. Runner-gap section probes trim 0.7 mm at each CAD surface and use 0.2 mm orthogonal tolerance and 0.28 mm in Z. This section sampling is not a global boundary check."
+  },
+  "first_upper_blade_path_support_coverage": {
+    "12.52": {
+      "method": "Sample actual XY deposition centerlines at \u22640.035 mm intervals and subtract both extrusion radii. Compare the first free-edge overhang wall with supporting toolpaths from below, including the nominal 0.28 mm air gap after accounting for model layer thickness. Positive sample edge-to-edge gap means no overlapping extrusion footprint for that point. Compare sample neighborhoods, not entire upper blade or physical output.",
+      "first_cad_edge_point_print_local_mm": [
+        -60.09429313389422,
+        -92.07892332650769,
+        13.890170735996435
+      ],
+      "sampling_radius_mm": 1.6,
+      "first_tip_model_z_mm": 14.2,
+      "support_z_mm": 12.52,
+      "support_source_commands": 6,
+      "overhang_source_commands": 4,
+      "sample_count": 48,
+      "samples_with_xy_footprint_overlap": 42,
+      "min_signed_xy_separation_mm": -0.42824892397683034,
+      "max_signed_xy_separation_mm": 0.10101053660806256,
+      "model_command_signed_separation_range_mm": {
+        "38326": [
+          -0.250569551038932,
+          0.10101053660806256
+        ],
+        "38327": [
+          -0.42824892397683034,
+          -0.250569551038932
+        ],
+        "38328": [
+          -0.4220091561346483,
+          -0.27592917866676603
+        ],
+        "38329": [
+          -0.27592917866676603,
+          0.05202933697384313
+        ]
+      }
+    },
+    "12.8": {
+      "method": "Sample actual XY deposition centerlines at \u22640.035 mm intervals and subtract both extrusion radii. Compare the first free-edge overhang wall with supporting toolpaths from below, including the nominal 0.28 mm air gap after accounting for model layer thickness. Positive sample edge-to-edge gap means no overlapping extrusion footprint for that point. Compare sample neighborhoods, not entire upper blade or physical output.",
+      "first_cad_edge_point_print_local_mm": [
+        -60.09429313389422,
+        -92.07892332650769,
+        13.890170735996435
+      ],
+      "sampling_radius_mm": 1.6,
+      "first_tip_model_z_mm": 14.2,
+      "support_z_mm": 12.8,
+      "support_source_commands": 6,
+      "overhang_source_commands": 4,
+      "sample_count": 48,
+      "samples_with_xy_footprint_overlap": 42,
+      "min_signed_xy_separation_mm": -0.42824892397683034,
+      "max_signed_xy_separation_mm": 0.10101053660806256,
+      "model_command_signed_separation_range_mm": {
+        "38326": [
+          -0.250569551038932,
+          0.10101053660806256
+        ],
+        "38327": [
+          -0.42824892397683034,
+          -0.250569551038932
+        ],
+        "38328": [
+          -0.4220091561346483,
+          -0.27592917866676603
+        ],
+        "38329": [
+          -0.27592917866676603,
+          0.05202933697384313
+        ]
+      }
+    },
+    "13.08": {
+      "method": "Sample actual XY deposition centerlines at \u22640.035 mm intervals and subtract both extrusion radii. Compare the first free-edge overhang wall with supporting toolpaths from below, including the nominal 0.28 mm air gap after accounting for model layer thickness. Positive sample edge-to-edge gap means no overlapping extrusion footprint for that point. Compare sample neighborhoods, not entire upper blade or physical output.",
+      "first_cad_edge_point_print_local_mm": [
+        -60.09429313389422,
+        -92.07892332650769,
+        13.890170735996435
+      ],
+      "sampling_radius_mm": 1.6,
+      "first_tip_model_z_mm": 14.2,
+      "support_z_mm": 13.08,
+      "support_source_commands": 21,
+      "overhang_source_commands": 4,
+      "sample_count": 48,
+      "samples_with_xy_footprint_overlap": 48,
+      "min_signed_xy_separation_mm": -0.4310180691015845,
+      "max_signed_xy_separation_mm": -0.22478024019552306,
+      "model_command_signed_separation_range_mm": {
+        "38326": [
+          -0.3133217762912184,
+          -0.22478024019552306
+        ],
+        "38327": [
+          -0.4238961866126972,
+          -0.22478024019552306
+        ],
+        "38328": [
+          -0.3956260405177974,
+          -0.3021058330573616
+        ],
+        "38329": [
+          -0.4310180691015845,
+          -0.3021058330573616
+        ]
+      }
+    },
+    "13.36": {
+      "method": "Sample actual XY deposition centerlines at \u22640.035 mm intervals and subtract both extrusion radii. Compare the first free-edge overhang wall with supporting toolpaths from below, including the nominal 0.28 mm air gap after accounting for model layer thickness. Positive sample edge-to-edge gap means no overlapping extrusion footprint for that point. Compare sample neighborhoods, not entire upper blade or physical output.",
+      "first_cad_edge_point_print_local_mm": [
+        -60.09429313389422,
+        -92.07892332650769,
+        13.890170735996435
+      ],
+      "sampling_radius_mm": 1.6,
+      "first_tip_model_z_mm": 14.2,
+      "support_z_mm": 13.36,
+      "support_source_commands": 20,
+      "overhang_source_commands": 4,
+      "sample_count": 48,
+      "samples_with_xy_footprint_overlap": 48,
+      "min_signed_xy_separation_mm": -0.4310180691015845,
+      "max_signed_xy_separation_mm": -0.22478024019552306,
+      "model_command_signed_separation_range_mm": {
+        "38326": [
+          -0.3133217762912184,
+          -0.22478024019552306
+        ],
+        "38327": [
+          -0.4238961866126972,
+          -0.22478024019552306
+        ],
+        "38328": [
+          -0.3956260405177974,
+          -0.3021058330573616
+        ],
+        "38329": [
+          -0.4310180691015845,
+          -0.3021058330573616
+        ]
+      }
+    },
+    "13.64": {
+      "method": "Sample actual XY deposition centerlines at \u22640.035 mm intervals and subtract both extrusion radii. Compare the first free-edge overhang wall with supporting toolpaths from below, including the nominal 0.28 mm air gap after accounting for model layer thickness. Positive sample edge-to-edge gap means no overlapping extrusion footprint for that point. Compare sample neighborhoods, not entire upper blade or physical output.",
+      "first_cad_edge_point_print_local_mm": [
+        -60.09429313389422,
+        -92.07892332650769,
+        13.890170735996435
+      ],
+      "sampling_radius_mm": 1.6,
+      "first_tip_model_z_mm": 14.2,
+      "support_z_mm": 13.64,
+      "support_source_commands": 31,
+      "overhang_source_commands": 4,
+      "sample_count": 48,
+      "samples_with_xy_footprint_overlap": 48,
+      "min_signed_xy_separation_mm": -0.4310180691015845,
+      "max_signed_xy_separation_mm": -0.22478024019552306,
+      "model_command_signed_separation_range_mm": {
+        "38326": [
+          -0.3133217762912184,
+          -0.22478024019552306
+        ],
+        "38327": [
+          -0.4238961866126972,
+          -0.22478024019552306
+        ],
+        "38328": [
+          -0.3956260405177974,
+          -0.3021058330573616
+        ],
+        "38329": [
+          -0.4310180691015845,
+          -0.3021058330573616
+        ]
+      }
+    },
+    "13.92": {
+      "method": "Sample actual XY deposition centerlines at \u22640.035 mm intervals and subtract both extrusion radii. Compare the first free-edge overhang wall with supporting toolpaths from below, including the nominal 0.28 mm air gap after accounting for model layer thickness. Positive sample edge-to-edge gap means no overlapping extrusion footprint for that point. Compare sample neighborhoods, not entire upper blade or physical output.",
+      "first_cad_edge_point_print_local_mm": [
+        -60.09429313389422,
+        -92.07892332650769,
+        13.890170735996435
+      ],
+      "sampling_radius_mm": 1.6,
+      "first_tip_model_z_mm": 14.2,
+      "support_z_mm": 13.92,
+      "support_source_commands": 28,
+      "overhang_source_commands": 4,
+      "sample_count": 48,
+      "samples_with_xy_footprint_overlap": 0,
+      "min_signed_xy_separation_mm": 0.13437793385051597,
+      "max_signed_xy_separation_mm": 0.32544145768844923,
+      "model_command_signed_separation_range_mm": {
+        "38326": [
+          0.13463857032640433,
+          0.2572708003166737
+        ],
+        "38327": [
+          0.1622880773440036,
+          0.32544145768844923
+        ],
+        "38328": [
+          0.13464023734283267,
+          0.1635252709785958
+        ],
+        "38329": [
+          0.13437793385051597,
+          0.13464023734283267
+        ]
+      }
+    }
+  },
+  "fit_cleanup": "Remove accessible support from the outer runner gap and inspect the lower mouths of the two inner B/E through-bores before fit-up. No support extrusion intersected the sampled blind spar socket volume envelopes.",
+  "fit_scope": "Unprinted PLA fit mockup only. The actual print is not validated and no dispatch occurred."
+}

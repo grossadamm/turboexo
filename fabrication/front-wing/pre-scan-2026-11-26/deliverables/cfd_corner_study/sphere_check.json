@@ -1,0 +1,32 @@
+{
+  "5.0": {
+    "active_cells": 71330,
+    "solver_iterations": 10,
+    "relative_linear_residual": 2.647217617152255e-09,
+    "net_exterior_flux_over_inlet": 9.883833816328696e-12,
+    "boundary_flux_mm2_U": [
+      -159900.32431718125,
+      159900.3243192155,
+      -0.0,
+      -6.3911149084106e-07,
+      -0.0,
+      1.852983899652827e-07
+    ],
+    "rms_vector_error_fraction_U": 0.008328241313504094
+  },
+  "2.5": {
+    "active_cells": 260988,
+    "solver_iterations": 12,
+    "relative_linear_residual": 7.924441855178817e-09,
+    "net_exterior_flux_over_inlet": 2.632609686902345e-11,
+    "boundary_flux_mm2_U": [
+      -159905.1266600326,
+      159905.12666104967,
+      -0.0,
+      -3.034251328415394e-06,
+      -0.0,
+      -2.1924889850311047e-06
+    ],
+    "rms_vector_error_fraction_U": 0.004027744616049315
+  }
+}

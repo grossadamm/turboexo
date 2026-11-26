@@ -1,0 +1,104 @@
+{
+  "native_mesh_comparison": {
+    "cad_1mm_center_sample_raw_solid_voxels": 393757,
+    "recombined_vs_released_stl_mismatch_voxels": 528,
+    "overlap_fraction_of_union": 0.9986590714577772,
+    "accepted_stl_sha256": "6226d0d389891627c24ca0783dd122bd7396bf91e02a316538ca353ca45a1e5f",
+    "description": "Native solids (no sheet snapping, no wing cavity fill) on the same 1 mm sample lattice. Small changes near surface can arise from different approved STL and standalone blade tessellation.",
+    "mismatch_distance_to_accepted_stl_surface_p50_p95_max_mm": [
+      0.039591829570376505,
+      0.1532271551810101,
+      0.23542600961071475
+    ]
+  },
+  "nonuniform_mask_checks": [
+    {
+      "spacings_mm": [
+        5.25,
+        3.5,
+        3.5
+      ],
+      "sizes": [
+        208,
+        134,
+        121
+      ],
+      "common_obstacle_cells": 36091,
+      "blade_only_cells": 153,
+      "blade_only_cell_center_bounds_xyz_mm": [
+        [
+          149.375,
+          217.625
+        ],
+        [
+          515.75,
+          568.25
+        ],
+        [
+          164.75,
+          206.75
+        ]
+      ],
+      "elapsed_seconds": 0.1007817501667887
+    },
+    {
+      "spacings_mm": [
+        3.4499999999999997,
+        2.3,
+        2.3
+      ],
+      "sizes": [
+        222,
+        149,
+        133
+      ],
+      "common_obstacle_cells": 61046,
+      "blade_only_cells": 483,
+      "blade_only_cell_center_bounds_xyz_mm": [
+        [
+          146.22500000000002,
+          215.22500000000008
+        ],
+        [
+          512.6500000000001,
+          570.1500000000003
+        ],
+        [
+          163.75000000000014,
+          205.15000000000035
+        ]
+      ],
+      "elapsed_seconds": 0.1064497500192374
+    },
+    {
+      "spacings_mm": [
+        2.25,
+        1.5,
+        1.5
+      ],
+      "sizes": [
+        244,
+        172,
+        153
+      ],
+      "common_obstacle_cells": 124952,
+      "blade_only_cells": 1527,
+      "blade_only_cell_center_bounds_xyz_mm": [
+        [
+          147.125,
+          216.875
+        ],
+        [
+          514.25,
+          569.75
+        ],
+        [
+          164.25,
+          206.25
+        ]
+      ],
+      "elapsed_seconds": 0.11829141597263515
+    }
+  ],
+  "geometry_meshes_npz_sha256": "eb0700218e56c2944ad154dfd96cb694b39da9256913c3055a7c5bdd4e58ac86"
+}

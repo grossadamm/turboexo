@@ -1,0 +1,7 @@
+{'source': '/Users/adamgross/dev/artifacts/front-wing-2026-11-20/deliverables/faired42_wing/wing_right.stl', 'sha256': '6226d0d389891627c24ca0783dd122bd7396bf91e02a316538ca353ca45a1e5f', 'car_Y_mm': -555.0, 'orientation': 'X_plot=-car_X (positive aft); Z_plot=car_Z (positive up); road Z=0', 'base_bounds_aft_z_mm': [8.238832, 121.5, 220.0, 195.281128], 'blade_bounds_aft_z_mm': [158.704616, 168.919101, 216.355534, 206.862569], 'filled_internal_cavities': 5, 'base_area_mm2': 4824.045916743205, 'blade_area_mm2': 139.186761709575, 'base_blade_min_gap_mm': 8.551090082909328, 'comparison_with_regenerated_blade_off': {'hausdorff_mm': 0.001855541274997428, 'symmetric_difference_mm2': 0.0010542400912778292}}
+on 2.0 560 235 solid cells 1228 links 962 short-link fallbacks 0
+off 2.0 560 235 solid cells 1194 links 748 short-link fallbacks 0
+empty 2.0 560 235 solid cells 0 links 0 short-link fallbacks 0
+on 1.25 896 376 solid cells 3197 links 1538 short-link fallbacks 0
+off 1.25 896 376 solid cells 3106 links 1198 short-link fallbacks 0
+empty 1.25 896 376 solid cells 0 links 0 short-link fallbacks 0

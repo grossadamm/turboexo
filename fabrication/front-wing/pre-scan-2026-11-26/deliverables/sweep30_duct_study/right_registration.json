@@ -1,0 +1,495 @@
+{
+  "source_mesh": "duct_progressive_turn/TurboExo_brake_scoop_progressive_turn_mm.stl",
+  "frame": "Car-frame mm, X forward, Y car-left, Z up. Apply matrix to homogeneous column vector. Negative determinant (handed counterpart), so reverse triangle winding if transform library does not.",
+  "transform_4x4": [
+    [
+      0.998702737131617,
+      0.05060795556297755,
+      0.0056282927743041035,
+      -24.381317526877908
+    ],
+    [
+      0.05059821478822647,
+      -0.9987173581259705,
+      0.0018599027197129566,
+      -0.673238104207087
+    ],
+    [
+      -0.005715199564503226,
+      0.001572708370290361,
+      0.9999824313868328,
+      6.048274347114855
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "registration": {
+    "method": "Match complete nominal left/right outboard plate-local frames (hole B datum, B-to-D reference, and outward plate normal), retaining all shared hole UV coordinates and depth normal to the plate.",
+    "source": "grid/plate_v2.json to_car, the same datums used by twin_spar_wing.plate_frame and the production-context skin-first plates.",
+    "left_plate_origin_xyz_mm": [
+      7.8533948870572,
+      469.6894988751807,
+      113.69235857525976
+    ],
+    "right_plate_origin_xyz_mm": [
+      7.871808610336628,
+      -469.15146907210175,
+      120.43243639258685
+    ],
+    "translation_of_mirrored_origin_xyz_mm": [
+      0.01841372327942814,
+      0.5380298030789277,
+      6.740077817327091
+    ],
+    "plane_angle_after_y_mirror_deg": 2.90265866201619,
+    "additional_angle_after_y_mirror_deg": 2.9204192142392986,
+    "nominal_max_hole_correspondence_error_mm": 1.1718571004216928e-13,
+    "registration_input_fit_residuals_mm": {
+      "left": {
+        "A": 0.93,
+        "B": 0.57,
+        "D": 0.45,
+        "E": 0.55,
+        "F": 0.46,
+        "G": 0.34,
+        "H": 0.38,
+        "tip": 2.94
+      },
+      "right": {
+        "A": 1.29,
+        "B": 0.64,
+        "D": 0.51,
+        "E": 0.31,
+        "F": 0.25,
+        "G": 0.29,
+        "H": 0.52
+      }
+    }
+  },
+  "installability": "Right mirrored study is not a drop-in. It clears the new right wing but overlaps the fixed chin, green plate, aft receiver, right web/hanger and diagonal brace, and crosses reconstructed fiberglass and seal. The original left placement clears the chin and reconstructed fiberglass but also overlaps its plate and aft receiver.",
+  "source_sha256": "0fb73829f4a894e7c64bb8b70df01b7f8898c05c8a391d374b721ff488810c3a",
+  "right_bounds_xyz_mm": [
+    [
+      -306.8862637652448,
+      -562.2488278147334,
+      102.80099457513829
+    ],
+    [
+      -177.6859353434063,
+      -294.8755045319576,
+      216.80245522923093
+    ]
+  ],
+  "collision_check": {
+    "method": "Static VTK mesh surface triangle contacts at zero tolerance and Manifold closed-solid intersections. Gap estimates are nearest distances from sampled vertices or face centroids, and not formal lower bounds. AABB gaps are lower bounds to the available static reference geometry. No manufacturing, installation-travel or moving-clearance claim. Body is the V9 reconstructed fiberglass model and not an independent physical measurement. Raw scan intersections are retained as a separate uncertainty flag.",
+    "right_surface_results": {
+      "fiberglass": {
+        "aabb_gap_lower_bound_mm": 0.0,
+        "triangle_pair_contacts": 958,
+        "contact_bounds_xyz_mm": [
+          [
+            -306.805419921875,
+            -336.1059875488281,
+            185.46334838867188
+          ],
+          [
+            -183.80784606933594,
+            -294.8959045410156,
+            214.5504608154297
+          ]
+        ]
+      },
+      "seal": {
+        "aabb_gap_lower_bound_mm": 0.0,
+        "triangle_pair_contacts": 156,
+        "contact_bounds_xyz_mm": [
+          [
+            -201.70567321777344,
+            -333.17425537109375,
+            207.7710723876953
+          ],
+          [
+            -184.8555908203125,
+            -328.6762390136719,
+            212.25306701660156
+          ]
+        ]
+      },
+      "raw_scan_uncalibrated_interior": {
+        "aabb_gap_lower_bound_mm": 0.0,
+        "triangle_pair_contacts": 2042,
+        "contact_bounds_xyz_mm": [
+          [
+            -306.80810546875,
+            -471.4017028808594,
+            107.59615325927734
+          ],
+          [
+            -183.878173828125,
+            -294.9051513671875,
+            215.36000061035156
+          ]
+        ]
+      },
+      "tire_right_inferred_static_envelope": {
+        "aabb_gap_lower_bound_mm": 113.92893480816105
+      },
+      "plate_right": {
+        "aabb_gap_lower_bound_mm": 0.0,
+        "triangle_pair_contacts": 92,
+        "contact_bounds_xyz_mm": [
+          [
+            -275.17181396484375,
+            -473.93084716796875,
+            149.97561645507812
+          ],
+          [
+            -265.8127136230469,
+            -469.334716796875,
+            158.07501220703125
+          ]
+        ]
+      },
+      "mount_rail_right": {
+        "aabb_gap_lower_bound_mm": 143.60097059120903
+      },
+      "spar_fore_right": {
+        "aabb_gap_lower_bound_mm": 111.6859353434063
+      },
+      "spar_aft_right": {
+        "aabb_gap_lower_bound_mm": 0.0,
+        "triangle_pair_contacts": 0,
+        "sampled_surface_gap_mm": 3.4373502357452286
+      },
+      "receiver_fore_right": {
+        "aabb_gap_lower_bound_mm": 108.6859353434063
+      },
+      "receiver_aft_right": {
+        "aabb_gap_lower_bound_mm": 0.0,
+        "triangle_pair_contacts": 296,
+        "contact_bounds_xyz_mm": [
+          [
+            -192.74635314941406,
+            -461.6034851074219,
+            121.5
+          ],
+          [
+            -179.1834259033203,
+            -457.9190368652344,
+            136.06109619140625
+          ]
+        ]
+      },
+      "exact_right_web": {
+        "aabb_gap_lower_bound_mm": 0.0,
+        "triangle_pair_contacts": 42,
+        "contact_bounds_xyz_mm": [
+          [
+            -210.2610626220703,
+            -459.7424621582031,
+            109.31797790527344
+          ],
+          [
+            -205.37648010253906,
+            -455.3075866699219,
+            111.90984344482422
+          ]
+        ]
+      },
+      "v9:rear_radiator/rear_finned_core": {
+        "aabb_gap_lower_bound_mm": 9.63127218776907,
+        "triangle_pair_contacts": 0
+      },
+      "v9:rear_radiator/right_side_channel": {
+        "aabb_gap_lower_bound_mm": 9.859535134035028,
+        "triangle_pair_contacts": 0
+      },
+      "v9:rear_radiator/lower_header": {
+        "aabb_gap_lower_bound_mm": 0.0,
+        "triangle_pair_contacts": 0,
+        "sampled_surface_gap_mm": 8.68982002369742
+      },
+      "v9:rear_fin_field/Rear_fin_bay_01": {
+        "aabb_gap_lower_bound_mm": 12.278703227425842
+      },
+      "exact_right_brace": {
+        "aabb_gap_lower_bound_mm": 0.0,
+        "triangle_pair_contacts": 157,
+        "contact_bounds_xyz_mm": [
+          [
+            -195.8113250732422,
+            -461.6181640625,
+            114.64360046386719
+          ],
+          [
+            -192.70318603515625,
+            -458.3838806152344,
+            118.07884979248047
+          ]
+        ]
+      },
+      "wing_right_30deg": {
+        "triangle_pair_contacts": 0,
+        "sampled_surface_gap_mm": 11.317798099625813
+      },
+      "wing_right_30deg_blade_off": {
+        "triangle_pair_contacts": 0,
+        "sampled_surface_gap_mm": 11.317798099625813
+      },
+      "wing_right_16deg_baseline": {
+        "triangle_pair_contacts": 0,
+        "sampled_surface_gap_mm": 11.317798099625813
+      },
+      "upper_blade_30deg": {
+        "triangle_pair_contacts": 0
+      }
+    },
+    "right_closed_solid_overlap": {
+      "wing_right_30deg": {
+        "whole": {
+          "overlap_mm3": 0.0
+        }
+      },
+      "wing_right_16deg_baseline": {
+        "whole": {
+          "overlap_mm3": 0.0
+        }
+      },
+      "upper_blade_30deg": {
+        "whole": {
+          "overlap_mm3": 0.0
+        }
+      },
+      "wing_right_30deg_blade_off": {
+        "whole": {
+          "overlap_mm3": 0.0
+        }
+      },
+      "chin": {
+        "whole": {
+          "overlap_mm3": 1335.7874980831596,
+          "overlap_bounds_xyz_mm": [
+            [
+              -221.38577270507812,
+              -461.585693359375,
+              134.96954345703125
+            ],
+            [
+              -180.68849182128906,
+              -330.83428955078125,
+              209.7445831298828
+            ]
+          ]
+        },
+        "added": {
+          "overlap_mm3": 0.0
+        }
+      },
+      "plate_right": {
+        "whole": {
+          "overlap_mm3": 71.19592368690671,
+          "overlap_bounds_xyz_mm": [
+            [
+              -275.17181396484375,
+              -473.93084716796875,
+              149.9756317138672
+            ],
+            [
+              -265.8127136230469,
+              -469.334716796875,
+              158.07501220703125
+            ]
+          ]
+        },
+        "added": {
+          "overlap_mm3": 71.19592368690671,
+          "overlap_bounds_xyz_mm": [
+            [
+              -275.17181396484375,
+              -473.93084716796875,
+              149.9756317138672
+            ],
+            [
+              -265.8127136230469,
+              -469.334716796875,
+              158.07501220703125
+            ]
+          ]
+        }
+      },
+      "spar_aft_right": {
+        "whole": {
+          "overlap_mm3": 0.0
+        }
+      },
+      "receiver_aft_right": {
+        "whole": {
+          "overlap_mm3": 498.90481933558476,
+          "overlap_bounds_xyz_mm": [
+            [
+              -192.746337890625,
+              -461.6034851074219,
+              121.5
+            ],
+            [
+              -179.1834259033203,
+              -457.9190368652344,
+              136.06109619140625
+            ]
+          ]
+        }
+      },
+      "exact_right_web": {
+        "whole": {
+          "overlap_mm3": 0.6073892162692877,
+          "overlap_bounds_xyz_mm": [
+            [
+              -210.26109313964844,
+              -459.74249267578125,
+              109.31798553466797
+            ],
+            [
+              -205.37649536132812,
+              -455.30755615234375,
+              111.90985107421875
+            ]
+          ]
+        },
+        "added": {
+          "overlap_mm3": 0.0
+        }
+      },
+      "exact_right_brace": {
+        "whole": {
+          "overlap_mm3": 0.047888035276628216,
+          "overlap_bounds_xyz_mm": [
+            [
+              -195.8113250732422,
+              -461.6181640625,
+              114.64358520507812
+            ],
+            [
+              -192.70318603515625,
+              -458.38385009765625,
+              118.07884979248047
+            ]
+          ]
+        },
+        "added": {
+          "overlap_mm3": 0.0
+        }
+      }
+    },
+    "left_original_pose_surface_controls": {
+      "wing_left_16deg": {
+        "aabb_gap_lower_bound_mm": 0.0,
+        "triangle_pair_contacts": 0,
+        "sampled_surface_gap_mm": 11.36718515527139
+      },
+      "fiberglass": {
+        "aabb_gap_lower_bound_mm": 0.0,
+        "triangle_pair_contacts": 0,
+        "sampled_surface_gap_mm": 4.08436688546849
+      },
+      "seal": {
+        "aabb_gap_lower_bound_mm": 0.0,
+        "triangle_pair_contacts": 0,
+        "sampled_surface_gap_mm": 24.62246537488163
+      },
+      "tire_left_inferred_static_envelope": {
+        "aabb_gap_lower_bound_mm": 136.78838622162468
+      },
+      "exact_left_web": {
+        "aabb_gap_lower_bound_mm": 0.0,
+        "triangle_pair_contacts": 0,
+        "sampled_surface_gap_mm": 1.71233145574744
+      },
+      "exact_left_brace": {
+        "aabb_gap_lower_bound_mm": 0.0,
+        "triangle_pair_contacts": 0,
+        "sampled_surface_gap_mm": 2.1585371141252834
+      }
+    },
+    "left_original_pose_closed_solid_overlap": {
+      "wing_left_16deg_baseline": {
+        "whole": {
+          "overlap_mm3": 0.0
+        }
+      },
+      "chin": {
+        "whole": {
+          "overlap_mm3": 0.0
+        },
+        "added": {
+          "overlap_mm3": 0.0
+        }
+      },
+      "plate_left": {
+        "whole": {
+          "overlap_mm3": 71.19608273134507,
+          "overlap_bounds_xyz_mm": [
+            [
+              -275.17962646484375,
+              455.701904296875,
+              141.6859588623047
+            ],
+            [
+              -265.89178466796875,
+              460.51141357421875,
+              149.73825073242188
+            ]
+          ]
+        },
+        "added": {
+          "overlap_mm3": 71.19608273134507,
+          "overlap_bounds_xyz_mm": [
+            [
+              -275.17962646484375,
+              455.701904296875,
+              141.6859588623047
+            ],
+            [
+              -265.89178466796875,
+              460.51141357421875,
+              149.73825073242188
+            ]
+          ]
+        }
+      },
+      "spar_aft_left": {
+        "whole": {
+          "overlap_mm3": 0.0
+        }
+      },
+      "receiver_aft_left": {
+        "whole": {
+          "overlap_mm3": 879.0842758731329,
+          "overlap_bounds_xyz_mm": [
+            [
+              -192.45713806152344,
+              426.2239685058594,
+              121.5
+            ],
+            [
+              -179.87188720703125,
+              452.0,
+              136.0061798095703
+            ]
+          ]
+        }
+      },
+      "exact_left_brace": {
+        "whole": {
+          "overlap_mm3": 0.0
+        },
+        "added": {
+          "overlap_mm3": 0.0
+        }
+      }
+    }
+  }
+}

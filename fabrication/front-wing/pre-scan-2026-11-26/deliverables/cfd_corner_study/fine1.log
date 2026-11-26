@@ -1,0 +1,23 @@
+grid [192, 178, 161]
+cells 5203283 cg 0 22 rel residual 5.0870854844560184e-09 seconds 30.10080313682556
+off [('inside_slot', 28.92, 7.47, 126.0), ('exit_patch', -12.21, -3.49, 667.0), ('upstream_of_tire', -2.67, -32.48, 7650.0)]
+cells 5197886 cg 0 24 rel residual 5.29199638479173e-09 seconds 30.2611300945282
+on [('inside_slot', 37.51, -10.42, 126.0), ('exit_patch', -14.93, -5.24, 667.0), ('upstream_of_tire', -2.68, -32.49, 7650.0)]
+       65.52 real        53.18 user         5.18 sys
+          3258286080  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+             1145918  page reclaims
+                 264  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   0  messages sent
+                   0  messages received
+                   0  signals received
+                 427  voluntary context switches
+               89558  involuntary context switches
+        479339634700  instructions retired
+        177052906879  cycles elapsed
+          4009872792  peak memory footprint

@@ -1,0 +1,2 @@
+Moving-wall Couette: 12000 steps, nu=0.01058800, relative L2 error=0.014792%, max normalized absolute error=0.011581%, fitted decay 0.999879 vs exact 1.000000
+Off-grid no-slip sine decay: 6000 steps, nu=0.01058800, relative L2 error=0.077526%, max normalized absolute error=0.025451%, fitted decay 0.333392 vs exact 0.333650

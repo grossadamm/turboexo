@@ -1,0 +1,87 @@
+{
+  "active_cells": 5197886,
+  "solver_iterations": 24,
+  "relative_linear_residual": 5.29199638479173e-09,
+  "net_exterior_flux_over_inlet": 9.675598963052348e-11,
+  "boundary_flux_mm2_U": [
+    -4362217.107805798,
+    4357719.795349563,
+    -0.0,
+    3548.8516495013164,
+    -0.0,
+    948.4603846633399
+  ],
+  "windows": {
+    "inside_slot": {
+      "station_mm": 205.0,
+      "outward_mm": [
+        550.0,
+        568.0
+      ],
+      "height_mm": [
+        187.5,
+        194.5
+      ],
+      "area_mm2": 126.0,
+      "signed_flux_mm2_U": 137.05807937210662,
+      "forward_flux_mm2_U": 137.0580793721067,
+      "velocity_over_U": [
+        1.0927870485037663,
+        -0.20097643442714994,
+        0.8389570440582024
+      ],
+      "up_deg": 37.51425512760527,
+      "outward_deg": -10.420920516480765
+    },
+    "exit_patch": {
+      "station_mm": 228.0,
+      "outward_mm": [
+        547.0,
+        576.0
+      ],
+      "height_mm": [
+        197.0,
+        220.0
+      ],
+      "area_mm2": 667.0,
+      "signed_flux_mm2_U": 796.7846286002216,
+      "forward_flux_mm2_U": 796.7846286002218,
+      "velocity_over_U": [
+        1.1967142893546463,
+        -0.10976604355154645,
+        -0.31916405201134534
+      ],
+      "up_deg": -14.933215917907305,
+      "outward_deg": -5.240668213773864
+    },
+    "upstream_of_tire": {
+      "station_mm": 395.0,
+      "outward_mm": [
+        550.0,
+        635.0
+      ],
+      "height_mm": [
+        175.0,
+        265.0
+      ],
+      "area_mm2": 7650.0,
+      "signed_flux_mm2_U": 6416.029221122552,
+      "forward_flux_mm2_U": 6416.0292211225515,
+      "velocity_over_U": [
+        0.9299415051778593,
+        -0.5920983022311704,
+        -0.04348234281089816
+      ],
+      "up_deg": -2.677094692519397,
+      "outward_deg": -32.48510677610751
+    }
+  },
+  "sweep_deg": 16,
+  "stl_inputs": {},
+  "geometry_cache_sha256": "eb0700218e56c2944ad154dfd96cb694b39da9256913c3055a7c5bdd4e58ac86",
+  "grid_mm": [
+    1.5,
+    1.0,
+    1.0
+  ]
+}
