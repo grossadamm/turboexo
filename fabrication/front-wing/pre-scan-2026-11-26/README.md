@@ -11,7 +11,7 @@
 
 ## Keep for the scan session
 
-Register the scan to the existing metal plate faces and retained hole axes. Capture both bumper undersides, the webs and diagonal braces, the available space behind each outer plate, and the wheel/inner sidewall. Record the steering and suspension position with each scan. The existing wheel bodies are illustrative envelopes.
+Register the scan to the existing metal plate faces and retained hole axes. Capture both bumper undersides, the webs and diagonal braces, the available space behind each outer plate, and the wheel/inner sidewall. For each duct underside, capture the fiberglass and metal beneath and behind its proposed path. Include the plate face and at least two retained mounting holes in overlapping views so the underside can be registered to its own side. Record the steering and suspension position with each scan. The existing wheel bodies are illustrative envelopes.
 
 The modeled driver-side duct clears the wing, chin, fiberglass and seal, but overlaps the outer plate and aft receiver. On the passenger side the trial mirror clears the 30° wing by about 11 mm in the sampled static placement, but crosses the chin, fiberglass, seal and mounting hardware. Fit each side from its own scan before printing the ducts. Revisit the obsolete rectangular mounting rail when detailing the carbon spars and any aluminum retention brackets. [Registration and interference results](deliverables/sweep30_duct_study/right_registration.json)
 
